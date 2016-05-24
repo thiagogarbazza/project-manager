@@ -1,0 +1,18 @@
+<div  ng-controller="materialadminCtrl as mactrl">
+  <div ng-controller="TemplateController as tplCtrl">
+    <header id="header" ng-include="'template/includes/header.html'" data-ng-controller="headerCtrl as hctrl"></header>
+
+    <section id="main">
+      <aside id="sidebar" ng-include="'template/includes/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+      <aside id="chat" ng-include="'template/includes/chat.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.right === true }"></aside>
+      <section id="content">
+          <div class="container">
+            <div ui-view></div>
+          </div>
+      </section>
+    </section>
+
+    <div ng-include="'views/template/footer.tpl.html'"></div>
+  </div>
+</div>

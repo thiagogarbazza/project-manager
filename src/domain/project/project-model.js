@@ -9,7 +9,7 @@ module.exports = (sequelize, DataType) => {
       unique: true
     },
 
-    sigla: {
+    code: {
       type: DataType.STRING(8),
       allowNull: false,
       unique: true,

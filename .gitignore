@@ -5,4 +5,5 @@ logs/
 
 node_modules/
 
-public/lib/
+public/libs/
+public/styles/*.css

@@ -1,0 +1,39 @@
+{
+  "name": "project-manager",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagogarbazza/project-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thiagogarbazza/project-manager/issues"
+  },
+  "homepage": "https://github.com/thiagogarbazza/project-manager#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.1",
+    "compression": "^1.6.2",
+    "consign": "^0.1.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "glob": "^7.0.3",
+    "helmet": "^2.1.0",
+    "jwt-simple": "^0.5.0",
+    "lodash": "^4.12.0",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.0.0",
+    "sequelize": "^3.23.2",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "sqlite3": "^3.1.4"
+  }
+}

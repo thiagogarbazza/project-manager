@@ -6,7 +6,7 @@ module.exports = app => {
   //.all(app.auth.authenticate())
 
   .get((req, res) => {
-    Projects.findAll({order: 'sigla ASC'})
+    Projects.findAll({order: 'code ASC'})
     .then(result => res.json(result))
     .catch(error => {
       res.status(412).json({msg: error.message});
@@ -25,12 +25,12 @@ module.exports = app => {
   .get((req, res) => {
     let where = {};
 
-    if(req.query.sigla)
-      where.sigla = {like: '%' + req.query.sigla + '%'}
-    if(req.query.nome)
-      where.nome = {like: '%' + req.query.nome + '%'}
+    if(req.query.code)
+      where.code = {like: '%' + req.query.code + '%'}
+    if(req.query.name)
+      where.name = {like: '%' + req.query.name + '%'}
 
-    Projects.findAll({where, order: 'sigla ASC'})
+    Projects.findAll({where, order: 'code ASC'})
       .then(result => {
         if (result) {
           res.json(result);
@@ -87,6 +87,4 @@ module.exports = app => {
       res.status(412).json({msg: error.message});
     });
   });
-
-
 };

@@ -2,17 +2,15 @@
     'use strict';
 
     var module = angular.module('app', [
-      'materialAdmin', // TODO: Remover quando remover template
         'ngAnimate',
         'ngCookies',
-        //'ngResource', // TODO: Voltar quando remover template
+        'ngResource',
         'ngSanitize',
         'ngTouch',
-        // 'ngMaterial',
         'ngStorage',
-        //'ui.router', // TODO: Voltar quando remover template
-        //'angular-loading-bar', // TODO: Voltar quando remover template
-        //'oc.lazyLoad',  // TODO: Voltar quando remover template
+        'ui.router',
+        'angular-loading-bar',
+        'oc.lazyLoad',
 
     ]);
 

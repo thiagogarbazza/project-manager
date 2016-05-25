@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!--  TODO: voltar ng-strict-di ao remover template-->
-<html lang="en"  ng-app="app" ng-controller="AppController">
+<html lang="en" ng-strict-di ng-app="app" ng-controller="AppController">
 <head>
     <meta charset="UTF-8">
-    <title>Template | {{pageInfo.head.title}} | {{pageInfo.head.code}}</title>
+    <title>Project Manager | {{pageInfo.head.title}} | {{pageInfo.head.code}}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -21,17 +20,14 @@
     <link rel="stylesheet" type="text/css" href="libs/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"/>
     <link rel="stylesheet" type="text/css" href="libs/angular-material/angular-material.min.css"/>
 
-    <!-- Application styles -->
-    <link rel="stylesheet" type="text/css" href="template/css/app.min.1.css" />  <!-- TODO: Remover quando remover template -->
-    <link rel="stylesheet" type="text/css" href="template/css/app.min.2.css" />  <!-- TODO: Remover quando remover template -->
-    <link rel="stylesheet" type="text/css" href="template/css/demo.css" />       <!-- TODO: Remover quando remover template -->
-    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
-    <link rel="stylesheet" type="text/css" id="post-app-style"/>
-</head>
-<body data-ng-class="{ 'sw-toggled': mactrl.layoutType === '1' }"> <!-- TODO: Remover quando remover template -->
+    <!-- Application Styles -->
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
 
-<div class="loading-container" ng-include=" 'views/template/loading.tpl.html' "></div>
-<div ui-view></div>
+</head>
+<body>
+
+  <div class="loading-container" ng-include=" 'views/template/loading.tpl.html' "></div>
+  <div ui-view></div>
 
 <!-- Libraries Scripts -->
 <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
@@ -52,36 +48,6 @@
 <script type="text/javascript" src="libs/ocLazyLoad/dist/ocLazyLoad.min.js"></script>
 <script type="text/javascript" src="libs/ngstorage/ngStorage.min.js"></script>
 <script type="text/javascript" src="libs/angular-material/angular-material.min.js"></script>
-
-<!-- Template level --><!-- TODO: Remover quando remover template -->
-<script src="template/vendors/angular/angular-route.min.js"></script>
-<script src="template/js/app.js"></script>
-<!-- <script src="template/js/config.js"></script> -->
-<script src="template/js/controllers.js"></script>
-<script src="template/js/services.js"></script>
-<script src="template/js/templates.js"></script>
-<script src="template/js/modules/template.js"></script>
-<script src="template/js/modules/ui.js"></script>
-<script src="template/js/modules/charts/flot.js"></script>
-<script src="template/js/modules/charts/other-charts.js"></script>
-<script src="template/js/modules/form.js"></script>
-<script src="template/js/modules/table.js"></script>
-<script src="template/js/modules/media.js"></script>
-<script src="template/js/modules/components.js"></script>
-<script src="template/js/modules/calendar.js"></script>
-<script src="template/js/modules/demo.js"></script>
-<script src="template/vendors/bower_components/jquery.nicescroll/jquery.nicescroll.min.js"></script>
-<script src="template/vendors/bower_components/Waves/dist/waves.min.js"></script>
-<script src="template/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-<script src="template/vendors/bower_components/flot/jquery.flot.js"></script>
-<script src="template/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
-<script src="template/vendors/bower_components/flot/jquery.flot.resize.js"></script>
-<script src="template/vendors/bower_components/moment/min/moment.min.js"></script>
-<script src="template/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="template/vendors/bower_components/flot-orderBars/js/jquery.flot.orderBars.js"></script>
-<script src="template/vendors/bower_components/flot/jquery.flot.pie.js"></script>
-<script src="template/vendors/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-<!-- TODO: Remover quando remover template -->
 
 <!-- Application Scripts -->
 <script type="text/javascript" src="scripts/app.js"></script>

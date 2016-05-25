@@ -5,14 +5,12 @@
     "jquery": "~1.12.x",
     "bootstrap": "~3.3.x",
     "lodash": "~4.9.x",
-
     "animate.css": "~3.5.x",
     "font-awesome": "~4.6.x",
     "weather-icons": "~2.0.x",
     "typicons": "~2.0.x",
     "websymbols": "*",
     "material-design-iconic-font": "~2.2.x",
-
     "angular": "~1.5.x",
     "angular-resource": "~1.5.x",
     "angular-animate": "~1.5.x",
@@ -29,6 +27,7 @@
     "sweetalert": "~1.1.x",
     "moment": "~2.12.x",
     "moment-timezone": "~0.5.x",
-    "angular-material": "^1.0.9"
+    "angular-material": "^1.0.9",
+    "angular-froala": "^2.3.x"
   }
 }

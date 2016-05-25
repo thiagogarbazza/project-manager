@@ -35,8 +35,7 @@
                               return $ocLazyLoad.load(['angularjs-toaster', 'sweetalert']).then(function () {
                                     return $ocLazyLoad.load({
                                         files: [
-                                            'views/template/template.js',
-                                            'views/template/header.js'
+                                            'views/template/template.js'
                                         ],
                                         serie: true
                                     });
@@ -94,6 +93,34 @@
                                   ],
                                   serie: true
                               });
+                            }
+                        ]
+                    }
+                })
+
+                .state('admin.document-update', {
+                    parent: 'admin',
+                    url: '/document/{id}/update',
+                    templateUrl: 'views/document/document-update.tpl.html',
+                    pageInfo: {
+                        head: {
+                            title: 'document',
+                            description: 'Update document',
+                            code: ''
+                        }
+                    },
+                    resolve: {
+                        dependency: [
+                            '$ocLazyLoad',
+                            function ($ocLazyLoad) {
+                              return $ocLazyLoad.load(['angular-froala']).then(function () {
+                                    return $ocLazyLoad.load({
+                                        files: [
+                                            'views/document/document-update.js'
+                                        ],
+                                        serie: true
+                                    });
+                                });
                             }
                         ]
                     }

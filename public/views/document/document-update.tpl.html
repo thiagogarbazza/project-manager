@@ -1,0 +1,36 @@
+<div ng-controller="DocumentUpdateController as docupCtrl">
+  <section class="story">
+    <header>
+      <h2>
+        <input type="text" class="story-code" name="documentCode" ng-model="docupCtrl.document.code" />
+         -
+        <input type="text" class="story-title" name="documentName" ng-model="docupCtrl.document.name" />
+      </h2>
+
+      <div class="story-description">
+        <textarea froala="docupCtrl.editors.description.options" ng-model="docupCtrl.document.description"></textarea>
+      </div>
+
+      <div class="story-information">
+        <div class="row">
+          <div class="col-md-2 story-points">
+            Points: <span class="badge">{{docupCtrl.document.points}}</span>
+          </div>
+
+          <div class="col-md-2 story-status">
+            Status: <span class="label label-default">Em construção</span>
+          </div>
+
+          <div class="col-md-2 story-publish" title="Publicado na versão">
+            Publicado em:
+            <span class="badge"> <i class="fa fa-code-fork"></i> 0.0.0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <textarea froala="docupCtrl.editors.content.options" ng-model="docupCtrl.document.content"></textarea>
+
+  </section>
+
+</div>

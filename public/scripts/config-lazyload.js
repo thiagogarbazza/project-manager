@@ -26,14 +26,11 @@
                         ]
                     },
                     {
-                        name: 'angular-froala',
+                        name: 'angular-summernote',
                         files: [
-                            //'lib/sweetalert/toaster.min.css', // app.css
-                            'libs/froala-wysiwyg-editor/js/froala_editor.min.js',
-                            'libs/angular-froala/src/angular-froala.js',
-                            'libs/angular-froala/src/froala-sanitize.js',
-                            'libs/froala-wysiwyg-editor/css/froala_editor.min.css',
-                            'libs/froala-wysiwyg-editor/css/froala_style.min.css'
+                            'libs/summernote/dist/summernote.min.js',
+                            'libs/summernote/dist/summernote.css',
+                            'libs/angular-summernote/dist/angular-summernote.min.js',
                         ]
                     }
                 ]

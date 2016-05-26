@@ -142,7 +142,7 @@
           dependency: [
             '$ocLazyLoad',
             function ($ocLazyLoad) {
-              return $ocLazyLoad.load(['angular-froala']).then(function () {
+              return $ocLazyLoad.load(['angular-summernote']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
                     'scripts/service/api/document-api-service.js',
@@ -173,7 +173,7 @@
           dependency: [
             '$ocLazyLoad',
             function ($ocLazyLoad) {
-              return $ocLazyLoad.load(['angular-froala']).then(function () {
+              return $ocLazyLoad.load(['angular-summernote']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
                     'scripts/service/api/document-api-service.js',

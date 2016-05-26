@@ -34,12 +34,17 @@
         return $http.get(PATH_TO_SERVICE + 'search',  {params: parameters}).then(success, error);
       }
 
+      function _loadTemplate(file, success) {
+        return $http.get(config.serviceAPI.url+'views/document/templates/' + file).then(success, error);
+      }
+
       return {
         "update": _update,
         "detail": _detail,
         "create": _create,
         "delete": _delete,
-        "search": _search
+        "search": _search,
+        "loadTemplate": _loadTemplate
       };
     }
   ]);

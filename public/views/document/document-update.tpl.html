@@ -8,19 +8,19 @@
       </h2>
 
       <div class="story-description">
-        <textarea froala="docupCtrl.editors.description.options" ng-model="docupCtrl.document.description"></textarea>
+        <summernote config="docupCtrl.editors.description.options" ng-model="docupCtrl.document.description"></summernote>
       </div>
 
       <div class="story-information">
         <div class="row">
           <div class="col-md-2 story-type">
-            Type:
+            Type: {{docupCtrl.document.type}}
             <ui-select ng-model="docupCtrl.document.type" theme="bootstrap">
               <ui-select-match placeholder="Select type">
                 <i class="{{$select.selected.icon}}" aria-hidden="true"></i>
                 <span ng-bind-html="$select.selected.name"></span>
               </ui-select-match>
-              <ui-select-choices repeat="item in docupCtrl.types | filter: $select.search">
+              <ui-select-choices repeat="item in docupCtrl.types| filter: $select.search track by item.id">
                 <i class="{{item.icon}}" aria-hidden="true"></i>
                 <span ng-bind-html="item.name | highlight: $select.search"></span>
               </ui-select-choices>
@@ -32,7 +32,7 @@
           </div>
 
           <div class="col-md-2 story-status">
-            Status:
+            Status: {{docupCtrl.document.status}}
             <ui-select ng-model="docupCtrl.document.status" theme="bootstrap">
               <ui-select-match placeholder="Select type">
                 <div style="background-color: {{$select.selected.color}}">
@@ -56,7 +56,7 @@
       </div>
     </header>
 
-    <textarea froala="docupCtrl.editors.content.options" ng-model="docupCtrl.document.content"></textarea>
+    <summernote config="docupCtrl.editors.content.options" ng-model="docupCtrl.document.content"></summernote>
 
     <div role="toolbar" class="buttonAcao">
 

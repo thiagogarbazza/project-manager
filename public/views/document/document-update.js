@@ -32,6 +32,8 @@
       function readDocument(id){
         documentApiService.detail(id, function documentReadSuccess(response){
           self.document = response.data;
+          self.document.type ={id: self.document.document_type_id};
+          self.document.status ={id: self.document.document_status_id};
         });
       }
 
@@ -68,16 +70,29 @@
       self.editors= {
         description:{
           options: {
-            toolbarInline: true,
-            charCounterCount: false,
-            toolbarButtons : ["bold", "italic", "underline"]
+            airMode: true,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+              ]
           }
         },
         content : {
           options: {
-            toolbarInline: true,
-            charCounterCount: false,
-            toolbarButtons : ["bold", "italic", "underline"]
+            airMode: true,
+            toolbar: [
+              ['edit',['undo','redo']],
+              ['headline', ['style']],
+              ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+              ['fontface', ['fontname']],
+              ['textsize', ['fontsize']],
+              ['fontclr', ['color']],
+              ['alignment', ['ul', 'ol', 'paragraph', 'lineheight']],
+              ['height', ['height']],
+              ['table', ['table']],
+              ['insert', ['link','picture','video','hr']],
+              ['view', ['fullscreen', 'codeview']],
+              ['help', ['help']]
+            ]
           }
         }
       };

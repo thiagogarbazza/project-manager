@@ -9,11 +9,13 @@
       var self = this;
 
       function reset() {
-          self.document = {};
+        self.document = {
+          description: "Eu, como <b>Papel</b> quero <b>Objetivo</b> de forma que eu alcance o <b>Benefício</b>.",
+        };
       }
 
       function comeBack() {
-          $state.go('admin.document-list');
+        $state.go('admin.document-list');
       }
 
       function readStatus(){
@@ -28,9 +30,17 @@
         });
       }
 
+      function readTemplate(){
+        documentApiService.loadTemplate('user-story.tpl', function documentLoadTemplateSuccess(resource) {
+          self.document.content = resource.data;
+        });
+      }
+
       function readPage(){
+        reset();
         readStatus();
         readTypes();
+        readTemplate();
       }
 
       self.create = function create(document){
@@ -46,41 +56,45 @@
 
         documentApiService.create(documentSave, function documentCreateSuccess(response){
           if (response.status === 201) {
-              alert('Salvo com sucesso');
-              reset();
-              comeBack();
+            alert('Salvo com sucesso');
+            reset();
+            comeBack();
           } else if(response.status === 409) {
-              alert('algum campo esta inválido');
+            alert('algum campo esta inválido');
           } else {
-             alert('Erro desconhecido.');
+            alert('Erro desconhecido.');
           }
         });
       };
 
-      self.document = {
-        id: $stateParams.id,
-        code: "COD0000",
-        name: "Nome nova história",
-        description: "Eu, como <b>Papel</b> quero <b>Objetivo</b> de forma que eu alcance o <b>Benefício</b>.",
-        points: 25,
-        content: "<h1>Hello World</h1>",
-        type :{ id: '0a2f796d-c57d-4060-8401-179b7bc3f580'},
-        status :{ id: '8a720621-2804-47fa-84bd-77af966f29ca'}
-      };
+
 
       self.editors= {
         description:{
           options: {
-            toolbarInline: true,
-            charCounterCount: false,
-            toolbarButtons : ["bold", "italic", "underline"]
+            airMode: true,
+            toolbar: [
+              ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+            ]
           }
         },
         content : {
           options: {
-            toolbarInline: true,
-            charCounterCount: false,
-            toolbarButtons : ["bold", "italic", "underline"]
+            airMode: true,
+            toolbar: [
+              ['edit',['undo','redo']],
+              ['headline', ['style']],
+              ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+              ['fontface', ['fontname']],
+              ['textsize', ['fontsize']],
+              ['fontclr', ['color']],
+              ['alignment', ['ul', 'ol', 'paragraph', 'lineheight']],
+              ['height', ['height']],
+              ['table', ['table']],
+              ['insert', ['link','picture','video','hr']],
+              ['view', ['fullscreen', 'codeview']],
+              ['help', ['help']]
+            ]
           }
         }
       };

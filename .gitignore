@@ -3,7 +3,12 @@
 logs/
 *.log
 
+.DS_Store
+/*.env
+
 node_modules/
+/node_modules
+npm-debug.log
 
 public/libs/
 public/styles/*.css

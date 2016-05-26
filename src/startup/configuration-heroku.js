@@ -26,8 +26,8 @@ module.exports = {
     username: env.NODE_DATABASE_USER,
     password: env.NODE_DATABASE_USER_PASSWORD,
     options: {
-      host: env.NODE_DATABASE_HOST
-      port: env.NODE_DATABASE_PORT
+      host: env.NODE_DATABASE_HOST,
+      port: env.NODE_DATABASE_PORT,
       dialect: "postgres",
       pool: {
         max: 5,

@@ -7,6 +7,7 @@ module.exports = app => {
   if (process.env.NODE_ENV !== "test") {
     const configuration = app.configuration.server;
     app.sequelize.sync().done(() => {
+      console.log(configuration);
       const port = configuration.port || 3000;
       const ip = configuration.ip || 'localhost';
       app.listen(port, ip,() => {

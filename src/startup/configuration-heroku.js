@@ -44,5 +44,5 @@ module.exports = {
       }
     }
   }
-
+  logger.warn('Heroku configuration file is using');
 };

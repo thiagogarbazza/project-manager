@@ -39,4 +39,5 @@ module.exports = {
     }
   }
 
+  logger.warn('Development configuration file is using');
 };

@@ -10,6 +10,8 @@ logger.configure({
     ]
   });
 
+logger.warn('Heroku configuration file is using');
+
 module.exports = {
   server: {
     port: 3000
@@ -37,6 +39,4 @@ module.exports = {
       }
     }
   }
-
-  logger.warn('Development configuration file is using');
 };

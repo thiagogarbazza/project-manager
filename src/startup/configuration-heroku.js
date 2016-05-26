@@ -9,6 +9,8 @@ logger.configure({
       new (winston.transports.Console)()
     ]
   });
+  
+logger.warn('Heroku configuration file is using');
 
 module.exports = {
   server: {
@@ -43,5 +45,4 @@ module.exports = {
       }
     }
   }
-  logger.warn('Heroku configuration file is using');
 };

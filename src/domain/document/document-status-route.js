@@ -1,12 +1,12 @@
 module.exports = app => {
-  const Documents = app.domain.document.Documents;
+  const DocumentTypes = app.domain.document.DocumentTypes;
   const sequelize = app.sequelize;
 
-  app.route("/service/document")
+  app.route("/service/document-type")
   //.all(app.auth.authenticate())
 
   .get((req, res) => {
-    Documents.findAll({order: 'code ASC'})
+    DocumentTypes.findAll({order: 'code ASC'})
     .then(result => res.json(result))
     .catch(error => {
       res.status(412).json({msg: error.message});
@@ -14,25 +14,23 @@ module.exports = app => {
   })
 
   .post((req, res) => {
-    Documents.create(req.body)
+    DocumentTypes.create(req.body)
     .then(result => res.status(201).json(result))
     .catch(error => {
       res.status(412).json({msg: error.message});
     });
   });
 
-  app.route("/service/document/search")
+  app.route("/service/document-type/search")
   .get((req, res) => {
     let where = {};
 
-    if(req.query.projectId)
-      where.projct_id = req.query.projectId;
     if(req.query.code)
-      where.code = {like: '%' + req.query.code + '%'};
+      where.code = {like: '%' + req.query.code + '%'}
     if(req.query.name)
-      where.name = {like: '%' + req.query.name + '%'};
+      where.name = {like: '%' + req.query.name + '%'}
 
-    Documents.findAll({where, order: 'code ASC'})
+    DocumentTypes.findAll({where, order: 'code ASC'})
       .then(result => {
         if (result) {
           res.json(result);
@@ -45,11 +43,11 @@ module.exports = app => {
       });
   })
 
-  app.route("/service/document/:id")
+  app.route("/service/document-type/:id")
   //.all(app.auth.authenticate())
 
   .get((req, res) => {
-    Documents.findOne({
+    DocumentTypes.findOne({
       where: {
         id: req.params.id,
       }
@@ -67,7 +65,7 @@ module.exports = app => {
   })
 
   .put((req, res) => {
-    Documents.update(req.body, {
+    DocumentTypes.update(req.body, {
       where: {
         id: req.params.id,
       }
@@ -79,7 +77,7 @@ module.exports = app => {
   })
 
   .delete((req, res) => {
-    Documents.destroy({
+    DocumentTypes.destroy({
       where: {
         id: req.params.id,
       }

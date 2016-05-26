@@ -1,0 +1,13 @@
+<div ng-controller="DocumentListController as doclistCtrl">
+  <div class="form-actionTop form-inline pull-right">
+    <a href="#/document/create" class="btn btn-xs" title="create a new document">
+            <i class="fa fa-plus fa-lg"></i>
+            New document
+        </a>
+  </div>
+
+
+<pre>
+  {{doclistCtrl.documents | json}}
+</pre>
+</div>

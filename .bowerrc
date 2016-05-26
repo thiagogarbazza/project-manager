@@ -1,5 +1,3 @@
 {
-  "directory": "public/libs",
-  "resolvers": ["bower-art-resolver"],
-  "registry": "http://bower.repo.bcnet.bcb.gov.br/bower"
+  "directory": "public/libs"
 }

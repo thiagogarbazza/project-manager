@@ -51,6 +51,8 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
       associate: (domain) => {
         Documents.belongsTo(domain.project.Projects);
+        Documents.belongsTo(domain.document.DocumentStatus);
+        Documents.belongsTo(domain.document.DocumentTypes);
       }
     }
   };

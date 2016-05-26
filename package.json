@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,5 +36,9 @@
   },
   "devDependencies": {
     "sqlite3": "^3.1.4"
+  },
+  "engines": {
+    "node": "6.1.x",
+    "npm": "3.8.x"
   }
 }

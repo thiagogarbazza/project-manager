@@ -3,9 +3,9 @@
 
   var module = angular.module('app');
 
-  module.controller('DocumentUpdateController', [
+  module.controller('DocumentCreateController', [
     '$location', '$stateParams', 'DocumentApiService', 'DocumentStatusApiService', 'DocumentTypeApiService',
-    function DocumentUpdateController($location, $stateParams, documentApiService, documentStatusApiService, documentTypeApiService) {
+    function DocumentCreateController($location, $stateParams, documentApiService, documentStatusApiService, documentTypeApiService) {
       var self = this;
 
       function readStatus(){

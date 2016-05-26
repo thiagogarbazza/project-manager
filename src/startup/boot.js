@@ -13,7 +13,7 @@ module.exports = app => {
       app.listen(port, () => {
         logger.info(`####   project-manager  ####`);
         logger.info(`Application worker ${process.pid} started...`);
-        logger.info(`listen in ${ip}:${port}`);
+        logger.info(`listen in ${port}`);
       });
     });
   }

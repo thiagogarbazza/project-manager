@@ -22,14 +22,20 @@ module.exports = {
   },
 
   database : {
-    database: "project-manager",
-    username: "",
-    password: "",
+    database: env.NODE_DATABASE_NAME,
+    username: env.NODE_DATABASE_USER,
+    password: env.NODE_DATABASE_USER_PASSWORD,
     options: {
-      dialect: "sqlite",
-      storage: "project-manager.sqlite",
+      host: env.NODE_DATABASE_HOST
+      port: env.NODE_DATABASE_PORT
+      dialect: "postgres",
+      pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+      },
       logging: (sql) => {
-        logger.info(`[${new Date()}] ${sql}`);
+        //logger.info(`[${new Date()}] ${sql}`);
       },
       define: {
         freezeTableName: true,

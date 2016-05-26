@@ -8,11 +8,9 @@ module.exports = app => {
     const configuration = app.configuration.server;
     app.sequelize.sync().done(() => {
       const port = configuration.port || 3000;
-      const ip = configuration.ip || 'localhost';
+      console.log( port, configuration);
 
-      console.log( port, ip, configuration);
-
-      app.listen(port, ip,() => {
+      app.listen(port, () => {
         logger.info(`####   project-manager  ####`);
         logger.info(`Application worker ${process.pid} started...`);
         logger.info(`listen in ${ip}:${port}`);

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "postinstall": "bower install",
+    "start": "node cluster.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,6 +32,8 @@
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",
+    "pg": "^4.5.5",
+    "pg-hstore": "^2.3.2",
     "sequelize": "^3.23.2",
     "winston": "^2.2.0"
   },

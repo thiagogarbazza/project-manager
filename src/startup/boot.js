@@ -7,9 +7,11 @@ module.exports = app => {
   if (process.env.NODE_ENV !== "test") {
     const configuration = app.configuration.server;
     app.sequelize.sync().done(() => {
-      console.log(configuration);
       const port = configuration.port || 3000;
       const ip = configuration.ip || 'localhost';
+
+      console.log( port, ip, configuration);
+
       app.listen(port, ip,() => {
         logger.info(`####   project-manager  ####`);
         logger.info(`Application worker ${process.pid} started...`);

@@ -4,9 +4,17 @@
   var module = angular.module('app');
 
   module.controller('DocumentCreateController', [
-    '$location', '$stateParams', 'DocumentApiService', 'DocumentStatusApiService', 'DocumentTypeApiService',
-    function DocumentCreateController($location, $stateParams, documentApiService, documentStatusApiService, documentTypeApiService) {
+    '$location', '$state', '$stateParams', 'DocumentApiService', 'DocumentStatusApiService', 'DocumentTypeApiService',
+    function DocumentCreateController($location, $state, $stateParams, documentApiService, documentStatusApiService, documentTypeApiService) {
       var self = this;
+
+      function reset() {
+          self.document = {};
+      }
+
+      function comeBack() {
+          $state.go('admin.document-list');
+      }
 
       function readStatus(){
         documentStatusApiService.search({}, function documentStatusSearchSuccess(resource) {
@@ -24,6 +32,30 @@
         readStatus();
         readTypes();
       }
+
+      self.create = function create(document){
+        var documentSave = {
+          code: document.code,
+          name: document.name,
+          description: document.description,
+          points: document.points,
+          content: document.content,
+          document_type_id : document.type.id,
+          document_status_id: document.status.id
+        }
+
+        documentApiService.create(documentSave, function documentCreateSuccess(response){
+          if (response.status === 201) {
+              alert('Salvo com sucesso');
+              reset();
+              comeBack();
+          } else if(response.status === 409) {
+              alert('algum campo esta inválido');
+          } else {
+             alert('Erro desconhecido.');
+          }
+        });
+      };
 
       self.document = {
         id: $stateParams.id,
@@ -55,6 +87,7 @@
 
       readPage();
 
+      self.comeBack = comeBack;
     } // ends controller function
   ]);
 

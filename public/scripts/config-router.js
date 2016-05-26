@@ -100,7 +100,7 @@
         }
       })
 
-      .state('admin.document-lsit', {
+      .state('admin.document-list', {
         parent: 'admin',
         url: '/document',
         templateUrl: 'views/document/document-list.tpl.html',
@@ -121,6 +121,37 @@
                   'views/document/document-list.js'
                 ],
                 serie: true
+              });
+            }
+          ]
+        }
+      })
+
+      .state('admin.document-create', {
+        parent: 'admin',
+        url: '/document/create',
+        templateUrl: 'views/document/document-create.tpl.html',
+        pageInfo: {
+          head: {
+            title: 'document',
+            description: 'Update document',
+            code: ''
+          }
+        },
+        resolve: {
+          dependency: [
+            '$ocLazyLoad',
+            function ($ocLazyLoad) {
+              return $ocLazyLoad.load(['angular-froala']).then(function () {
+                return $ocLazyLoad.load({
+                  files: [
+                    'scripts/service/api/document-api-service.js',
+                    'scripts/service/api/document-status-api-service.js',
+                    'scripts/service/api/document-type-api-service.js',
+                    'views/document/document-create.js'
+                  ],
+                  serie: true
+                });
               });
             }
           ]

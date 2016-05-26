@@ -4,9 +4,18 @@
   var module = angular.module('app');
 
   module.controller('DocumentUpdateController', [
-    '$location', '$stateParams', 'DocumentApiService', 'DocumentStatusApiService', 'DocumentTypeApiService',
-    function DocumentUpdateController($location, $stateParams, documentApiService, documentStatusApiService, documentTypeApiService) {
+    '$location', '$state', '$stateParams', 'DocumentApiService', 'DocumentStatusApiService', 'DocumentTypeApiService',
+    function DocumentUpdateController($location, $state, $stateParams, documentApiService, documentStatusApiService, documentTypeApiService) {
       var self = this;
+
+      function reset() {
+          self.document = {};
+      }
+
+      function comeBack() {
+        console.log('PASSEI ALQUI...');
+          $state.go('admin.document-list');
+      }
 
       function readStatus(){
         documentStatusApiService.search({}, function documentStatusSearchSuccess(resource) {
@@ -20,20 +29,40 @@
         });
       }
 
+      function readDocument(id){
+        documentApiService.detail(id, function documentReadSuccess(response){
+          self.document = response.data;
+        });
+      }
+
       function readPage(){
         readStatus();
         readTypes();
+        readDocument($stateParams.id);
       }
 
-      self.document = {
-        id: $stateParams.id,
-        code: "COD0000",
-        name: "Nome nova história",
-        description: "Eu, como <b>Papel</b> quero <b>Objetivo</b> de forma que eu alcance o <b>Benefício</b>.",
-        points: 25,
-        content: "<h1>Hello World</h1>",
-        type :{ id: '0a2f796d-c57d-4060-8401-179b7bc3f580'},
-        status :{ id: '8a720621-2804-47fa-84bd-77af966f29ca'}
+      self.save = function save(document){
+        var documentSave = {
+          code: document.code,
+          name: document.name,
+          description: document.description,
+          points: document.points,
+          content: document.content,
+          document_type_id : document.type.id,
+          document_status_id: document.status.id
+        }
+
+        documentApiService.update($stateParams.id, documentSave, function documentSaveSuccess(response){
+          if (response.status === 204) {
+              alert('Salvo com sucesso');
+              reset();
+              comeBack();
+          } else if(response.status === 409) {
+              alert('algum campo esta inválido');
+          } else {
+             alert('Erro desconhecido.');
+          }
+        });
       };
 
       self.editors= {
@@ -53,8 +82,8 @@
         }
       };
 
+      self.comeBack = comeBack;
       readPage();
-
     } // ends controller function
   ]);
 

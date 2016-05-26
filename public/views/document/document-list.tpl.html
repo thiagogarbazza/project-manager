@@ -6,8 +6,13 @@
         </a>
   </div>
 
-
-<pre>
-  {{doclistCtrl.documents | json}}
-</pre>
+<div class="">
+  <ul>
+    <li ng-repeat="document in doclistCtrl.documents">
+      <a ui-sref="admin.document-update({id: document.id})" title="{{document.description}}">
+        <span>{{document.code}}</span>-<span>{{document.name}}</span>
+      </a>
+    </li>
+  </ul>
+</div>
 </div>

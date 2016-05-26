@@ -58,10 +58,21 @@
 
     <textarea froala="docupCtrl.editors.content.options" ng-model="docupCtrl.document.content"></textarea>
 
+    <div role="toolbar" class="buttonAcao">
 
-    <pre>
-      {{docupCtrl.document | json}}
-    </pre>
+        <button type="button" role="button" class="btn btn-default pull-right" title="Voltar"
+          ng-click="docupCtrl.comeBack()" ng-keypress="docupCtrl.comeBack()">
+          <i class="fa fa-arrow-circle-left"></i>
+          Return
+        </button>
+
+        <button type="submit" class="btn btn-primary icon-margin pull-right" title="Salvar nova situação"
+          ng-disabled="formSituacaoCriar.$invalid"
+          ng-click="docupCtrl.save(docupCtrl.document)" ng-keypress="docupCtrl.save(docupCtrl.document)">
+          <i class="fa fa-save"></i>
+          Save
+      </button>
+    </div>
 
   </section>
 

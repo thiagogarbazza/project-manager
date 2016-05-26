@@ -32,8 +32,12 @@
       function readDocument(id){
         documentApiService.detail(id, function documentReadSuccess(response){
           self.document = response.data;
-          self.document.type ={id: self.document.document_type_id};
-          self.document.status ={id: self.document.document_status_id};
+          self.document.type = self.types.find(function byId(element) {
+            return element.id == self.document.document_type_id;
+          });
+          self.document.status = self.status.find(function byId(element) {
+            return element.id == self.document.document_status_id;
+          });
         });
       }
 
@@ -70,7 +74,6 @@
       self.editors= {
         description:{
           options: {
-            airMode: true,
             toolbar: [
                 ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
               ]

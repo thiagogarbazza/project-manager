@@ -1,4 +1,5 @@
 module.exports = app => {
+  const Projects = app.domain.project.Projects;
   const Documents = app.domain.document.Documents;
   const sequelize = app.sequelize;
 
@@ -14,11 +15,22 @@ module.exports = app => {
   })
 
   .post((req, res) => {
-    Documents.create(req.body)
-    .then(result => res.status(201).json(result))
-    .catch(error => {
-      res.status(412).json({msg: error.message});
-    });
+    Projects.findOne({where: {code: "AUDINT"}})
+      .then(result => {
+        req.body.project_id = result.id;
+
+        Documents.create(req.body)
+        .then(result => res.status(201).json(result))
+        .catch(error => {
+          res.status(412).json({msg: error.message});
+        });
+
+      })
+      .catch(error => {
+        res.status(500).json({msg: "Não existe nenhum projecto cadastrado com o código AUDINT"});
+      });
+
+
   });
 
   app.route("/service/document/search")

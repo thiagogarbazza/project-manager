@@ -12,8 +12,8 @@ logger.configure({
 
 module.exports = {
   server: {
-    port: env.NODE_PORT,
-    ip: env.NODE_IP
+    port: env.PORT,
+    ip: undefined
   },
 
   authentication: {

@@ -25,10 +25,12 @@ module.exports = app => {
   .get((req, res) => {
     let where = {};
 
+    if(req.query.code_eq)
+      where.code = req.query.code_eq;
     if(req.query.code)
-      where.code = {like: '%' + req.query.code + '%'}
+      where.code = {like: '%' + req.query.code + '%'};
     if(req.query.name)
-      where.name = {like: '%' + req.query.name + '%'}
+      where.name = {like: '%' + req.query.name + '%'};
 
     Projects.findAll({where, order: 'code ASC'})
       .then(result => {

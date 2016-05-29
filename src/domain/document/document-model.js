@@ -50,9 +50,9 @@ module.exports = (sequelize, DataType) => {
     tableName: 'document.tbl_document',
     classMethods: {
       associate: (domain) => {
-        Documents.belongsTo(domain.project.Projects);
-        Documents.belongsTo(domain.document.DocumentStatus);
-        Documents.belongsTo(domain.document.DocumentTypes);
+        Documents.belongsTo(domain.project.Projects, {as: 'project', foreignKey: 'projectId'});
+        Documents.belongsTo(domain.document.DocumentStatus, {as: 'status', foreignKey: 'statusId'});
+        Documents.belongsTo(domain.document.DocumentTypes, {as: 'type', foreignKey: 'typeId'});
       }
     }
   };

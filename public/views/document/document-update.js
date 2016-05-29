@@ -13,8 +13,7 @@
       }
 
       function comeBack() {
-        console.log('PASSEI ALQUI...');
-          $state.go('admin.document-list');
+        $state.go('admin.project.document.list');
       }
 
       function readStatus(){
@@ -33,10 +32,10 @@
         documentApiService.detail(id, function documentReadSuccess(response){
           self.document = response.data;
           self.document.type = self.types.find(function byId(element) {
-            return element.id == self.document.document_type_id;
+            return element.id == self.document.typeId;
           });
           self.document.status = self.status.find(function byId(element) {
-            return element.id == self.document.document_status_id;
+            return element.id == self.document.statusId;
           });
         });
       }
@@ -54,8 +53,8 @@
           description: document.description,
           points: document.points,
           content: document.content,
-          document_type_id : document.type.id,
-          document_status_id: document.status.id
+          typeId : document.type.id,
+          statusId: document.status.id
         }
 
         documentApiService.update($stateParams.id, documentSave, function documentSaveSuccess(response){
@@ -74,6 +73,7 @@
       self.editors= {
         description:{
           options: {
+            airMode: true,
             toolbar: [
                 ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
               ]
@@ -81,7 +81,7 @@
         },
         content : {
           options: {
-            airMode: true,
+            airMode: false,
             toolbar: [
               ['edit',['undo','redo']],
               ['headline', ['style']],

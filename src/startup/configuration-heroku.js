@@ -9,7 +9,7 @@ logger.configure({
       new (winston.transports.Console)()
     ]
   });
-  
+
 logger.warn('Heroku configuration file is using');
 
 module.exports = {
@@ -41,7 +41,7 @@ module.exports = {
       define: {
         freezeTableName: true,
         timestamps: false,
-        underscored: true,
+        underscored: false,
       }
     }
   }

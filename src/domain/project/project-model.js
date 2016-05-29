@@ -32,7 +32,7 @@ module.exports = (sequelize, DataType) => {
     tableName: 'project.tbl_project',
     classMethods: {
       associate: (domain) => {
-        Projects.hasMany(domain.document.Documents);
+        //Projects.hasMany(domain.document.Documents);
       }
     }
   };

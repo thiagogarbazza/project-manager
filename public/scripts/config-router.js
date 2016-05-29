@@ -36,6 +36,8 @@
                 return $ocLazyLoad.load({
                   files: [
                     'views/template/template.js',
+                    'views/template/header.js',
+                    'views/template/navbar.js',
                     'libs/angular-ui-select/dist/select.min.js',
                     'libs/angular-ui-select/dist/select.min.css',
                   ],
@@ -100,9 +102,71 @@
         }
       })
 
-      .state('admin.document-list', {
+      .state('admin.project', {
         parent: 'admin',
+        url: '/project/{code}',
+        template: '<ui-view></ui-view>',
+        controller: ['$scope', '$stateParams', 'ProjectApiService', function ($scope, $stateParams, projectApiService){
+          function loading(code) {
+            projectApiService.findByCode(code, function projectReadSuccess(response){
+              $scope.project = response.data[0];
+            });
+          }
+          loading($stateParams.code);
+        }],
+        resolve: {
+          dependency: [
+            '$ocLazyLoad',
+            function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                files: [
+                  'scripts/service/api/project-api-service.js'
+                ],
+                serie: true
+              });
+            }
+          ]
+        }
+      })
+
+      .state('admin.project.dashboard', {
+        url: '/dashboard',
+        templateUrl: 'views/project/project-dashboard.tpl.html',
+        resolve: {
+          dependency: [
+            '$ocLazyLoad',
+            function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                files: [
+                  'views/project/project-dashboard.js'
+                ],
+                serie: true
+              });
+            }
+          ]
+        }
+      })
+
+      .state('admin.project.document', {
         url: '/document',
+        template: '<ui-view></ui-view>',
+        resolve: {
+          dependency: [
+            '$ocLazyLoad',
+            function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                files: [
+                  'scripts/service/api/document-api-service.js',
+                ],
+                serie: true
+              });
+            }
+          ]
+        }
+      })
+
+      .state('admin.project.document.list', {
+        url: '/',
         templateUrl: 'views/document/document-list.tpl.html',
         pageInfo: {
           head: {
@@ -117,7 +181,6 @@
             function ($ocLazyLoad) {
               return $ocLazyLoad.load({
                 files: [
-                  'scripts/service/api/document-api-service.js',
                   'views/document/document-list.js'
                 ],
                 serie: true
@@ -127,9 +190,8 @@
         }
       })
 
-      .state('admin.document-create', {
-        parent: 'admin',
-        url: '/document/create',
+      .state('admin.project.document.create', {
+        url: '/create',
         templateUrl: 'views/document/document-create.tpl.html',
         pageInfo: {
           head: {
@@ -145,7 +207,6 @@
               return $ocLazyLoad.load(['angular-summernote']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
-                    'scripts/service/api/document-api-service.js',
                     'scripts/service/api/document-status-api-service.js',
                     'scripts/service/api/document-type-api-service.js',
                     'views/document/document-create.js'
@@ -158,9 +219,8 @@
         }
       })
 
-      .state('admin.document-update', {
-        parent: 'admin',
-        url: '/document/{id}/update',
+      .state('admin.project.document.update', {
+        url: '/{id}/update',
         templateUrl: 'views/document/document-update.tpl.html',
         pageInfo: {
           head: {
@@ -176,7 +236,6 @@
               return $ocLazyLoad.load(['angular-summernote']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
-                    'scripts/service/api/document-api-service.js',
                     'scripts/service/api/document-status-api-service.js',
                     'scripts/service/api/document-type-api-service.js',
                     'views/document/document-update.js'

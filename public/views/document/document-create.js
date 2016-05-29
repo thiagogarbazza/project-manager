@@ -15,7 +15,7 @@
       }
 
       function comeBack() {
-        $state.go('admin.document-list');
+        $state.go('admin.project.document.list');
       }
 
       function readStatus(){
@@ -43,15 +43,16 @@
         readTemplate();
       }
 
-      self.create = function create(document){
+      self.create = function create(projectId, document){
         var documentSave = {
+          projectId, projectId,
           code: document.code,
           name: document.name,
           description: document.description,
           points: document.points,
           content: document.content,
-          document_type_id : document.type.id,
-          document_status_id: document.status.id
+          typeId : document.type.id,
+          statusId: document.status.id
         }
 
         documentApiService.create(documentSave, function documentCreateSuccess(response){
@@ -80,7 +81,7 @@
         },
         content : {
           options: {
-            airMode: true,
+            airMode: false,
             toolbar: [
               ['edit',['undo','redo']],
               ['headline', ['style']],

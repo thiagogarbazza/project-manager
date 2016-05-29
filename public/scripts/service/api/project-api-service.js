@@ -34,12 +34,20 @@
         return $http.get(PATH_TO_SERVICE + 'search',  {params: parameters}).then(success, error);
       }
 
+      function _findByCode(code, success){
+        var parameters = {
+          code_eq: code
+        };
+        return $http.get(PATH_TO_SERVICE + 'search',  {params: parameters}).then(success, error);
+      }
+
       return {
         "update": _update,
         "detail": _detail,
         "create": _create,
         "delete": _delete,
-        "search": _search
+        "search": _search,
+        "findByCode": _findByCode
       };
     }
   ]);

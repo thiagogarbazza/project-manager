@@ -35,13 +35,13 @@
             Status:
             <ui-select ng-model="doccreateCtrl.document.status" theme="bootstrap">
               <ui-select-match placeholder="Select type">
-                <div style="background-color: {{$select.selected.color}}">
+                <div>
                   <i class="{{$select.selected.icon}}" aria-hidden="true"></i>
                   <span ng-bind-html="$select.selected.name"></span>
                 </div>
               </ui-select-match>
               <ui-select-choices repeat="item in doccreateCtrl.status | filter: $select.search">
-                <div style="background-color: {{item.color}}">
+                <div>
                   <i class="{{item.icon}}" aria-hidden="true"></i>
                   <span ng-bind-html="item.name | highlight: $select.search"></span>
                 </div>
@@ -68,7 +68,7 @@
 
         <button type="submit" class="btn btn-primary icon-margin pull-right" title="Salvar nova situação"
           ng-disabled="formSituacaoCriar.$invalid"
-          ng-click="doccreateCtrl.create(doccreateCtrl.document)" ng-keypress="doccreateCtrl.create(doccreateCtrl.document)">
+          ng-click="doccreateCtrl.create(project.id, doccreateCtrl.document)" ng-keypress="doccreateCtrl.create(project.id, doccreateCtrl.document)">
           <i class="fa fa-save"></i>
           Save
       </button>

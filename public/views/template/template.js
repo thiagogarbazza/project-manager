@@ -7,6 +7,13 @@
        function TemplateController() {
          var self = this;
 
+
+         self.settings = {
+           fixed: {
+             breadcrumbs: false
+           }
+         };
+
        } // ends controller function
     ]);
 

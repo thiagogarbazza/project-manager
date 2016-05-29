@@ -1,0 +1,167 @@
+
+.story ol {
+    list-style-type: none;
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+}
+
+.story ol > li {
+    display: table;
+    counter-increment: item;
+}
+
+.story ol > li:before {
+    content: counters(item, ".") ". ";
+    display: table-cell;
+    padding-right: 0.6em;
+}
+
+.story li ol > li {
+    margin: 0;
+}
+
+.story li ol > li:before {
+    content: counters(item, ".") " ";
+}
+
+/* ==========================================================================
+   Fieldset
+   ========================================================================== */
+.story fieldset {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #E5E5E5;
+    border-top-width: 5px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 01px 0 0 #E5E5E5;
+    -moz-box-shadow: 0 01px 0 0 #E5E5E5;
+    -khtml-box-shadow: 0 01px 0 0 #E5E5E5;
+    box-shadow: 0 01px 0 0 #E5E5E5;
+}
+
+.story fieldset legend {
+    font-weight: bold;
+    font-size: 120%;
+    cursor: default;
+    width: auto;
+    padding: 2px 15px;
+
+    border-color: #E5E5E5;
+    border-style: solid solid none;
+    border-width: 4px 3px 0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+.story fieldset fieldset {
+    border-top: 1px solid #555;
+}
+
+.story fieldset fieldset legend {
+    font-size: 80%;
+    text-transform: none;
+}
+
+.story-header {
+
+}
+.story-code{
+
+}
+
+.story-title{
+
+}
+
+.story-description {
+
+}
+
+.story-information {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #eeeeee;
+    border-left-width: 5px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #fafafa;
+}
+
+.story-case {
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #444;
+}
+
+.story-case legend .fa {
+    margin-right: 5px;
+    font-size: 70%;
+}
+
+.story-case .table thead{
+    background-color: #fafafa;
+}
+
+.story-case-view fieldset,
+.story-case-view fieldset legend {
+    background-color: #fafafa;
+    border-color: #eeeeee;
+}
+
+.story-case-view fieldset legend {
+    color: #666;
+}
+
+.story-case-info fieldset,
+.story-case-info fieldset legend {
+
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+
+}
+
+.story-case-info fieldset legend {
+    color: #31708f;
+}
+
+.story-case-success fieldset,
+.story-case-success fieldset legend {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+
+}
+
+.story-case-success fieldset legend {
+    color: #3c763d;
+}
+
+.story-case-warning fieldset,
+.story-case-warning fieldset legend {
+
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+
+}
+
+.story-case-warning fieldset legend {
+    color: #8a6d3b;
+}
+
+.story-case-danger fieldset,
+.story-case-danger fieldset legend {
+
+    background-color: #f2dede;
+    border-color: #ebccd1;
+
+}
+
+.story-case-danger fieldset legend {
+    color: #a94442;;
+}

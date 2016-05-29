@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install && gulp less",
     "start": "node start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

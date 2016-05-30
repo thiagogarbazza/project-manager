@@ -10,7 +10,7 @@ logger.configure({
     ]
   });
 
-logger.warn('Heroku configuration file is using');
+logger.warn('Development configuration file is using');
 
 module.exports = {
   server: {

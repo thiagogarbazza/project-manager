@@ -7,13 +7,13 @@
 
   var module = angular.module('app');
 
-  module.service('DocumentStatusApiService', [
+  module.service('DocumentStateApiService', [
     '$http', 'config',
-    function DocumentStatusApiService($http, config) {
-      var PATH_TO_SERVICE = config.serviceAPI.url + 'service/document-status/';
+    function DocumentStateApiService($http, config) {
+      var PATH_TO_SERVICE = config.serviceAPI.url + 'service/document/state/';
 
-      function _update(id, documentStatus, success) {
-        var payload = documentStatus;
+      function _update(id, DocumentStates, success) {
+        var payload = DocumentStates;
         return $http.put(PATH_TO_SERVICE + id, payload).then(success, error);
       }
 
@@ -21,8 +21,8 @@
         return $http.get(PATH_TO_SERVICE + id).then(success, error);
       }
 
-      function _create(documentStatus, success) {
-        var payload = documentStatus;
+      function _create(DocumentStates, success) {
+        var payload = DocumentStates;
         return $http.post(PATH_TO_SERVICE, payload).then(success, error);
       }
 

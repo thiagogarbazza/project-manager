@@ -33,14 +33,14 @@
 
           <div class="col-md-2 story-status">
             Status:
-            <ui-select ng-model="doccreateCtrl.document.status" theme="bootstrap">
+            <ui-select ng-model="doccreateCtrl.document.state" theme="bootstrap">
               <ui-select-match placeholder="Select type">
                 <div>
                   <i class="{{$select.selected.icon}}" aria-hidden="true"></i>
                   <span ng-bind-html="$select.selected.name"></span>
                 </div>
               </ui-select-match>
-              <ui-select-choices repeat="item in doccreateCtrl.status | filter: $select.search">
+              <ui-select-choices repeat="item in doccreateCtrl.states | filter: $select.search">
                 <div>
                   <i class="{{item.icon}}" aria-hidden="true"></i>
                   <span ng-bind-html="item.name | highlight: $select.search"></span>

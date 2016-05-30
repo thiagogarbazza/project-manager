@@ -51,7 +51,7 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
       associate: (domain) => {
         Documents.belongsTo(domain.project.Projects, {as: 'project', foreignKey: 'projectId'});
-        Documents.belongsTo(domain.document.DocumentStatus, {as: 'status', foreignKey: 'statusId'});
+        Documents.belongsTo(domain.document.DocumentStates, {as: 'states', foreignKey: 'stateId'});
         Documents.belongsTo(domain.document.DocumentTypes, {as: 'type', foreignKey: 'typeId'});
       }
     }

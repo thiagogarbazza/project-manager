@@ -1,12 +1,12 @@
 module.exports = app => {
-  const DocumentStatus = app.domain.document.DocumentStatus;
+  const DocumentTypes = app.domain.document.DocumentTypes;
   const sequelize = app.sequelize;
 
-  app.route("/service/document-status")
+  app.route("/service/document/type")
   //.all(app.auth.authenticate())
 
   .get((req, res) => {
-    DocumentStatus.findAll({order: 'code ASC'})
+    DocumentTypes.findAll({order: 'code ASC'})
     .then(result => res.json(result))
     .catch(error => {
       res.status(412).json({msg: error.message});
@@ -14,14 +14,14 @@ module.exports = app => {
   })
 
   .post((req, res) => {
-    DocumentStatus.create(req.body)
+    DocumentTypes.create(req.body)
     .then(result => res.status(201).json(result))
     .catch(error => {
       res.status(412).json({msg: error.message});
     });
   });
 
-  app.route("/service/document-status/search")
+  app.route("/service/document/type/search")
   .get((req, res) => {
     let where = {};
 
@@ -30,7 +30,7 @@ module.exports = app => {
     if(req.query.name)
       where.name = {like: '%' + req.query.name + '%'}
 
-    DocumentStatus.findAll({where, order: 'code ASC'})
+    DocumentTypes.findAll({where, order: 'code ASC'})
       .then(result => {
         if (result) {
           res.json(result);
@@ -43,13 +43,13 @@ module.exports = app => {
       });
   })
 
-  app.route("/service/document-status/:id")
+  app.route("/service/document/type/:uuid")
   //.all(app.auth.authenticate())
 
   .get((req, res) => {
-    DocumentStatus.findOne({
+    DocumentTypes.findOne({
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => {
@@ -65,9 +65,9 @@ module.exports = app => {
   })
 
   .put((req, res) => {
-    DocumentStatus.update(req.body, {
+    DocumentTypes.update(req.body, {
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => res.sendStatus(204))
@@ -77,9 +77,9 @@ module.exports = app => {
   })
 
   .delete((req, res) => {
-    DocumentStatus.destroy({
+    DocumentTypes.destroy({
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => res.sendStatus(204))

@@ -10,7 +10,7 @@
   module.service('DocumentTypeApiService', [
     '$http', 'config',
     function DocumentTypeApiService($http, config) {
-      var PATH_TO_SERVICE = config.serviceAPI.url + 'service/document-type/';
+      var PATH_TO_SERVICE = config.serviceAPI.url + 'service/document/type/';
 
       function _update(id, documentType, success) {
         var payload = documentType;

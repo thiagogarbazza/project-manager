@@ -1,5 +1,5 @@
-let consign = require("consign");
-let express = require("express");
+const consign = require("consign");
+const express = require("express");
 
 const app = express();
 

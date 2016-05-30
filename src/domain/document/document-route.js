@@ -1,5 +1,4 @@
 module.exports = app => {
-  const Projects = app.domain.project.Projects;
   const Documents = app.domain.document.Documents;
   const sequelize = app.sequelize;
 
@@ -47,13 +46,13 @@ module.exports = app => {
       });
   })
 
-  app.route("/service/document/:id")
+  app.route("/service/document/:uuid")
   //.all(app.auth.authenticate())
 
   .get((req, res) => {
     Documents.findOne({
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => {
@@ -71,7 +70,7 @@ module.exports = app => {
   .put((req, res) => {
     Documents.update(req.body, {
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => res.sendStatus(204))
@@ -83,7 +82,7 @@ module.exports = app => {
   .delete((req, res) => {
     Documents.destroy({
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => res.sendStatus(204))

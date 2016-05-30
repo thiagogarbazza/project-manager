@@ -1,9 +1,18 @@
-let path = require("path");
-let glob = require("glob");
-let logger = require("../logger");
-let array = require('lodash/array');
+const path = require("path");
+const glob = require("glob");
+const logger = require("../logger");
+const array = require('lodash/array');
+const validator = require('validator');
 
 module.exports = app => {
+
+  app.param('uuid', function(req, res, next, value){
+    if(validator.isUUID(value, 4)){
+      next();
+    } else {
+      next('route');
+    }
+  });
 
   const modelFiles = path.join(__dirname, "../domain/**/*-route.js");
   glob.sync(modelFiles, {}).forEach((modelFile, index) => {

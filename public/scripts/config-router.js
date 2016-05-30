@@ -207,7 +207,7 @@
               return $ocLazyLoad.load(['angular-summernote']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
-                    'scripts/service/api/document-status-api-service.js',
+                    'scripts/service/api/document-state-api-service.js',
                     'scripts/service/api/document-type-api-service.js',
                     'views/document/document-create.js'
                   ],
@@ -236,7 +236,7 @@
               return $ocLazyLoad.load(['angular-summernote']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
-                    'scripts/service/api/document-status-api-service.js',
+                    'scripts/service/api/document-state-api-service.js',
                     'scripts/service/api/document-type-api-service.js',
                     'views/document/document-update.js'
                   ],

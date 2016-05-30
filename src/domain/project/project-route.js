@@ -45,13 +45,13 @@ module.exports = app => {
       });
   })
 
-  app.route("/service/project/:id")
+  app.route("/service/project/:uuid")
   //.all(app.auth.authenticate())
 
   .get((req, res) => {
     Projects.findOne({
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => {
@@ -69,7 +69,7 @@ module.exports = app => {
   .put((req, res) => {
     Projects.update(req.body, {
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => res.sendStatus(204))
@@ -81,7 +81,7 @@ module.exports = app => {
   .delete((req, res) => {
     Projects.destroy({
       where: {
-        id: req.params.id,
+        id: req.params.uuid,
       }
     })
     .then(result => res.sendStatus(204))

@@ -4,8 +4,8 @@
   var module = angular.module('app');
 
   module.controller('DocumentCreateController', [
-    '$location', '$state', '$stateParams', 'DocumentApiService', 'DocumentStatusApiService', 'DocumentTypeApiService',
-    function DocumentCreateController($location, $state, $stateParams, documentApiService, documentStatusApiService, documentTypeApiService) {
+    '$location', '$state', '$stateParams', 'DocumentApiService', 'DocumentStateApiService', 'DocumentTypeApiService',
+    function DocumentCreateController($location, $state, $stateParams, documentApiService, documentStateApiService, documentTypeApiService) {
       var self = this;
 
       function reset() {
@@ -19,8 +19,8 @@
       }
 
       function readStatus(){
-        documentStatusApiService.search({}, function documentStatusSearchSuccess(resource) {
-          self.status = resource.data;
+        documentStateApiService.search({}, function documentStateSearchSuccess(resource) {
+          self.states = resource.data;
         });
       }
 
@@ -52,7 +52,7 @@
           points: document.points,
           content: document.content,
           typeId : document.type.id,
-          statusId: document.status.id
+          stateId: document.state.id
         }
 
         documentApiService.create(documentSave, function documentCreateSuccess(response){

@@ -4,8 +4,8 @@
   var module = angular.module('app');
 
   module.controller('DocumentUpdateController', [
-    '$location', '$state', '$stateParams', 'DocumentApiService', 'DocumentStatusApiService', 'DocumentTypeApiService',
-    function DocumentUpdateController($location, $state, $stateParams, documentApiService, documentStatusApiService, documentTypeApiService) {
+    '$location', '$state', '$stateParams', 'DocumentApiService', 'DocumentStateApiService', 'DocumentTypeApiService',
+    function DocumentUpdateController($location, $state, $stateParams, documentApiService, documentStateApiService, documentTypeApiService) {
       var self = this;
 
       function reset() {
@@ -17,8 +17,8 @@
       }
 
       function readStatus(){
-        documentStatusApiService.search({}, function documentStatusSearchSuccess(resource) {
-          self.status = resource.data;
+        documentStateApiService.search({}, function documentStateSearchSuccess(resource) {
+          self.states = resource.data;
         });
       }
 
@@ -34,8 +34,8 @@
           self.document.type = self.types.find(function byId(element) {
             return element.id == self.document.typeId;
           });
-          self.document.status = self.status.find(function byId(element) {
-            return element.id == self.document.statusId;
+          self.document.state = self.states.find(function byId(element) {
+            return element.id == self.document.stateId;
           });
         });
       }
@@ -54,7 +54,7 @@
           points: document.points,
           content: document.content,
           typeId : document.type.id,
-          statusId: document.status.id
+          stateId: document.state.id
         }
 
         documentApiService.update($stateParams.id, documentSave, function documentSaveSuccess(response){

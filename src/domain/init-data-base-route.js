@@ -4,7 +4,7 @@ let _ = require('lodash');
 module.exports = app => {
   const Projects = app.domain.project.Projects;
   const Documents = app.domain.document.Documents;
-  const DocumentStatus = app.domain.document.DocumentStatus;
+  const DocumentStates = app.domain.document.DocumentStates;
   const DocumentTypes = app.domain.document.DocumentTypes;
 
   const sequelize = app.sequelize;
@@ -51,7 +51,7 @@ module.exports = app => {
       } else {
         logger.info('# Initializing database.');
         Projects.create(projectAudint);
-        docStatus.forEach(status => {DocumentStatus.create(status)});
+        docStatus.forEach(status => {DocumentStates.create(status)});
         docTypes.forEach(type => {DocumentTypes.create(type)});
         res.status(200).json({data: "create"});
       }

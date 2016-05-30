@@ -1,0 +1,24 @@
+<div class="document-type-select" ng-controller="DocumentTypeSelectController as typeSelCtrl">
+  <ui-select ng-model="selected" theme="bootstrap">
+    <ui-select-match placeholder="Select type">
+      <i class="{{$select.selected.icon}}" aria-hidden="true"></i>
+      <span ng-bind-html="$select.selected.name"></span>
+    </ui-select-match>
+    <ui-select-choices repeat="item in (itens | filter: $select.search) track by item.id">
+      <i class="{{item.icon}}" aria-hidden="true"></i>
+      <span ng-bind-html="item.name | highlight: $select.search"></span>
+    </ui-select-choices>
+  </ui-select>
+
+  <span class="clearfix left feedback">
+    <span class="text-warning feedback-mensagem animated" ng-show="noResults"
+      ng-class="{'fadeIn' : noResults, 'fadeOut' : !noResults}">
+      <i class="fa fa-exclamation-triangle"></i>
+      No itens found
+    </span>
+
+    <span class="feedback feedback-icon" aria-hidden="true" ng-show="loading">
+      <i class="fa fa-refresh animated rotateIn fa-spin"></i>
+    </span>
+  </span>
+</div>

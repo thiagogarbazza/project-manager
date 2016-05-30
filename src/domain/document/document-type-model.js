@@ -6,21 +6,17 @@ module.exports = (sequelize, DataType) => {
       defaultValue: DataType.UUIDV4,
       allowNull: false,
       primaryKey: true,
-      unique: true
-    },
-
-    code: {
-      type: DataType.STRING(8),
-      allowNull: false,
       unique: true,
       validate: {
-        notEmpty: true
+        notEmpty: true,
+        isUUID: 4
       }
     },
 
     name: {
       type: DataType.STRING(60),
       allowNull: false,
+      unique: true,
       validate: {
         notEmpty: true
       }

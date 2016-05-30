@@ -6,7 +6,7 @@ module.exports = app => {
   //.all(app.auth.authenticate())
 
   .get((req, res) => {
-    DocumentTypes.findAll({order: 'code ASC'})
+    DocumentTypes.findAll({order: 'name ASC'})
     .then(result => res.json(result))
     .catch(error => {
       res.status(412).json({msg: error.message});
@@ -25,12 +25,10 @@ module.exports = app => {
   .get((req, res) => {
     let where = {};
 
-    if(req.query.code)
-      where.code = {like: '%' + req.query.code + '%'}
     if(req.query.name)
       where.name = {like: '%' + req.query.name + '%'}
 
-    DocumentTypes.findAll({where, order: 'code ASC'})
+    DocumentTypes.findAll({where, order: 'name ASC'})
       .then(result => {
         if (result) {
           res.json(result);

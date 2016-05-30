@@ -6,7 +6,11 @@ module.exports = (sequelize, DataType) => {
       defaultValue: DataType.UUIDV4,
       allowNull: false,
       primaryKey: true,
-      unique: true
+      unique: true,
+      validate: {
+        notEmpty: true,
+        isUUID: 4
+      }
     },
 
     code: {
@@ -35,8 +39,12 @@ module.exports = (sequelize, DataType) => {
     },
 
     points: {
-      type: DataType.INTEGER,
+      type: DataType.INTEGER.UNSIGNED,
       allowNull: true,
+      validate: {
+        isNumeric: true,
+        min: 0
+      }
     },
 
     content: {
@@ -48,6 +56,13 @@ module.exports = (sequelize, DataType) => {
 
   const options ={
     tableName: 'document.tbl_document',
+    validate: {
+      codeIsUniqueInProject: function() {
+        if ((this.projectId === null) !== (this.stateId === null)) {
+          throw new Error('Require either both latitude and longitude or neither')
+        }
+      }
+    },
     classMethods: {
       associate: (domain) => {
         Documents.belongsTo(domain.project.Projects, {as: 'project', foreignKey: 'projectId'});

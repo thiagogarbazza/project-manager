@@ -6,7 +6,11 @@ module.exports = (sequelize, DataType) => {
       defaultValue: DataType.UUIDV4,
       allowNull: false,
       primaryKey: true,
-      unique: true
+      unique: true,
+      validate: {
+        notEmpty: true,
+        isUUID: 4
+      }
     },
 
     code: {

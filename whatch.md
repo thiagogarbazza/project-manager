@@ -13,7 +13,7 @@ https://yabwe.github.io/medium-editor/
 Exemplos de start da app
 
 
-
+https://egghead.io/lessons/node-js-sequelize-validating-models
 
 ### Openshift ###
 https://openshift.redhat.com/app/console/settings

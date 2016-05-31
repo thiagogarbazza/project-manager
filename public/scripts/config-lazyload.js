@@ -32,6 +32,19 @@
                             'libs/summernote/dist/summernote.css',
                             'libs/angular-summernote/dist/angular-summernote.min.js',
                         ]
+                    },
+                    {
+                        name: 'directives',
+                        serie: true,
+                        files: [
+                            'scripts/service/api/document-type-api-service.js',
+                            'views/document/type/document-type-directive.js',
+                            'views/document/type/document-type-select-directive.js',
+
+                            'scripts/service/api/document-state-api-service.js',
+                            'views/document/state/document-state-directive.js',
+                            'views/document/state/document-state-select-directive.js',
+                        ]
                     }
                 ]
             });

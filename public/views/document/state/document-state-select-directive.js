@@ -3,17 +3,15 @@
 
   var module = angular.module('app');
 
-  module.directive('documentTypeSelect', function documentTypeSelectDirective() {
+  module.directive('documentStateSelect', function documentStateSelectDirective() {
     function postLink(scope, element, attributes, controllers) {
       var ngModelController = controllers[0];
 
       scope.$watch(attributes.ngModel, function (newValue, oldValue) {
-        console.log('attr w', newValue);
         scope.itemSelected = newValue;
       });
 
       scope.$watch('itemSelected', function (newValue, oldValue) {
-        console.log('scope w', newValue);
         ngModelController.$setViewValue(newValue);
       });
 
@@ -21,8 +19,8 @@
     }
 
     var controller = [
-      '$scope', 'DocumentTypeApiService',
-      function documentTypeSelectController($scope, documentTypeApiService) {
+      '$scope', 'DocumentStateApiService',
+      function documentStateSelectController($scope, documentStateApiService) {
         var self = this;
 
         function reset() {
@@ -33,7 +31,7 @@
         function loadingItens() {
           reset();
           $scope.loading = true;
-          documentTypeApiService.search({}, function documentTypeSearchSuccess(resource) {
+          documentStateApiService.search({}, function documentStateSearchSuccess(resource) {
             $scope.loading = false;
             $scope.itens = resource.data;
             $scope.noResults = angular.isArray($scope.itens) && $scope.itens.length == 0;
@@ -50,7 +48,7 @@
       terminate: true,
       scope: true,
       require: ['ngModel'],
-      templateUrl: 'views/document/type/document-type-select-directive.tpl.html',
+      templateUrl: 'views/document/state/document-state-select-directive.tpl.html',
       link: postLink,
       controller: controller
     };

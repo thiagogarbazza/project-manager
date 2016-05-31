@@ -204,11 +204,10 @@
           dependency: [
             '$ocLazyLoad',
             function ($ocLazyLoad) {
-              return $ocLazyLoad.load(['angular-summernote']).then(function () {
+              return $ocLazyLoad.load(['angular-summernote', 'directives']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
                     'scripts/service/api/document-state-api-service.js',
-                    'scripts/service/api/document-type-api-service.js',
                     'views/document/document-create.js'
                   ],
                   serie: true
@@ -233,11 +232,10 @@
           dependency: [
             '$ocLazyLoad',
             function ($ocLazyLoad) {
-              return $ocLazyLoad.load(['angular-summernote']).then(function () {
+              return $ocLazyLoad.load(['angular-summernote', 'directives']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
                     'scripts/service/api/document-state-api-service.js',
-                    'scripts/service/api/document-type-api-service.js',
                     'views/document/document-update.js'
                   ],
                   serie: true

@@ -27,26 +27,17 @@
             </ui-select>
           </div>
 
+          <div class="col-md-2 story-type">
+            Type: <document-type-select name="selType" ng-model="docupCtrl.document.type" />
+
+          </div>
+
           <div class="col-md-2 story-points">
             Points: <span class="badge">{{doccreateCtrl.document.points}}</span>
           </div>
 
           <div class="col-md-2 story-status">
-            Status:
-            <ui-select ng-model="doccreateCtrl.document.state" theme="bootstrap">
-              <ui-select-match placeholder="Select type">
-                <div>
-                  <i class="{{$select.selected.icon}}" aria-hidden="true"></i>
-                  <span ng-bind-html="$select.selected.name"></span>
-                </div>
-              </ui-select-match>
-              <ui-select-choices repeat="item in doccreateCtrl.states | filter: $select.search">
-                <div>
-                  <i class="{{item.icon}}" aria-hidden="true"></i>
-                  <span ng-bind-html="item.name | highlight: $select.search"></span>
-                </div>
-              </ui-select-choices>
-            </ui-select>
+            Status: <document-state-select name="selState" ng-model="docupCtrl.document.state" />
           </div>
 
           <div class="col-md-2 story-publish" title="Publicado na versão">

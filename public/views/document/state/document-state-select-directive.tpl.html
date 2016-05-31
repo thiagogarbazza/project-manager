@@ -1,11 +1,11 @@
-<div class="document-type-select">
+<div class="document-state-select">
 
   <ui-select ng-model="itemSelected" theme="bootstrap">
-    <ui-select-match placeholder="Select type">
-      <document-type value="$select.selected" />
+    <ui-select-match placeholder="Select state">
+      <document-state value="$select.selected" />
     </ui-select-match>
     <ui-select-choices repeat="item in (itens | filter: $select.search) track by item.id">
-      <document-type value="item" />
+      <document-state value="item" />
     </ui-select-choices>
   </ui-select>
 

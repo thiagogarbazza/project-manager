@@ -45,7 +45,6 @@
     return {
       restrict: 'EA',
       replace: true,
-      terminate: true,
       scope: true,
       require: ['ngModel'],
       templateUrl: 'views/document/state/document-state-select-directive.tpl.html',

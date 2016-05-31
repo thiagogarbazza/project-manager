@@ -24,7 +24,6 @@
     return {
       restrict: 'EA',
       replace: true,
-      terminate: true,
       scope: true,
       templateUrl: 'views/document/state/document-state-directive.tpl.html',
       link: postLink,

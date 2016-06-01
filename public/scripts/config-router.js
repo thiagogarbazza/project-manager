@@ -32,7 +32,7 @@
           dependency: [
             '$ocLazyLoad',
             function ($ocLazyLoad) {
-              return $ocLazyLoad.load(['angularjs-toaster', 'sweetalert']).then(function () {
+              return $ocLazyLoad.load(['angularjs-toaster', 'sweetalert', 'ui-panel']).then(function () {
                 return $ocLazyLoad.load({
                   files: [
                     'views/template/template.js',

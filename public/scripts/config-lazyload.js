@@ -17,7 +17,6 @@
                             'libs/angularjs-toaster/toaster.min.js'
                         ]
                     },
-
                     {
                         name: 'sweetalert',
                         files: [
@@ -26,11 +25,30 @@
                         ]
                     },
                     {
+                      name: 'angular-froala',
+                      files: [
+                        'libs/froala-wysiwyg-editor/js/froala_editor.min.js',
+                        'libs/angular-froala/src/angular-froala.js',
+                        'libs/angular-froala/src/froala-sanitize.js',
+                        'libs/froala-wysiwyg-editor/css/froala_editor.min.css',
+                        'libs/froala-wysiwyg-editor/css/froala_style.min.css'
+                      ]
+                    },
+                    {
                         name: 'angular-summernote',
                         files: [
                             'libs/summernote/dist/summernote.min.js',
                             'libs/summernote/dist/summernote.css',
                             'libs/angular-summernote/dist/angular-summernote.min.js',
+                        ]
+                    },
+                    {
+                        name: 'ui-panel',
+                        files: [
+                            'scripts/directives/ui-panel/ui-panel.js',
+                            'scripts/directives/ui-panel/ui-panel-directive.js'
+                            'scripts/directives/ui-panel/ui-panel-header-directive.js'
+                            'scripts/directives/ui-panel/ui-panel-body-directive.js'
                         ]
                     },
                     {

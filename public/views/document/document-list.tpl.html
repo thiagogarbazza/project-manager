@@ -1,28 +1,36 @@
-<div class="row" ng-controller="DocumentListController as doclistCtrl">
+<section class="row" ng-controller="DocumentListController as doclistCtrl">
 
   <div class="col-lg-12 col-sm-12 col-xs-12">
-    <div class="widget flat radius-bordered">
+    <div class="widget radius-bordered">
       <div class="widget-header bordered-bottom bordered-themeprimary">
         <span class="widget-caption">Documents</span>
+        <div class="widget-buttons">
+          <a href="" widget-collapse></a>
+          <a href="" widget-dispose></a>
+        </div>
       </div>
-      <div class="widget-body no-padding">
+      <div class="widget-body">
+
         <div class="form-actionTop form-inline pull-right">
           <a ui-sref="admin.project.document.create({code: project.code})" class="btn btn-xs" title="create a new document">
             <i class="fa fa-plus fa-lg"></i>
             New document
           </a>
         </div>
-        <div class="">
-          <ul>
-            <li ng-repeat="document in doclistCtrl.documents">
+
+        <div class="dd dd-draghandle">
+          <ol class="dd-list">
+            <li class="dd-item dd2-item" ng-repeat="document in doclistCtrl.documents">
               <a ui-sref="admin.project.document.update({code: project.code, id: document.id})" title="{{document.description}}">
-                <span>{{document.code}}</span> - <span>{{document.name}}</span>
+                <div class="dd2-content">
+                  <span>{{document.code}}</span> - <span>{{document.name}}</span>
+                </div>
               </a>
             </li>
-          </ul>
+          </ol>
         </div>
 
       </div>
     </div>
   </div>
-</div>
+</section>

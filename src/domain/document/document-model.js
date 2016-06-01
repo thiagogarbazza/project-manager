@@ -66,12 +66,13 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
       associate: (domain) => {
         Documents.belongsTo(domain.project.Projects, {as: 'project', foreignKey: 'projectId'});
+        Documents.belongsTo(domain.document.Documents, {as: 'father_document', foreignKey: 'fatherDocumentId'});
         Documents.belongsTo(domain.document.DocumentStates, {as: 'states', foreignKey: 'stateId'});
         Documents.belongsTo(domain.document.DocumentTypes, {as: 'type', foreignKey: 'typeId'});
       }
     }
   };
 
-  let Documents =  sequelize.define("Documents", definition, options);
+  const Documents =  sequelize.define("Documents", definition, options);
   return Documents;
 };

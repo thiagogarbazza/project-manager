@@ -4,8 +4,7 @@
   var module = angular.module('app');
 
   module.directive('documentTypeSelect', function documentTypeSelectDirective() {
-    function postLink(scope, element, attributes, controllers) {
-      var ngModelController = controllers[0];
+    function postLink(scope, element, attributes, ngModelController) {
 
       scope.$watch(attributes.ngModel, function (newValue, oldValue) {
         console.log('attr w', newValue);
@@ -15,6 +14,12 @@
       scope.$watch('itemSelected', function (newValue, oldValue) {
         console.log('scope w', newValue);
         ngModelController.$setViewValue(newValue);
+      });
+
+      element.find('').bind('focus', function() {
+        ngModelController.$setTouched();
+        ngModelController.$render();
+        scope.$apply()
       });
 
       scope.loadingItens();
@@ -48,7 +53,7 @@
       restrict: 'EA',
       replace: true,
       scope: true,
-      require: ['ngModel'],
+      require: 'ngModel',
       templateUrl: 'views/document/type/document-type-select-directive.tpl.html',
       link: postLink,
       controller: controller

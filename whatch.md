@@ -3,6 +3,10 @@
 https://www.mindmup.com/#m:g10BzrrP6CLqHXZRldnUWRZb0dyaTg
 
 https://medium.com/@nicholasess/8-m%C3%B3dulos-de-angular-1-x-para-deixar-seu-sistema-foda-7b43dd606da1#.318j6mds1
+http://blog.revolunet.com/blog/2013/11/28/create-resusable-angularjs-input-component/
+http://blog.revolunet.com/blog/2013/11/28/create-resusable-angularjs-input-component/
+https://www.sitepoint.com/form-based-directives-angularjs/
+http://stackoverflow.com/questions/28045427/angularjs-custom-directive-with-input-element-pass-validator-from-outside
 
 ##Possíveis editores##
 

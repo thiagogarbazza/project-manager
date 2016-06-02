@@ -4,8 +4,8 @@
   var module = angular.module('app');
 
   module.controller('DocumentUpdateController', [
-    '$location', '$state', '$stateParams', 'DocumentApiService', 'DocumentStateApiService', 'DocumentTypeApiService',
-    function DocumentUpdateController($location, $state, $stateParams, documentApiService, documentStateApiService, documentTypeApiService) {
+    '$location', '$state', '$stateParams', 'DocumentApiService',
+    function DocumentUpdateController($location, $state, $stateParams, documentApiService) {
       var self = this;
 
       function reset() {
@@ -16,33 +16,15 @@
         $state.go('admin.project.document.list');
       }
 
-      function readStatus(){
-        documentStateApiService.search({}, function documentStateSearchSuccess(resource) {
-          self.states = resource.data;
-        });
-      }
-
-      function readTypes(){
-        documentTypeApiService.search({}, function documentTypeSearchSuccess(resource) {
-          self.types = resource.data;
-        });
-      }
-
       function readDocument(id){
         documentApiService.detail(id, function documentReadSuccess(response){
           self.document = response.data;
-          self.document.type = self.types.find(function byId(element) {
-            return element.id == self.document.typeId;
-          });
-          self.document.state = self.states.find(function byId(element) {
-            return element.id == self.document.stateId;
-          });
+          self.document.type = {id: self.document.typeId};
+          self.document.state = {id: self.document.stateId};
         });
       }
 
       function readPage(){
-        readStatus();
-        readTypes();
         readDocument($stateParams.id);
       }
 
@@ -52,9 +34,7 @@
           name: document.name,
           description: document.description,
           points: document.points,
-          content: document.content,
-          typeId : document.type.id,
-          stateId: document.state.id
+          content: document.content
         }
 
         documentApiService.update($stateParams.id, documentSave, function documentSaveSuccess(response){

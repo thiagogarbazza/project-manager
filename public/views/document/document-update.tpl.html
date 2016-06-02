@@ -14,15 +14,15 @@
       <div class="story-information">
         <div class="row">
           <div class="col-md-2 story-type">
-            Type: <document-type-select name="selType" ng-model="docupCtrl.document.type"></document-type-select>
+            Type: <document-type value="docupCtrl.document.type"></document-type>
           </div>
 
           <div class="col-md-2 story-points">
-            Points: <span class="badge">{{docupCtrl.document.points}}</span>
+            Points: <input type="text" name="inPoints" ng-model="docupCtrl.document.points" />
           </div>
 
           <div class="col-md-2 story-status">
-            Status: <document-state-select name="selState" ng-model="docupCtrl.document.state"></document-state-select>
+            Status: <document-state value="docupCtrl.document.state"></document-state>
           </div>
 
           <div class="col-md-2 story-publish" title="Publicado na versão">
@@ -31,8 +31,6 @@
         </div>
       </div>
     </header>
-
-    <pre>{{ docupCtrl.document| json}}    </pre>
 
     <summernote config="docupCtrl.editors.content.options" ng-model="docupCtrl.document.content"></summernote>
 

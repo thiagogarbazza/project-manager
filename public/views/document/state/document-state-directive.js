@@ -5,26 +5,31 @@
 
   module.directive('documentState', function documentStateDirective() {
     function postLink(scope, element, attributes, controllers) {
-
-      scope.$watch(attributes.value, function (newValue, oldValue) {
-        if (newValue) {
-          scope.state = newValue;
-        }
+      scope.$watch('value', function(newValue, oldValue){
+        scope.loadingState(newValue);
       });
     }
 
     var controller = [
       '$scope', 'DocumentStateApiService',
       function documentStateController($scope, documentStateApiService) {
-        var self = this;
+        $scope.loadingState = function loadingState(state) {
+          if(state && !state.name){
+            documentStateApiService.detail(state.id, function detailStateSuccess(resource){
+              $scope.value = resource.data;
+            });
+          }
+        }
 
       }
     ];
 
     return {
-      restrict: 'EA',
+      restrict: 'E',
       replace: true,
-      scope: true,
+      scope: {
+        value: '='
+      },
       templateUrl: 'views/document/state/document-state-directive.tpl.html',
       link: postLink,
       controller: controller

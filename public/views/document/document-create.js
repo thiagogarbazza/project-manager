@@ -4,8 +4,8 @@
   var module = angular.module('app');
 
   module.controller('DocumentCreateController', [
-    '$location', '$state', '$stateParams', 'DocumentApiService', 'DocumentStateApiService', 'DocumentTypeApiService',
-    function DocumentCreateController($location, $state, $stateParams, documentApiService, documentStateApiService, documentTypeApiService) {
+    '$location', '$state', '$stateParams', 'DocumentApiService',
+    function DocumentCreateController($location, $state, $stateParams, documentApiService) {
       var self = this;
 
       function reset() {
@@ -18,18 +18,6 @@
         $state.go('admin.project.document.list');
       }
 
-      function readStatus(){
-        documentStateApiService.search({}, function documentStateSearchSuccess(resource) {
-          self.states = resource.data;
-        });
-      }
-
-      function readTypes(){
-        documentTypeApiService.search({}, function documentTypeSearchSuccess(resource) {
-          self.types = resource.data;
-        });
-      }
-
       function readTemplate(){
         documentApiService.loadTemplate('user-story.tpl', function documentLoadTemplateSuccess(resource) {
           self.document.content = resource.data;
@@ -38,8 +26,6 @@
 
       function readPage(){
         reset();
-        readStatus();
-        readTypes();
         readTemplate();
       }
 

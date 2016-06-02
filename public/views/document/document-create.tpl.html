@@ -1,56 +1,57 @@
 <div ng-controller="DocumentCreateController as doccreateCtrl">
-  <section class="story">
-    <header>
-      <h2>
-        <input type="text" class="story-code" name="documentCode" ng-model="doccreateCtrl.document.code" />
-        -
-        <input type="text" class="story-title" name="documentName" ng-model="doccreateCtrl.document.name" />
-      </h2>
+  <form class="" action="index.html" method="post">
+    <section class="story">
+      <header>
+        <h2>
+          <input type="text" class="story-code" name="documentCode" ng-model="doccreateCtrl.document.code" />
+          -
+          <input type="text" class="story-title" name="documentName" ng-model="doccreateCtrl.document.name" />
+        </h2>
 
-      <div class="story-description">
-        <summernote config="doccreateCtrl.editors.description.options" ng-model="doccreateCtrl.document.description"></summernote>
-      </div>
+        <div class="story-description">
+          <summernote config="doccreateCtrl.editors.description.options" ng-model="doccreateCtrl.document.description"></summernote>
+        </div>
 
-      <div class="story-information">
-        <div class="row">
-          <div class="col-md-2 story-type">
-            Type: <document-type-select name="selType" ng-model="docupCtrl.document.type" />
-          </div>
+        <div class="story-information">
+          <div class="row">
+            <div class="col-md-2 story-type">
+              Type: <document-type-select name="selType" item="doccreateCtrl.document.type"></document-type-select>
+            </div>
 
-          <div class="col-md-2 story-points">
-            Points: <span class="badge">{{doccreateCtrl.document.points}}</span>
-          </div>
+            <div class="col-md-2 story-points">
+              Points: <span class="badge"><input type="text" name="inPoints" ng-model="doccreateCtrl.document.points"></span>
+            </div>
 
-          <div class="col-md-2 story-status">
-            Status: <document-state-select name="selState" ng-model="docupCtrl.document.state"></document-state-select>
-          </div>
+            <div class="col-md-2 story-status">
+              Status: <document-state-select name="selState" item="doccreateCtrl.document.state"></document-state-select>
+            </div>
 
-          <div class="col-md-2 story-publish" title="Publicado na versão">
-            <span class="badge"> <i class="fa fa-code-fork"></i> 0.0.0</span>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <summernote config="doccreateCtrl.editors.content.options" ng-model="doccreateCtrl.document.content"></summernote>
+      <pre> {{doccreateCtrl.document | json}}   </pre>
 
-    <div role="toolbar" class="buttonAcao">
+      <summernote name="txtContxt" config="doccreateCtrl.editors.content.options" ng-model="doccreateCtrl.document.content"></summernote>
 
-        <button type="button" role="button" class="btn btn-default pull-right" title="Voltar"
-          ng-click="doccreateCtrl.comeBack()" ng-keypress="doccreateCtrl.comeBack()">
-          <i class="fa fa-arrow-circle-left"></i>
-          Return
+      <div role="toolbar" class="buttonAcao">
+
+          <button type="button" role="button" class="btn btn-default pull-right" title="Voltar"
+            ng-click="doccreateCtrl.comeBack()" ng-keypress="doccreateCtrl.comeBack()">
+            <i class="fa fa-arrow-circle-left"></i>
+            Return
+          </button>
+
+          <button type="submit" class="btn btn-primary icon-margin pull-right" title="Salvar nova situação"
+            ng-disabled="formSituacaoCriar.$invalid"
+            ng-click="doccreateCtrl.create(project.id, doccreateCtrl.document)" ng-keypress="doccreateCtrl.create(project.id, doccreateCtrl.document)">
+            <i class="fa fa-save"></i>
+            Save
         </button>
-
-        <button type="submit" class="btn btn-primary icon-margin pull-right" title="Salvar nova situação"
-          ng-disabled="formSituacaoCriar.$invalid"
-          ng-click="doccreateCtrl.create(project.id, doccreateCtrl.document)" ng-keypress="doccreateCtrl.create(project.id, doccreateCtrl.document)">
-          <i class="fa fa-save"></i>
-          Save
-      </button>
-    </div>
+      </div>
 
 
-</section>
+  </section>
+  </form>
 
 </div>

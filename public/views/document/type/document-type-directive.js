@@ -5,26 +5,30 @@
 
   module.directive('documentType', function documentTypeDirective() {
     function postLink(scope, element, attributes, controllers) {
-
-      scope.$watch(attributes.value, function (newValue, oldValue) {
-        if (newValue) {
-          scope.type = newValue;
-        }
+      scope.$watch('value', function(newValue, oldValue){
+        scope.loadingType(newValue);
       });
     }
 
     var controller = [
       '$scope', 'DocumentTypeApiService',
       function documentTypeController($scope, documentTypeApiService) {
-        var self = this;
-
+        $scope.loadingType = function loadingType(type) {
+          if(type && !type.name){
+            documentTypeApiService.detail(type.id, function detailTypeSuccess(resource){
+              $scope.value = resource.data;
+            });
+          }
+        }
       }
     ];
 
     return {
-      restrict: 'EA',
+      restrict: 'E',
       replace: true,
-      scope: true,
+      scope:  {
+        value: '='
+      },
       templateUrl: 'views/document/type/document-type-directive.tpl.html',
       link: postLink,
       controller: controller

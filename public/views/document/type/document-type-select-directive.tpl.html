@@ -1,15 +1,6 @@
 <div class="document-type-select">
 
-  <ui-select ng-model="itemSelected" theme="bootstrap">
-    <ui-select-match placeholder="Select type">
-      <document-type value="$select.selected" />
-    </ui-select-match>
-    <ui-select-choices repeat="item in (itens | filter: $select.search) track by item.id">
-      <document-type value="item" />
-    </ui-select-choices>
-  </ui-select>
-
-  <pre>{{ itemSelected | json}}    </pre>
+  <select ng-options="item as item.name for item in items track by item.id" ng-model="itemSelected"></select>
 
   <span class="clearfix left feedback">
     <span class="text-warning feedback-mensagem animated" ng-show="noResults"

@@ -5,9 +5,10 @@
 
   module.directive('uiPanelHeader', function () {
     return {
-      restrict: 'EA',
+      restrict: 'E',
       replace: true,
       scope: true,
+      require: "^uiPanel",
       template: '<div class="widget-header"></div>',
       link: postLink,
       controller: controller
@@ -26,9 +27,10 @@
 
   module.directive('uiPanelHeaderCaption', function () {
     return {
-      restrict: 'EA',
+      restrict: 'E',
       replace: true,
       scope: true,
+      require: "^uiPanelHeader",
       template: '<span class="widget-caption"></span>',
       link: postLink,
       controller: controller
@@ -47,9 +49,10 @@
 
   module.directive('uiPanelHeaderButtons', function () {
     return {
-      restrict: 'EA',
+      restrict: 'E',
       replace: true,
       scope: true,
+      require: "^uiPanelHeader",
       template: '<div class="widget-buttons"></div>',
       link: postLink,
       controller: controller

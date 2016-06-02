@@ -5,9 +5,9 @@
 
   module.directive('uiPanel', function () {
     return {
-      restrict: 'EA',
+      restrict: 'E',
       replace: true,
-      scope: true,
+      scope: {},
       template: '<div class="widget"></div>',
       link: postLink,
       controller: controller

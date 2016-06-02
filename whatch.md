@@ -1,3 +1,8 @@
+## ##
+
+https://travis-ci.org/
+https://coveralls.io/pricing
+
 
 ## ##
 https://www.mindmup.com/#m:g10BzrrP6CLqHXZRldnUWRZb0dyaTg
@@ -36,3 +41,7 @@ http://www.dbwrench.com/
 http://www.codebydesign.com/
 http://software.dell.com/products/toad-data-modeler/
 https://www.navicat.com
+
+
+
+https://www.google.com.br/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwim9LTX84nNAhXJGR4KHa8mBZ4QFggjMAE&url=http%3A%2F%2Fwww.arbdownload.net%2Fcrack%2Fdbwrench-321%2F29652.html&usg=AFQjCNHqSXdTrjKGzXej7s8ShIwSj-qgPQ&sig2=ySGXZTp_ro1xH58wSQzT0Q&bvm=bv.123325700,d.dmo

@@ -5,9 +5,10 @@
 
   module.directive('uiPanelBody', function () {
     return {
-      restrict: 'EA',
+      restrict: 'E',
       replace: true,
       scope: true,
+      require: "^uiPanel",
       template: '<div class="widget-body"></div>',
       link: postLink,
       controller: controller

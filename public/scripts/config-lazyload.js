@@ -39,15 +39,16 @@
                         files: [
                             'libs/summernote/dist/summernote.min.js',
                             'libs/summernote/dist/summernote.css',
-                            'libs/angular-summernote/dist/angular-summernote.min.js',
+                            'libs/angular-summernote/dist/angular-summernote.min.js'
                         ]
                     },
                     {
                         name: 'ui-panel',
+                        serie: true,
                         files: [
                             'scripts/directives/ui-panel/ui-panel.js',
-                            'scripts/directives/ui-panel/ui-panel-directive.js'
-                            'scripts/directives/ui-panel/ui-panel-header-directive.js'
+                            'scripts/directives/ui-panel/ui-panel-directive.js',
+                            'scripts/directives/ui-panel/ui-panel-header-directive.js',
                             'scripts/directives/ui-panel/ui-panel-body-directive.js'
                         ]
                     },

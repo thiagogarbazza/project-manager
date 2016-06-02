@@ -7,9 +7,10 @@
     return {
       restrict: 'E',
       replace: true,
-      scope: true,
-      require: "^uiPanel",
-      template: '<div class="widget-header"></div>',
+      transclude: true,
+      scope: {},
+      require: "^?uiPanel",
+      template: '<div class="widget-header" ng-transclude></div>',
       link: postLink,
       controller: controller
     };
@@ -29,9 +30,10 @@
     return {
       restrict: 'E',
       replace: true,
-      scope: true,
-      require: "^uiPanelHeader",
-      template: '<span class="widget-caption"></span>',
+      transclude: true,
+      scope: {},
+      require: "^?uiPanelHeader",
+      template: '<span class="widget-caption" ng-transclude></span>',
       link: postLink,
       controller: controller
     };
@@ -51,9 +53,10 @@
     return {
       restrict: 'E',
       replace: true,
-      scope: true,
-      require: "^uiPanelHeader",
-      template: '<div class="widget-buttons"></div>',
+      transclude: true,
+      scope: {},
+      require: "^?uiPanelHeader",
+      template: '<div class="widget-buttons" ng-transclude></div>',
       link: postLink,
       controller: controller
     };

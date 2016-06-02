@@ -7,9 +7,10 @@
     return {
       restrict: 'E',
       replace: true,
-      scope: true,
-      require: "^uiPanel",
-      template: '<div class="widget-body"></div>',
+      transclude: true,
+      scope: {},
+      require: "^?uiPanel",
+      template: '<div class="widget-body" ng-transclude></div>',
       link: postLink,
       controller: controller
     };

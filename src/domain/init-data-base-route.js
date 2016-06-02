@@ -16,11 +16,9 @@ module.exports = app => {
 
   const docTypes = [
     {
-      "code": "CLEAN",
       "name": "Clean"
     },
     {
-      "code": "US",
       "name": "User Story",
       "icon": "fa fa-file-text-o"
     }
@@ -28,12 +26,10 @@ module.exports = app => {
 
   const docStatus = [
     {
-      "code": "EC",
       "name": "Em Construção",
       "color": "gray"
     },
     {
-      "code": "APT",
       "name": "Aguardando aprovação texto",
       "color": "yellow"
     }

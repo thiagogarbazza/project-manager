@@ -1,17 +1,18 @@
 <section class="row" ng-controller="DocumentListController as doclistCtrl">
 
   <div class="col-lg-12 col-sm-12 col-xs-12">
-    <div class="widget radius-bordered">
-      <div class="widget-header bordered-bottom bordered-themeprimary">
-        <span class="widget-caption">Documents</span>
-        <div class="widget-buttons">
+    <ui-panel class="radius-bordered">
+      <ui-panel-header class="bordered-bottom bordered-themeprimary">
+        <ui-panel-header-caption>Documents</ui-panel-header-caption>
+        <ui-panel-header-buttons>
           <a href="" widget-collapse></a>
           <a href="" widget-dispose></a>
-        </div>
-      </div>
-      <div class="widget-body">
+        </ui-panel-header-buttons>
+      </ui-panel-header>
 
-        <div class="form-actionTop form-inline pull-right">
+      <ui-panel-body>
+
+        <div class="">
           <a ui-sref="admin.project.document.create({code: project.code})" class="btn btn-xs" title="create a new document">
             <i class="fa fa-plus fa-lg"></i>
             New document
@@ -30,7 +31,7 @@
           </ol>
         </div>
 
-      </div>
-    </div>
+      </ui-panel-body>
+    </ui-panel>
   </div>
 </section>

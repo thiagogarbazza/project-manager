@@ -51,8 +51,8 @@
           description: document.description,
           points: document.points,
           content: document.content,
-          typeId : document.type.id,
-          stateId: document.state.id
+          typeId : document.type ? document.type.id: undefined,
+          stateId: document.state ? document.state.id: undefined
         }
 
         documentApiService.create(documentSave, function documentCreateSuccess(response){

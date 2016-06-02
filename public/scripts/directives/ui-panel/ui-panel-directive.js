@@ -7,8 +7,9 @@
     return {
       restrict: 'E',
       replace: true,
+      transclude: true,
       scope: {},
-      template: '<div class="widget"></div>',
+      template: '<div class="widget" ng-transclude></div>',
       link: postLink,
       controller: controller
     };

@@ -30,9 +30,11 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options ={
-    tableName: 'document.tbl_type'
+    tableName: 'tbl_type'
   };
 
   let DocumentTypes =  sequelize.define("DocumentTypes", definition, options);
+  DocumentTypes.schema('document');
+
   return DocumentTypes;
 };

@@ -39,5 +39,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   let DocumentStates =  sequelize.define("DocumentStates", definition, options);
+  DocumentStates.schema('document');
+
   return DocumentStates;
 };

@@ -55,7 +55,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options ={
-    tableName: 'document.tbl_document',
+    tableName: 'tbl_document',
     validate: {
       codeIsUniqueInProject: function() {
         if ((this.projectId === null) !== (this.stateId === null)) {
@@ -74,5 +74,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   const Documents =  sequelize.define("Documents", definition, options);
+  Documents.schema('document');
+
   return Documents;
 };

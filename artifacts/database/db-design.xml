@@ -3,16 +3,170 @@
   <VerNotes/>
   <DefTblOpts/>
   <DocFolder>/home/thiagogarbazza/workspace/project-manager/artifacts/database</DocFolder>
-  <Sch Cm="" nm="document">
+  <Sch Cm="" nm="documentation">
+    <Tbl UsSo="1" nm="document">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkdocument"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="points" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="content" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="projectId" nu="1">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fatherDocumentId" nu="1">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="typeId" nu="1">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="stateId" nu="1">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_tbl_document_tbl_document" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="document" oe="1" sch="documentation" zr="1"/>
+        <CdTb mn="1" nm="document" oe="0" sch="documentation" zr="1"/>
+        <ClPr cdCl="fatherDocumentId" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_tbl_document_tbl_project" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="tbl_project" oe="1" sch="project" zr="1"/>
+        <CdTb mn="1" nm="document" oe="0" sch="documentation" zr="1"/>
+        <ClPr cdCl="projectId" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_tbl_document_tbl_state" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="state" oe="1" sch="documentation" zr="1"/>
+        <CdTb mn="1" nm="document" oe="0" sch="documentation" zr="1"/>
+        <ClPr cdCl="stateId" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_tbl_document_tbl_type" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="type" oe="1" sch="documentation" zr="1"/>
+        <CdTb mn="1" nm="document" oe="0" sch="documentation" zr="1"/>
+        <ClPr cdCl="typeId" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="tbl_document_code_Idx" spa="0" unq="0">
+        <ClNs>code</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="tbl_document_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="tbl_document_name_Idx" spa="0" unq="0">
+        <ClNs>name</ClNs>
+        <OptTx/>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="state">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkstate"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="icon" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="color" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="7" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="tbl_state_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx/>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="type">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktype"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="icon" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="tbl_type_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx/>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <CustomTypes/>
   </Sch>
   <Sch Cm="" nm="project">
+    <Tbl UsSo="1" nm="tbl_project">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktbl_project"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="8" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="tbl_project_code_Idx" spa="0" unq="0">
+        <ClNs>code</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="tbl_project_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="tbl_project_name_Idx" spa="0" unq="0">
+        <ClNs>name</ClNs>
+        <OptTx/>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <CustomTypes/>
   </Sch>
-  <Sch Cm="" nm="user">
+  <Sch Cm="" nm="security">
+    <Tbl UsSo="1" nm="user">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkuser"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="UUID" en="" id="774" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="40" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <CustomTypes/>
   </Sch>
-  <Dgm nm="diagramA">
+  <Dgm nm="project-manager">
     <RnCf ClkAct="true" FtSz="11" lkStgy="RightAngleStrategy" zm="1.0">
       <VbCfg>
         <Fg ky="Auto Number" vl="0"/>
@@ -34,12 +188,73 @@
       <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
       <svg path=""/>
     </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="project" tbl="tbl_project" x="842" y="167"/>
+    <TbGl bkCl="ff6666ff" sch="documentation" tbl="state" x="482" y="54"/>
+    <TbGl bkCl="ff6666ff" sch="documentation" tbl="type" x="257" y="52"/>
+    <TbGl bkCl="ff6666ff" sch="documentation" tbl="document" x="287" y="222"/>
+    <TbGl bkCl="ff6666ff" sch="security" tbl="user" x="346" y="460"/>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="documentation.document.fk_tbl_document_tbl_document" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="documentation.document.fk_tbl_document_tbl_project" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="928" x2="928" y1="233" y2="328"/>
+        <positionableLine lineRole="CHILD_LINE" x1="544" x2="924" y1="332" y2="332"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="documentation.document.fk_tbl_document_tbl_state" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="511" x2="511" y1="133" y2="222"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="documentation.document.fk_tbl_document_tbl_type" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="339" x2="339" y1="118" y2="222"/>
+      </positionableLines>
+    </FkGl>
     <Notes/>
     <Zones/>
   </Dgm>
-  <RnmMgr NxRnmId="2">
+  <RnmMgr NxRnmId="19">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="project-manager" SupCls="" SupNme="">
-      <Rnm id="1" nNm="user" oNm="schemaA"/>
+      <Rnm id="12" nNm="security" oNm="user"/>
+      <Rnm id="11" nNm="user" oNm="sch_user"/>
+      <Rnm id="6" nNm="sch_user" oNm="user"/>
+      <Rnm id="1" nNm="user" oNm=""/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="document" SupCls="Schema" SupNme="document">
+      <Rnm id="2" nNm="projectId" oNm="tbl_project_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="document" SupCls="Schema" SupNme="document">
+      <Rnm id="3" nNm="stateId" oNm="tbl_state_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="document" SupCls="Schema" SupNme="document">
+      <Rnm id="4" nNm="typeId" oNm="tbl_type_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="document" SupCls="Schema" SupNme="document">
+      <Rnm id="5" nNm="fatherDocumentId" oNm="tbl_document_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Schema" ParCls="Database" ParNme="project-manager" SupCls="" SupNme="">
+      <Rnm id="10" nNm="project" oNm="sch_project"/>
+      <Rnm id="7" nNm="sch_project" oNm="project"/>
+    </RnmCh>
+    <RnmCh ObjCls="Schema" ParCls="Database" ParNme="project-manager" SupCls="" SupNme="">
+      <Rnm id="15" nNm="documentation" oNm="sch_documentation"/>
+      <Rnm id="14" nNm="sch_documentation" oNm="documentation"/>
+      <Rnm id="9" nNm="documentation" oNm="sch_document"/>
+      <Rnm id="8" nNm="sch_document" oNm="document"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="security" SupCls="" SupNme="">
+      <Rnm id="13" nNm="user" oNm="tbl_user"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="documentation" SupCls="" SupNme="">
+      <Rnm id="16" nNm="document" oNm="tbl_document"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="documentation" SupCls="" SupNme="">
+      <Rnm id="17" nNm="state" oNm="tbl_state"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="documentation" SupCls="" SupNme="">
+      <Rnm id="18" nNm="type" oNm="tbl_type"/>
     </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
@@ -61,7 +276,9 @@
   <TreePaths>
     <TreePath/>
     <TreePath>/Schemas (3)</TreePath>
-    <TreePath>/Schemas (3)/user</TreePath>
+    <TreePath>/Schemas (3)/documentation</TreePath>
+    <TreePath>/Schemas (3)/documentation/Tables (3)</TreePath>
+    <TreePath>/Schemas (3)/project</TreePath>
   </TreePaths>
   <SqlTexts/>
 </Db>

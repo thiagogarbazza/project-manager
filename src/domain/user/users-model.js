@@ -36,7 +36,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options ={
-    tableName: 'user.tbl_user',
+    tableName: 'tbl_user',
     hooks: {
       beforeCreate: user => {
         const salt = bcrypt.genSaltSync();
@@ -50,5 +50,8 @@ module.exports = (sequelize, DataType) => {
     }
   };
 
-  return sequelize.define("Users", definition, options);
+  const Users = sequelize.define("Users", definition, options)
+  Users.schema('user');
+
+  return Users;
 };

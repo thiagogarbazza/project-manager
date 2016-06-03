@@ -33,7 +33,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options ={
-    tableName: 'project.tbl_project',
+    tableName: 'tbl_project',
     classMethods: {
       associate: (domain) => {
         //Projects.hasMany(domain.document.Documents);
@@ -41,6 +41,8 @@ module.exports = (sequelize, DataType) => {
     }
   };
 
-  let Projects =  sequelize.define("Projects", definition, options);
+  const Projects =  sequelize.define("Projects", definition, options);
+  Projects.schema('project');
+  
   return Projects;
 };

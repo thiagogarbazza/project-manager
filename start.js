@@ -1,8 +1,6 @@
 const cluster = require('cluster');
 const os = require('os');
 
-
-
 const CPUS = process.env.NODE_CLUSTER_WORKERS || os.cpus();
 
 if (cluster.isMaster) {

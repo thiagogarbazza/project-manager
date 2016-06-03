@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
     },
 
     code: {
-      type: DataType.STRING(8),
+      type: DataType.STRING(10),
       allowNull: false,
       unique: true,
       validate: {
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataType) => {
     },
 
     name: {
-      type: DataType.STRING,
+      type: DataType.STRING(100),
       allowNull: false,
       validate: {
         notEmpty: true
@@ -67,8 +67,8 @@ module.exports = (sequelize, DataType) => {
       associate: (domain) => {
         Documents.belongsTo(domain.project.Projects, {as: 'project', foreignKey: 'projectId'});
         Documents.belongsTo(domain.document.Documents, {as: 'father_document', foreignKey: 'fatherDocumentId'});
-        Documents.belongsTo(domain.document.DocumentStates, {as: 'states', foreignKey: 'stateId'});
         Documents.belongsTo(domain.document.DocumentTypes, {as: 'type', foreignKey: 'typeId'});
+        Documents.belongsTo(domain.document.DocumentStates, {as: 'state', foreignKey: 'stateId'});
       }
     }
   };

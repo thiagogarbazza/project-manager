@@ -35,7 +35,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options ={
-    tableName: 'document.tbl_states'
+    tableName: 'document.tbl_state'
   };
 
   let DocumentStates =  sequelize.define("DocumentStates", definition, options);

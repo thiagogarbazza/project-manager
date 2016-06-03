@@ -36,6 +36,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options ={
+    schema: 'user',
     tableName: 'tbl_user',
     hooks: {
       beforeCreate: user => {

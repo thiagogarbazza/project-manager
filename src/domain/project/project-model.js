@@ -33,6 +33,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options ={
+    schema: 'project',
     tableName: 'tbl_project',
     classMethods: {
       associate: (domain) => {
@@ -42,7 +43,6 @@ module.exports = (sequelize, DataType) => {
   };
 
   const Projects =  sequelize.define("Projects", definition, options);
-  Projects.schema('project');
-  
+
   return Projects;
 };

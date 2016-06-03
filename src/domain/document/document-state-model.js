@@ -35,11 +35,11 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options ={
-    tableName: 'document.tbl_state'
+    schema: 'document',
+    tableName: 'tbl_state'
   };
 
   let DocumentStates =  sequelize.define("DocumentStates", definition, options);
-  DocumentStates.schema('document');
 
   return DocumentStates;
 };

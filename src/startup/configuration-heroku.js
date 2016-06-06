@@ -14,6 +14,7 @@ logger.warn('Heroku configuration file is using');
 
 module.exports = {
   server: {
+    databaseSync: false,
     port: env.PORT
   },
 

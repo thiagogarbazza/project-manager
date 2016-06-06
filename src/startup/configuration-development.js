@@ -14,6 +14,7 @@ logger.warn('Development configuration file is using');
 
 module.exports = {
   server: {
+    databaseSync: true,
     port: 3000
   },
 

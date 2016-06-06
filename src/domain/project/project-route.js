@@ -1,9 +1,10 @@
 module.exports = app => {
   const Projects = app.domain.project.Projects;
   const sequelize = app.sequelize;
+  const authentication = app.authentication;
 
   app.route("/service/project")
-  //.all(app.auth.authenticate())
+  //.all(authentication.authenticate())
 
   .get((req, res) => {
     Projects.findAll({order: 'code ASC'})
@@ -22,6 +23,7 @@ module.exports = app => {
   });
 
   app.route("/service/project/search")
+  //.all(authentication.authenticate())
   .get((req, res) => {
     let where = {};
 

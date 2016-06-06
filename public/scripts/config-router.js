@@ -19,6 +19,27 @@
       $urlRouterProvider.otherwise('/404');
 
       $stateProvider
+
+
+      .state('sign-in', {
+          url: '/sign-in',
+          templateUrl: 'views/login/sign-in.tpl.html',
+          resolve: {
+            dependency: [
+              '$ocLazyLoad',
+              function ($ocLazyLoad) {
+                  return $ocLazyLoad.load({
+                    files: [
+                      'scripts/service/api/token-api-service.js',
+                      'views/login/sign-in.js'
+                    ],
+                    serie: true
+                  });
+              }
+            ]
+          }
+      })
+
       .state('root', {
         abstract: true,
         template: '<div ui-view></div>'

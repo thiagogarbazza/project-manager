@@ -33,7 +33,7 @@ module.exports = app => {
     if(req.query.name)
       where.name = {like: '%' + req.query.name + '%'};
 
-    Documents.findAll({where, order: 'code ASC'})
+    Documents.findAll({ attributes: ['id', 'code', 'name'], where, order: 'code ASC'})
       .then(result => {
         if (result) {
           res.json(result);

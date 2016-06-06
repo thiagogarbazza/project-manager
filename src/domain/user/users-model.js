@@ -17,13 +17,6 @@ module.exports = (sequelize, DataType) => {
         notEmpty: true
       }
     },
-    password: {
-      type: DataType.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
     email: {
       type: DataType.STRING,
       unique: true,
@@ -31,6 +24,13 @@ module.exports = (sequelize, DataType) => {
       validate: {
         notEmpty: true,
         isEmail: true
+      }
+    },
+    password: {
+      type: DataType.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
       }
     }
   };
@@ -45,6 +45,11 @@ module.exports = (sequelize, DataType) => {
       }
     },
     classMethods: {
+      isPassword: (encodedPassword, password) => {
+        return bcrypt.compareSync(password, encodedPassword);
+      }
+    },
+    instanceMethods: {
       isPassword: (encodedPassword, password) => {
         return bcrypt.compareSync(password, encodedPassword);
       }

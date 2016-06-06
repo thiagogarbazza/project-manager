@@ -2,12 +2,19 @@ let logger = require('../logger.js');
 let _ = require('lodash');
 
 module.exports = app => {
+  const Users = app.domain.user.Users;
   const Projects = app.domain.project.Projects;
   const Documents = app.domain.document.Documents;
   const DocumentStates = app.domain.document.DocumentStates;
   const DocumentTypes = app.domain.document.DocumentTypes;
 
   const sequelize = app.sequelize;
+
+  const userThiago = {
+    "name": "Thaigo Garbazza",
+    "email": "thiagogarbazza@gmail.com",
+    "password": "password@test"
+  };
 
   const projectAudint = {
     "code": "AUDINT",
@@ -46,6 +53,7 @@ module.exports = app => {
         res.status(200).json(result);
       } else {
         logger.info('# Initializing database.');
+        Users.create(userThiago);
         Projects.create(projectAudint);
         docStatus.forEach(status => {DocumentStates.create(status)});
         docTypes.forEach(type => {DocumentTypes.create(type)});

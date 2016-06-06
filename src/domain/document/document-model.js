@@ -64,6 +64,7 @@ module.exports = (sequelize, DataType) => {
         }
       }
     },
+
     classMethods: {
       associate: (domain) => {
         Documents.belongsTo(domain.project.Projects, {as: 'project', foreignKey: 'projectId'});

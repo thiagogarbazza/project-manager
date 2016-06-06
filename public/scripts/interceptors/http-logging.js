@@ -4,8 +4,8 @@
   var module = angular.module('app');
 
   module.factory('HTTPLoggerInterceptor', [
-    '$q', '$log',
-    function HTTPLoggerInterceptor($q, $log) {
+    '$log',
+    function HTTPLoggerInterceptor($log) {
 
       function request(config) {
         $log.debug(config.method, '->', config.url);

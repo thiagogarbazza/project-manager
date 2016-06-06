@@ -1,10 +1,12 @@
-let passport = require("passport");
-let Strategy = require('passport-jwt').Strategy;
-let ExtractJwt = require('passport-jwt').ExtractJwt;
+const passport = require("passport");
+const Strategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const logger = require("../logger");
 
 module.exports = app => {
   const Users = app.domain.user.Users;
   const configuration = app.configuration.authentication;
+
   const params = {
     secretOrKey: configuration.passphrase,
     jwtFromRequest: ExtractJwt.fromAuthHeader()
@@ -28,6 +30,7 @@ module.exports = app => {
 
   app.authentication =  {
     "initialize": () => {
+      logger.info('Initialize security context.');
       return passport.initialize();
     },
     "authenticate": () => {

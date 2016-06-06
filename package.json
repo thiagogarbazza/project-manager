@@ -2,7 +2,8 @@
   "name": "project-manager",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+
   "scripts": {
     "postinstall": "bower install && gulp less",
     "start": "node start.js",

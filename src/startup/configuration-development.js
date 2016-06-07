@@ -14,12 +14,13 @@ logger.warn('Development configuration file is using');
 
 module.exports = {
   server: {
+    databaseSync: true,
     port: 3000
   },
 
   authentication: {
     passphrase: "MY-PASS-PHRASE-FOR-PROJECT-MANAGER-wd871623746173264716287346",
-    options: {session: true}
+    options: {session: false}
   },
 
   database : {

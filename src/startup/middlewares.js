@@ -27,7 +27,7 @@ module.exports = app => {
 
   app.use(compression());
   app.use(bodyParser.json());
-  //app.use(app.authentication.initialize());
+  app.use(app.authentication.initialize());
 
   app.use(express.static("public"));
 

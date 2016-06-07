@@ -4,7 +4,7 @@ module.exports = app => {
   const authentication = app.authentication;
 
   app.route("/service/project")
-  //.all(authentication.authenticate())
+  .all(authentication.authenticate())
 
   .get((req, res) => {
     Projects.findAll({order: 'code ASC'})

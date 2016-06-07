@@ -16,10 +16,7 @@ module.exports = app => {
     Users.findById(payload.id)
       .then(user => {
         if (user) {
-          return done(null, {
-            id: user.id,
-            email: user.email
-          });
+          return done(null, {id: user.id});
         }
         return done(null, false);
       })

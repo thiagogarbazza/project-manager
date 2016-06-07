@@ -1,0 +1,33 @@
+<section ng-controller="SignInController as signInCtrl">
+  <form name="formSignIn" ng-submit="signInCtrl.signIn(signInCtrl.user)">
+    <div class="login-container animated fadeInDown">
+      <div class="loginbox bg-white">
+        <div class="loginbox-title">SIGN IN</div>
+        <div class="loginbox-textbox">
+          <input type="text" class="form-control" name="inEmail" placeholder="Email" ng-model="signInCtrl.user.email" required/>
+        </div>
+        <div class="loginbox-textbox">
+          <input type="text" class="form-control" name="inPassword" placeholder="Password" ng-model="signInCtrl.user.password" required/>
+        </div>
+        <div class="loginbox-forgot">
+          <a href="">Forgot Password?</a>
+        </div>
+        <div class="loginbox-submit">
+          <button type="submit" name="signIn" class="btn btn-primary btn-block"
+            ng-disabled="formSignIn.$pristine || formSignIn.$invalid">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            Login
+          </button>
+
+        </div>
+        <div class="loginbox-signup">
+          <a href="register.html">Sign Up With Email</a>
+        </div>
+      </div>
+      <div class="logobox">
+      </div>
+    </div>
+
+    <pre> {{formSignIn | json}}  </pre>
+  </form>
+</section>

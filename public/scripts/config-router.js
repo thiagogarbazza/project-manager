@@ -15,7 +15,18 @@
     '$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
 
-      $urlRouterProvider.when('', '/dashboard');
+      $urlRouterProvider.when('', [
+        '$localStorage',
+        function ($localStorage) {
+          var userStorage = $localStorage.$default({user: {}}).user;
+          console.log(userStorage);
+          if(!userStorage.token) {
+          return '/sign-in';
+          }
+          return '/dashboard';
+        }
+      ]);
+
       $urlRouterProvider.otherwise('/404');
 
       $stateProvider

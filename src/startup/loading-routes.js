@@ -14,6 +14,8 @@ module.exports = app => {
     }
   });
 
+  app.route("/service/**").all(app.authentication.authenticate());
+
   const modelFiles = path.join(__dirname, "../domain/**/*-route.js");
   glob.sync(modelFiles, {}).forEach((modelFile, index) => {
     logger.info('Loading the route:', array.last(modelFile.split('/')));

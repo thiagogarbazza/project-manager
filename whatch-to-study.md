@@ -18,11 +18,18 @@
 [] http://passportjs.org/
 [] https://github.com/themikenicholson/passport-jwt
 [] https://github.com/hokaccha/node-jwt-simple
-
+[] https://leanpub.com/web-component-development-with-angularjs/read
+[] http://blog.carbonfive.com/2014/02/11/angularjs-scopes-an-introduction/
+[] http://busypeoples.github.io/post/thinking-in-components-angular-js/
+[] https://www.airpair.com/angularjs/posts/component-based-angularjs-directives
 https://www.codementor.io/nodejs/tutorial/unit-testing-nodejs-tdd-mocha-sinon
 https://github.com/kissjs/siege.js
 https://www.codementor.io/nodejs/tutorial/list-of-useful-nodejs-modules
 https://www.npmjs.com/package/supertest
+
+http://www.ng-newsletter.com/25-days-of-angular/
+http://www.ng-newsletter.com/posts/building-games-with-angular.html
+
 
 
 Planejamento de trabalho para o projeto. "15h"

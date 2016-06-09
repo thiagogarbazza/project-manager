@@ -1,4 +1,10 @@
+## examples ##
+https://waffle.io/
+
+
 ## ##
+
+
 
 https://travis-ci.org/
 https://coveralls.io/pricing
@@ -19,6 +25,7 @@ http://stackoverflow.com/questions/28045427/angularjs-custom-directive-with-inpu
 https://www.froala.com/wysiwyg-editor/docs/examples/inline
 http://wysiwygjs.github.io/
 https://yabwe.github.io/medium-editor/
+https://jgraph.github.io/mxgraph/
 
 
 Exemplos de start da app

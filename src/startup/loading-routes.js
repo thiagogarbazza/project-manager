@@ -14,7 +14,7 @@ module.exports = app => {
     }
   });
 
-  app.route("/service/**").all(app.authentication.authenticate());
+  //app.route("/service/**").all(app.authentication.authenticate());
 
   const modelFiles = path.join(__dirname, "../domain/**/*-route.js");
   glob.sync(modelFiles, {}).forEach((modelFile, index) => {

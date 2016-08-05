@@ -21,11 +21,9 @@ http://stackoverflow.com/questions/28045427/angularjs-custom-directive-with-inpu
 
 ##Possíveis editores##
 
-
-https://www.froala.com/wysiwyg-editor/docs/examples/inline
-http://wysiwygjs.github.io/
-https://yabwe.github.io/medium-editor/
-https://jgraph.github.io/mxgraph/
+http://ckeditor.com/demo#inline
+http://alloyeditor.com/demo/
+http://js.plus/products/bootstrap-tools/demo/ckeditor
 
 
 http://ckeditor.com/addon/ckeditor-alert-messages

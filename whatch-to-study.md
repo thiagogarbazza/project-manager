@@ -30,7 +30,7 @@ https://www.npmjs.com/package/supertest
 http://www.ng-newsletter.com/25-days-of-angular/
 http://www.ng-newsletter.com/posts/building-games-with-angular.html
 
-
+https://github.com/johnpapa/angular-styleguide
 
 Planejamento de trabalho para o projeto. "15h"
 

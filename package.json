@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "app.js",
-
   "scripts": {
     "postinstall": "bower install && gulp less",
-    "start": "node start.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -44,6 +43,7 @@
   },
   "devDependencies": {
     "bower": "^1.7.9",
+    "eslint-config-restrict": "0.0.1",
     "gulp": "^3.9.1",
     "gulp-less": "^3.1.0",
     "sqlite3": "^3.1.4"

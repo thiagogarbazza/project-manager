@@ -28,6 +28,7 @@ https://yabwe.github.io/medium-editor/
 https://jgraph.github.io/mxgraph/
 
 
+http://ckeditor.com/addon/ckeditor-alert-messages
 Exemplos de start da app
 
 
@@ -48,6 +49,7 @@ http://www.dbwrench.com/
 http://www.codebydesign.com/
 http://software.dell.com/products/toad-data-modeler/
 https://www.navicat.com
+http://www.keygenit.net/serial/serial-code-maker-for-Premiumsoft-Navicat-Premium-11.2.2.html
 
 
 

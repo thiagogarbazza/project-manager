@@ -14,3 +14,6 @@ npm-debug.log
 
 public/libs/
 public/styles/*.css
+
+src/web/libs
+src/web/styles/*.css

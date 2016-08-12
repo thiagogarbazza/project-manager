@@ -26,11 +26,5 @@
         }
     ]);
 
-    module.config([
-      '$localStorageProvider',
-      function ($localStorageProvider) {
-          $localStorageProvider.setKeyPrefix('pm-');
-      }
-    ]);
 
 })(window.angular);

@@ -5,9 +5,9 @@
     .module('pm')
     .controller('SignInController', SignInController);
 
-  SignInController.$inject = ['$state', 'userService', 'tokenApiService'];
+  SignInController.$inject = ['$state', 'tokenApiService', 'userService'];
 
-  function SignInController($state, userService, tokenApiService) {
+  function SignInController($state, tokenApiService, userService) {
     var vm = this;
     vm.signIn = signIn;
 

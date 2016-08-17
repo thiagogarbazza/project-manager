@@ -5,9 +5,9 @@
     .module('pm')
     .factory('documentTypeApiService', documentTypeApiService);
 
-  documentTypeApiService.$inject = ['$http', 'config'];
+  documentTypeApiService.$inject = ['$http', 'settings'];
 
-  function documentTypeApiService($http, config) {
+  function documentTypeApiService($http, settings) {
     var PATH_TO_SERVICE = settings.API.URL + 'document/type/';
 
     var service = {

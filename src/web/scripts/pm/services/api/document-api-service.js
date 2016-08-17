@@ -35,7 +35,7 @@
     }
 
     function loadTemplate(file) {
-      return $http.get(config.serviceAPI.url + 'views/document/templates/' + file);
+      return $http.get(settings.serviceAPI.url + 'views/document/templates/' + file);
     }
 
     function search(parameters) {

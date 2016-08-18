@@ -1,0 +1,15 @@
+{
+  "env": {
+
+  },
+  "extends": [
+    "restrict/es-5",
+    "restrict/angular-1"
+  ],
+  "globals": {
+    "httpStatusCode": true
+  },
+  "rules": {
+
+  }
+}

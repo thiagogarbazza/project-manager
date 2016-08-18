@@ -1,0 +1,20 @@
+<section ng-controller="SignInController as signInCtrl">
+
+  <form name="formSignIn" ng-submit="signInCtrl.signIn(signInCtrl.user)">
+
+    <div ng-show="signInCtrl.showMessageError">
+      <div class="alert alert-danger">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Dados de acesso inválidos
+      </div>
+    </div>
+
+    <input type="text" placeholder="Username" name="userEmail" ng-model="signInCtrl.user.email" required />
+
+    <input type="password" placeholder="Password" name="userPassword" ng-model="signInCtrl.user.password" required />
+
+    <button type="submit" ng-disabled="formSignIn.$pristine || formSignIn.$invalid">
+      <i class="fa fa-sign-in" aria-hidden="true"></i>
+    </button>
+  </form>
+
+</section>

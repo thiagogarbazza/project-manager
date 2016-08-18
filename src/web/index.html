@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-strict-di ng-app="app">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
+
+<body>
+  <ui-view></ui-view>
+
+  <!-- Libraries Scripts -->
+  <script type="text/javascript" src="libs/http-status-codes/http-status-codes.js"></script>
+
+  <script type="text/javascript" src="libs/angular/angular.min.js"></script>
+  <script type="text/javascript" src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="libs/ngstorage/ngStorage.min.js"></script>
+
+  <!-- Application Scripts -->
+  <script type="text/javascript" src="scripts/pm/pm-module.js"></script>
+
+  <script type="text/javascript" src="scripts/pm/configurations/routes/admin-dashboard-router-config.js"></script>
+  <script type="text/javascript" src="scripts/pm/configurations/routes/admin-router-config.js"></script>
+  <script type="text/javascript" src="scripts/pm/configurations/routes/root-router-config.js"></script>
+  <script type="text/javascript" src="scripts/pm/configurations/routes/router-config.js"></script>
+  <script type="text/javascript" src="scripts/pm/configurations/routes/sign-in-router-config.js"></script>
+  <script type="text/javascript" src="scripts/pm/configurations/interceptors-config.js"></script>
+  <script type="text/javascript" src="scripts/pm/configurations/storage-config.js"></script>
+
+  <script type="text/javascript" src="scripts/pm/constants/settings-constant.js"></script>
+
+  <script type="text/javascript" src="scripts/pm/interceptors/http-authentication-interceptor-service.js"></script>
+  <script type="text/javascript" src="scripts/pm/interceptors/http-error-interceptador-service.js"></script>
+  <script type="text/javascript" src="scripts/pm/interceptors/http-logger-interceptor-service.js"></script>
+
+  <script type="text/javascript" src="scripts/pm/runs/router-run.js"></script>
+
+  <script type="text/javascript" src="scripts/pm/services/api/document-api-service.js"></script>
+  <script type="text/javascript" src="scripts/pm/services/api/document-state-api-service.js"></script>
+  <script type="text/javascript" src="scripts/pm/services/api/document-type-api-service.js"></script>
+  <script type="text/javascript" src="scripts/pm/services/api/project-api-service.js"></script>
+  <script type="text/javascript" src="scripts/pm/services/api/token-api-service.js"></script>
+  <script type="text/javascript" src="scripts/pm/services/user-service.js"></script>
+
+  <script type="text/javascript" src="scripts/app-module.js"></script>
+
+  <script type="text/javascript" src="views/dashboard/dashboard-controller.js"></script>
+  <script type="text/javascript" src="views/login/sign-in-controller.js"></script>
+</body>
+
+</html>

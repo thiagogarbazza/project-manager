@@ -1,12 +1,9 @@
+'use strict';
 const gulp = require('gulp');
-const less = require('gulp-less');
-const path = require('path');
+const runSequence = require('run-sequence');
 
+const tasks = require('require-dir')('./src/tasks');
 
-gulp.task('less', function () {
-  return gulp.src('./public/styles/app.less')
-    .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-    }))
-    .pipe(gulp.dest('./public/styles/'));
+gulp.task('build', cb => {
+  return runSequence('build-clean', ['build-css'], cb);
 });

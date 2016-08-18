@@ -12,5 +12,10 @@ node_modules/
 /node_modules
 npm-debug.log
 
+dist/
+
 public/libs/
 public/styles/*.css
+
+src/web/libs
+src/web/styles/*.css

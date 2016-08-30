@@ -1,0 +1,35 @@
+$positions = top right left bottom
+
+// Paddings
+// --------------------------------------------------
+
+.no-padding 
+  padding 0 !important
+
+for position in $positions
+  .no-padding-{position}
+    padding 0 !important
+
+for space in $spaces
+  .padding-{space}
+    padding: unit(space, 'px') !important
+  for position in $positions
+    .padding-{position}-{space}
+      padding-{position}: unit(space, 'px') !important
+
+// Margins
+// --------------------------------------------------
+
+.no-margin
+  margin 0 !important
+  
+for position in $positions
+  .no-margin-{position}
+    margin 0 !important
+
+for space in $spaces
+  .margin-{space}
+    margin: unit(space, 'px') !important
+  for position in $positions
+    .margin-{position}-{space}
+      margin-{position}: unit(space, 'px') !important

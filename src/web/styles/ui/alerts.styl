@@ -1,0 +1,7 @@
+.alert 
+  font-family $font-main
+  border-radius 0
+  
+  for cor-name, cor in $colors
+    &.alert-{cor-name} 
+      color: cor.color

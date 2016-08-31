@@ -3,7 +3,9 @@
   "private": true,
   "dependencies": {
     "angular": "~1.5.x",
+    "angular-animate": "^1.5.x",
     "angular-ui-router": "~0.2.x",
+    "AngularJS-Toaster": "angularjs-toaster#^2.0.0",
     "ngstorage": "~0.3.x",
     "http-status-codes": "^0.1.0",
     "font-awesome": "^4.6.3",

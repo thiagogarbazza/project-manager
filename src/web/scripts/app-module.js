@@ -3,6 +3,8 @@
 
   angular
     .module('app', [
-      'pm'
+      'ngAnimate',
+      'pm',
+      'toaster'
     ]);
 })(angular);

@@ -5,6 +5,7 @@
     .module('app', [
       'ngAnimate',
       'pm',
-      'toaster'
+      'toaster',
+      'ui'
     ]);
 })(angular);

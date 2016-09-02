@@ -1,0 +1,9 @@
+.alert 
+  font-family $font-family-main
+  border-radius 0
+  
+  for cor-name, cor in $colors
+    &.alert-{cor-name} 
+      background-color: cor.background
+      border: 1px solid cor.border
+      color: cor.color

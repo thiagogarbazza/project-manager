@@ -1,0 +1,95 @@
+.toast
+  background-color: $colors.black3.background
+  background-image none
+  background-position 15px center
+  background-repeat no-repeat
+  border-color: $colors.black3.border
+  color: $colors.black3.color
+  opacity 0.8
+  margin 0 0 6px
+  padding 15px 15px 15px 50px
+  width 300px
+  border-radius 3px
+  box-shadow: 0 0 12px $colors.darkgray.value;
+
+  &:before
+    position fixed
+    font-family FontAwesome
+    font-size 24px
+    line-height 18px
+    float left
+    padding-right 0.5em
+    margin auto 0.5em auto -1.5em
+
+  &:hover
+    box-shadow: 0 0 12px $colors.black.value;
+    opacity 1
+    cursor: pointer;
+
+.toast-title
+  font-weight bold
+
+.toast-message
+  word-wrap break-word
+
+.toast-close-button
+  position relative
+  right -0.3em
+  top -0.5em
+  float right
+  font-size 18px
+  font-family 'FontAwesome'
+  font-weight bold
+  text-shadow: 0 1px 0 $colors.white.value
+  opacity 0.8
+  border 0
+
+  &:hover,&:focus
+    text-decoration none
+    cursor: pointer
+    opacity 0.4
+
+/*Additional properties for button version
+ iOS requires the button element instead of an anchor tag.
+ If you want the anchor version, it requires `href="#"`.*/
+button.toast-close-button
+  padding 0
+  cursor pointer
+  background transparent
+  border 0
+  -webkit-appearance none
+
+.toast-top-full-width
+  top 0
+  right 0
+  width 96%
+  margin auto
+
+.toast-bottom-full-width 
+  bottom 0
+  right 0
+  width 96%
+  margin auto
+
+.toast-top-left
+  top 12px
+  left 12px
+
+.toast-top-right
+  top 12px
+  right 12px
+
+.toast-bottom-right
+  right 12px
+  bottom 12px
+
+.toast-bottom-left
+  bottom 12px
+  left 12px
+
+for cor-name, cor in $colors
+  .toast-{cor-name}
+    background-color: cor.background
+    border-color: cor.border
+    color: cor.color
+

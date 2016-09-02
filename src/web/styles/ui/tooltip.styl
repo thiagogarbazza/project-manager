@@ -1,0 +1,43 @@
+$tooltip-default-color = $colors.darkcarbon;
+
+.tooltip
+  &.in
+    opacity 1
+  &.top .tooltip-arrow
+    border-top-color: $tooltip-default-color.border
+  &.right .tooltip-arrow
+    border-right-color: $tooltip-default-color.border
+  &.left .tooltip-arrow
+    border-left-color: $tooltip-default-color.border
+  &.bottom .tooltip-arrow
+    border-bottom-color: $tooltip-default-color.border
+
+.tooltip-lg
+  + .tooltip > .tooltip-inner
+    font-size 15px !important
+
+.tooltip-inner
+  border-radius 2px
+  box-shadow 1px 1px rgba(229,229,229,.5)
+  transition visibility 0,opacity .13s ease-in
+  background-color: $tooltip-default-color.background
+  border: 1px solid $tooltip-default-color.border
+  color: $tooltip-default-color.color
+  padding 8px 8px
+  font-size 13px
+
+for cor-name, cor in $colors
+  .tooltip-{cor-name}
+    + .tooltip
+      > .tooltip-inner
+        background-color: cor.background
+        border-color: cor.border
+        color: cor.color
+      &.top .tooltip-arrow
+        border-top-color: cor.border
+      &.right .tooltip-arrow
+        border-right-color: cor.border
+      &.left .tooltip-arrow
+        border-left-color: cor.border
+      &.bottom .tooltip-arrow
+        border-bottom-color: cor.border

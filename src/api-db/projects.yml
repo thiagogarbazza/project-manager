@@ -1,0 +1,17 @@
+load:
+  - model: Project
+    data:
+    - id: 763aac6c-81c6-4059-a171-e7b67d8b8109
+      code: PROMAN
+      name: Project manajer
+      createdAt: 2016-02-11 11:28:36
+      createdBy: a3381700-d485-4648-8549-829c4b036005
+      updatedAt: 2016-02-11 11:28:36
+      updatedBy: a3381700-d485-4648-8549-829c4b036005
+    - id: f88cd242-1309-4cf7-b83f-695c80165414
+      code: AUDINT
+      name: Auditoria interna
+      createdAt: 2016-02-11 16:15:15
+      createdBy: a3381700-d485-4648-8549-829c4b036005
+      updatedAt: 2016-02-11 16:15:15
+      updatedBy: a3381700-d485-4648-8549-829c4b036005

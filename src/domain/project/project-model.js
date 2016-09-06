@@ -42,7 +42,7 @@ module.exports = (sequelize, DataType) => {
     }
   };
 
-  const Projects =  sequelize.define("Projects", definition, options);
+  const Projects =  sequelize.define("Project", definition, options);
 
   return Projects;
 };

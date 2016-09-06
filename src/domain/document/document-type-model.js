@@ -34,7 +34,7 @@ module.exports = (sequelize, DataType) => {
     tableName: 'tbl_type'
   };
 
-  let DocumentTypes =  sequelize.define("DocumentTypes", definition, options);
+  let DocumentTypes =  sequelize.define("DocumentType", definition, options);
 
   return DocumentTypes;
 };

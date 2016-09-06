@@ -1,0 +1,17 @@
+load:
+  - model: DocumentType
+    data:
+    - id: 41848ac3-5114-462c-a124-a18034574a9e
+      name: Clean
+      icon:
+      createdAt: 2016-02-11 11:12:45
+      createdBy: a3381700-d485-4648-8549-829c4b036005
+      updatedAt: 2016-02-11 11:12:45
+      updatedBy: a3381700-d485-4648-8549-829c4b036005
+    - id: effea37e-d372-4f99-9271-0db3451c2aef
+      name: User Story
+      icon: fa fa-file-text-o
+      createdAt: 2016-02-11 11:15:53
+      createdBy: a3381700-d485-4648-8549-829c4b036005
+      updatedAt: 2016-02-11 11:15:53
+      updatedBy: a3381700-d485-4648-8549-829c4b036005

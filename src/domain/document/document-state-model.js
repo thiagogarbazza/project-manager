@@ -39,7 +39,7 @@ module.exports = (sequelize, DataType) => {
     tableName: 'tbl_state'
   };
 
-  let DocumentStates =  sequelize.define("DocumentStates", definition, options);
+  let DocumentStates =  sequelize.define("DocumentState", definition, options);
 
   return DocumentStates;
 };

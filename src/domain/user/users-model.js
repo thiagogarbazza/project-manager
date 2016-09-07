@@ -56,7 +56,7 @@ module.exports = (sequelize, DataType) => {
     }
   };
 
-  const Users = sequelize.define("Users", definition, options)
+  const Users = sequelize.define("User", definition, options)
   Users.schema('user');
 
   return Users;

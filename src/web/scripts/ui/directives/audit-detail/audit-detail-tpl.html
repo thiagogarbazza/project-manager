@@ -1,0 +1,17 @@
+<p class="text-muted audit-detail">
+
+  <small>
+    <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+    <span ng-bind="audit.createdBy"></span>, em
+    <span ng-bind="audit.createdAt | date : format"></span>
+  </small>
+
+  <br />
+
+  <small>
+    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+    <span ng-bind="audit.updatedBy"></span>, em
+    <span ng-bind="audit.updatedAt | date : format"></span>
+  </small>
+
+</p>

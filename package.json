@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "bower": "^1.7.9",
-    "eslint-config-restrict": "0.0.2",
+    "eslint-config-restrict": "^0.0.3",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-rename": "^1.2.2",

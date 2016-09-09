@@ -1,12 +1,28 @@
 module.exports = app => {
-  const Documents = app.domain.document.Documents;
+  const Document = app.domain.document.Documents;
   const service = {
-    pesquisar
+    create,
+    destroy,
+    find,
+    findById,
+    update
   };
 
   return service;
 
-  function pesquisar(filter) {
+  function create(document) {
+    return Document.create(document);
+  }
+
+  function destroy(id) {
+    return Document.destroy({
+      where: {
+        id
+      }
+    });
+  }
+
+  function find(filter) {
     let where = {};
 
     //where.projectId = req.query.projectId;
@@ -22,10 +38,26 @@ module.exports = app => {
       };
     }
 
-    return Documents.findAll({
+    return Document.findAll({
       attributes: ['id', 'code', 'name'],
       order: 'code ASC',
       where
+    });
+  }
+
+  function findById(id) {
+    return Document.findOne({
+      where: {
+        id
+      }
+    });
+  }
+
+  function update(id, document) {
+    return Document.update(document, {
+      where: {
+        id
+      }
     });
   }
 };

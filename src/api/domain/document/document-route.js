@@ -6,14 +6,26 @@ module.exports = app => {
   app
     .route('/service/document')
     .get((req, res) => {
-      const promise = documentoService.pesquisar(req.query);
-      routeResolve.get(res, promise);
-      // documentoService
-      //   .pesquisar(req.query)
-      //   .then(result => res.json(result))
-      //   .catch(error => res.status(HttpStatus.PRECONDITION_FAILED).json({
-      //     error: error.errors,
-      //     message: error.message
-      //   }));
+      const promise = documentoService.find(req.query);
+      routeResolve.find(res, promise);
+    })
+    .post((req, res) => {
+      const promise = documentoService.create(req.body);
+      routeResolve.create(res, promise);
+    });
+
+  app
+    .route('/service/document/:uuid')
+    .get((req, res) => {
+      const promise = documentoService.findById(req.params.uuid);
+      routeResolve.find(res, promise);
+    })
+    .put((req, res) => {
+      const promise = documentoService.update(req.params.uuid, req.body);
+      routeResolve.update(res, promise);
+    })
+    .delete((req, res) => {
+      const promise = documentoService.destroy(req.params.uuid);
+      routeResolve.destroy(res, promise);
     });
 };

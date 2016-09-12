@@ -1,5 +1,11 @@
+'use strict';
+const DocumentValidate = require('./document-validate');
+
+
 module.exports = app => {
   const Document = app.domain.document.Documents;
+  const documentValidate = new DocumentValidate(app);
+
   const service = {
     create,
     destroy,
@@ -11,6 +17,7 @@ module.exports = app => {
   return service;
 
   function create(document) {
+    documentValidate.validateOnCreate(document);
     return Document.create(document);
   }
 

@@ -1,8 +1,9 @@
 'use strict';
-const documentoService = require('./document-service');
+const DocumentoService = require('./document-service');
 const routeResolve = require('../../modules/route-resolve');
 
 module.exports = app => {
+  const documentoService = DocumentoService(app);
   app
     .route('/service/document')
     .get((req, res) => {

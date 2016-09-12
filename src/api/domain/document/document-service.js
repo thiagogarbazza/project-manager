@@ -17,7 +17,7 @@ module.exports = app => {
   return service;
 
   function create(document) {
-    documentValidate.validateOnCreate(document);
+    documentValidate.onCreate(document);
     return Document.create(document);
   }
 

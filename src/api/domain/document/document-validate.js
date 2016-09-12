@@ -8,7 +8,7 @@ class DocumentValidate {
     this.businessCases = [];
   }
 
-  validateOnCreate(document) {
+  onCreate(document) {
     this.codeIsRequire(document);
     this.nameIsRequire(document);
     this.processValidate();

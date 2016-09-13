@@ -19,3 +19,5 @@ public/styles/*.css
 
 src/web/libs
 src/web/styles/*.css
+
+*.idea

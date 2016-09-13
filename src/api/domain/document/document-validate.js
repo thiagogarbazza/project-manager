@@ -1,37 +1,56 @@
 'use strict';
+const AbstractValidate = require('business-error').AbstractValidate;
 const BusinessCase = require('business-error').Case;
-const BusinessError = require('business-error').Error;
 
-class DocumentValidate {
+class DocumentValidate extends AbstractValidate {
   constructor(app) {
+    super();
     this.app = app;
-    this.businessCases = [];
+    this.Documents = app.domain.document.Documents;
   }
 
   onCreate(document) {
-    this.codeIsRequire(document);
-    this.nameIsRequire(document);
-    this.processValidate();
-  }
-
-  processValidate() {
-    if (this.businessCases.length !== 0) {
-      throw new BusinessError(this.businessCases);
-    }
+    const promiseCodeIsRequire = this.codeIsRequire(document);
+    const promiseNameIsRequire = this.nameIsRequire(document);
+    return this.resolveValidationPromises([promiseCodeIsRequire, promiseNameIsRequire]);
   }
 
   codeIsRequire(document) {
     if (!document.code) {
       const businessCase = new BusinessCase('document.code', 'The code is require.');
-      this.businessCases.push(businessCase);
+      return Promise.resolve(businessCase);
     }
+    return Promise.resolve();
+  }
+
+  codeIsUnique(document) {
+    const where = {
+      codigo: document.codigo
+    };
+
+    return new Promise((resolve, reject) => {
+      Documents.findOne({
+          attributes: ['id'],
+          where
+        })
+        .then(result => {
+          if (result && result.id !== document.id) {
+            const businessCase = new BusinessCase('area.codigo.unique', 'The code should be unique');
+            return resolve(businessCase);
+          }
+          return resolve();
+        })
+        .catch(error => reject(error));
+
+    });
   }
 
   nameIsRequire(document) {
     if (!document.name) {
       const businessCase = new BusinessCase('document.name', 'The name is required.');
-      this.businessCases.push(businessCase);
+      return Promise.resolve(businessCase);
     }
+    return Promise.resolve();
   }
 }
 

@@ -22,7 +22,7 @@
     "bcrypt": "^0.8.6",
     "body-parser": "^1.15.1",
     "bower": "^1.7.9",
-    "business-error": "0.0.4",
+    "business-error": "0.0.5",
     "compression": "^1.6.2",
     "consign": "^0.1.2",
     "cors": "^2.7.1",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "bower": "^1.7.9",
-    "eslint-config-restrict": "^0.0.3",
+    "eslint-config-restrict": "^0.0.4",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-rename": "^1.2.2",

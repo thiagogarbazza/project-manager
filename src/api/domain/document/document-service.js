@@ -17,8 +17,17 @@ module.exports = app => {
   return service;
 
   function create(document) {
-    documentValidate.onCreate(document);
-    return Document.create(document);
+    return new Promise((resolve, reject) => {
+      documentValidate
+        .onCreate(document)
+        .then(() => {
+          Document
+            .create(document)
+            .then(result => resolve(result))
+            .catch(error => reject(error));
+        })
+        .catch(error => reject(error));
+    });
   }
 
   function destroy(id) {

@@ -45,7 +45,9 @@
   1. https://mochajs.org/
   1. http://chaijs.com/
   1. https://github.com/visionmedia/supertest
+  1. https://github.com/jupiter/simple-mock
   1. https://www.codementor.io/nodejs/tutorial/unit-testing-nodejs-tdd-mocha-sinon
+  1. http://mherman.org/blog/2015/09/10/testing-node-js-with-mocha-and-chai/#.V-EqwPkrJQI
 
 
 ## Create WEB client module 

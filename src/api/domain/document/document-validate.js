@@ -10,38 +10,43 @@ class DocumentValidate extends AbstractValidate {
   }
 
   onCreate(document) {
-    const promiseCodeIsRequire = this.codeIsRequire(document);
-    const promiseNameIsRequire = this.nameIsRequire(document);
-    return this.resolveValidationPromises([promiseCodeIsRequire, promiseNameIsRequire]);
+    return this.resolveValidationPromises([
+      this.codeIsRequire(document),
+      this.codeIsUnique(document),
+      this.nameIsRequire(document)
+    ]);
   }
 
   codeIsRequire(document) {
     if (!document.code) {
-      const businessCase = new BusinessCase('document.code', 'The code is require.');
+      const businessCase = new BusinessCase('document.code.required', 'The code is require.');
       return Promise.resolve(businessCase);
     }
     return Promise.resolve();
   }
 
   codeIsUnique(document) {
-    const where = {
-      codigo: document.codigo
+    if (!document.code) {
+      return Promise.resolve();
+    }
+
+    const consulta = {
+      attributes: ['id'],
+      where: {
+        code: document.code
+      }
     };
 
     return new Promise((resolve, reject) => {
-      Documents.findOne({
-          attributes: ['id'],
-          where
-        })
+      this.Documents.findOne(consulta)
         .then(result => {
           if (result && result.id !== document.id) {
-            const businessCase = new BusinessCase('area.codigo.unique', 'The code should be unique');
+            const businessCase = new BusinessCase('document.code.unique', 'The code should be unique');
             return resolve(businessCase);
           }
           return resolve();
         })
         .catch(error => reject(error));
-
     });
   }
 

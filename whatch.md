@@ -1,5 +1,6 @@
 ## examples ##
 https://waffle.io/
+https://toggl.com/
 
 
 ## ##
@@ -13,11 +14,11 @@ https://coveralls.io/pricing
 ## ##
 https://www.mindmup.com/#m:g10BzrrP6CLqHXZRldnUWRZb0dyaTg
 
-https://medium.com/@nicholasess/8-m%C3%B3dulos-de-angular-1-x-para-deixar-seu-sistema-foda-7b43dd606da1#.318j6mds1
-http://blog.revolunet.com/blog/2013/11/28/create-resusable-angularjs-input-component/
-http://blog.revolunet.com/blog/2013/11/28/create-resusable-angularjs-input-component/
-https://www.sitepoint.com/form-based-directives-angularjs/
-http://stackoverflow.com/questions/28045427/angularjs-custom-directive-with-input-element-pass-validator-from-outside
+
+
+
+
+
 
 ##Possíveis editores##
 
@@ -30,7 +31,7 @@ http://ckeditor.com/addon/ckeditor-alert-messages
 Exemplos de start da app
 
 
-https://egghead.io/lessons/node-js-sequelize-validating-models
+
 
 ## Pub ##
 
@@ -43,10 +44,12 @@ https://devcenter.heroku.com/articles/getting-started-with-nodejs#view-logs
 
 ## DataBase ##
 http://www.dbschema.com/
+http://www.sqlpower.ca/page/architect
+https://www.navicat.com
+
 http://www.dbwrench.com/
 http://www.codebydesign.com/
-http://software.dell.com/products/toad-data-modeler/
-https://www.navicat.com
+
 http://www.keygenit.net/serial/serial-code-maker-for-Premiumsoft-Navicat-Premium-11.2.2.html
 
 

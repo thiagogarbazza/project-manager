@@ -1,0 +1,3 @@
+--recursive
+--require src/api-test-e2e/helpers.js
+--timeout 10000

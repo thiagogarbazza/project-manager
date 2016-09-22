@@ -3,7 +3,7 @@ const DocumentValidate = require('./document-validate');
 
 
 module.exports = app => {
-  const Document = app.domain.document.Documents;
+  const Document = app.domain.document.DocumentModel;
   const documentValidate = new DocumentValidate(app);
 
   const service = {

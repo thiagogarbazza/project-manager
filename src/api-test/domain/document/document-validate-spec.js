@@ -14,7 +14,7 @@ describe('domain document validate', () => {
     APP = {
       domain: {
         document: {
-          Documents: {}
+          DocumentModel: {}
         }
       }
     };
@@ -34,12 +34,12 @@ describe('domain document validate', () => {
 
   describe('# onCreate', () => {
     it('o código é obrigatorio e foi informado', done => {
-      APP.domain.document.Documents.findOne = simple.stub().resolveWith(DOCUMENT);
+      APP.domain.document.DocumentModel.findOne = simple.stub().resolveWith(DOCUMENT);
 
       documentValidate
         .onCreate(DOCUMENT)
         .then(() => {
-          expect(APP.domain.document.Documents.findOne.callCount).to.equal(1);
+          expect(APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
           done();
         })
         .catch(error => {
@@ -65,13 +65,13 @@ describe('domain document validate', () => {
     it('o código deve ser único.', done => {
       const outroDocumento = clone(DOCUMENT);
       outroDocumento.id = '2';
-      APP.domain.document.Documents.findOne = simple.stub().resolveWith(DOCUMENT);
+      APP.domain.document.DocumentModel.findOne = simple.stub().resolveWith(DOCUMENT);
 
       documentValidate
         .onCreate(outroDocumento)
         .then(() => done('o Còdigo deve ser unico'))
         .catch(error => {
-          expect(APP.domain.document.Documents.findOne.callCount).to.equal(1);
+          expect(APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
           expect(error.errors.length).to.equal(1);
           const fieldError = error.errors[0];
           expect(fieldError.code).to.equal('document.code.unique');
@@ -83,12 +83,12 @@ describe('domain document validate', () => {
     it('o código deve ser único', done => {
       const outroDocumento = clone(DOCUMENT);
       outroDocumento.codigo = 'COD-002';
-      APP.domain.document.Documents.findOne = simple.stub().resolveWith(DOCUMENT);
+      APP.domain.document.DocumentModel.findOne = simple.stub().resolveWith(DOCUMENT);
 
       documentValidate
         .onCreate(outroDocumento)
         .then(() => {
-          expect(APP.domain.document.Documents.findOne.callCount).to.equal(1);
+          expect(APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
           done();
         })
         .catch(error => {
@@ -97,12 +97,12 @@ describe('domain document validate', () => {
     });
 
     it('o código deve ser único se possuir id igual', done => {
-      APP.domain.document.Documents.findOne = simple.stub().resolveWith(DOCUMENT);
+      APP.domain.document.DocumentModel.findOne = simple.stub().resolveWith(DOCUMENT);
 
       documentValidate
         .onCreate(DOCUMENT)
         .then(() => {
-          expect(APP.domain.document.Documents.findOne.callCount).to.equal(1);
+          expect(APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
           done();
         })
         .catch(error => {

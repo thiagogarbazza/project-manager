@@ -1,12 +1,13 @@
 ## examples ##
 https://waffle.io/
 https://toggl.com/
+http://runrun.it/
 
 
 ## ##
 
 
-
+https://developmentnow.com/2015/02/05/make-your-node-js-api-bulletproof-how-to-test-with-mocha-chai-and-supertest/
 https://travis-ci.org/
 https://coveralls.io/pricing
 

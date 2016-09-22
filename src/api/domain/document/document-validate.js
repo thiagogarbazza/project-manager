@@ -6,7 +6,7 @@ class DocumentValidate extends AbstractValidate {
   constructor(app) {
     super();
     this.app = app;
-    this.Documents = app.domain.document.Documents;
+    this.Documents = app.domain.document.DocumentModel;
   }
 
   onCreate(document) {

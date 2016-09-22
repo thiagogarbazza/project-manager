@@ -6,7 +6,9 @@
   "scripts": {
     "postinstall": "bower install",
     "start": "node index.js",
-    "test": "mocha src/api*/**/*-spec.js --timeout 10000"
+    "test": "npm run test-unit && npm run test-e2e",
+    "test-unit": "mocha src/api-test/**/*-spec.js",
+    "test-e2e": "mocha --opts src/api-test-e2e/mocha.opts src/api-test-e2e/**/*-spec.js"
   },
   "repository": {
     "type": "git",
@@ -26,11 +28,12 @@
     "compression": "^1.6.2",
     "consign": "^0.1.2",
     "cors": "^2.7.1",
-    "express": "^4.13.4",
+    "express": "^4.14.0",
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-less": "^3.1.0",
     "helmet": "^2.1.0",
+    "http-status-codes": "^1.0.6",
     "jwt-simple": "^0.5.0",
     "lodash": "^4.15.0",
     "morgan": "^1.7.0",
@@ -57,6 +60,7 @@
     "run-sequence": "^1.2.2",
     "simple-mock": "^0.7.0",
     "sqlite3": "^3.1.4",
+    "supertest": "^2.0.0",
     "yamljs": "^0.2.8"
   },
   "engines": {

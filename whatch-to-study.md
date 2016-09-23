@@ -3,6 +3,13 @@
 ## Javascript
   1. http://www.w3schools.com/js/
   1. http://www.w3schools.com/json/
+
+
+## Promise
+  1. https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise
+  1. http://stackoverflow.com/questions/27715275/whats-the-difference-between-returning-value-or-promise-resolve-from-then
+  1. https://github.com/wbinnssmith/awesome-promises
+  1. https://www.w3.org/2001/tag/doc/promises-guide
   
 
 ## Create API module 

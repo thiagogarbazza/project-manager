@@ -1,14 +1,15 @@
 'use strict';
-const chai = require('chai');
-const clone = require('lodash').clone;
-const expect = chai.expect;
-const HttpStatus = require('http-status-codes');
+const prepare = require('../../../prepare-database');
 
 
 const ROUTE_URL = '/service/document';
 
+function tet(app) {
+
+}
+
 describe('route: /service/document GET', () => {
-  before(() => console.log('Carregar a base de dados...'));
+  before(() => tet(app));
 
 
   it('deve recuperar os documentos ordenados pelo nome', done => {

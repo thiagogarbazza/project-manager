@@ -42,9 +42,9 @@ class DocumentValidate extends AbstractValidate {
         .then(result => {
           if (result && result.id !== document.id) {
             const businessCase = new BusinessCase('document.code.unique', 'The code should be unique');
-            return resolve(businessCase);
+            return businessCase;
           }
-          return resolve();
+          return ;
         })
         .catch(error => reject(error));
     });

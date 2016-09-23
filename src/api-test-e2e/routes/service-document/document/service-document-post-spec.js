@@ -1,10 +1,4 @@
 'use strict';
-const chai = require('chai');
-const clone = require('lodash').clone;
-const expect = chai.expect;
-const HttpStatus = require('http-status-codes');
-
-
 const ROUTE_URL = '/service/document';
 
 describe('route: /service/document POST', () => {

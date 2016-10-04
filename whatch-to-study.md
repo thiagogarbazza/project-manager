@@ -3,6 +3,8 @@
 ## Javascript
   1. http://www.w3schools.com/js/
   1. http://www.w3schools.com/json/
+  1. http://blog.concretesolutions.com.br/2016/04/guia-do-es6/
+  1. http://blog.concretesolutions.com.br/2016/02/todo-javascript-precisa-saber/
 
 
 ## Promise
@@ -116,3 +118,8 @@
   1. http://eslint.org/  
   1. https://github.com/airbnb/css
   1. http://docs.ckan.org/en/latest/contributing/html.html#formatting
+
+## Continuous Integration
+
+  1. http://eugenedvorkin.com/10-continuous-integration-practices/
+  1. http://chercheurs.lille.inria.fr/~demarey/Main/ContinuousIntegration

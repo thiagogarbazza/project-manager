@@ -73,6 +73,7 @@
   1. https://erikflowers.github.io/weather-icons/
   1. https://github.com/stubbornella/oocss/wiki
   1. http://stylus-lang.com/
+  1. https://www.smashingmagazine.com/2008/08/top-10-css-table-designs/
 
 ### Scripts 
 
@@ -100,7 +101,7 @@
   1. http://gulpjs.com/
   1. https://github.com/aseemk/requireDir
   1. https://github.com/OverZealous/run-sequence
-
+  
 ### Unity Test
   1. https://mochajs.org/
   1. http://chaijs.com/
@@ -118,6 +119,7 @@
   1. http://eslint.org/  
   1. https://github.com/airbnb/css
   1. http://docs.ckan.org/en/latest/contributing/html.html#formatting
+  1. https://github.com/johnpapa/gulp-patterns
 
 ## Continuous Integration
 

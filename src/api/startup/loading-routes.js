@@ -1,30 +1,17 @@
+'use strict';
 const path = require('path');
 const glob = require('glob');
 const logger = require('../logger');
 const array = require('lodash/array');
-const validator = require('validator');
+
+const ROUTE_FILES = path.join(__dirname, '../domain/**/*-route.js');
+const GLOB_SETTINGS = {
+  realpath: true
+};
 
 module.exports = app => {
-
-  // Alterando as rotas.
-  app.use((req, res, next) => {
-    delete req.body.id;
-    next();
-  });
-
-  app.param('uuid', function(req, res, next, value) {
-    if (validator.isUUID(value, 4)) {
-      next();
-    } else {
-      next('route');
-    }
-  });
-
-  //app.route('/service/**').all(app.authentication.authenticate());
-
-  const modelFiles = path.join(__dirname, '../domain/**/*-route.js');
-  glob.sync(modelFiles, {}).forEach(modelFile => {
-    logger.info('Loading the route:', array.last(modelFile.split('/')));
-    require(modelFile)(app);
+  glob.sync(ROUTE_FILES, GLOB_SETTINGS).forEach(routeFile => {
+    logger.info('Loading the route:', array.last(routeFile.split('/')));
+    require(routeFile)(app);
   });
 };

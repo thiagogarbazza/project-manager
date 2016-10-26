@@ -20,7 +20,7 @@ module.exports = app => {
     }
 
     const file = files.shift();
-    logger.info('carregando arquivo database:', file);
+    logger.debug('loading database file:', file);
     const fileData = yaml.load(file);
     return readModel(fileData).then(() => readFile(files));
   }
@@ -31,7 +31,7 @@ module.exports = app => {
     }
 
     const item = models.shift();
-    logger.info('## model:', item.model);
+    logger.debug('## model:', item.model);
     const Model = dottie.get(app.domain, item.model);
     return Model.bulkCreate(item.data).then(() => readModel(models));
   }

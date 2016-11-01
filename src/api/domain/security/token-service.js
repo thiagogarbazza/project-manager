@@ -15,8 +15,6 @@ class TokenService {
 
     return this.userService.findByEmail(email)
       .then(user => {
-        console.error(user);
-
         if (user && user.isPassword(password)) {
           const tokenCreateAt = new Date();
           const payload = {

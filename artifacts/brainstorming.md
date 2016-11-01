@@ -45,27 +45,27 @@ Iterações
     - fim
     - Issue track
 ////////////////////////////////////////////////////////    
-Issue track
+Work Item
   - Atributos
     - title
     - Labels
     - Milestones
     - Comments
-    - Works
-Issue Work
+    - Timer
+Work item Timer
   - Atributos
     - inicio
     - fim
     - usuario
-Issue Comment
+Work item Comment
   - Atributos
     - Text
     - reaction (Emotion...)
-Issue Labels 
+Work item Labels 
   - Atributos
     - Nome
     - Cor
-Issue Milestone
+Work item Milestone
   - Atributos
     - Nome
     - Cor

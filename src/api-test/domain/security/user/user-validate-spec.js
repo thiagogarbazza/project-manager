@@ -12,7 +12,8 @@ describe('api domain security user validate', () => {
     USER = {
       email: 'thiagogarbazza@gmail.com',
       id: '36726e94-fbd2-4152-a0ac-92ac494ce65a',
-      nome: 'Thiago Garbazza'
+      name: 'Thiago Garbazza',
+      password: 'swordfish'
     };
 
     userValidate = new UserValidate(APP);
@@ -157,5 +158,60 @@ describe('api domain security user validate', () => {
         return done();
       })
       .catch(done);
+  });
+
+  describe('# onCreate', () => {
+    beforeEach(() => {
+      delete USER.id;
+      APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith();
+    });
+
+    it('create a new valid user', done => {
+      userValidate.onCreate(USER)
+        .then(() => done())
+        .catch(done);
+    });
+
+    it('create a new invalid user', done => {
+      delete USER.email;
+      delete USER.name;
+
+       userValidate.onCreate(USER)
+        .then(() => done('should be error'))
+        .catch(error => {
+          expect(error.name).to.equal('BusinessError');
+          expect(error.errors.length).to.equal(2);
+          expect(error.errors[0].code).to.equal('user.email.required');
+          expect(error.errors[1].code).to.equal('user.name.required');
+          return done();
+        });
+    });
+  });
+
+  describe('# onUpdate', () => {
+    beforeEach(() => {
+       APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith();
+    });
+
+    it('update a valid user', done => {
+      userValidate.onUpdate(USER)
+        .then(() => done())
+        .catch(error => done(error));
+    });
+
+    it('update a invalid user', done => {
+      delete USER.email;
+      delete USER.name;
+
+      userValidate.onUpdate(USER)
+        .then(() => done())
+        .catch(error => {
+          expect(error.name).to.equal('BusinessError');
+          expect(error.errors.length).to.equal(2);
+          expect(error.errors[0].code).to.equal('user.email.required');
+          expect(error.errors[1].code).to.equal('user.name.required');
+          return done();
+        });
+    });
   });
 });

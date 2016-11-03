@@ -7,6 +7,10 @@ module.exports = (sequelize, DataType) => {
       defaultValue: true,
       type: DataType.BOOLEAN
     },
+    color: {
+      allowNull: true,
+      type: DataType.STRING(20)
+    },
     createdAt: {
       allowNull: false,
       field: 'created_at',

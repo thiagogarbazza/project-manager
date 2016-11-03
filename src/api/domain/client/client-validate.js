@@ -1,7 +1,6 @@
 'use strict';
 const {AbstractValidate, BusinessCase} = require('business-error');
 const {trim} = require('lodash');
-const {isEmail} = require('validator');
 
 const NAME_MAXLENGTH = 100;
 
@@ -13,13 +12,17 @@ class ClientValidate extends AbstractValidate {
 
   onCreate(client) {
     return this.resolveValidationPromises(
-      this.nameIsRequired(client)
+      this.nameIsRequired(client),
+      this.nameMustHaveMaximum100Characters(client),
+      this.colorMustHaveMaximum20Characters(client)
     );
   }
 
   onUpdate(client) {
     return this.resolveValidationPromises(
-      this.nameIsRequired(client)
+      this.nameIsRequired(client),
+      this.nameMustHaveMaximum100Characters(client),
+      this.colorMustHaveMaximum20Characters(client)
     );
   }
 

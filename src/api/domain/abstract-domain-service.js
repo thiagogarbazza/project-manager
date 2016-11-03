@@ -5,7 +5,7 @@ class AbstractDomainService {
     this.userModel = app.domain.security.user.UserModel;
   }
 
-  preencherAuditoriaAoCriar(domain, user) {
+  fillCreatedBy(domain, user) {
     const now = new Date();
 
     domain.createdAt = now;
@@ -16,7 +16,7 @@ class AbstractDomainService {
     return Promise.resolve(domain);
   }
 
-  preencherAuditoriaAoAtualizar(domain, user) {
+  fillUpdatedBy(domain, user) {
     const now = new Date();
 
     domain.updatedBy = user.id;

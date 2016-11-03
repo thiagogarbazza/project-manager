@@ -58,5 +58,4 @@ describe('api domain client validate', () => {
       })
       .catch(done);
   });
-
 });

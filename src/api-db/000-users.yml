@@ -1,0 +1,7 @@
+- model: security.user.UserModel
+  data:
+  - id: a3381700-d485-4648-8549-829c4b036005
+    nome: Thiago Garbazza
+    email: thiagogarbazza@gmail.com
+    senha: swordfish
+    avatar:

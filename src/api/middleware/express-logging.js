@@ -3,9 +3,11 @@ const logger = require('../logger');
 const morgan = require('morgan');
 
 module.exports = app => {
-  app.use(morgan('common', {
+  const OPTIONS = {
     stream: {
       write: message => logger.info(message)
     }
-  }));
+  };
+
+  app.use(morgan('common', OPTIONS));
 };

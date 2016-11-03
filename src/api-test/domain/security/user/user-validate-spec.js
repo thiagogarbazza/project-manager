@@ -23,7 +23,7 @@ describe('api domain security user validate', () => {
     expect(userValidate).to.not.be.undefined;
   });
 
-  it('E-mail should be required', done => {
+  it('e-mail should be required', done => {
     delete USER.email;
 
     userValidate.emailIsRequired(USER)
@@ -35,7 +35,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('E-mail should be valid', done => {
+  it('e-mail should be valid', done => {
     USER.email = 'thiagogarbazza#gmail.com';
 
     userValidate.emailIsValid(USER)
@@ -47,7 +47,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('E-mail should be maximum 250 characters', done => {
+  it('e-mail should be maximum 250 characters', done => {
     USER.email = properties.BIG_TEXT;
 
     userValidate.emailMustHaveMaximum250Characters(USER)
@@ -59,7 +59,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('E-mail should be unique, a new and unique case', done => {
+  it('e-mail should be unique, a new and unique case', done => {
     const anotherUser = clone(USER);
     anotherUser.email = 'fake@gmail.com';
     APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith();
@@ -72,7 +72,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('E-mail should be unique, a new and non unique case', done => {
+  it('e-mail should be unique, a new and non unique case', done => {
     const anotherUser = clone(USER);
     delete anotherUser.id;
     APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith(USER);
@@ -86,7 +86,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('E-mail should be unique, a update and unique case', done => {
+  it('e-mail should be unique, a update and unique case', done => {
     const anotherUser = clone(USER);
     APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith(USER);
 
@@ -98,7 +98,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('E-mail should be unique, a update and non unique case', done => {
+  it('e-mail should be unique, a update and non unique case', done => {
     const anotherUser = clone(USER);
     anotherUser.id = 'e218343f-8f9e-4b2b-bbf6-e862506b34da';
     APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith(USER);
@@ -112,7 +112,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('Name should be required', done => {
+  it('name should be required', done => {
     delete USER.name;
 
     userValidate.nameIsRequired(USER)
@@ -124,7 +124,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('Name should be maximum 100 characters', done => {
+  it('name should be maximum 100 characters', done => {
     USER.name = properties.BIG_TEXT;
 
     userValidate.nameMustHaveMaximum100Characters(USER)
@@ -136,7 +136,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('Password should be required', done => {
+  it('password should be required', done => {
     delete USER.password;
 
     userValidate.passwordIsRequired(USER)
@@ -148,7 +148,7 @@ describe('api domain security user validate', () => {
       .catch(done);
   });
 
-  it('Password should be minimum 100 characters', done => {
+  it('password should be minimum 100 characters', done => {
     USER.password = ')!@#';
 
     userValidate.passwordMustHaveMinimum5Characters(USER)

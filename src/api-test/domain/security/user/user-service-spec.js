@@ -12,7 +12,7 @@ const USER_VALIDATE = class {
       name: 'BusinessError'
     });
   }
-}
+};
 
 describe('api domain security user service', () => {
   const APP = {};

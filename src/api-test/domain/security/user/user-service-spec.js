@@ -127,10 +127,6 @@ describe('api domain security user service', () => {
   });
 
   describe('# update', () => {
-    beforeEach(() => {
-      APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith(USER);
-    });
-
     it('update a valid user', done => {
       APP.domain.security.user.UserModel.update = simpleMock.stub().resolveWith(USER);
 
@@ -157,5 +153,4 @@ describe('api domain security user service', () => {
         });
     });
   });
-
 });

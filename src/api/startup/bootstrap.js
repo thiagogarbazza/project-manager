@@ -1,11 +1,12 @@
 'use strict';
-const logger = require('../logger.js');
+const environment = require('../environment');
 const loadingDataBase = require('./loading-data-base');
+const winston = require('winston');
 
 const DEFAULT_SERVER_PORT = 3000;
 
 module.exports = app => {
-  const configuration = app.configuration.server;
+  const configuration = environment.server;
 
   if (configuration.syncDatabase) {
     app.sequelize.sync()
@@ -18,11 +19,11 @@ module.exports = app => {
   function bootstrap() {
     const port = configuration.port || DEFAULT_SERVER_PORT;
     app.listen(port, () => {
-      logger.info('##########################################################');
-      logger.info('               Project-manager                            ');
-      logger.info(`    work in ${process.pid} started                        `);
-      logger.info(`    listen in ${port}                                     `);
-      logger.info('##########################################################');
+      winston.info('##########################################################');
+      winston.info('               Application  audint                        ');
+      winston.info(`    work in ${process.pid} started                        `);
+      winston.info(`    listen in ${port}                                     `);
+      winston.info('##########################################################');
     });
   }
 };

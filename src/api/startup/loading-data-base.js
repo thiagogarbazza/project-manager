@@ -1,7 +1,7 @@
 'use strict';
 const dottie = require('dottie');
 const glob = require('glob');
-const logger = require('../logger.js');
+const winston = require('winston');
 const path = require('path');
 const yaml = require('yamljs');
 
@@ -20,7 +20,7 @@ module.exports = app => {
     }
 
     const file = files.shift();
-    logger.debug('loading database file:', file);
+    winston.debug('loading database file:', file);
     const fileData = yaml.load(file);
     return readModel(fileData).then(() => readFile(files));
   }
@@ -31,7 +31,7 @@ module.exports = app => {
     }
 
     const item = models.shift();
-    logger.debug('## model:', item.model);
+    winston.debug('## model:', item.model);
     const Model = dottie.get(app.domain, item.model);
     return Model.bulkCreate(item.data).then(() => readModel(models));
   }

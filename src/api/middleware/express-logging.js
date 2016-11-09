@@ -1,11 +1,11 @@
 'use strict';
-const logger = require('../logger');
 const morgan = require('morgan');
+const winston = require('winston');
 
 module.exports = app => {
   const OPTIONS = {
     stream: {
-      write: message => logger.info(message)
+      write: message => winston.info(message)
     }
   };
 

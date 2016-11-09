@@ -1,10 +1,11 @@
 'use strict';
-const UserService = require('./user/user-service');
+const environment = require('../environment');
 const jwt = require('jwt-simple');
+const UserService = require('./user/user-service');
 
 class TokenService {
   constructor(app) {
-    this.configuration = app.configuration.authentication;
+    this.configuration = environment.authentication;
     this.userService = new UserService(app);
   }
 

@@ -1,27 +1,28 @@
+'use strict';
 const cluster = require('cluster');
 const os = require('os');
+const winston = require('winston');
 
 const CPUS = process.env.NODE_CLUSTER_WORKERS || os.cpus();
 
 if (cluster.isMaster) {
-  console.log(`Starting ${CPUS} workers...`);
+  winston.log(`Starting ${CPUS} workers...`);
 
   CPUS.forEach(() => cluster.fork());
 
-  cluster.on("listening", worker => {
-    console.log(`Cluster ${process.pid} conectado.`);
+  cluster.on('listening', worker => {
+    winston.log(`Cluster ${worker.pid} conectado.`);
   });
 
-  cluster.on("disconnect", worker => {
-    console.log(`Cluster ${process.pid} desconectado.`);
+  cluster.on('disconnect', worker => {
+    winston.log(`Cluster ${worker.pid} desconectado.`);
   });
 
   /** It ensures that a new cluster starts up when old die */
-  cluster.on("exit", worker => {
-    console.log(`Cluster ${process.pid} exit.`);
+  cluster.on('exit', worker => {
+    winston.log(`Cluster ${worker.pid} exit.`);
     cluster.fork();
   });
-
 } else {
-  require("./app.js");
+  require('./src/api/app.js');
 }

@@ -1,7 +1,117 @@
 - model: security.user.UserModel
   data:
   - id: a3381700-d485-4648-8549-829c4b036005
-    nome: Thiago Garbazza
+    name: Thiago Garbazza
     email: thiagogarbazza@gmail.com
-    senha: swordfish
+    password: swordfish
+    avatar:
+  - id: ee95445b-ef21-4582-8d63-1c7e166a2473
+    name: Yoda
+    email: yoda@starwars.com
+    password: star.wars
+    avatar:
+  - id: 6a0074a9-5b32-4569-9726-aa05aae8092e
+    name: Mace Windu
+    email: mace.windu@starwars.com
+    password: star.wars
+    avatar:
+  - id: 9a5e7b27-717f-4810-8110-00d68c07ee65
+    name: Qui-Gon Jinn
+    email: quigon.jinn@starwars.com
+    password: star.wars
+    avatar:
+  - id: 65b2e24b-2513-4b6d-9a30-ec5da5adad9c
+    name: Anakin Skywalker
+    email: anakin.skywalker@starwars.com
+    password: star.wars
+    avatar:
+  - id: bb7b8793-e6c5-457e-a0c4-3f60a334d22f
+    name: Padmé Amidala
+    email: padmé.amidala@starwars.com
+    password: star.wars
+    avatar:
+  - id: d089e8ee-69c7-4e3c-bb3a-c314fd291e50
+    name: Jar Jar Binks
+    email: jar.jar.binks@starwars.com
+    password: star.wars
+    avatar:
+  - id: f9381ed4-11df-4cb0-a7f1-bb1c86e27b88
+    name: Han Solo
+    email: han.solo@starwars.com
+    password: star.wars
+    avatar:
+  - id: 9f052a83-e9c8-43e0-8086-aded79b92a58
+    name: Chewbacca
+    email: chewbacca@starwars.com
+    password: star.wars
+    avatar:
+  - id: a5869372-f5a7-4226-aa68-18131ade728c
+    name: Obi-Wan Kenobi
+    email: obi.kenobi@starwars.com
+    password: star.wars
+    avatar:
+  - id: 58466da6-866e-47cb-89d4-9572f5b852bd
+    name:  Luke Skywalker
+    email: luke.skywalker@starwars.com
+    password: star.wars
+    avatar:
+  - id: fa443b54-9b42-4997-af00-23bf63e35593
+    name: Leia Organa
+    email: leia.organa@starwars.com
+    password: star.wars
+    avatar:
+  - id: d93296d4-c07e-49d1-a27f-08e251fcec64
+    name: Albus Dumbledore
+    email: albus.dumbledore@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: 95630861-bdf5-49cb-af31-a4334752a5ed
+    name: Minerva McGonagall
+    email: minerva.mc.gonagall@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: 3adbe4e1-21cb-4403-9345-35db917df4e4
+    name: Harry Potter
+    email: harry.potter@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: 31c1872d-e630-45a8-91fb-18ce4caef605
+    name: Ron Weasley
+    email: ron.weasley@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: 613ce584-7e05-469d-b26f-409990c61ada
+    name: Hermione Granger
+    email: hermione.granger@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: 12b32852-13fa-4d19-967a-2a7c5cd2701a
+    name: Neville Longbottom
+    email: neville.longbottom@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: 614bfc65-358f-4531-9c1b-599c97a129f5
+    name: Severus Snape
+    email: severus.snape@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: 6d633888-46eb-4a0f-9169-c8c98ac86abe
+    name: Draco Malfoy
+    email: draco.malfoy@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: d00bc9b4-3563-4812-89a6-66226459a9da
+    name: Vincent Crabbe
+    email: vincent.crabbe@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: 553f68dd-5889-43d9-b1b0-90c4ad4cb260
+    name: Gregory Goyle
+    email: gregory.goyle@hogwarts.com
+    password: harry.potter
+    avatar:
+  - id: b606483a-7e04-44eb-bd34-085538596b80
+    name: Pansy Parkinson
+    email: pansy.parkinson@hogwarts.com
+    password: harry.potter
     avatar:

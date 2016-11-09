@@ -4,47 +4,63 @@
     name: Grow games
     active: true
     color:
-    createdBy: a3381700-d485-4648-8549-829c4b036005
-    createdAt: 2016-11-07 11:30:58
-    updatedBy: a3381700-d485-4648-8549-829c4b036005
-    updatedAt: 2016-11-07 11:30:58
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-07 11:30:58
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-07 11:30:58
   - id: 48ff730c-d679-4b3d-9c0a-14211710c6b4
     name: Galapagos jogos
     active: true
     color:
-    createdBy: a3381700-d485-4648-8549-829c4b036005
-    createdAt: 2016-11-07 13:21:55
-    updatedBy: a3381700-d485-4648-8549-829c4b036005
-    updatedAt: 2016-11-07 13:21:55
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-07 13:21:55
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-07 13:21:55
+  - id: 744b22b8-c318-4d7b-8f71-7ec6cddae803
+    name: Capcom
+    active: true
+    color:
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2015-01-07 09:21:55
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2015-01-07 09:21:55
+  - id: 6e88bdc5-2e0e-45ee-8cb9-fe86ac00efba
+    name: Mayfair Games
+    active: true
+    color:
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2013-08-25 11:36:42
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2013-08-25 11:36:42
   - id: 2800005c-18a3-4d88-8b76-35939e6d3ab8
     name: Google
     active: true
     color:
-    createdBy: a3381700-d485-4648-8549-829c4b036005
-    createdAt: 2016-11-08 18:39:15
-    updatedBy: a3381700-d485-4648-8549-829c4b036005
-    updatedAt: 2016-11-08 18:39:15
+    createdBy: ee95445b-ef21-4582-8d63-1c7e166a2473
+    createdAt: 2014-11-08 18:39:15
+    updatedBy: ee95445b-ef21-4582-8d63-1c7e166a2473
+    updatedAt: 2014-11-08 18:39:15
   - id: 67b77a9c-886b-43b7-9d8d-c87808015076
     name: Microsoft
     active: true
     color:
-    createdBy: a3381700-d485-4648-8549-829c4b036005
-    createdAt: 2016-11-08 18:40:15
-    updatedBy: a3381700-d485-4648-8549-829c4b036005
-    updatedAt: 2016-11-08 18:40:15
+    createdBy: ee95445b-ef21-4582-8d63-1c7e166a2473
+    createdAt: 2015-11-08 18:40:15
+    updatedBy: ee95445b-ef21-4582-8d63-1c7e166a2473
+    updatedAt: 2015-11-08 18:40:15
   - id: 00155705-01d8-442a-bd12-6ee83e88d362
     name: Apple
     active: true
     color:
-    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdBy: ee95445b-ef21-4582-8d63-1c7e166a2473
     createdAt: 2016-11-08 18:49:15
-    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedBy: ee95445b-ef21-4582-8d63-1c7e166a2473
     updatedAt: 2016-11-08 18:49:15
   - id: f597d8a7-e453-4aab-b6e5-1ba63fa06637
     name: Foursquare
     active: false
     color:
-    createdBy: a3381700-d485-4648-8549-829c4b036005
-    createdAt: 2016-11-09 08:22:37
-    updatedBy: a3381700-d485-4648-8549-829c4b036005
-    updatedAt: 2016-11-09 08:22:37
+    createdBy: ee95445b-ef21-4582-8d63-1c7e166a2473
+    createdAt: 2014-11-09 08:22:37
+    updatedBy: ee95445b-ef21-4582-8d63-1c7e166a2473
+    updatedAt: 2015-09-11 17:59:08

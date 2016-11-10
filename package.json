@@ -6,9 +6,7 @@
   "scripts": {
     "postinstall": "bower install",
     "start": "node index.js",
-    "test": "npm run test-unit && npm run test-e2e",
-    "test-unit": "mocha src/api-test/**/*-spec.js",
-    "test-e2e": "mocha --opts src/api-test-e2e/mocha.opts src/api-test-e2e/**/*-spec.js"
+    "test": "gulp verify"
   },
   "repository": {
     "type": "git",

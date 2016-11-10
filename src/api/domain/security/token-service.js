@@ -1,5 +1,5 @@
 'use strict';
-const environment = require('../environment');
+const environment = require('../../environment');
 const jwt = require('jwt-simple');
 const UserService = require('./user/user-service');
 

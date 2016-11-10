@@ -26,6 +26,7 @@ module.exports = {
   },
 
   logger: {
+    colorize: true,
     level: 'warn'
   },
 

@@ -35,6 +35,7 @@ module.exports = {
   },
 
   logger: {
+    colorize: true,
     level: 'debug'
   },
 

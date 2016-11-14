@@ -42,6 +42,22 @@ class ClientValidate extends AbstractValidate {
     return Promise.resolve();
   }
 
+  nameMustBeUnique({id, name}) {
+    const quering = {
+      attributes: ['id'],
+      where: {name}
+    };
+
+    return this.clientModel.findOne(quering)
+      .then(result => {
+        if (result && result.id !== id) {
+          const businessCase = new BusinessCase('client.name.unique', 'Name must be unique');
+          return Promise.resolve(businessCase);
+        }
+        return Promise.resolve();
+      });
+  }
+
   colorMustHaveMaximum20Characters({color}) {
     if (color && color.length > NAME_MAXLENGTH) {
       const businessCase = new BusinessCase('client.color.maxlength', 'Color must have a maximum of 20 characters');

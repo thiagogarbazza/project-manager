@@ -11,9 +11,9 @@ describe('api domain client validate', () => {
 
     CLIENT = {
       active: true,
-      id: 'c27ea34a-0fed-4a93-821f-9b7371f28863',
       color: '',
-      name: '',
+      id: '61361f65-cb46-4d24-8cac-b085c1c4961c',
+      name: ''
     };
 
     clientValidate = new ClientValidate(APP);
@@ -42,6 +42,46 @@ describe('api domain client validate', () => {
       .then(result => {
         expect(result.code).to.equal('client.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 100 characters');
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('name should be unique, Sending a new name', done => {
+    const anotherClient = clone(CLIENT);
+    anotherClient.name = 'Internal';
+    APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith();
+
+    clientValidate.nameMustBeUnique(anotherClient)
+      .then(() => {
+        expect(APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('name should be unique, Sending same name with equal ID', done => {
+    const anotherClient = clone(CLIENT);
+    APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith(CLIENT);
+
+    clientValidate.nameMustBeUnique(anotherClient)
+      .then(result => {
+        expect(APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('name should be unique, Sending same name with different ID´s', done => {
+    const anotherClient = clone(CLIENT);
+    anotherClient.id = '2103c936-6613-4479-975c-cd1a87fe1e41';
+    APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith(CLIENT);
+
+    clientValidate.nameMustBeUnique(anotherClient)
+      .then(result => {
+        expect( APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
+        expect(result.code).to.equal('client.name.unique');
+        expect(result.message).to.equal('Name must be unique');
         return done();
       })
       .catch(done);

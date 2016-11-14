@@ -1,5 +1,13 @@
 - model: domain.client.ClientModel
   data:
+  - id: 2103c936-6613-4479-975c-cd1a87fe1e41
+    name: Internal
+    active: true
+    color:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2014-10-25 08:17:15
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2014-10-25 08:17:15
   - id: 61361f65-cb46-4d24-8cac-b085c1c4961c
     name: Grow games
     active: true

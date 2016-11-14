@@ -1,0 +1,119 @@
+- model: domain.project.ProjectModel
+  data:
+  - id: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
+    name: eslint-config-restrict
+    active: true
+    color:
+    clientId: 2103c936-6613-4479-975c-cd1a87fe1e41
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-01-14 11:05:03
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-01-14 11:05:03
+  - id: dfb52b7e-e95e-4a36-905c-ba0a8478f46b
+    name: angular-alloyeditor
+    active: true
+    color:
+    clientId: 2103c936-6613-4479-975c-cd1a87fe1e41
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-05-14 08:48:29
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-05-14 08:48:29
+  - id: 11e612a6-d7e4-4435-a301-8ed155601250
+    name: key-code
+    active: true
+    color:
+    clientId: 2103c936-6613-4479-975c-cd1a87fe1e41
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-10-01 17:45:54
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-10-01 17:45:54
+  - id: b167cd32-bb4d-4790-85cb-4dcd5f5425d1
+    name: War
+    active: true
+    color:
+    clientId: 61361f65-cb46-4d24-8cac-b085c1c4961c
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-07 10:35:23
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-07 10:35:23
+  - id: a0b31574-658f-4517-8d62-4450811a15e7
+    name: Settlers Of Catan
+    active: true
+    color:
+    clientId: 61361f65-cb46-4d24-8cac-b085c1c4961c
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-07 11:35:23
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-07 11:35:23
+  - id: 087d16bc-dfe0-45a4-b897-a2878570377b
+    name: Puerto Rico
+    active: true
+    color:
+    clientId: 61361f65-cb46-4d24-8cac-b085c1c4961c
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-07 11:45:23
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-07 11:45:23
+  - id: 84b2b727-5a1c-4016-afa8-a02e572ef1d6
+    name: ZOMBICIDE
+    active: true
+    color:
+    clientId: 48ff730c-d679-4b3d-9c0a-14211710c6b4
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-08 08:45:52
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-08 08:45:52
+  - id: 44fd225b-6d33-460c-ad2a-ec86ebdc4302
+    name: King of Tokyo
+    active: true
+    color:
+    clientId: 48ff730c-d679-4b3d-9c0a-14211710c6b4
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-09 09:09:23
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-09 09:09:23
+  - id: 72d23e1b-38f2-41af-a258-2ec3b17fa94f
+    name: Sheriff of Nottingham
+    active: true
+    color:
+    clientId: 48ff730c-d679-4b3d-9c0a-14211710c6b4
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-10 09:45:40
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-10 09:45:40
+  - id: fde8e79e-8a7d-4b5b-99ec-41649d5daa51
+    name: Spider clipping
+    active: true
+    color:
+    clientId: 744b22b8-c318-4d7b-8f71-7ec6cddae803
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-07-07 09:55:20
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-07-07 09:55:20
+  - id: 29ed8843-36a3-4249-8ade-21c7022f4169
+    name: Generic Questionnaire System
+    active: true
+    color:
+    clientId: 744b22b8-c318-4d7b-8f71-7ec6cddae803
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-07-07 10:05:55
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-07-07 10:05:55
+  - id: 346ff7c4-f8cd-4150-af25-87314da71185
+    name: Greenpeace donate System
+    active: true
+    color:
+    clientId: 6e88bdc5-2e0e-45ee-8cb9-fe86ac00efba
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-08-25 11:40:11
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-08-25 11:40:11
+  - id: a0285de9-1e63-4b47-ba61-b5261aef4b23
+    name: Electronic voting system
+    active: true
+    color:
+    clientId: 6e88bdc5-2e0e-45ee-8cb9-fe86ac00efba
+    createdBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    createdAt: 2014-11-25 11:40:11
+    updatedBy: d93296d4-c07e-49d1-a27f-08e251fcec64
+    updatedAt: 2014-11-25 11:40:11

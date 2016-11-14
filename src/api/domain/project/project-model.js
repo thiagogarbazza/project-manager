@@ -37,8 +37,17 @@ module.exports = (sequelize, DataType) => {
   const options = {
     classMethods: {
       associate: domain => {
+        const clientModel = domain.client.ClientModel;
         const projectModel = domain.project.ProjectModel;
         const userModel = domain.security.user.UserModel;
+
+        projectModel.belongsTo(clientModel, {
+          as: 'client',
+          foreignKey: {
+            field: 'client_id',
+            name: 'clientId'
+          }
+        });
 
         projectModel.belongsTo(userModel, {
           as: 'creationByUser',

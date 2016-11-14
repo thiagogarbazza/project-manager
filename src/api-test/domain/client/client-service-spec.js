@@ -2,7 +2,7 @@
 
 let CLIENT = {
   id: '2800005c-18a3-4d88-8b76-35939e6d3ab8',
-  name: 'Google'
+  name: 'key-code'
 };
 
 const CLIENT_VALIDATE = class {
@@ -86,7 +86,7 @@ describe('api domain client service', () => {
   });
 
   describe('# destroy', () => {
-    it('destruindo um status do trabalho', done => {
+    it('destroy a client', done => {
       APP.domain.client.ClientModel.destroy = simpleMock.stub().resolveWith();
 
       clientService.destroy(CLIENT.id)
@@ -121,7 +121,7 @@ describe('api domain client service', () => {
   });
 
   describe('# findById', () => {
-    it('pesquisando um status do trabalho pelo identificador', done => {
+    it('find a client by ID', done => {
       APP.domain.client.ClientModel.findById = simpleMock.stub().resolveWith();
 
       clientService.findById(CLIENT.id)

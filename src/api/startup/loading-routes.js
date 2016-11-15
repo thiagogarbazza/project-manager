@@ -1,7 +1,7 @@
 'use strict';
 const path = require('path');
 const glob = require('glob');
-const logger = require('../logger');
+const winston = require('winston');
 const array = require('lodash/array');
 
 const ROUTE_FILES = path.join(__dirname, '../domain/**/*-route.js');
@@ -11,7 +11,7 @@ const GLOB_SETTINGS = {
 
 module.exports = app => {
   glob.sync(ROUTE_FILES, GLOB_SETTINGS).forEach(routeFile => {
-    logger.info('Loading the route:', array.last(routeFile.split('/')));
+    winston.info('Loading the route:', array.last(routeFile.split('/')));
     require(routeFile)(app);
   });
 };

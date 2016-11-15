@@ -2,7 +2,7 @@
 const {camelCase} = require('lodash');
 const dottie = require('dottie');
 const glob = require('glob');
-const logger = require('../logger');
+const winston = require('winston');
 const path = require('path');
 
 const ROOT_PATH = path.join(__dirname, '../domain/');
@@ -23,7 +23,7 @@ module.exports = app => {
       const modelPath = `${packagePath}.${Model.name}`;
       dottie.set(app.domain, modelPath, Model);
 
-      logger.info('Loading the model:', modelPath);
+      winston.info('Loading the model:', modelPath);
     });
 
     runAssociates(app.domain, app.domain);

@@ -36,16 +36,17 @@ module.exports = (sequelize, DataType) => {
       beforeBulkCreate: function(users) {
         users.forEach(user => {
           const salt = bcrypt.genSaltSync();
-          user.dataValues.senha = bcrypt.hashSync(user.dataValues.senha, salt);
+          user.dataValues.password = bcrypt.hashSync(user.dataValues.password, salt);
         });
       },
       beforeCreate: user => {
         const salt = bcrypt.genSaltSync();
-        user.senha = bcrypt.hashSync(user.senha, salt);
+        user.password = bcrypt.hashSync(user.password, salt);
       }
     },
     instanceMethods: {
       isPassword: (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword)
+
     },
     schema: 'security',
     tableName: 'tbl_user'

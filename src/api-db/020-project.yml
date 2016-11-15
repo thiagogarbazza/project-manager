@@ -1,4 +1,4 @@
-- model: domain.project.ProjectModel
+- model: project.ProjectModel
   data:
   - id: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: eslint-config-restrict

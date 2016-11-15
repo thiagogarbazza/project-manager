@@ -1,4 +1,4 @@
-- model: domain.client.ClientModel
+- model: client.ClientModel
   data:
   - id: 2103c936-6613-4479-975c-cd1a87fe1e41
     name: Internal

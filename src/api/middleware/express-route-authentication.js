@@ -5,7 +5,7 @@ module.exports = app => {
   app.use(app.authentication.initialize());
 
   app.route('/service/**').all(function scapeTokenRoute(req, res, next) {
-    if (validator.matches(req.url, '^/service/token$', 'ig')) {
+    if (validator.matches(req.url, '^/service/security/token$', 'ig')) {
       next('route');
     } else {
       next();

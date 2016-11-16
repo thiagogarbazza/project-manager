@@ -98,4 +98,55 @@ describe('api domain project validate', () => {
       })
       .catch(done);
   });
+
+  describe('# onCreate', () => {
+    beforeEach(() => {
+      delete PROJECT.id;
+      APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith();
+    });
+
+    it('create a new valid project', done => {
+      projectValidate.onCreate(PROJECT)
+        .then(() => done())
+        .catch(done);
+    });
+
+    it('create a new invalid project', done => {
+      delete PROJECT.name;
+
+       projectValidate.onCreate(PROJECT)
+        .then(() => done('should be error'))
+        .catch(error => {
+          expect(error.name).to.equal('BusinessError');
+          expect(error.errors.length).to.equal(1);
+          expect(error.errors[0].code).to.equal('project.name.required');
+          return done();
+        });
+    });
+  });
+
+  describe('# onUpdate', () => {
+    beforeEach(() => {
+       APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith();
+    });
+
+    it('update a valid project', done => {
+      projectValidate.onUpdate(PROJECT)
+        .then(() => done())
+        .catch(error => done(error));
+    });
+
+    it('update a invalid project', done => {
+      delete PROJECT.name;
+
+      projectValidate.onUpdate(PROJECT)
+        .then(() => done())
+        .catch(error => {
+          expect(error.name).to.equal('BusinessError');
+          expect(error.errors.length).to.equal(1);
+          expect(error.errors[0].code).to.equal('project.name.required');
+          return done();
+        });
+    });
+  });
 });

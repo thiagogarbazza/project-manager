@@ -13,7 +13,7 @@ describe('api domain client validate', () => {
       active: true,
       color: '',
       id: '61361f65-cb46-4d24-8cac-b085c1c4961c',
-      name: ''
+      name: 'Grower games'
     };
 
     clientValidate = new ClientValidate(APP);
@@ -97,5 +97,56 @@ describe('api domain client validate', () => {
         return done();
       })
       .catch(done);
+  });
+
+  describe('# onCreate', () => {
+    beforeEach(() => {
+      delete CLIENT.id;
+      APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith();
+    });
+
+    it('create a new valid client', done => {
+      clientValidate.onCreate(CLIENT)
+        .then(() => done())
+        .catch(done);
+    });
+
+    it('create a new invalid client', done => {
+      delete CLIENT.name;
+
+       clientValidate.onCreate(CLIENT)
+        .then(() => done('should be error'))
+        .catch(error => {
+          expect(error.name).to.equal('BusinessError');
+          expect(error.errors.length).to.equal(1);
+          expect(error.errors[0].code).to.equal('client.name.required');
+          return done();
+        });
+    });
+  });
+
+  describe('# onUpdate', () => {
+    beforeEach(() => {
+       APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith();
+    });
+
+    it('update a valid client', done => {
+      clientValidate.onUpdate(CLIENT)
+        .then(() => done())
+        .catch(error => done(error));
+    });
+
+    it('update a invalid client', done => {
+      delete CLIENT.name;
+
+      clientValidate.onUpdate(CLIENT)
+        .then(() => done())
+        .catch(error => {
+          expect(error.name).to.equal('BusinessError');
+          expect(error.errors.length).to.equal(1);
+          expect(error.errors[0].code).to.equal('client.name.required');
+          return done();
+        });
+    });
   });
 });

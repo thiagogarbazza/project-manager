@@ -87,7 +87,7 @@ describe('api domain client validate', () => {
       .catch(done);
   });
 
-  it('color should be maximum 100 characters', done => {
+  it('color should be maximum 20 characters', done => {
     CLIENT.color = properties.BIG_TEXT;
 
     clientValidate.colorMustHaveMaximum20Characters(CLIENT)

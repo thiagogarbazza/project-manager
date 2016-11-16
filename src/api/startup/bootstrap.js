@@ -20,7 +20,7 @@ module.exports = app => {
     const port = configuration.port || DEFAULT_SERVER_PORT;
     app.listen(port, () => {
       winston.info('##########################################################');
-      winston.info('               Application  audint                        ');
+      winston.info('               Application  project-manager               ');
       winston.info(`    work in ${process.pid} started                        `);
       winston.info(`    listen in ${port}                                     `);
       winston.info('##########################################################');

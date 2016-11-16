@@ -16,7 +16,7 @@ module.exports = app => {
     next();
   });
 
-  app.param('uuid', function(req, res, next, value) {
+  app.param('uuid', (req, res, next, value) => {
     if (isUUID(value, UUID_VERSION)) {
       req.body.id = req.params.uuid;
       next();

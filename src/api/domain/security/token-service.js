@@ -17,24 +17,28 @@ class TokenService {
     return this.userService.findByEmail(email)
       .then(user => {
         if (user && user.isPassword(user.password, password)) {
-          const tokenCreateAt = new Date();
-          const payload = {
-            id: user.id,
-            tokenCreateAt
-          };
-
-          const response = {
-            email: user.email,
-            id: user.id,
-            name: user.name,
-            token: jwt.encode(payload, this.configuration.passphrase),
-            tokenCreateAt
-          };
-
-          return Promise.resolve(response);
+          return this.createToken(user);
         }
         return Promise.reject(new Error('Email and password were not recognized'));
       });
+  }
+
+  createToken(user) {
+    const tokenCreatedAt = new Date();
+    const payload = {
+      createdAt: tokenCreatedAt,
+      id: user.id
+    };
+
+    const response = {
+      email: user.email,
+      id: user.id,
+      name: user.name,
+      token: jwt.encode(payload, this.configuration.passphrase),
+      tokenCreatedAt
+    };
+
+    return Promise.resolve(response);
   }
 }
 

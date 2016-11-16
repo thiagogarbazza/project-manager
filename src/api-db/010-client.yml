@@ -72,3 +72,11 @@
     createdAt: 2014-11-09 08:22:37
     updatedBy: ee95445b-ef21-4582-8d63-1c7e166a2473
     updatedAt: 2015-09-11 17:59:08
+  - id: b79cc166-b8f7-4798-8db4-4774b1e190bf
+    name: Twitter
+    active: false
+    color:
+    createdBy: ee95445b-ef21-4582-8d63-1c7e166a2473
+    createdAt: 2014-11-08 08:02:03
+    updatedBy: ee95445b-ef21-4582-8d63-1c7e166a2473
+    updatedAt: 2015-09-11 17:45:43

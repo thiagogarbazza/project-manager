@@ -1,9 +1,9 @@
 'use strict';
-const CLientService = require('./client-service');
+const ClientService = require('./client-service');
 const routeResolver = require('express-route-resolver');
 
 module.exports = app => {
-  const clientService = new CLientService(app);
+  const clientService = new ClientService(app);
 
   app.route('/service/client')
     .get((req, res) => {

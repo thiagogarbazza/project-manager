@@ -48,6 +48,9 @@ Iterações
 Work Item
   - Atributos
     - title
+    - text
+    - priority
+    - risk
     - Labels
     - Milestones
     - Comments

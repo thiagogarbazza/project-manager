@@ -1,6 +1,8 @@
 vendor(prop, args)
   -webkit-{prop} args
   -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
   {prop} args
 
 border-radius()
@@ -12,3 +14,6 @@ box-shadow()
 opacity(n)
   opacity n
   filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
+
+transition()
+  vendor('transition', arguments)

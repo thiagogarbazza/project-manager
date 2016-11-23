@@ -1,0 +1,118 @@
+input[type=checkbox],
+input[type=radio]
+  opacity 0
+  position absolute
+  left -9999px
+  z-index 12
+  width 18px
+  height 18px
+  cursor pointer
+
+  ~ .text 
+    position relative
+    z-index 11
+    display inline-block
+    margin 0
+    line-height 20px
+    min-height 18px
+    min-width 18px
+    font-weight normal
+
+    &:before
+      font-family fontAwesome
+      font-weight bold
+      font-size 13px
+      color @slate-gray
+      content: "\a0";
+      background-color #fafafa
+      border 1px solid #c8c8c8
+      box-shadow 0 1px 2px rgba(0,0,0,0.05)
+      border-radius 0
+      display inline-block
+      text-align center
+      vertical-align middle
+      height 18px
+      line-height 16px
+      min-width 18px
+      margin-right 5px
+      margin-bottom 2px
+      transition all .3s ease
+
+      &:hover
+        &:before 
+          border-color @sonic-silver
+
+      &:active 
+        &:before 
+          box-shadow 0 1px 2px rgba(0,0,0,0.05), inset 0 1px 3px rgba(0,0,0,0.1)
+  
+  &:checked, &:focus
+    outline none !important
+
+  &:checked 
+    ~ .text 
+      &:before 
+        display inline-block
+        content '\f00c'
+        background-color #f5f8fc
+        box-shadow 0 1px 2px rgba(0,0,0,0.05), inset 0 -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1)
+        border-color @slate-gray
+
+  &:hover 
+    ~ .text 
+      &:before 
+        border-color @sonic-silver
+  
+  &:active 
+    ~ .text
+      :before
+        box-shadow 0 1px 2px rgba(0,0,0,0.05), inset 0 1px 3px rgba(0,0,0,0.1)
+
+  &:disabled, &[disabled], &.disabled
+    ~ .text 
+        color rgba(0,0,0,0.4)
+        &:before 
+            background-color: @whitesmoke !important
+            border-color: @platinum !important
+            box-shadow none  !important
+            color: @platinum
+
+  &.inverted
+    &:checked 
+      ~ .text 
+        &:before 
+          background-color: @slate-gray
+          border-color: @slate-gray
+          color: @white
+
+  for cor-name, cor in $colors
+     &.colored-{cor-name} 
+      ~ .text 
+        color: cor.color
+        &:before
+          border-color: cor.border
+    &:checked 
+      ~ .text 
+        color: cor.color
+        &:before 
+          border-color: cor.border
+          color: cor.color
+
+input[type=radio]
+  ~ .text
+    &:before
+      font-family FontAwesome
+      font-size 10px
+      line-height 17px
+      height 19px
+      min-width 19px
+      border-radius 100%
+
+  &:checked
+    ~ .text 
+      &:before 
+        content "\f111"
+
+  .checkbox, .radio
+    > label
+      padding-left 0

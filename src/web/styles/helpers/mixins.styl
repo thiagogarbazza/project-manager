@@ -15,8 +15,8 @@ box-shadow()
   vendor('box-shadow', arguments)
 
 opacity()
-  vendor('opacity', arguments)
   filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(arguments * 100) + ')')
+  vendor('opacity', arguments)
 
 text-shadow()
   vendor('text-shadow', arguments)

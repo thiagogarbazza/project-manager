@@ -1,8 +1,10 @@
 'use strict';
 
-let CLIENT = {
-  id: '2800005c-18a3-4d88-8b76-35939e6d3ab8',
-  name: 'key-code'
+const CLIENT = {
+  active: true,
+  color: '',
+  id: '2103c936-6613-4479-975c-cd1a87fe1e41',
+  name: 'Internal'
 };
 
 const CLIENT_VALIDATE = class {

@@ -12,8 +12,8 @@ describe('api domain client validate', () => {
     CLIENT = {
       active: true,
       color: '',
-      id: '61361f65-cb46-4d24-8cac-b085c1c4961c',
-      name: 'Grower games'
+      id: '2103c936-6613-4479-975c-cd1a87fe1e41',
+      name: 'Internal'
     };
 
     clientValidate = new ClientValidate(APP);
@@ -74,7 +74,7 @@ describe('api domain client validate', () => {
 
   it('name should be unique, Sending same name with different ID´s', done => {
     const anotherClient = clone(CLIENT);
-    anotherClient.id = '2103c936-6613-4479-975c-cd1a87fe1e41';
+    anotherClient.id = '744b22b8-c318-4d7b-8f71-7ec6cddae803';
     APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith(CLIENT);
 
     clientValidate.nameMustBeUnique(anotherClient)

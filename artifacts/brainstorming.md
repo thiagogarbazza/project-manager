@@ -49,8 +49,10 @@ Work Item
   - Atributos
     - title
     - text
-    - priority
-    - risk
+    - points
+    - priority (1, 2, 3, 4, 5)
+    - severity (1- Critical, 2- Major, 3- Medium, 4- Minor, 5- Cosmetic)
+    - State
     - Labels
     - Milestones
     - Comments

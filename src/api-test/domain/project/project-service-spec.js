@@ -139,7 +139,7 @@ describe('api domain project service', () => {
   });
 
   describe('# update', () => {
-    it('update a valid client', done => {
+    it('update a valid project', done => {
       APP.domain.project.ProjectModel.update = simpleMock.stub().resolveWith(PROJECT);
 
       projectService.update(PROJECT.id, PROJECT, USER)
@@ -150,14 +150,14 @@ describe('api domain project service', () => {
         .catch(done);
     });
 
-    it('update a invalid client', done => {
+    it('update a invalid project', done => {
       APP.domain.project.ProjectModel.update = simpleMock.stub().resolveWith(PROJECT);
 
       const anotherProject = clone(PROJECT);
       delete anotherProject.name;
 
       projectService.update(anotherProject.id, anotherProject, USER)
-        .then(() => done('client should be invalid!'))
+        .then(() => done('project should be invalid!'))
         .catch(error => {
           expect(APP.domain.project.ProjectModel.update.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');

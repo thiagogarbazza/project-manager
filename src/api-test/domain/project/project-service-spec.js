@@ -1,8 +1,11 @@
 'use strict';
 
-let PROJECT = {
-  id: '11e612a6-d7e4-4435-a301-8ed155601250',
-  name: 'key-code'
+const PROJECT = {
+  active: true,
+  clientId: '2103c936-6613-4479-975c-cd1a87fe1e41',
+  color: '',
+  id: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a',
+  name: 'eslint-config-restrict'
 };
 
 const PROJECT_VALIDATE = class {

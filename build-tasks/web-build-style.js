@@ -7,5 +7,3 @@ gulp.task('web-build-style', function() {
     .pipe(stylus())
     .pipe(gulp.dest('dist/web/styles/'));
 });
-
-gulp.task('watch', () => gulp.watch('src/web/styles/**/*.styl', ['web-build-style']));

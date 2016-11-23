@@ -48,6 +48,7 @@
 
   1. https://github.com/sequelize/sequelize
   1. http://www.yaml.org/
+  1. http://symfony.com/doc/current/components/yaml/yaml_format.html
 
 ### Unity Test
 

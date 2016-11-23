@@ -1,0 +1,35 @@
+.alert 
+  margin-bottom 20px
+  margin-top 0
+  padding 10px
+  color: $colors.white.value
+  border-width 0
+  border-left-width 5px
+  border-radius 0
+
+  .close 
+    top 0
+    right 0
+    line-height 16px
+    color: $colors.carbon.value
+
+  &.radius-bordered 
+    border-radius 3px
+
+  &.alert-shadowed
+    box-shadow: 0 1px 2px $colors.black2.value
+
+  &.alert-heading
+    font-weight 600    
+  
+  for cor-name, cor in $colors
+    &.alert-{cor-name} 
+      background-color: cor.background
+      border: 1px solid cor.border
+      color: cor.color
+    &.colored-{cor-name}
+      background-color: cor.background
+      border: 1px solid cor.border
+      color: cor.color
+    &.bordered-{cor-name}
+      border-left: 3px solid cor.value

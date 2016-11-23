@@ -20,16 +20,20 @@
     box-shadow: 0 1px 2px $colors.black2.value
 
   &.alert-heading
-    font-weight 600    
+    font-weight 600
+
+  &[class*='alert-'], &[class*='colored-']
+    border-style solid
+    border-width 1px 
+
+  &[class*='bordered-']
+    border-left-style solid
+    border-left-width 3px
   
   for cor-name, cor in $colors
-    &.alert-{cor-name} 
+    &.alert-{cor-name} , &.colored-{cor-name}
       background-color: cor.background
-      border: 1px solid cor.border
-      color: cor.color
-    &.colored-{cor-name}
-      background-color: cor.background
-      border: 1px solid cor.border
+      border-color: cor.border
       color: cor.color
     &.bordered-{cor-name}
-      border-left: 3px solid cor.value
+      border-left-color: cor.value

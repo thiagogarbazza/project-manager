@@ -2,10 +2,8 @@
 const IterationValidate = require('../../../api/domain/iteration/iteration-validate');
 
 const DATA_2010_01_01 = new Date(2010, 0, 1);
-const DATA_2013_05_13 = new Date(2013, 4, 13);
-const DATA_2013_05_17 = new Date(2013, 4, 17);
-const DATA_2013_05_20 = new Date(2013, 4, 20);
-const DATA_2013_05_24 = new Date(2013, 4, 24);
+const DATA_2013_06_03 = new Date(2013, 5, 3);
+const DATA_2013_06_07 = new Date(2013, 5, 7);
 
 describe('api domain iteration validate', () => {
   const APP = {};
@@ -16,12 +14,12 @@ describe('api domain iteration validate', () => {
     dottie.set(APP, 'domain.iteration.IterationModel', {});
 
     ITERATION = {
-      content: 'test, teste,teste',
-      end: DATA_2013_05_17,
-      id: 'ae8dd17d-20ae-4f52-b53f-e5c58f4708b4',
-      name: 'as',
-      projectId: 'dfb52b7e-e95e-4a36-905c-ba0a8478f46b',
-      start: DATA_2013_05_13
+      end: DATA_2013_06_07,
+      id: 'e7700145-6c63-45fa-9d46-68a0a31e9ce6',
+      name: 'Sprint 01',
+      projectId: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a',
+      start: DATA_2013_06_03,
+      text: 'There was no problem during the Sprint'
     };
 
     iterationValidate = new IterationValidate(APP);
@@ -44,7 +42,7 @@ describe('api domain iteration validate', () => {
   });
 
   it('end must be greater than a start.', done => {
-    ITERATION.start = DATA_2013_05_13;
+    ITERATION.start = DATA_2013_06_03;
     ITERATION.end = DATA_2010_01_01;
 
     iterationValidate.endMustBeGreaterThanAStart(ITERATION)

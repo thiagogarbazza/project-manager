@@ -2,10 +2,6 @@
 
 module.exports = (sequelize, DataType) => {
   const definition = {
-    content: {
-      allowNull: true,
-      type: DataType.TEXT
-    },
     createdAt: {
       allowNull: false,
       field: 'created_at',
@@ -29,6 +25,10 @@ module.exports = (sequelize, DataType) => {
     start: {
       allowNull: false,
       type: DataType.DATEONLY
+    },
+    text: {
+      allowNull: true,
+      type: DataType.TEXT
     },
     updatedAt: {
       allowNull: false,

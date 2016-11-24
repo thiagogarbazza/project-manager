@@ -19,11 +19,11 @@ input[type=radio]
     font-weight normal
 
     &:before
-      font-family fontAwesome
+      font-family: $icons.font
       font-weight bold
       font-size 13px
       color @slate-gray
-      content: "\a0";
+      content: $icons.ICON_UNDEF
       background-color #fafafa
       border 1px solid #c8c8c8
       box-shadow 0 1px 2px rgba(0,0,0,0.05)
@@ -53,7 +53,7 @@ input[type=radio]
     ~ .text 
       &:before 
         display inline-block
-        content '\f00c'
+        content: $icons.check
         background-color #f5f8fc
         box-shadow 0 1px 2px rgba(0,0,0,0.05), inset 0 -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1)
         border-color @slate-gray
@@ -101,7 +101,7 @@ input[type=radio]
 input[type=radio]
   ~ .text
     &:before
-      font-family FontAwesome
+      font-family: $icons.font
       font-size 10px
       line-height 17px
       height 19px
@@ -111,7 +111,7 @@ input[type=radio]
   &:checked
     ~ .text 
       &:before 
-        content "\f111"
+        content: $icons.circle
 
   .checkbox, .radio
     > label

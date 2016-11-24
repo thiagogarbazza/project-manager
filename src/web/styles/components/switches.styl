@@ -5,20 +5,20 @@ input[type=checkbox].checkbox-slider
   &.slider-icon
     & ~ .text
       &:after
-        font-family FontAwesome
+        font-family: $icons.font
         font-size 14px
         line-height 20px
-        content "\f00d"
+        content: $icons.close
         border-width 1px
         padding-left 4px
         border-color #ffffff
     &:checked
       & ~ .text
         &:after
-          font-family FontAwesome
+          font-family: $icons.font
           font-size 15px
           line-height 21px
-          content "\f00c"
+          content: $icons.check
           border-width 1px
           padding-left 3px
           background-color #ffffff

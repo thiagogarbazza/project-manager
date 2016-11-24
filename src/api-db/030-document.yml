@@ -4,54 +4,21 @@
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: ESCR001 - template user story
     content: |
-      #  template user story
-
-      Eu, como <**papel/função**>, quero poder <**objetivo/meta**>, de forma que eu possa <**alguma razão/benefício**>.
-
-      ![Texto alternativo para a imagen da tela/relatorio](/path/to/image.png "Atributo title da imagen")
-
-      ## Notas ##
-
-      As seguintes informações devem estar presentes no formulário:
-
-      | Dado | Tamanho | Obrigatório | Mascara | Outras considerações |
-      |------|---------|-------------|---------|----------------------|
-      |      |         |             |         |                      |
-      |      |         |             |         |                      |
-      |      |         |             |         |                      |
-
-      1. Nota sobre o formulário.
-      1. Outra nota sobre o formulário.
-      2. Uma sub-nota sobre o formulário.
-      2. outra sub-nota sobre o formulário.
-      1. Mais uma nota sobre o formulário.
-
-      ## Sucesso ##
-
-      1. Nota sobre de sucesso.
-      2. Outra nota sobre de sucesso.
-      3. Mais uma nota sobre de sucesso.
-
-      ## Aviso ##
-
-      1. Nota sobre de aviso.
-      2. Outra nota sobre de aviso.
-      3. Mais uma nota sobre de aviso.
-
-      ## Falha ##
-
-      1. Nota sobre de falha.
-      2. Outra nota sobre de falha.
-      3. Mais uma nota sobre de falha.
+      Teste conteúdo....
+      Teste conteúdo....
+      Teste conteúdo....
+      Teste conteúdo....
+      Teste conteúdo....
     createdBy: a3381700-d485-4648-8549-829c4b036005
-    createdAt: 2013-01-14 11:23:03
+    createdAt: 2013-06-03 11:23:03
     updatedBy: a3381700-d485-4648-8549-829c4b036005
-    updatedAt: 2013-01-14 11:23:03
+    updatedAt: 2013-06-03 11:23:03
   - id: 4663886f-06f7-431a-8bbe-72683fe7270b
     projectId: a0b31574-658f-4517-8d62-4450811a15e7
     name: CTAN101 - Specification of the stone resource card
     content: |
-      # test create a document
+      Teste conteúdo....
+      Teste conteúdo....
     createdBy: 613ce584-7e05-469d-b26f-409990c61ada
     createdAt: 2014-11-07 11:47:23
     updatedBy: 613ce584-7e05-469d-b26f-409990c61ada

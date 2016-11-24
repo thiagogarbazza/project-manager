@@ -1,0 +1,48 @@
+.badge 
+  font-size 11px
+  font-weight 300
+  text-align center
+  background-color @gray
+  height 18px
+  padding 3px 6px 3px 6px
+  border-radius 12px
+  text-shadow none
+  vertical-align middle
+
+  &.badge-square 
+    border-radius 2px
+
+  &.badge-empty
+    display inline-block
+    width 10px
+    height 10px
+    padding 0
+    vertical-align baseline
+
+.label
+  font-size 12px
+  padding 4px 6px 4px 6px
+  border-radius 2px
+
+  &.label-sm 
+    font-size 12px
+    padding 1px 4px 1px 4px
+
+.badge, .label
+  display inline-block
+  font-weight 300
+  text-shadow none
+
+  &.badge-default, 
+  &.label-default
+    background-color @gray
+    &.graded 
+      background linear-gradient(to right, @gray, @platinum)
+      
+for cor-name, cor in $colors
+  .badge.colored-{cor-name},
+  .label.colored-{cor-name}
+    background-color: cor.background
+    color: cor.color
+    &.graded 
+      background: linear-gradient(to right, cor.background, #80c1fb) // todo olhar esta cor.

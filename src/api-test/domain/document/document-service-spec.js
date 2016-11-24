@@ -1,10 +1,10 @@
 'use strict';
 
-let DOCUMENT = {
-  content: 'test, teste,teste',
-  id: 'ae8dd17d-20ae-4f52-b53f-e5c58f4708b4',
-  name: 'as',
-  projectId: 'dfb52b7e-e95e-4a36-905c-ba0a8478f46b'
+const DOCUMENT = {
+  content: '#  template user story',
+  id: '7196d519-3eeb-48d0-b5dd-73f9240ec483',
+  name: 'ESCR001 - template user story',
+  projectId: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a'
 };
 
 const DOCUMENT_VALIDATE = class {

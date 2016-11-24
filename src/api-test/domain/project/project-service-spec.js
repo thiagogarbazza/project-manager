@@ -1,8 +1,11 @@
 'use strict';
 
-let PROJECT = {
-  id: '11e612a6-d7e4-4435-a301-8ed155601250',
-  name: 'key-code'
+const PROJECT = {
+  active: true,
+  clientId: '2103c936-6613-4479-975c-cd1a87fe1e41',
+  color: '',
+  id: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a',
+  name: 'eslint-config-restrict'
 };
 
 const PROJECT_VALIDATE = class {
@@ -136,7 +139,7 @@ describe('api domain project service', () => {
   });
 
   describe('# update', () => {
-    it('update a valid client', done => {
+    it('update a valid project', done => {
       APP.domain.project.ProjectModel.update = simpleMock.stub().resolveWith(PROJECT);
 
       projectService.update(PROJECT.id, PROJECT, USER)
@@ -147,14 +150,14 @@ describe('api domain project service', () => {
         .catch(done);
     });
 
-    it('update a invalid client', done => {
+    it('update a invalid project', done => {
       APP.domain.project.ProjectModel.update = simpleMock.stub().resolveWith(PROJECT);
 
       const anotherProject = clone(PROJECT);
       delete anotherProject.name;
 
       projectService.update(anotherProject.id, anotherProject, USER)
-        .then(() => done('client should be invalid!'))
+        .then(() => done('project should be invalid!'))
         .catch(error => {
           expect(APP.domain.project.ProjectModel.update.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');

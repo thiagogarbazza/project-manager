@@ -42,10 +42,10 @@ class DocumentValidate extends AbstractValidate {
     return Promise.resolve();
   }
 
-  nameMustBeUnique({id, name}) {
+  nameMustBeUnique({id, name, projectId}) {
     const quering = {
       attributes: ['id'],
-      where: {name}
+      where: {name, projectId}
     };
 
     return this.documentModel.findOne(quering)

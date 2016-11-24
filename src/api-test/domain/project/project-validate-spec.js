@@ -11,9 +11,10 @@ describe('api domain project validate', () => {
 
     PROJECT = {
       active: true,
+      clientId: '2103c936-6613-4479-975c-cd1a87fe1e41',
       color: '',
-      id: 'a0b31574-658f-4517-8d62-4450811a15e7',
-      name: 'Settlers Of Catan'
+      id: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a',
+      name: 'eslint-config-restrict'
     };
 
     projectValidate = new ProjectValidate(APP);

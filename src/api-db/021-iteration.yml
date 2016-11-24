@@ -6,28 +6,48 @@
     end: 2013-06-03
     start: 2013-06-07
     text: There was no problem during the Sprint
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 08:03:03
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 08:03:03
   - id: 8e8603b3-35da-45c1-8a0e-6f39ad3b8785
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Sprint 02
     end: 2013-06-10
     start: 2013-06-14
     text:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 08:06:03
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 08:06:03
   - id: e905ceea-5447-4506-b8bb-6effd17ce00d
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Sprint 03
     end: 2013-06-17
     start: 2013-06-21
     text:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 08:09:03
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 08:09:03
   - id: d169ff9b-5dd8-4321-8f33-5a91674e599e
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Sprint 04
     end: 2013-06-24
     start: 2013-06-28
     text:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 08:12:03
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 08:12:03
   - id: 262a0295-710c-4f0c-834d-0ca74cdd9e30
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Sprint 05
     end: 2013-07-01
     start: 2013-07-05
     text:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 08:15:03
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 08:15:03
 

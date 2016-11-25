@@ -19,29 +19,29 @@
     padding 0
     vertical-align baseline
 
-.label
+.tag
   font-size 12px
   padding 4px 6px 4px 6px
   border-radius 2px
 
-  &.label-sm 
+  &.tag-sm 
     font-size 12px
     padding 1px 4px 1px 4px
 
-.badge, .label
+.badge, .tag
   display inline-block
   font-weight 300
   text-shadow none
 
   &.badge-default, 
-  &.label-default
+  &.tag-default
     background-color @gray
     &.graded 
       background linear-gradient(to right, @gray, @platinum)
       
 for cor-name, cor in $colors
   .badge.colored-{cor-name},
-  .label.colored-{cor-name}
+  .tag.colored-{cor-name}
     background-color: cor.background
     color: cor.color
     &.graded 

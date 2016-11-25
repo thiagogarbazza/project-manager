@@ -1,0 +1,46 @@
+$default-color = $colors.carbon
+
+/*#region ToolTips*/
+.tooltip 
+  &.in 
+    opacity 1
+  &.top .tooltip-arrow 
+    border-top-color: $default-color.border
+  &.right .tooltip-arrow
+    border-right-color: $default-color.border
+  &.left .tooltip-arrow
+    border-left-color: $default-color.border
+  &.bottom .tooltip-arrow
+    border-bottom-color: $default-color.border
+
+.tooltip-inner 
+  background-color: $default-color.background
+  border: 1px solid $default-color.border
+  border-radius 2px
+  color: $default-color.color
+  font-size 13px
+  padding 8px 8px
+  transition visibility 0,opacity .13s ease-in
+  box-shadow 1px 1px rgba(229,229,229,.5)
+
+.tooltip-lg 
+  + .tooltip > .tooltip-inner
+    font-size: 15px
+
+for cor-name, cor in $colors
+  .colored-{cor-name}
+    + .tooltip 
+      > .tooltip-inner 
+        background-color: cor.background
+        border: 1px solid cor.border
+        color: cor.color
+
+      &.top .tooltip-arrow 
+        border-top-color: cor.border
+      &.right .tooltip-arrow 
+        border-right-color: cor.border
+      &.left .tooltip-arrow 
+        border-left-color: cor.border
+      &.bottom .tooltip-arrow 
+        border-bottom-color: cor.border
+/*#endregion ToolTips*/

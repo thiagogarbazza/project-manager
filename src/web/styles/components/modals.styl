@@ -1,0 +1,64 @@
+.modal
+
+  .modal-header 
+    padding 10px 15px 10px 20px
+    background-color: $colors.whitesmoke.value
+    .close 
+      font-size 26px
+
+  .modal-content
+    border-radius 0
+    box-shadow 0 0 40px rgba(0,0,0,.5)
+    color: $colors.black.value
+    background-color: $colors.white.value
+    border rgba(0,0,0,0)
+    .close
+      font-size 26px
+  
+  .modal-footer
+    padding-top 12px
+    padding-bottom 14px
+    border-top 0
+    background-color: $colors.whitesmoke.value
+
+  &.modal-message
+    .modal-dialog
+      width 300px
+    
+    .modal-body, .modal-footer, .modal-header, .modal-title
+      background 0 0
+      border none
+      margin 0
+      padding 0 20px
+      text-align center
+
+    .modal-header
+        color: $colors.white.value
+        margin-bottom 10px
+        padding 15px 0 8px
+        .fa, .glyphicon, .typcn, .wi 
+          font-size 30px
+
+    .modal-title
+        font-size 17px
+        color: $colors.sonic-silver.value
+        margin-bottom 3px
+    .modal-body 
+        color: $colors.sonic-silver.value
+    .modal-footer 
+        margin 25px 0 20px
+        padding-bottom 10px
+
+  for cor-name, cor in $colors
+    &.colored-{cor-name}
+      background-color: cor.background
+      color: cor.color
+
+    &.bordered-{cor-name} 
+      .modal-header
+        border-bottom: 3px solid cor.value
+
+.modal-backdrop 
+  background-color: $colors.white.value  
+  &.in 
+    opacity .75

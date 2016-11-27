@@ -5,13 +5,13 @@
   position relative
   display inline-block
   font-size 13px
-  color: @white;
+  color: $colors.white.value
   box-shadow 0 1px 0 rgba(0,0,0,.05)
   transition all 0.15s ease
   border-radius 2px
 
   &:hover, &:focus 
-    color: @white;
+    color: $colors.white.value
 
   > .fa, .typcn, .glyphicon, > [class*="wi-"]
     display inline
@@ -272,11 +272,11 @@ for cor-name, cor in $colors
     > .caret
       margin-left 1px
       border-width 5px
-      border-top-color @ivory
+      border-top-color: $colors.ivory.value
       margin-top 1px
 
     &.btn-default > .caret
-      border-top-color @slate-gray
+      border-top-color: $colors.slate-gray.value
 
     + .btn.dropdown-toggle
       padding-left 7px

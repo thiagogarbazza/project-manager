@@ -1,8 +1,12 @@
+$default-color = $colors.gray
+
 .badge 
   font-size 11px
   font-weight 300
   text-align center
-  background-color @gray
+  color: $default-color.color
+  background-color: $default-color.background
+  border-color: $default-color.border
   height 18px
   padding 3px 6px 3px 6px
   border-radius 12px
@@ -33,11 +37,13 @@
   font-weight 300
   text-shadow none
 
-  &.badge-default, 
-  &.tag-default
-    background-color @gray
+  &.colored-default, 
+  &.colored-default
+    color: $default-color.color
+    background-color: $default-color.background
+    border-color: $default-color.border
     &.graded 
-      background linear-gradient(to right, @gray, @platinum)
+      background: linear-gradient(to right, $default-color.value, #80c1fb)
       
 for cor-name, cor in $colors
   .badge.colored-{cor-name},

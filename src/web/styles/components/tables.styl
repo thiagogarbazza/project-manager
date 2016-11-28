@@ -5,21 +5,22 @@
   tfoot > tr > th
     font-weight 300
   
-  thead > tr
-    & > th
-      border-bottom 0
-      font-size 13px
-      font-weight 600
+  thead 
+    > tr
+      & > th
+        border-bottom 0
+        font-size 13px
+        font-weight 600
     
     &[class*='colored-'] > tr > th
       font-weight 400
-
+        
     for cor-name, cor in $colors
       &.colored-{cor-name} > tr > th
         background-color: cor.background
         color: cor.color
       &.bordered-{cor-name} > tr > th
-        border-bottom: 3px solid cor.value
+        border-bottom: 3px solid cor.border
 
   tr
     for cor-name, cor in $colors
@@ -30,7 +31,7 @@
 
       &.bordered-{cor-name} > td:first-child
       td.bordered-{cor-name}
-        border-left: 3px solid cor.value
+        border-left: 3px solid cor.border
 
 .table-bordered thead > tr
   background-color #eee

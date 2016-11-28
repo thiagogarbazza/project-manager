@@ -22,18 +22,18 @@
   &.alert-heading
     font-weight 600
 
-  &[class*='alert-'], &[class*='colored-']
+  &[class*='colored-']
     border-style solid
-    border-width 1px 
+    border-width 1px
 
   &[class*='bordered-']
     border-left-style solid
-    border-left-width 3px
+    border-left-width 5px
   
   for cor-name, cor in $colors
-    &.alert-{cor-name} , &.colored-{cor-name}
+    &.colored-{cor-name}
       background-color: cor.background
       border-color: cor.border
       color: cor.color
     &.bordered-{cor-name}
-      border-left-color: cor.value
+      border-left-color: cor.border

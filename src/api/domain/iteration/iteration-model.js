@@ -44,6 +44,14 @@ module.exports = (sequelize, DataType) => {
         const projectModel = domain.project.ProjectModel;
         const userModel = domain.security.user.UserModel;
 
+        iterationModel.belongsTo(iterationModel, {
+          as: 'parent',
+          foreignKey: {
+            field: 'parent_id',
+            name: 'parentId'
+          }
+        });
+
         iterationModel.belongsTo(projectModel, {
           as: 'project',
           foreignKey: {

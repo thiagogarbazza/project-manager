@@ -1,3 +1,5 @@
+$default-color = $colors.white
+
 .btn
   cursor pointer
   vertical-align middle
@@ -5,13 +7,16 @@
   position relative
   display inline-block
   font-size 13px
-  color: $colors.white.value
-  box-shadow 0 1px 0 rgba(0,0,0,.05)
+  color: $default-color.color
+  box-shadow 0 1px 0 rgba(0,0,0,0.05)
   transition all 0.15s ease
   border-radius 2px
+  border-color: $default-color.border
+  background-color: $default-color.background
 
-  &:hover, &:focus 
-    color: $colors.white.value
+  &:hover,  &:focus 
+    color: $default-color.color
+    box-shadow inset 0 3px 3px rgba(0, 0, 0, 0.125)
 
   > .fa, .typcn, .glyphicon, > [class*="wi-"]
     display inline
@@ -33,8 +38,8 @@
     box-shadow none !important
 
     &:hover 
-      background none !important
-      text-shadow none !important
+      background none
+      text-shadow none
 
     &.active
       background none !important
@@ -218,24 +223,25 @@
 /*#endregion Button Sizes*/
   
 for cor-name, cor in $colors
-  .btn.clorored-{cor-name}
-    &, &:focus
-      border-color: cor.value
+  .btn.colored-{cor-name}
+    &, 
+    &:focus
+      border-color: cor.border
       background-color: cor.background
       color: cor.color
 
     &.shiny 
-      background-image linear-gradient(to bottom, @white 0, #ededed 100%)
+      background-image:  linear-gradient(to bottom, cor.background, cor.border 100%)
 
     &.dropdown-toggle:not(:first-child) 
       border-left-width 0 !important
       margin-left -1px
 
-    &:hover, .open .btn-{cor-name}.dropdown-toggle    
-      box-shadow 0 1px 0 rgba(0,0,0,.1)
+    &:hover, .open .colored-{cor-name}.dropdown-toggle    
+      box-shadow inset 0 3px 3px rgba(0, 0, 0, 0.125)
 
   .open .clorored-{cor-name}.dropdown-toggle
-    box-shadow inset 0 3px 5px rgba(0,0,0,0.125)
+    box-shadow inset 0 3px 3px rgba(0,0,0,0.125)
 
 .btn.disabled.active, 
 .btn[disabled].active, 

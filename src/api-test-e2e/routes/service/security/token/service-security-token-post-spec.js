@@ -19,7 +19,7 @@ describe(`route: ${ROUTE_URL} POST`, () => {
 
         expect(response.body.id).to.equal('a3381700-d485-4648-8549-829c4b036005');
         expect(response.body.name).to.equal('Thiago Garbazza');
-        expect(response.body.tokenCreateAt).to.not.undefined;
+        expect(response.body.tokenCreatedAt).to.not.undefined;
         expect(response.body.token).to.not.undefined;
         return done();
       });

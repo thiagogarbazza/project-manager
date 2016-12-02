@@ -26,6 +26,8 @@ http://ckeditor.com/demo#inline
 http://alloyeditor.com/demo/
 http://js.plus/products/bootstrap-tools/demo/ckeditor
 http://ckeditor.com/addon/ckeditor-alert-messages
+http://pt.stackoverflow.com/editing-help
+https://github.com/showdownjs/showdown
 
 Exemplos de start da app
 

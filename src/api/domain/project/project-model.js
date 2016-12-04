@@ -16,6 +16,10 @@ module.exports = (sequelize, DataType) => {
       field: 'created_at',
       type: DataType.DATE
     },
+    description: {
+      allowNull: true,
+      type: DataType.STRING(500)
+    },
     id: {
       allowNull: false,
       defaultValue: DataType.UUIDV4,

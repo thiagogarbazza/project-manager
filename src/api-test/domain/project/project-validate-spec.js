@@ -13,8 +13,9 @@ describe('api domain project validate', () => {
       active: true,
       clientId: '2103c936-6613-4479-975c-cd1a87fe1e41',
       color: '',
+      description: 'An ESLint shareable config for the restrict js coding style.',
       id: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a',
-      name: 'eslint-config-restrict'
+      name: 'eslint-config-restrict',
     };
 
     projectValidate = new ProjectValidate(APP);
@@ -22,6 +23,18 @@ describe('api domain project validate', () => {
 
   it('should be defined', () => {
     expect(projectValidate).to.not.be.undefined;
+  });
+
+  it('description should be maximum 500 characters', done => {
+    PROJECT.description = properties.BIG_TEXT;
+
+    projectValidate.descriptionMustHaveMaximum500Characters(PROJECT)
+      .then(result => {
+        expect(result.code).to.equal('project.description.maxlength');
+        expect(result.message).to.equal('Description must have a maximum of 500 characters');
+        return done();
+      })
+      .catch(done);
   });
 
   it('name should be required', done => {

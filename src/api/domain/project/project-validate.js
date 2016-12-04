@@ -28,6 +28,14 @@ class ProjectValidate extends AbstractValidate {
     );
   }
 
+  descriptionMustHaveMaximum500Characters({description}) {
+    if (description && description.length > NAME_MAXLENGTH) {
+      const businessCase = new BusinessCase('project.description.maxlength', 'Description must have a maximum of 500 characters');
+      return Promise.resolve(businessCase);
+    }
+    return Promise.resolve();
+  }
+
   nameIsRequired({name}) {
     if (!trim(name)) {
       const businessCase = new BusinessCase('project.name.required', 'Name is required');

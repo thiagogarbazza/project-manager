@@ -1,9 +1,10 @@
 'use strict';
 
 class Severity {
-  constructor(key, name) {
+  constructor(key, name, description) {
     this.key = key;
     this.name = name;
+    this.description = description;
   }
 }
 

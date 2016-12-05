@@ -12,18 +12,23 @@ class ProjectValidate extends AbstractValidate {
 
   onCreate(project) {
     return this.resolveValidationPromises(
+      this.descriptionMustHaveMaximum500Characters(project),
+      this.keyMustHaveMaximum20Characters(project),
+      this.keyMustBeUnique(project),
       this.nameIsRequired(project),
       this.nameMustHaveMaximum100Characters(project),
-      this.nameMustBeUnique(project),
       this.colorMustHaveMaximum20Characters(project)
     );
   }
 
   onUpdate(project) {
     return this.resolveValidationPromises(
+      this.descriptionMustHaveMaximum500Characters(project),
+      this.keyIsRequired(project),
+      this.keyMustHaveMaximum20Characters(project),
+      this.keyMustBeUnique(project),
       this.nameIsRequired(project),
       this.nameMustHaveMaximum100Characters(project),
-      this.nameMustBeUnique(project),
       this.colorMustHaveMaximum20Characters(project)
     );
   }
@@ -34,6 +39,38 @@ class ProjectValidate extends AbstractValidate {
       return Promise.resolve(businessCase);
     }
     return Promise.resolve();
+  }
+
+  keyIsRequired({key}) {
+    if (!trim(key)) {
+      const businessCase = new BusinessCase('project.key.required', 'Key is required');
+      return Promise.resolve(businessCase);
+    }
+    return Promise.resolve();
+  }
+
+  keyMustHaveMaximum20Characters({key}) {
+    if (key && key.length > NAME_MAXLENGTH) {
+      const businessCase = new BusinessCase('project.key.maxlength', 'Key must have a maximum of 20 characters');
+      return Promise.resolve(businessCase);
+    }
+    return Promise.resolve();
+  }
+
+  keyMustBeUnique({id, key}) {
+    const quering = {
+      attributes: ['id'],
+      where: {key}
+    };
+
+    return this.projectModel.findOne(quering)
+      .then(result => {
+        if (result && result.id !== id) {
+          const businessCase = new BusinessCase('project.key.unique', 'Key must be unique');
+          return Promise.resolve(businessCase);
+        }
+        return Promise.resolve();
+      });
   }
 
   nameIsRequired({name}) {
@@ -50,22 +87,6 @@ class ProjectValidate extends AbstractValidate {
       return Promise.resolve(businessCase);
     }
     return Promise.resolve();
-  }
-
-  nameMustBeUnique({id, name}) {
-    const quering = {
-      attributes: ['id'],
-      where: {name}
-    };
-
-    return this.projectModel.findOne(quering)
-      .then(result => {
-        if (result && result.id !== id) {
-          const businessCase = new BusinessCase('project.name.unique', 'Name must be unique');
-          return Promise.resolve(businessCase);
-        }
-        return Promise.resolve();
-      });
   }
 
   colorMustHaveMaximum20Characters({color}) {

@@ -27,6 +27,10 @@ module.exports = (sequelize, DataType) => {
       type: DataType.UUID,
       unique: true
     },
+    key: {
+      allowNull: false,
+      type: DataType.STRING(20)
+    },
     name: {
       allowNull: false,
       type: DataType.STRING(100)

@@ -15,7 +15,8 @@ describe('api domain project validate', () => {
       color: '',
       description: 'An ESLint shareable config for the restrict js coding style.',
       id: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a',
-      name: 'eslint-config-restrict',
+      key: 'ESCR',
+      name: 'eslint-config-restrict'
     };
 
     projectValidate = new ProjectValidate(APP);
@@ -32,6 +33,70 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.description.maxlength');
         expect(result.message).to.equal('Description must have a maximum of 500 characters');
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('key should be required', done => {
+    delete PROJECT.key;
+
+    projectValidate.keyIsRequired(PROJECT)
+      .then(result => {
+        expect(result.code).to.equal('project.key.required');
+        expect(result.message).to.equal('Key is required');
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('key should be maximum 20 characters', done => {
+    PROJECT.key = properties.BIG_TEXT;
+
+    projectValidate.keyMustHaveMaximum20Characters(PROJECT)
+      .then(result => {
+        expect(result.code).to.equal('project.key.maxlength');
+        expect(result.message).to.equal('Key must have a maximum of 20 characters');
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('key should be unique, Sending a new key', done => {
+    const anotherProject = clone(PROJECT);
+    anotherProject.key = 'SOC2';
+    APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith();
+
+    projectValidate.keyMustBeUnique(anotherProject)
+      .then(() => {
+        expect(APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('key should be unique, Sending same key with equal ID', done => {
+    const anotherProject = clone(PROJECT);
+    APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith(PROJECT);
+
+    projectValidate.keyMustBeUnique(anotherProject)
+      .then(result => {
+        expect(APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('key should be unique, Sending same key with different ID´s', done => {
+    const anotherProject = clone(PROJECT);
+    anotherProject.id = '087d16bc-dfe0-45a4-b897-a2878570377b';
+    APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith(PROJECT);
+
+    projectValidate.keyMustBeUnique(anotherProject)
+      .then(result => {
+        expect( APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
+        expect(result.code).to.equal('project.key.unique');
+        expect(result.message).to.equal('Key must be unique');
         return done();
       })
       .catch(done);
@@ -56,46 +121,6 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 100 characters');
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('name should be unique, Sending a new name', done => {
-    const anotherProject = clone(PROJECT);
-    anotherProject.name = 'Settlers Of Catan 2';
-    APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith();
-
-    projectValidate.nameMustBeUnique(anotherProject)
-      .then(() => {
-        expect(APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('name should be unique, Sending same name with equal ID', done => {
-    const anotherProject = clone(PROJECT);
-    APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith(PROJECT);
-
-    projectValidate.nameMustBeUnique(anotherProject)
-      .then(result => {
-        expect(APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('name should be unique, Sending same name with different ID´s', done => {
-    const anotherProject = clone(PROJECT);
-    anotherProject.id = '087d16bc-dfe0-45a4-b897-a2878570377b';
-    APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith(PROJECT);
-
-    projectValidate.nameMustBeUnique(anotherProject)
-      .then(result => {
-        expect( APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
-        expect(result.code).to.equal('project.name.unique');
-        expect(result.message).to.equal('Name must be unique');
         return done();
       })
       .catch(done);

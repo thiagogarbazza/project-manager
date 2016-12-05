@@ -35,18 +35,6 @@ describe('api domain document validate', () => {
       .catch(done);
   });
 
-  it('name should be maximum 100 characters', done => {
-    DOCUMENT.name = properties.BIG_TEXT;
-
-    documentValidate.nameMustHaveMaximum100Characters(DOCUMENT)
-      .then(result => {
-        expect(result.code).to.equal('document.name.maxlength');
-        expect(result.message).to.equal('Name must have a maximum of 100 characters');
-        return done();
-      })
-      .catch(done);
-  });
-
   it('name should be unique, Sending a new name', done => {
     const anotherDocument = clone(DOCUMENT);
     anotherDocument.name = 'Internal';
@@ -82,6 +70,18 @@ describe('api domain document validate', () => {
         expect( APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('document.name.unique');
         expect(result.message).to.equal('Name must be unique');
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('name should be maximum 100 characters', done => {
+    DOCUMENT.name = properties.BIG_TEXT;
+
+    documentValidate.nameMustHaveMaximum100Characters(DOCUMENT)
+      .then(result => {
+        expect(result.code).to.equal('document.name.maxlength');
+        expect(result.message).to.equal('Name must have a maximum of 100 characters');
         return done();
       })
       .catch(done);

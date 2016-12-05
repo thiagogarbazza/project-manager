@@ -13,6 +13,7 @@ class DocumentValidate extends AbstractValidate {
   onCreate(document) {
     return this.resolveValidationPromises(
       this.nameIsRequired(document),
+      this.nameMustBeUnique(document),
       this.nameMustHaveMaximum100Characters(document),
       this.projectIsRequired(document)
     );
@@ -21,6 +22,7 @@ class DocumentValidate extends AbstractValidate {
   onUpdate(document) {
     return this.resolveValidationPromises(
       this.nameIsRequired(document),
+      this.nameMustBeUnique(document),
       this.nameMustHaveMaximum100Characters(document),
       this.projectIsRequired(document)
     );
@@ -29,14 +31,6 @@ class DocumentValidate extends AbstractValidate {
   nameIsRequired({name}) {
     if (!trim(name)) {
       const businessCase = new BusinessCase('document.name.required', 'Name is required');
-      return Promise.resolve(businessCase);
-    }
-    return Promise.resolve();
-  }
-
-  nameMustHaveMaximum100Characters({name}) {
-    if (name && name.length > NAME_MAXLENGTH) {
-      const businessCase = new BusinessCase('document.name.maxlength', 'Name must have a maximum of 100 characters');
       return Promise.resolve(businessCase);
     }
     return Promise.resolve();
@@ -56,6 +50,14 @@ class DocumentValidate extends AbstractValidate {
         }
         return Promise.resolve();
       });
+  }
+
+  nameMustHaveMaximum100Characters({name}) {
+    if (name && name.length > NAME_MAXLENGTH) {
+      const businessCase = new BusinessCase('document.name.maxlength', 'Name must have a maximum of 100 characters');
+      return Promise.resolve(businessCase);
+    }
+    return Promise.resolve();
   }
 
   projectIsRequired({projectId}) {

@@ -2,6 +2,7 @@
 const {AbstractValidate, BusinessCase} = require('business-error');
 const {trim} = require('lodash');
 
+const COLOR_MAXLENGTH = 20;
 const NAME_MAXLENGTH = 100;
 
 class ClientValidate extends AbstractValidate {
@@ -12,18 +13,26 @@ class ClientValidate extends AbstractValidate {
 
   onCreate(client) {
     return this.resolveValidationPromises(
+      this.colorMustHaveMaximum20Characters(client),
       this.nameIsRequired(client),
-      this.nameMustHaveMaximum100Characters(client),
-      this.colorMustHaveMaximum20Characters(client)
+      this.nameMustHaveMaximum100Characters(client)
     );
   }
 
   onUpdate(client) {
     return this.resolveValidationPromises(
+      this.colorMustHaveMaximum20Characters(client),
       this.nameIsRequired(client),
-      this.nameMustHaveMaximum100Characters(client),
-      this.colorMustHaveMaximum20Characters(client)
+      this.nameMustHaveMaximum100Characters(client)
     );
+  }
+
+  colorMustHaveMaximum20Characters({color}) {
+    if (color && color.length > COLOR_MAXLENGTH) {
+      const businessCase = new BusinessCase('client.color.maxlength', 'Color must have a maximum of 20 characters');
+      return Promise.resolve(businessCase);
+    }
+    return Promise.resolve();
   }
 
   nameIsRequired({name}) {
@@ -56,14 +65,6 @@ class ClientValidate extends AbstractValidate {
         }
         return Promise.resolve();
       });
-  }
-
-  colorMustHaveMaximum20Characters({color}) {
-    if (color && color.length > NAME_MAXLENGTH) {
-      const businessCase = new BusinessCase('client.color.maxlength', 'Color must have a maximum of 20 characters');
-      return Promise.resolve(businessCase);
-    }
-    return Promise.resolve();
   }
 }
 

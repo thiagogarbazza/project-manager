@@ -23,6 +23,18 @@ describe('api domain client validate', () => {
     expect(clientValidate).to.not.be.undefined;
   });
 
+  it('color should be maximum 20 characters', done => {
+    CLIENT.color = properties.BIG_TEXT;
+
+    clientValidate.colorMustHaveMaximum20Characters(CLIENT)
+      .then(result => {
+        expect(result.code).to.equal('client.color.maxlength');
+        expect(result.message).to.equal('Color must have a maximum of 20 characters');
+        return done();
+      })
+      .catch(done);
+  });
+
   it('name should be required', done => {
     delete CLIENT.name;
 
@@ -82,18 +94,6 @@ describe('api domain client validate', () => {
         expect( APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('client.name.unique');
         expect(result.message).to.equal('Name must be unique');
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('color should be maximum 20 characters', done => {
-    CLIENT.color = properties.BIG_TEXT;
-
-    clientValidate.colorMustHaveMaximum20Characters(CLIENT)
-      .then(result => {
-        expect(result.code).to.equal('client.color.maxlength');
-        expect(result.message).to.equal('Color must have a maximum of 20 characters');
         return done();
       })
       .catch(done);

@@ -47,18 +47,6 @@ describe('api domain client validate', () => {
       .catch(done);
   });
 
-  it('name should be maximum 100 characters', done => {
-    CLIENT.name = properties.BIG_TEXT;
-
-    clientValidate.nameMustHaveMaximum100Characters(CLIENT)
-      .then(result => {
-        expect(result.code).to.equal('client.name.maxlength');
-        expect(result.message).to.equal('Name must have a maximum of 100 characters');
-        return done();
-      })
-      .catch(done);
-  });
-
   it('name should be unique, Sending a new name', done => {
     const anotherClient = clone(CLIENT);
     anotherClient.name = 'Internal';
@@ -94,6 +82,18 @@ describe('api domain client validate', () => {
         expect( APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('client.name.unique');
         expect(result.message).to.equal('Name must be unique');
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('name should be maximum 100 characters', done => {
+    CLIENT.name = properties.BIG_TEXT;
+
+    clientValidate.nameMustHaveMaximum100Characters(CLIENT)
+      .then(result => {
+        expect(result.code).to.equal('client.name.maxlength');
+        expect(result.message).to.equal('Name must have a maximum of 100 characters');
         return done();
       })
       .catch(done);

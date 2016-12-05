@@ -15,6 +15,7 @@ class ClientValidate extends AbstractValidate {
     return this.resolveValidationPromises(
       this.colorMustHaveMaximum20Characters(client),
       this.nameIsRequired(client),
+      this.nameMustBeUnique(client),
       this.nameMustHaveMaximum100Characters(client)
     );
   }
@@ -23,6 +24,7 @@ class ClientValidate extends AbstractValidate {
     return this.resolveValidationPromises(
       this.colorMustHaveMaximum20Characters(client),
       this.nameIsRequired(client),
+      this.nameMustBeUnique(client),
       this.nameMustHaveMaximum100Characters(client)
     );
   }
@@ -43,14 +45,6 @@ class ClientValidate extends AbstractValidate {
     return Promise.resolve();
   }
 
-  nameMustHaveMaximum100Characters({name}) {
-    if (name && name.length > NAME_MAXLENGTH) {
-      const businessCase = new BusinessCase('client.name.maxlength', 'Name must have a maximum of 100 characters');
-      return Promise.resolve(businessCase);
-    }
-    return Promise.resolve();
-  }
-
   nameMustBeUnique({id, name}) {
     const quering = {
       attributes: ['id'],
@@ -65,6 +59,14 @@ class ClientValidate extends AbstractValidate {
         }
         return Promise.resolve();
       });
+  }
+
+  nameMustHaveMaximum100Characters({name}) {
+    if (name && name.length > NAME_MAXLENGTH) {
+      const businessCase = new BusinessCase('client.name.maxlength', 'Name must have a maximum of 100 characters');
+      return Promise.resolve(businessCase);
+    }
+    return Promise.resolve();
   }
 }
 

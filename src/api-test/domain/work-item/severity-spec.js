@@ -7,15 +7,16 @@ describe('api domain work item severity', () => {
     expect(Severity).to.not.be.undefined;
   });
 
-  describe('COSMETIC', () => {
-    const {COSMETIC} = Severity;
+
+  describe('BLOCKER', () => {
+    const {BLOCKER} = Severity;
 
     it('should be defined', () => {
-      expect(COSMETIC).to.not.be.undefined;
+      expect(BLOCKER).to.not.be.undefined;
     });
 
-    it('code should be 5', () => {
-      expect(COSMETIC.code).to.equal(5);
+    it('key should be 3', () => {
+      expect(BLOCKER.key).to.equal(1);
     });
   });
 
@@ -26,8 +27,8 @@ describe('api domain work item severity', () => {
       expect(CRITICAL).to.not.be.undefined;
     });
 
-    it('code should be 1', () => {
-      expect(CRITICAL.code).to.equal(1);
+    it('key should be 1', () => {
+      expect(CRITICAL.key).to.equal(2);
     });
   });
 
@@ -38,20 +39,8 @@ describe('api domain work item severity', () => {
       expect(MAJOR).to.not.be.undefined;
     });
 
-    it('code should be 2', () => {
-      expect(MAJOR.code).to.equal(2);
-    });
-  });
-
-  describe('MEDIUM', () => {
-    const {MEDIUM} = Severity;
-
-    it('should be defined', () => {
-      expect(MEDIUM).to.not.be.undefined;
-    });
-
-    it('code should be 3', () => {
-      expect(MEDIUM.code).to.equal(3);
+    it('key should be 2', () => {
+      expect(MAJOR.key).to.equal(3);
     });
   });
 
@@ -62,16 +51,29 @@ describe('api domain work item severity', () => {
       expect(MINOR).to.not.be.undefined;
     });
 
-    it('code should be 4', () => {
-      expect(MINOR.code).to.equal(4);
+    it('key should be 4', () => {
+      expect(MINOR.key).to.equal(4);
     });
   });
 
-  describe('valueOf', () => {
+
+  describe('TRIVIAL', () => {
+    const {TRIVIAL} = Severity;
+
+    it('should be defined', () => {
+      expect(TRIVIAL).to.not.be.undefined;
+    });
+
+    it('key should be 5', () => {
+      expect(TRIVIAL.key).to.equal(5);
+    });
+  });
+
+  describe('valueOfKey', () => {
     const {CRITICAL} = Severity;
 
     it('should be defined', () => {
-      expect(Severity.valueOf(CRITICAL.code)).to.equal(CRITICAL);
+      expect(Severity.valueOfKey(CRITICAL.key)).to.equal(CRITICAL);
     });
   });
 });

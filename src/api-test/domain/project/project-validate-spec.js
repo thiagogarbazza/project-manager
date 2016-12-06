@@ -26,6 +26,18 @@ describe('api domain project validate', () => {
     expect(projectValidate).to.not.be.undefined;
   });
 
+  it('color should be maximum 20 characters', done => {
+    PROJECT.color = properties.BIG_TEXT;
+
+    projectValidate.colorMustHaveMaximum20Characters(PROJECT)
+      .then(result => {
+        expect(result.code).to.equal('project.color.maxlength');
+        expect(result.message).to.equal('Color must have a maximum of 20 characters');
+        return done();
+      })
+      .catch(done);
+  });
+
   it('description should be maximum 500 characters', done => {
     PROJECT.description = properties.BIG_TEXT;
 
@@ -45,18 +57,6 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.key.required');
         expect(result.message).to.equal('Key is required');
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('key should be maximum 20 characters', done => {
-    PROJECT.key = properties.BIG_TEXT;
-
-    projectValidate.keyMustHaveMaximum20Characters(PROJECT)
-      .then(result => {
-        expect(result.code).to.equal('project.key.maxlength');
-        expect(result.message).to.equal('Key must have a maximum of 20 characters');
         return done();
       })
       .catch(done);
@@ -102,6 +102,18 @@ describe('api domain project validate', () => {
       .catch(done);
   });
 
+  it('key should be maximum 20 characters', done => {
+    PROJECT.key = properties.BIG_TEXT;
+
+    projectValidate.keyMustHaveMaximum20Characters(PROJECT)
+      .then(result => {
+        expect(result.code).to.equal('project.key.maxlength');
+        expect(result.message).to.equal('Key must have a maximum of 20 characters');
+        return done();
+      })
+      .catch(done);
+  });
+
   it('name should be required', done => {
     delete PROJECT.name;
 
@@ -121,18 +133,6 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 100 characters');
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('color should be maximum 20 characters', done => {
-    PROJECT.color = properties.BIG_TEXT;
-
-    projectValidate.colorMustHaveMaximum20Characters(PROJECT)
-      .then(result => {
-        expect(result.code).to.equal('project.color.maxlength');
-        expect(result.message).to.equal('Color must have a maximum of 20 characters');
         return done();
       })
       .catch(done);

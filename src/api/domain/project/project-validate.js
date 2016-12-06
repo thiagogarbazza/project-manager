@@ -2,6 +2,7 @@
 const {AbstractValidate, BusinessCase} = require('business-error');
 const {trim} = require('lodash');
 
+const COLOR_MAXLENGTH = 20;
 const NAME_MAXLENGTH = 100;
 
 class ProjectValidate extends AbstractValidate {
@@ -12,25 +13,34 @@ class ProjectValidate extends AbstractValidate {
 
   onCreate(project) {
     return this.resolveValidationPromises(
+      this.colorMustHaveMaximum20Characters(project),
       this.descriptionMustHaveMaximum500Characters(project),
-      this.keyMustHaveMaximum20Characters(project),
+      this.keyIsRequired(project),
       this.keyMustBeUnique(project),
+      this.keyMustHaveMaximum20Characters(project),
       this.nameIsRequired(project),
-      this.nameMustHaveMaximum100Characters(project),
-      this.colorMustHaveMaximum20Characters(project)
+      this.nameMustHaveMaximum100Characters(project)
     );
   }
 
   onUpdate(project) {
     return this.resolveValidationPromises(
+      this.colorMustHaveMaximum20Characters(project),
       this.descriptionMustHaveMaximum500Characters(project),
       this.keyIsRequired(project),
-      this.keyMustHaveMaximum20Characters(project),
       this.keyMustBeUnique(project),
+      this.keyMustHaveMaximum20Characters(project),
       this.nameIsRequired(project),
-      this.nameMustHaveMaximum100Characters(project),
-      this.colorMustHaveMaximum20Characters(project)
+      this.nameMustHaveMaximum100Characters(project)
     );
+  }
+
+  colorMustHaveMaximum20Characters({color}) {
+    if (color && color.length > COLOR_MAXLENGTH) {
+      const businessCase = new BusinessCase('project.color.maxlength', 'Color must have a maximum of 20 characters');
+      return Promise.resolve(businessCase);
+    }
+    return Promise.resolve();
   }
 
   descriptionMustHaveMaximum500Characters({description}) {
@@ -84,14 +94,6 @@ class ProjectValidate extends AbstractValidate {
   nameMustHaveMaximum100Characters({name}) {
     if (name && name.length > NAME_MAXLENGTH) {
       const businessCase = new BusinessCase('project.name.maxlength', 'Name must have a maximum of 100 characters');
-      return Promise.resolve(businessCase);
-    }
-    return Promise.resolve();
-  }
-
-  colorMustHaveMaximum20Characters({color}) {
-    if (color && color.length > NAME_MAXLENGTH) {
-      const businessCase = new BusinessCase('project.color.maxlength', 'Color must have a maximum of 20 characters');
       return Promise.resolve(businessCase);
     }
     return Promise.resolve();

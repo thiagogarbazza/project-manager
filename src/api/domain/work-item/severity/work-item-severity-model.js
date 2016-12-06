@@ -11,6 +11,11 @@ module.exports = (sequelize, DataType) => {
       field: 'created_at',
       type: DataType.DATE
     },
+    default: {
+      allowNull: false,
+      defaultValue: false,
+      type: DataType.BOOLEAN
+    },
     description: {
       allowNull: true,
       type: DataType.STRING(500)

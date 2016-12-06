@@ -6,6 +6,7 @@
     order: 1
     color: red
     icon: fa fa-ban
+    default: false
     description: Blocks development and/or testing work, production could not run.
     createdBy: a3381700-d485-4648-8549-829c4b036005
     createdAt: 2013-06-03 07:05:25
@@ -17,6 +18,7 @@
     order: 2
     color:
     icon:
+    default: false
     description: Crashes, loss of data, severe memory leak.
     createdBy: a3381700-d485-4648-8549-829c4b036005
     createdAt: 2013-06-03 07:05:25
@@ -28,6 +30,7 @@
     order: 3
     color:
     icon:
+    default: false
     description: Major loss of function.
     createdBy: a3381700-d485-4648-8549-829c4b036005
     createdAt: 2013-06-03 07:05:25
@@ -39,6 +42,7 @@
     order: 4
     color: green
     icon:
+    default: true
     description: Minor loss of function, or other problem where easy workaround is present.
     createdBy: a3381700-d485-4648-8549-829c4b036005
     createdAt: 2013-06-03 07:05:25
@@ -50,6 +54,7 @@
     order: 5
     color:
     icon:
+    default: false
     description: Cosmetic problem like misspelt words or misaligned text.
     createdBy: a3381700-d485-4648-8549-829c4b036005
     createdAt: 2013-06-03 07:05:25

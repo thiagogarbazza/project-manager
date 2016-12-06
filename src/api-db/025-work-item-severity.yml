@@ -1,0 +1,57 @@
+- model: workItem.severity.WorkItemSeverityModel
+  data:
+  - id: 1e94ec5e-bc30-42db-9116-e11429dac792
+    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
+    name: Blocker
+    order: 1
+    color: red
+    icon: fa fa-ban
+    description: Blocks development and/or testing work, production could not run.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 07:05:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 07:05:25
+  - id: 74434ff8-b210-4e71-9728-159180beef8e
+    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
+    name: Critical
+    order: 2
+    color:
+    icon:
+    description: Crashes, loss of data, severe memory leak.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 07:05:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 07:05:25
+  - id: f246758f-88bd-4d8e-8e71-996c3c0ef155
+    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
+    name: Major
+    order: 3
+    color:
+    icon:
+    description: Major loss of function.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 07:05:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 07:05:25
+  - id: 6f13b9da-3de4-447f-bb2e-aafd55a8bcfd
+    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
+    name: Minor
+    order: 4
+    color: green
+    icon:
+    description: Minor loss of function, or other problem where easy workaround is present.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 07:05:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 07:05:25
+  - id: ea2d838f-d329-4ddb-a249-c76cff00582c
+    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
+    name: Trivial
+    order: 5
+    color:
+    icon:
+    description: Cosmetic problem like misspelt words or misaligned text.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 07:05:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 07:05:25

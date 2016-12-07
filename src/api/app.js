@@ -3,9 +3,7 @@ const consign = require('consign');
 const express = require('express');
 
 const app = express();
-const CONSIGN_OPTIONS = {
-  verbose: false
-};
+const CONSIGN_OPTIONS = {verbose: false};
 
 consign(CONSIGN_OPTIONS)
   .then('src/api/configuration/winston.js')

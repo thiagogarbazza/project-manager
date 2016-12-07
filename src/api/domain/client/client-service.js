@@ -1,6 +1,8 @@
 'use strict';
+
 const AbstractDomainService = require('../abstract-domain-service');
 const ClientValidate = require('./client-validate');
+const Client = require('./client-validate');
 
 class ClientService extends AbstractDomainService {
   constructor(app) {
@@ -17,9 +19,7 @@ class ClientService extends AbstractDomainService {
   }
 
   destroy(id) {
-    const quering = {
-      where: {id}
-    };
+    const quering = {where: {id}};
 
     return this.clientModel.destroy(quering);
   }
@@ -32,9 +32,7 @@ class ClientService extends AbstractDomainService {
     };
 
     if (filter.name) {
-      quering.where.name = {
-        like: `%${filter.name}%`
-      };
+      quering.where.name = {like: `%${filter.name}%`};
     }
 
     return this.clientModel.findAll(quering);
@@ -57,9 +55,7 @@ class ClientService extends AbstractDomainService {
   }
 
   update(id, client, user) {
-    const quering = {
-      where: {id}
-    };
+    const quering = {where: {id}};
 
     return this.fillUpdatedBy(client, user)
       .then(() => this.clientValidate.onUpdate(client))

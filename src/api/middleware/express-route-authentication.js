@@ -10,8 +10,7 @@ module.exports = app => {
 
 function scapeTokenRoute(req, res, next) {
   if (validator.matches(req.url, '^/service/security/token$', 'ig')) {
-    next('route');
-  } else {
-    next();
+    return next('route');
   }
+  return next();
 }

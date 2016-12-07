@@ -17,9 +17,7 @@ class DocumentService extends AbstractDomainService {
   }
 
   destroy(id) {
-    const quering = {
-      where: {id}
-    };
+    const quering = {where: {id}};
 
     return this.documentModel.destroy(quering);
   }
@@ -32,9 +30,7 @@ class DocumentService extends AbstractDomainService {
     };
 
     if (filter.name) {
-      quering.where.name = {
-        like: `%${filter.name}%`
-      };
+      quering.where.name = {like: `%${filter.name}%`};
     }
 
     return this.documentModel.findAll(quering);
@@ -57,9 +53,7 @@ class DocumentService extends AbstractDomainService {
   }
 
   update(id, document, user) {
-    const quering = {
-      where: {id}
-    };
+    const quering = {where: {id}};
 
     return this.fillUpdatedBy(document, user)
       .then(() => this.documentValidate.onUpdate(document))

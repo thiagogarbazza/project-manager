@@ -39,7 +39,10 @@ class DocumentValidate extends AbstractValidate {
   nameMustBeUnique({id, name, projectId}) {
     const quering = {
       attributes: ['id'],
-      where: {name, projectId}
+      where: {
+        name,
+        projectId
+      }
     };
 
     return this.documentModel.findOne(quering)

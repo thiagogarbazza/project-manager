@@ -1,4 +1,5 @@
 'use strict';
+
 const {ExtractJwt, Strategy} = require('passport-jwt');
 const environment = require('../environment');
 const passport = require('passport');

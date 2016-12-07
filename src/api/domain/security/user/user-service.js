@@ -23,18 +23,14 @@ class UserService {
     };
 
     if (filter.name) {
-      quering.where.name = {
-        like: `%${filter.name}%`
-      };
+      quering.where.name = {like: `%${filter.name}%`};
     }
 
     return this.userModel.findAll(quering);
   }
 
   findByEmail(email) {
-    const quering = {
-      where: {email}
-    };
+    const quering = {where: {email}};
 
     return this.userModel.findOne(quering);
   }
@@ -44,9 +40,7 @@ class UserService {
   }
 
   update(id, user) {
-    const quering = {
-      where: {id}
-    };
+    const quering = {where: {id}};
 
     return this.userValidate.onUpdate(user)
       .then(() => this.userModel.update(user, quering));

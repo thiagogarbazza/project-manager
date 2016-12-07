@@ -6,13 +6,11 @@ const path = require('path');
 const yaml = require('yamljs');
 
 const DATABASE_FILES_PATTERN = path.join(__dirname, '../../api-db/**/*.yml');
-const GLOB_SETTINGS = {
-  realpath: true
-};
+const GLOB_SETTINGS = {realpath: true};
 
 module.exports = app => {
-  const databaseFiles = glob.sync(DATABASE_FILES_PATTERN, GLOB_SETTINGS);
-  return readFile(databaseFiles);
+  const DATABASE_FILES = glob.sync(DATABASE_FILES_PATTERN, GLOB_SETTINGS);
+  return readFile(DATABASE_FILES);
 
   function readFile(files) {
     if (files.length === 0) {

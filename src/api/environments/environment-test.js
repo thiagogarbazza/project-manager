@@ -31,7 +31,7 @@ module.exports = {
   },
 
   server: {
-    jsonSpaces: 2,
+    jsonSpaces: 0,
     port: SERVER_PORT,
     syncDatabase: false,
     webDir: 'dist/web'

@@ -1,7 +1,7 @@
 'use strict';
+const {isUUID} = require('validator');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-const {isUUID} = require('validator');
 
 const UUID_VERSION = 4;
 
@@ -13,15 +13,14 @@ module.exports = app => {
   // Alterando as rotas.
   app.use((req, res, next) => {
     delete req.body.id;
-    next();
+    return next();
   });
 
   app.param('uuid', (req, res, next, value) => {
     if (isUUID(value, UUID_VERSION)) {
       req.body.id = req.params.uuid;
-      next();
-    } else {
-      next('route');
+      return next();
     }
+    return next('route');
   });
 };

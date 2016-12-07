@@ -18,9 +18,7 @@ class ProjectService extends AbstractDomainService {
   }
 
   destroy(id) {
-    const quering = {
-      where: {id}
-    };
+    const quering = {where: {id}};
 
     return this.projectModel.destroy(quering);
   }
@@ -33,9 +31,7 @@ class ProjectService extends AbstractDomainService {
     };
 
     if (filter.name) {
-      quering.where.name = {
-        like: `%${filter.name}%`
-      };
+      quering.where.name = {like: `%${filter.name}%`};
     }
 
     return this.projectModel.findAll(quering);
@@ -62,9 +58,7 @@ class ProjectService extends AbstractDomainService {
   }
 
   update(id, project, user) {
-    const quering = {
-      where: {id}
-    };
+    const quering = {where: {id}};
 
     return this.fillUpdatedBy(project, user)
       .then(() => this.projectValidate.onUpdate(project))

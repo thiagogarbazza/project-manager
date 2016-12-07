@@ -69,7 +69,10 @@ class WorkItemSeverityValidate extends AbstractValidate {
   nameMustBeUnique({id, name, projectId}) {
     const quering = {
       attributes: ['id'],
-      where: {name, projectId}
+      where: {
+        name,
+        projectId
+      }
     };
 
     return this.workItemSeverityModel.findOne(quering)

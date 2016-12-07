@@ -1,4 +1,5 @@
 'use strict';
+
 const {AbstractValidate, BusinessCase} = require('business-error');
 const {trim} = require('lodash');
 const moment = require('moment');

@@ -1,4 +1,5 @@
 'use strict';
+
 const DocumentService = require('./document-service');
 const routeResolver = require('express-route-resolver');
 

@@ -1,4 +1,5 @@
 'use strict';
+
 const ProjectService = require('./project-service');
 const routeResolver = require('express-route-resolver');
 

@@ -1,4 +1,5 @@
 'use strict';
+
 const WorkItemSeverityValidate = require('../../../../api/domain/work-item/severity/work-item-severity-validate');
 
 describe('api domain work-item severity validate', () => {

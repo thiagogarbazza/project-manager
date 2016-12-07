@@ -1,4 +1,5 @@
 'use strict';
+
 const SERVER_PORT = 3000;
 
 module.exports = {

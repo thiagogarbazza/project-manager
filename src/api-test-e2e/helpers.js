@@ -1,4 +1,5 @@
 'use strict';
+
 const app = require('../api/app');
 const supertest = require('supertest');
 const expect = require('chai').expect;

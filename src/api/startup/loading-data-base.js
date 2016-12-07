@@ -1,4 +1,5 @@
 'use strict';
+
 const dottie = require('dottie');
 const glob = require('glob');
 const winston = require('winston');

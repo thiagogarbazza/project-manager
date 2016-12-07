@@ -1,4 +1,5 @@
 'use strict';
+
 const environment = require('../environment');
 const loadingDataBase = require('./loading-data-base');
 const winston = require('winston');

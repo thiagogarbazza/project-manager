@@ -1,4 +1,5 @@
 'use strict';
+
 const {endsWith} = require('lodash');
 const loadingDataBase = require('../api/startup/loading-data-base');
 

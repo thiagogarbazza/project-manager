@@ -1,6 +1,7 @@
 'use strict';
-const {expect} = require('chai');
+
 const {clone} = require('lodash');
+const {expect} = require('chai');
 const dottie = require('dottie');
 const mockery = require('mockery');
 const simpleMock = require('simple-mock');

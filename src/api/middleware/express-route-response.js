@@ -1,4 +1,5 @@
 'use strict';
+
 const compression = require('compression');
 const environment = require('../environment');
 const express = require('express');

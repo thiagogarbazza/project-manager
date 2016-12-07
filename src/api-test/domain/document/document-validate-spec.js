@@ -1,4 +1,5 @@
 'use strict';
+
 const DocumentValidate = require('../../../api/domain/document/document-validate');
 
 describe('api domain document validate', () => {

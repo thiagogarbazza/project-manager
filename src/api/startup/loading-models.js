@@ -1,4 +1,5 @@
 'use strict';
+
 const {camelCase} = require('lodash');
 const dottie = require('dottie');
 const glob = require('glob');

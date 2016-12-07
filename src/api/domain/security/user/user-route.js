@@ -1,4 +1,5 @@
 'use strict';
+
 const UserService = require('./user-service');
 const routeResolver = require('express-route-resolver');
 

@@ -1,4 +1,5 @@
 'use strict';
+
 const ClientValidate = require('../../../api/domain/client/client-validate');
 
 describe('api domain client validate', () => {

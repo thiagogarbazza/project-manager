@@ -1,4 +1,5 @@
 'use strict';
+
 const ProjectValidate = require('../../../api/domain/project/project-validate');
 
 describe('api domain project validate', () => {

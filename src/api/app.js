@@ -1,4 +1,5 @@
 'use strict';
+
 const consign = require('consign');
 const express = require('express');
 

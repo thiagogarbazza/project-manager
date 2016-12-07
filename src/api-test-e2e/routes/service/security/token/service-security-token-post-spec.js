@@ -1,4 +1,5 @@
 'use strict';
+
 const ROUTE_URL = '/service/security/token';
 
 describe(`route: ${ROUTE_URL} POST`, () => {

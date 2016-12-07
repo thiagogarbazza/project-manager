@@ -1,4 +1,5 @@
 'use strict';
+
 const UserValidate = require('./user-validate');
 
 class UserService {

@@ -1,4 +1,5 @@
 'use strict';
+
 const {isUUID} = require('validator');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');

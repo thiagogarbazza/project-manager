@@ -1,4 +1,5 @@
 'use strict';
+
 const UserValidate = require('../../../../api/domain/security/user/user-validate');
 
 describe('api domain security user validate', () => {

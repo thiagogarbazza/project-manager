@@ -1,4 +1,5 @@
 'use strict';
+
 const AbstractDomainService = require('../abstract-domain-service');
 const DocumentValidate = require('./document-validate');
 

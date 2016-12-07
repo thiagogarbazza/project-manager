@@ -16,6 +16,7 @@ class IterationValidate extends AbstractValidate {
       this.endIsRequired(iteration),
       this.endMustBeGreaterThanAStart(iteration),
       this.nameIsRequired(iteration),
+      this.nameMustBeUnique(iteration),
       this.nameMustHaveMaximum100Characters(iteration),
       this.projectIsRequired(iteration),
       this.startIsRequired(iteration)
@@ -27,6 +28,7 @@ class IterationValidate extends AbstractValidate {
       this.endIsRequired(iteration),
       this.endMustBeGreaterThanAStart(iteration),
       this.nameIsRequired(iteration),
+      this.nameMustBeUnique(iteration),
       this.nameMustHaveMaximum100Characters(iteration),
       this.projectIsRequired(iteration),
       this.startIsRequired(iteration)
@@ -59,18 +61,13 @@ class IterationValidate extends AbstractValidate {
     return Promise.resolve();
   }
 
-  nameMustHaveMaximum100Characters({name}) {
-    if (name && name.length > NAME_MAXLENGTH) {
-      const businessCase = new BusinessCase('iteration.name.maxlength', 'Name must have a maximum of 100 characters');
-      return Promise.resolve(businessCase);
-    }
-    return Promise.resolve();
-  }
-
   nameMustBeUnique({id, name, projectId}) {
     const quering = {
       attributes: ['id'],
-      where: {name, projectId}
+      where: {
+        name,
+        projectId
+      }
     };
 
     return this.iterationModel.findOne(quering)
@@ -81,6 +78,14 @@ class IterationValidate extends AbstractValidate {
         }
         return Promise.resolve();
       });
+  }
+
+  nameMustHaveMaximum100Characters({name}) {
+    if (name && name.length > NAME_MAXLENGTH) {
+      const businessCase = new BusinessCase('iteration.name.maxlength', 'Name must have a maximum of 100 characters');
+      return Promise.resolve(businessCase);
+    }
+    return Promise.resolve();
   }
 
   projectIsRequired({projectId}) {

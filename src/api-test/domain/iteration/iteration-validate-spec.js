@@ -1,4 +1,5 @@
 'use strict';
+
 const IterationValidate = require('../../../api/domain/iteration/iteration-validate');
 
 const DATA_2010_01_01 = new Date(2010, 0, 1);
@@ -66,18 +67,6 @@ describe('api domain iteration validate', () => {
       .catch(done);
   });
 
-  it('name should be maximum 100 characters', done => {
-    ITERATION.name = properties.BIG_TEXT;
-
-    iterationValidate.nameMustHaveMaximum100Characters(ITERATION)
-      .then(result => {
-        expect(result.code).to.equal('iteration.name.maxlength');
-        expect(result.message).to.equal('Name must have a maximum of 100 characters');
-        return done();
-      })
-      .catch(done);
-  });
-
   it('name should be unique, Sending a new name', done => {
     const anotherDocument = clone(ITERATION);
     anotherDocument.name = 'Internal';
@@ -113,6 +102,18 @@ describe('api domain iteration validate', () => {
         expect( APP.domain.iteration.IterationModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('iteration.name.unique');
         expect(result.message).to.equal('Name must be unique');
+        return done();
+      })
+      .catch(done);
+  });
+
+  it('name should be maximum 100 characters', done => {
+    ITERATION.name = properties.BIG_TEXT;
+
+    iterationValidate.nameMustHaveMaximum100Characters(ITERATION)
+      .then(result => {
+        expect(result.code).to.equal('iteration.name.maxlength');
+        expect(result.message).to.equal('Name must have a maximum of 100 characters');
         return done();
       })
       .catch(done);

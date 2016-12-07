@@ -4,6 +4,7 @@
 https://www.mindmup.com/#m:g10BzrrP6CLqHXZRldnUWRZb0dyaTg
 
 
+https://github.com/bryanrsmith/eslint-plugin-sort-class-members
 ## examples
 https://waffle.io/
 https://toggl.com/

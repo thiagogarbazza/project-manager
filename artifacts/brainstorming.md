@@ -50,11 +50,12 @@ Work Item
     - title
     - text
     - points
-    - priority (1, 2, 3, 4, 5)
-    - severity (1- Critical, 2- Major, 3- Medium, 4- Minor, 5- Cosmetic)
-    - State
-    - Labels
-    - Milestones
+    - Resolution
+    - priority (1, 2, 3, 4, 5) /Tornar configurável por projeto
+    - severity (1- Blocker, 2- Critical, 3- Major, 4- Minor, 5- Trivial) / Tornar configurável por projeto
+    - Status /Tornar configurável por projeto 
+    - Tag /Tornar configurável por projeto
+    - Milestones /Tornar configurável por projeto
     - Comments
     - Timer
 Work item Timer
@@ -74,3 +75,6 @@ Work item Milestone
   - Atributos
     - Nome
     - Cor
+
+https://issues.sonatype.org/secure/ShowConstantsHelp.jspa?decorator=popup#PriorityLevels
+https://confluence.atlassian.com/adminjiraserver071/defining-priority-field-values-802592398.html

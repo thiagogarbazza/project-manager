@@ -1,4 +1,5 @@
 'use strict';
+
 const gulp = require('gulp');
 
 gulp.task('w-styles', () => gulp.watch('src/web/styles/**/*.styl', ['web-build-style']));

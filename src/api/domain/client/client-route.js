@@ -7,26 +7,31 @@ module.exports = app => {
   const clientService = new ClientService(app);
 
   app.route('/service/client')
-    .get((req, res) => {
-      const promise = clientService.find(req.query);
-      routeResolver.onFind(res, promise);
+    .get((request, response) => {
+      const promise = clientService.find(request.query);
+
+      routeResolver.onFind(response, promise);
     })
-    .post((req, res) => {
-      const promise = clientService.create(req.body, req.user);
-      routeResolver.onCreate(res, promise);
+    .post((request, response) => {
+      const promise = clientService.create(request.body, request.user);
+
+      routeResolver.onCreate(response, promise);
     });
 
   app.route('/service/client/:uuid')
-    .get((req, res) => {
-      const promise = clientService.findById(req.params.uuid);
-      routeResolver.onFindOne(res, promise);
+    .get((request, response) => {
+      const promise = clientService.findById(request.params.uuid);
+
+      routeResolver.onFindOne(response, promise);
     })
-    .put((req, res) => {
-      const promise = clientService.update(req.params.uuid, req.body, req.user);
-      routeResolver.onUpdate(res, promise);
+    .put((request, response) => {
+      const promise = clientService.update(request.params.uuid, request.body, request.user);
+
+      routeResolver.onUpdate(response, promise);
     })
-    .delete((req, res) => {
-      const promise = clientService.destroy(req.params.uuid);
-      routeResolver.onDelete(res, promise);
+    .delete((request, response) => {
+      const promise = clientService.destroy(request.params.uuid);
+
+      routeResolver.onDelete(response, promise);
     });
 };

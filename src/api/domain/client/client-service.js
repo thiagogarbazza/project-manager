@@ -4,6 +4,7 @@ const AbstractDomainService = require('../abstract-domain-service');
 const ClientValidate = require('./client-validate');
 
 class ClientService extends AbstractDomainService {
+
   constructor(app) {
     super(app);
     this.clientModel = app.domain.client.ClientModel;

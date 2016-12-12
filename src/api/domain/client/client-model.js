@@ -38,33 +38,33 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options = {
-    classMethods: {
-      associate: domain => {
-        const clientModel = domain.client.ClientModel;
-        const userModel = domain.security.user.UserModel;
-
-        clientModel.belongsTo(userModel, {
-          as: 'creationByUser',
-          foreignKey: {
-            allowNull: false,
-            field: 'created_by',
-            name: 'createdBy'
-          }
-        });
-
-        clientModel.belongsTo(userModel, {
-          as: 'updatedByUser',
-          foreignKey: {
-            allowNull: false,
-            field: 'updated_by',
-            name: 'updatedBy'
-          }
-        });
-      }
-    },
+    classMethods: {associate},
     schema: 'client',
     tableName: 'tbl_client'
   };
 
   return sequelize.define('ClientModel', definition, options);
 };
+
+function associate(domain) {
+  const clientModel = domain.client.ClientModel;
+  const userModel = domain.security.user.UserModel;
+
+  clientModel.belongsTo(userModel, {
+    as: 'creationByUser',
+    foreignKey: {
+      allowNull: false,
+      field: 'created_by',
+      name: 'createdBy'
+    }
+  });
+
+  clientModel.belongsTo(userModel, {
+    as: 'updatedByUser',
+    foreignKey: {
+      allowNull: false,
+      field: 'updated_by',
+      name: 'updatedBy'
+    }
+  });
+}

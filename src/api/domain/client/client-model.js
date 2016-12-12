@@ -1,5 +1,8 @@
 'use strict';
 
+const COLOR_MAXLENGTH = 20;
+const NAME_MAXLENGTH = 100;
+
 module.exports = (sequelize, DataType) => {
   const definition = {
     active: {
@@ -9,7 +12,7 @@ module.exports = (sequelize, DataType) => {
     },
     color: {
       allowNull: true,
-      type: DataType.STRING(20)
+      type: DataType.STRING(COLOR_MAXLENGTH)
     },
     createdAt: {
       allowNull: false,
@@ -25,7 +28,7 @@ module.exports = (sequelize, DataType) => {
     },
     name: {
       allowNull: false,
-      type: DataType.STRING(100)
+      type: DataType.STRING(NAME_MAXLENGTH)
     },
     updatedAt: {
       allowNull: false,
@@ -43,6 +46,7 @@ module.exports = (sequelize, DataType) => {
         clientModel.belongsTo(userModel, {
           as: 'creationByUser',
           foreignKey: {
+            allowNull: false,
             field: 'created_by',
             name: 'createdBy'
           }
@@ -51,6 +55,7 @@ module.exports = (sequelize, DataType) => {
         clientModel.belongsTo(userModel, {
           as: 'updatedByUser',
           foreignKey: {
+            allowNull: false,
             field: 'updated_by',
             name: 'updatedBy'
           }

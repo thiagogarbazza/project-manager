@@ -36,6 +36,7 @@ class ClientValidate extends AbstractValidate {
 
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
@@ -45,6 +46,7 @@ class ClientValidate extends AbstractValidate {
 
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
@@ -59,7 +61,8 @@ class ClientValidate extends AbstractValidate {
         if (result && result.id !== id) {
           return new BusinessCase('client.name.unique', 'Name must be unique');
         }
-        return null;
+
+        return Promise.resolve();
       });
   }
 
@@ -69,6 +72,7 @@ class ClientValidate extends AbstractValidate {
 
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 }

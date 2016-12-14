@@ -3,9 +3,9 @@
 const environment = require('../environment');
 const winston = require('winston');
 
-module.exports = () => {
-  const configuration = environment.logger;
+const configuration = environment.logger;
 
+module.exports = () => {
   winston.level = configuration.level;
   winston.colorize = configuration.colorize;
 };

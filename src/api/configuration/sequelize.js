@@ -1,8 +1,9 @@
 'use strict';
 
-const environment = require('../environment');
 const Sequelize = require('sequelize');
+const environment = require('../environment');
 const winston = require('winston');
+
 const configuration = environment.database;
 
 module.exports = app => {

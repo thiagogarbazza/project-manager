@@ -7,31 +7,31 @@ module.exports = app => {
   const projectService = new ProjectService(app);
 
   app.route('/service/project')
-    .get((request, res) => {
+    .get((request, response) => {
       const promise = projectService.find(request.query);
 
-      routeResolver.onFind(res, promise);
+      routeResolver.onFind(response, promise);
     })
-    .post((request, res) => {
+    .post((request, response) => {
       const promise = projectService.create(request.body, request.user);
 
-      routeResolver.onCreate(res, promise);
+      routeResolver.onCreate(response, promise);
     });
 
   app.route('/service/project/:uuid')
-    .get((request, res) => {
+    .get((request, response) => {
       const promise = projectService.findById(request.params.uuid);
 
-      routeResolver.onFindOne(res, promise);
+      routeResolver.onFindOne(response, promise);
     })
-    .put((request, res) => {
+    .put((request, response) => {
       const promise = projectService.update(request.params.uuid, request.body, request.user);
 
-      routeResolver.onUpdate(res, promise);
+      routeResolver.onUpdate(response, promise);
     })
-    .delete((request, res) => {
+    .delete((request, response) => {
       const promise = projectService.destroy(request.params.uuid);
 
-      routeResolver.onDelete(res, promise);
+      routeResolver.onDelete(response, promise);
     });
 };

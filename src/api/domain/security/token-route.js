@@ -7,9 +7,9 @@ module.exports = app => {
   const tokenService = new TokenService(app);
 
   app.route('/service/security/token')
-    .post((req, res) => {
-      tokenService.generate(req.body)
-        .then(result => res.json(result))
-        .catch(error => res.status(HttpStatus.UNAUTHORIZED).json({message: error.message}));
+    .post((request, response) => {
+      tokenService.generate(request.body)
+        .then(result => response.json(result))
+        .catch(error => response.status(HttpStatus.UNAUTHORIZED).json({message: error.message}));
     });
 };

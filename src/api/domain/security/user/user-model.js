@@ -2,6 +2,9 @@
 
 const bcrypt = require('bcryptjs');
 
+const EMAIL_MAXLENGTH = 250;
+const NAME_MAXLENGTH = 100;
+
 module.exports = (sequelize, DataType) => {
   const definition = {
     avatar: {
@@ -9,7 +12,7 @@ module.exports = (sequelize, DataType) => {
     },
     email: {
       allowNull: false,
-      type: DataType.STRING(250),
+      type: DataType.STRING(EMAIL_MAXLENGTH),
       unique: true
     },
     id: {
@@ -21,7 +24,7 @@ module.exports = (sequelize, DataType) => {
     },
     name: {
       allowNull: false,
-      type: DataType.STRING(100)
+      type: DataType.STRING(NAME_MAXLENGTH)
     },
     password: {
       allowNull: false,

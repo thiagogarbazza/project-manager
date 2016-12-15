@@ -7,22 +7,26 @@ module.exports = app => {
   const userService = new UserService(app);
 
   app.route('/service/user')
-    .get((req, res) => {
-      const promise = userService.find(req.query);
-      routeResolver.onFind(res, promise);
+    .get((request, response) => {
+      const promise = userService.find(request.query);
+
+      routeResolver.onFind(response, promise);
     })
-    .post((req, res) => {
-      const promise = userService.create(req.body);
-      routeResolver.onCreate(res, promise);
+    .post((request, response) => {
+      const promise = userService.create(request.body);
+
+      routeResolver.onCreate(response, promise);
     });
 
   app.route('/service/user/:uuid')
-    .get((req, res) => {
-      const promise = userService.findById(req.params.uuid);
-      routeResolver.onFindOne(res, promise);
+    .get((request, response) => {
+      const promise = userService.findById(request.params.uuid);
+
+      routeResolver.onFindOne(response, promise);
     })
-    .put((req, res) => {
-      const promise = userService.update(req.params.uuid, req.body);
-      routeResolver.onUpdate(res, promise);
-    })
+    .put((request, response) => {
+      const promise = userService.update(request.params.uuid, request.body);
+
+      routeResolver.onUpdate(response, promise);
+    });
 };

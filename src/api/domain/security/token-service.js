@@ -1,8 +1,8 @@
 'use strict';
 
+const UserService = require('./user/user-service');
 const environment = require('../../environment');
 const jwt = require('jwt-simple');
-const UserService = require('./user/user-service');
 
 class TokenService {
   constructor(app) {
@@ -20,6 +20,7 @@ class TokenService {
         if (user && user.isPassword(user.password, password)) {
           return this.createToken(user);
         }
+
         return Promise.reject(new Error('Email and password were not recognized'));
       });
   }

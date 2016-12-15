@@ -1,10 +1,15 @@
 'use strict';
 
+const DESCRIPTION_MAXLENGTH = 500;
+const COLOR_MAXLENGTH = 20;
+const ICON_MAXLENGTH = 20;
+const NAME_MAXLENGTH = 100;
+
 module.exports = (sequelize, DataType) => {
   const definition = {
     color: {
       allowNull: true,
-      type: DataType.STRING(20)
+      type: DataType.STRING(COLOR_MAXLENGTH)
     },
     createdAt: {
       allowNull: false,
@@ -18,11 +23,11 @@ module.exports = (sequelize, DataType) => {
     },
     description: {
       allowNull: true,
-      type: DataType.STRING(500)
+      type: DataType.STRING(DESCRIPTION_MAXLENGTH)
     },
     icon: {
       allowNull: true,
-      type: DataType.STRING(20)
+      type: DataType.STRING(ICON_MAXLENGTH)
     },
     id: {
       allowNull: false,
@@ -33,7 +38,7 @@ module.exports = (sequelize, DataType) => {
     },
     name: {
       allowNull: false,
-      type: DataType.STRING(50)
+      type: DataType.STRING(NAME_MAXLENGTH)
     },
     order: {
       allowNull: false,
@@ -47,40 +52,40 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options = {
-    classMethods: {
-      associate: domain => {
-        const workItemSeverityModel = domain.workItem.severity.WorkItemSeverityModel;
-        const projectModel = domain.project.ProjectModel;
-        const userModel = domain.security.user.UserModel;
-
-        workItemSeverityModel.belongsTo(projectModel, {
-          as: 'project',
-          foreignKey: {
-            field: 'project_id',
-            name: 'projectId'
-          }
-        });
-
-        workItemSeverityModel.belongsTo(userModel, {
-          as: 'creationByUser',
-          foreignKey: {
-            field: 'created_by',
-            name: 'createdBy'
-          }
-        });
-
-        workItemSeverityModel.belongsTo(userModel, {
-          as: 'updatedByUser',
-          foreignKey: {
-            field: 'updated_by',
-            name: 'updatedBy'
-          }
-        });
-      }
-    },
+    classMethods: {associate},
     schema: 'work_item',
     tableName: 'tbl_work_item_severity'
   };
 
   return sequelize.define('WorkItemSeverityModel', definition, options);
 };
+
+function associate(domain) {
+  const workItemSeverityModel = domain.workItem.severity.WorkItemSeverityModel;
+  const projectModel = domain.project.ProjectModel;
+  const userModel = domain.security.user.UserModel;
+
+  workItemSeverityModel.belongsTo(projectModel, {
+    as: 'project',
+    foreignKey: {
+      field: 'project_id',
+      name: 'projectId'
+    }
+  });
+
+  workItemSeverityModel.belongsTo(userModel, {
+    as: 'creationByUser',
+    foreignKey: {
+      field: 'created_by',
+      name: 'createdBy'
+    }
+  });
+
+  workItemSeverityModel.belongsTo(userModel, {
+    as: 'updatedByUser',
+    foreignKey: {
+      field: 'updated_by',
+      name: 'updatedBy'
+    }
+  });
+}

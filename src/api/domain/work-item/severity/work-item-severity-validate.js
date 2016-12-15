@@ -38,32 +38,40 @@ class WorkItemSeverityValidate extends AbstractValidate {
   colorMustHaveMaximum20Characters({color}) {
     if (color && color.length > COLOR_MAXLENGTH) {
       const businessCase = new BusinessCase('workItemSeverity.color.maxlength', 'Color must have a maximum of 20 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   descriptionMustHaveMaximum500Characters({description}) {
     if (description && description.length > NAME_MAXLENGTH) {
       const businessCase = new BusinessCase('workItemSeverity.description.maxlength', 'Description must have a maximum of 500 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   iconMustHaveMaximum20Characters({icon}) {
     if (icon && icon.length > ICON_MAXLENGTH) {
       const businessCase = new BusinessCase('workItemSeverity.icon.maxlength', 'Icon must have a maximum of 20 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   nameIsRequired({name}) {
     if (!trim(name)) {
       const businessCase = new BusinessCase('workItemSeverity.name.required', 'Name is required');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
@@ -79,26 +87,30 @@ class WorkItemSeverityValidate extends AbstractValidate {
     return this.workItemSeverityModel.findOne(quering)
       .then(result => {
         if (result && result.id !== id) {
-          const businessCase = new BusinessCase('workItemSeverity.name.unique', 'Name must be unique');
-          return Promise.resolve(businessCase);
+          return new BusinessCase('workItemSeverity.name.unique', 'Name must be unique');
         }
-        return Promise.resolve();
+
+        return null;
       });
   }
 
   nameMustHaveMaximum50Characters({name}) {
     if (name && name.length > NAME_MAXLENGTH) {
       const businessCase = new BusinessCase('workItemSeverity.name.maxlength', 'Name must have a maximum of 50 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   projectIsRequired({projectId}) {
     if (!trim(projectId)) {
       const businessCase = new BusinessCase('workItemSeverity.project.required', 'Project is required');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 }

@@ -3,7 +3,9 @@
 const {AbstractValidate, BusinessCase} = require('business-error');
 const {trim} = require('lodash');
 
+const DESCRIPTION_MAXLENGTH = 500;
 const COLOR_MAXLENGTH = 20;
+const KEY_MAXLENGTH = 20;
 const NAME_MAXLENGTH = 100;
 
 class ProjectValidate extends AbstractValidate {
@@ -39,32 +41,40 @@ class ProjectValidate extends AbstractValidate {
   colorMustHaveMaximum20Characters({color}) {
     if (color && color.length > COLOR_MAXLENGTH) {
       const businessCase = new BusinessCase('project.color.maxlength', 'Color must have a maximum of 20 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   descriptionMustHaveMaximum500Characters({description}) {
-    if (description && description.length > NAME_MAXLENGTH) {
+    if (description && description.length > DESCRIPTION_MAXLENGTH) {
       const businessCase = new BusinessCase('project.description.maxlength', 'Description must have a maximum of 500 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   keyIsRequired({key}) {
     if (!trim(key)) {
       const businessCase = new BusinessCase('project.key.required', 'Key is required');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   keyMustHaveMaximum20Characters({key}) {
-    if (key && key.length > NAME_MAXLENGTH) {
+    if (key && key.length > KEY_MAXLENGTH) {
       const businessCase = new BusinessCase('project.key.maxlength', 'Key must have a maximum of 20 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
@@ -77,9 +87,9 @@ class ProjectValidate extends AbstractValidate {
     return this.projectModel.findOne(quering)
       .then(result => {
         if (result && result.id !== id) {
-          const businessCase = new BusinessCase('project.key.unique', 'Key must be unique');
-          return Promise.resolve(businessCase);
+          return new BusinessCase('project.key.unique', 'Key must be unique');
         }
+
         return Promise.resolve();
       });
   }
@@ -87,16 +97,20 @@ class ProjectValidate extends AbstractValidate {
   nameIsRequired({name}) {
     if (!trim(name)) {
       const businessCase = new BusinessCase('project.name.required', 'Name is required');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   nameMustHaveMaximum100Characters({name}) {
     if (name && name.length > NAME_MAXLENGTH) {
       const businessCase = new BusinessCase('project.name.maxlength', 'Name must have a maximum of 100 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 }

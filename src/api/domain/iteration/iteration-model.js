@@ -1,5 +1,7 @@
 'use strict';
 
+const NAME_MAXLENGTH = 100;
+
 module.exports = (sequelize, DataType) => {
   const definition = {
     createdAt: {
@@ -20,7 +22,7 @@ module.exports = (sequelize, DataType) => {
     },
     name: {
       allowNull: false,
-      type: DataType.STRING(100)
+      type: DataType.STRING(NAME_MAXLENGTH)
     },
     start: {
       allowNull: false,
@@ -38,48 +40,48 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options = {
-    classMethods: {
-      associate: domain => {
-        const iterationModel = domain.iteration.IterationModel;
-        const projectModel = domain.project.ProjectModel;
-        const userModel = domain.security.user.UserModel;
-
-        iterationModel.belongsTo(iterationModel, {
-          as: 'parent',
-          foreignKey: {
-            field: 'parent_id',
-            name: 'parentId'
-          }
-        });
-
-        iterationModel.belongsTo(projectModel, {
-          as: 'project',
-          foreignKey: {
-            field: 'project_id',
-            name: 'projectId'
-          }
-        });
-
-        iterationModel.belongsTo(userModel, {
-          as: 'creationByUser',
-          foreignKey: {
-            field: 'created_by',
-            name: 'createdBy'
-          }
-        });
-
-        iterationModel.belongsTo(userModel, {
-          as: 'updatedByUser',
-          foreignKey: {
-            field: 'updated_by',
-            name: 'updatedBy'
-          }
-        });
-      }
-    },
+    classMethods: {associate},
     schema: 'iteration',
     tableName: 'tbl_iteration'
   };
 
   return sequelize.define('IterationModel', definition, options);
 };
+
+function associate(domain) {
+  const iterationModel = domain.iteration.IterationModel;
+  const projectModel = domain.project.ProjectModel;
+  const userModel = domain.security.user.UserModel;
+
+  iterationModel.belongsTo(iterationModel, {
+    as: 'parent',
+    foreignKey: {
+      field: 'parent_id',
+      name: 'parentId'
+    }
+  });
+
+  iterationModel.belongsTo(projectModel, {
+    as: 'project',
+    foreignKey: {
+      field: 'project_id',
+      name: 'projectId'
+    }
+  });
+
+  iterationModel.belongsTo(userModel, {
+    as: 'creationByUser',
+    foreignKey: {
+      field: 'created_by',
+      name: 'createdBy'
+    }
+  });
+
+  iterationModel.belongsTo(userModel, {
+    as: 'updatedByUser',
+    foreignKey: {
+      field: 'updated_by',
+      name: 'updatedBy'
+    }
+  });
+}

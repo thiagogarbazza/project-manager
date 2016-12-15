@@ -1,5 +1,7 @@
 'use strict';
 
+const NAME_MAXLENGTH = 100;
+
 module.exports = (sequelize, DataType) => {
   const definition = {
     content: {
@@ -20,7 +22,7 @@ module.exports = (sequelize, DataType) => {
     },
     name: {
       allowNull: false,
-      type: DataType.STRING(100)
+      type: DataType.STRING(NAME_MAXLENGTH)
     },
     updatedAt: {
       allowNull: false,
@@ -30,40 +32,40 @@ module.exports = (sequelize, DataType) => {
   };
 
   const options = {
-    classMethods: {
-      associate: domain => {
-        const documentModel = domain.document.DocumentModel;
-        const projectModel = domain.project.ProjectModel;
-        const userModel = domain.security.user.UserModel;
-
-        documentModel.belongsTo(projectModel, {
-          as: 'project',
-          foreignKey: {
-            field: 'project_id',
-            name: 'projectId'
-          }
-        });
-
-        documentModel.belongsTo(userModel, {
-          as: 'creationByUser',
-          foreignKey: {
-            field: 'created_by',
-            name: 'createdBy'
-          }
-        });
-
-        documentModel.belongsTo(userModel, {
-          as: 'updatedByUser',
-          foreignKey: {
-            field: 'updated_by',
-            name: 'updatedBy'
-          }
-        });
-      }
-    },
+    classMethods: {associate},
     schema: 'document',
     tableName: 'tbl_document'
   };
 
   return sequelize.define('DocumentModel', definition, options);
 };
+
+function associate(domain) {
+  const documentModel = domain.document.DocumentModel;
+  const projectModel = domain.project.ProjectModel;
+  const userModel = domain.security.user.UserModel;
+
+  documentModel.belongsTo(projectModel, {
+    as: 'project',
+    foreignKey: {
+      field: 'project_id',
+      name: 'projectId'
+    }
+  });
+
+  documentModel.belongsTo(userModel, {
+    as: 'creationByUser',
+    foreignKey: {
+      field: 'created_by',
+      name: 'createdBy'
+    }
+  });
+
+  documentModel.belongsTo(userModel, {
+    as: 'updatedByUser',
+    foreignKey: {
+      field: 'updated_by',
+      name: 'updatedBy'
+    }
+  });
+}

@@ -7,26 +7,31 @@ module.exports = app => {
   const documentService = new DocumentService(app);
 
   app.route('/service/document')
-    .get((req, res) => {
-      const promise = documentService.find(req.query);
-      routeResolver.onFind(res, promise);
+    .get((request, response) => {
+      const promise = documentService.find(request.query);
+
+      routeResolver.onFind(response, promise);
     })
-    .post((req, res) => {
-      const promise = documentService.create(req.body, req.user);
-      routeResolver.onCreate(res, promise);
+    .post((request, response) => {
+      const promise = documentService.create(request.body, request.user);
+
+      routeResolver.onCreate(response, promise);
     });
 
   app.route('/service/document/:uuid')
-    .get((req, res) => {
-      const promise = documentService.findById(req.params.uuid);
-      routeResolver.onFindOne(res, promise);
+    .get((request, response) => {
+      const promise = documentService.findById(request.params.uuid);
+
+      routeResolver.onFindOne(response, promise);
     })
-    .put((req, res) => {
-      const promise = documentService.update(req.params.uuid, req.body, req.user);
-      routeResolver.onUpdate(res, promise);
+    .put((request, response) => {
+      const promise = documentService.update(request.params.uuid, request.body, request.user);
+
+      routeResolver.onUpdate(response, promise);
     })
-    .delete((req, res) => {
-      const promise = documentService.destroy(req.params.uuid);
-      routeResolver.onDelete(res, promise);
+    .delete((request, response) => {
+      const promise = documentService.destroy(request.params.uuid);
+
+      routeResolver.onDelete(response, promise);
     });
 };

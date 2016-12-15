@@ -32,8 +32,10 @@ class DocumentValidate extends AbstractValidate {
   nameIsRequired({name}) {
     if (!trim(name)) {
       const businessCase = new BusinessCase('document.name.required', 'Name is required');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
@@ -49,26 +51,30 @@ class DocumentValidate extends AbstractValidate {
     return this.documentModel.findOne(quering)
       .then(result => {
         if (result && result.id !== id) {
-          const businessCase = new BusinessCase('document.name.unique', 'Name must be unique');
-          return Promise.resolve(businessCase);
+          return new BusinessCase('document.name.unique', 'Name must be unique');
         }
-        return Promise.resolve();
+
+        return null;
       });
   }
 
   nameMustHaveMaximum100Characters({name}) {
     if (name && name.length > NAME_MAXLENGTH) {
       const businessCase = new BusinessCase('document.name.maxlength', 'Name must have a maximum of 100 characters');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 
   projectIsRequired({projectId}) {
     if (!trim(projectId)) {
       const businessCase = new BusinessCase('document.project.required', 'Project is required');
+
       return Promise.resolve(businessCase);
     }
+
     return Promise.resolve();
   }
 }

@@ -11,6 +11,7 @@ const GLOB_SETTINGS = {realpath: true};
 
 module.exports = app => {
   const DATABASE_FILES = glob.sync(DATABASE_FILES_PATTERN, GLOB_SETTINGS);
+
   return readFile(DATABASE_FILES);
 
   function readFile(files) {
@@ -19,8 +20,10 @@ module.exports = app => {
     }
 
     const file = files.shift();
+
     winston.debug('loading database file:', file);
     const fileData = yaml.load(file);
+
     return readModel(fileData).then(() => readFile(files));
   }
 
@@ -30,8 +33,10 @@ module.exports = app => {
     }
 
     const item = models.shift();
+
     winston.debug('## model:', item.model);
     const Model = dottie.get(app.domain, item.model);
+
     return Model.bulkCreate(item.data).then(() => readModel(models));
   }
 };

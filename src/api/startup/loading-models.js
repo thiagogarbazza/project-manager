@@ -18,11 +18,10 @@ module.exports = app => {
     glob.sync(MODEL_FILES, GLOB_SETTINGS)
       .forEach(modelFile => {
         const Model = sequelize.import(modelFile);
-
         const packagePath = extractPackagePath(modelFile);
         const modelPath = `${packagePath}.${Model.name}`;
-        dottie.set(app.domain, modelPath, Model);
 
+        dottie.set(app.domain, modelPath, Model);
         winston.info('Loading the model:', modelPath);
       });
 

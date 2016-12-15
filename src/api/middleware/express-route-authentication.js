@@ -13,5 +13,6 @@ function scapeTokenRoute(req, res, next) {
   if (validator.matches(req.url, '^/service/security/token$', 'ig')) {
     return next('route');
   }
+
   return next();
 }

@@ -6,6 +6,6 @@ module.exports = app => {
   app.use(BusinessErrorHandler);
 };
 
-function BusinessErrorHandler(err, req, res, next) {
-  routeResolver.onError(res, err);
+function BusinessErrorHandler(error, request, response) {
+  routeResolver.onError(response, error);
 }

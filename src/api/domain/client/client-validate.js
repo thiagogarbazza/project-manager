@@ -62,7 +62,7 @@ class ClientValidate extends AbstractValidate {
           return new BusinessCase('client.name.unique', 'Name must be unique');
         }
 
-        return Promise.resolve();
+        return null;
       });
   }
 

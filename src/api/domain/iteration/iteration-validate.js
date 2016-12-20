@@ -1,10 +1,9 @@
 'use strict';
 
 const {AbstractValidate, BusinessCase} = require('business-error');
+const {NAME_MAXLENGTH} = require('./iteration-model');
 const {trim} = require('lodash');
 const moment = require('moment');
-
-const NAME_MAXLENGTH = 100;
 
 class IterationValidate extends AbstractValidate {
   constructor(app) {

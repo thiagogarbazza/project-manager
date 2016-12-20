@@ -1,12 +1,8 @@
 'use strict';
 
 const {AbstractValidate, BusinessCase} = require('business-error');
+const {DESCRIPTION_MAXLENGTH, COLOR_MAXLENGTH, KEY_MAXLENGTH, NAME_MAXLENGTH} = require('./project-model');
 const {trim} = require('lodash');
-
-const DESCRIPTION_MAXLENGTH = 500;
-const COLOR_MAXLENGTH = 20;
-const KEY_MAXLENGTH = 20;
-const NAME_MAXLENGTH = 100;
 
 class ProjectValidate extends AbstractValidate {
   constructor(app) {

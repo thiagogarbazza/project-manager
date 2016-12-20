@@ -1,9 +1,8 @@
 'use strict';
 
 const {AbstractValidate, BusinessCase} = require('business-error');
+const {NAME_MAXLENGTH} = require('./document-model');
 const {trim} = require('lodash');
-
-const NAME_MAXLENGTH = 100;
 
 class DocumentValidate extends AbstractValidate {
   constructor(app) {

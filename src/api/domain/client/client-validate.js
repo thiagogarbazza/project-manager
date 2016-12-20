@@ -1,10 +1,8 @@
 'use strict';
 
 const {AbstractValidate, BusinessCase} = require('business-error');
+const {COLOR_MAXLENGTH, NAME_MAXLENGTH} = require('./client-model');
 const {trim} = require('lodash');
-
-const COLOR_MAXLENGTH = 20;
-const NAME_MAXLENGTH = 100;
 
 class ClientValidate extends AbstractValidate {
   constructor(app) {

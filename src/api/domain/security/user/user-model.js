@@ -58,3 +58,6 @@ module.exports = (sequelize, DataType) => {
 
   return sequelize.define('UserModel', definition, options);
 };
+
+module.exports.EMAIL_MAXLENGTH = EMAIL_MAXLENGTH;
+module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;

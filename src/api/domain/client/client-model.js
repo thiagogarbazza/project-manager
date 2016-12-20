@@ -68,3 +68,6 @@ function associate(domain) {
     }
   });
 }
+
+module.exports.COLOR_MAXLENGTH = COLOR_MAXLENGTH;
+module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;

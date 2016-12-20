@@ -85,3 +85,5 @@ function associate(domain) {
     }
   });
 }
+
+module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;

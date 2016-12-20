@@ -1,11 +1,10 @@
 'use strict';
 
 const {AbstractValidate, BusinessCase} = require('business-error');
-const {trim} = require('lodash');
+const {EMAIL_MAXLENGTH, NAME_MAXLENGTH} = require('./user-model');
 const {isEmail} = require('validator');
+const {trim} = require('lodash');
 
-const EMAIL_MAXLENGTH = 250;
-const NAME_MAXLENGTH = 100;
 const PASSWORD_MINLENGTH = 5;
 
 class UserValidate extends AbstractValidate {

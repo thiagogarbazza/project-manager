@@ -1,5 +1,6 @@
 'use strict';
 
+const JSON_SPACES = 2;
 const SERVER_PORT = 3000;
 
 module.exports = {
@@ -32,7 +33,7 @@ module.exports = {
   },
 
   server: {
-    jsonSpaces: 2,
+    jsonSpaces: JSON_SPACES,
     port: SERVER_PORT,
     syncDatabase: true,
     webDir: 'src/web'

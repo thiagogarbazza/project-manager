@@ -3,6 +3,7 @@
 const {AbstractValidate, BusinessCase} = require('business-error');
 const {COLOR_MAXLENGTH, NAME_MAXLENGTH} = require('./client-model');
 const {trim} = require('lodash');
+const isColor = require('is-color');
 
 class ClientValidate extends AbstractValidate {
   constructor(app) {
@@ -12,6 +13,7 @@ class ClientValidate extends AbstractValidate {
 
   onCreate(client) {
     return this.resolveValidationPromises(
+      this.colorMustBeValid(client),
       this.colorMustHaveMaximum30Characters(client),
       this.nameIsRequired(client),
       this.nameMustBeUnique(client),
@@ -21,11 +23,22 @@ class ClientValidate extends AbstractValidate {
 
   onUpdate(client) {
     return this.resolveValidationPromises(
+      this.colorMustBeValid(client),
       this.colorMustHaveMaximum30Characters(client),
       this.nameIsRequired(client),
       this.nameMustBeUnique(client),
       this.nameMustHaveMaximum100Characters(client)
     );
+  }
+
+  colorMustBeValid({color}) {
+    if (color && !isColor(color)) {
+      const businessCase = new BusinessCase('client.color.iscolor', 'Color must be valid');
+
+      return Promise.resolve(businessCase);
+    }
+
+    return Promise.resolve();
   }
 
   colorMustHaveMaximum30Characters({color}) {

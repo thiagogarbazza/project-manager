@@ -24,6 +24,17 @@ describe('api domain client validate', () => {
     expect(clientValidate).to.not.be.undefined;
   });
 
+  it('color shold be valid', done => {
+    CLIENT.color = properties.INVALID_COLOR;
+    clientValidate.colorMustBeValid(CLIENT)
+      .then(result => {
+        expect(result.code).to.equal('client.color.iscolor');
+        expect(result.message).to.equal('Color must be valid');
+        return done();
+      })
+      .catch(done);
+  });
+
   it('color should be maximum 30 characters', done => {
     CLIENT.color = properties.BIG_TEXT;
 

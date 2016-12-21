@@ -12,7 +12,7 @@ class ClientValidate extends AbstractValidate {
 
   onCreate(client) {
     return this.resolveValidationPromises(
-      this.colorMustHaveMaximum20Characters(client),
+      this.colorMustHaveMaximum30Characters(client),
       this.nameIsRequired(client),
       this.nameMustBeUnique(client),
       this.nameMustHaveMaximum100Characters(client)
@@ -21,16 +21,16 @@ class ClientValidate extends AbstractValidate {
 
   onUpdate(client) {
     return this.resolveValidationPromises(
-      this.colorMustHaveMaximum20Characters(client),
+      this.colorMustHaveMaximum30Characters(client),
       this.nameIsRequired(client),
       this.nameMustBeUnique(client),
       this.nameMustHaveMaximum100Characters(client)
     );
   }
 
-  colorMustHaveMaximum20Characters({color}) {
+  colorMustHaveMaximum30Characters({color}) {
     if (color && color.length > COLOR_MAXLENGTH) {
-      const businessCase = new BusinessCase('client.color.maxlength', 'Color must have a maximum of 20 characters');
+      const businessCase = new BusinessCase('client.color.maxlength', 'Color must have a maximum of 30 characters');
 
       return Promise.resolve(businessCase);
     }

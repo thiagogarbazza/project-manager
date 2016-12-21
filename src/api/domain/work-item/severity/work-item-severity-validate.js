@@ -1,11 +1,8 @@
 'use strict';
 
 const {AbstractValidate, BusinessCase} = require('business-error');
+const {DESCRIPTION_MAXLENGTH, COLOR_MAXLENGTH, ICON_MAXLENGTH, NAME_MAXLENGTH} = require('./work-item-severity-model');
 const {trim} = require('lodash');
-
-const COLOR_MAXLENGTH = 20;
-const ICON_MAXLENGTH = 20;
-const NAME_MAXLENGTH = 50;
 
 class WorkItemSeverityValidate extends AbstractValidate {
   constructor(app) {
@@ -15,7 +12,7 @@ class WorkItemSeverityValidate extends AbstractValidate {
 
   onCreate(project) {
     return this.resolveValidationPromises(
-      this.colorMustHaveMaximum20Characters(project),
+      this.colorMustHaveMaximum30Characters(project),
       this.descriptionMustHaveMaximum500Characters(project),
       this.iconMustHaveMaximum20Characters(project),
       this.nameIsRequired(project),
@@ -26,7 +23,7 @@ class WorkItemSeverityValidate extends AbstractValidate {
 
   onUpdate(project) {
     return this.resolveValidationPromises(
-      this.colorMustHaveMaximum20Characters(project),
+      this.colorMustHaveMaximum30Characters(project),
       this.descriptionMustHaveMaximum500Characters(project),
       this.iconMustHaveMaximum20Characters(project),
       this.nameIsRequired(project),
@@ -35,9 +32,9 @@ class WorkItemSeverityValidate extends AbstractValidate {
     );
   }
 
-  colorMustHaveMaximum20Characters({color}) {
+  colorMustHaveMaximum30Characters({color}) {
     if (color && color.length > COLOR_MAXLENGTH) {
-      const businessCase = new BusinessCase('workItemSeverity.color.maxlength', 'Color must have a maximum of 20 characters');
+      const businessCase = new BusinessCase('workItemSeverity.color.maxlength', 'Color must have a maximum of 30 characters');
 
       return Promise.resolve(businessCase);
     }
@@ -46,7 +43,7 @@ class WorkItemSeverityValidate extends AbstractValidate {
   }
 
   descriptionMustHaveMaximum500Characters({description}) {
-    if (description && description.length > NAME_MAXLENGTH) {
+    if (description && description.length > DESCRIPTION_MAXLENGTH) {
       const businessCase = new BusinessCase('workItemSeverity.description.maxlength', 'Description must have a maximum of 500 characters');
 
       return Promise.resolve(businessCase);

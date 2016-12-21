@@ -1,7 +1,7 @@
 'use strict';
 
 const DESCRIPTION_MAXLENGTH = 500;
-const COLOR_MAXLENGTH = 20;
+const COLOR_MAXLENGTH = 30;
 const KEY_MAXLENGTH = 20;
 const NAME_MAXLENGTH = 100;
 

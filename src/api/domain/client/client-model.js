@@ -1,6 +1,6 @@
 'use strict';
 
-const COLOR_MAXLENGTH = 20;
+const COLOR_MAXLENGTH = 30;
 const NAME_MAXLENGTH = 100;
 
 module.exports = (sequelize, DataType) => {

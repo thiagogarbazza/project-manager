@@ -27,13 +27,13 @@ describe('api domain work-item severity validate', () => {
     expect(workItemSeverityValidate).to.not.be.undefined;
   });
 
-  it('color should be maximum 20 characters', done => {
+  it('color should be maximum 30 characters', done => {
     WORK_ITEM_SEVERITY.color = properties.BIG_TEXT;
 
-    workItemSeverityValidate.colorMustHaveMaximum20Characters(WORK_ITEM_SEVERITY)
+    workItemSeverityValidate.colorMustHaveMaximum30Characters(WORK_ITEM_SEVERITY)
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.color.maxlength');
-        expect(result.message).to.equal('Color must have a maximum of 20 characters');
+        expect(result.message).to.equal('Color must have a maximum of 30 characters');
         return done();
       })
       .catch(done);

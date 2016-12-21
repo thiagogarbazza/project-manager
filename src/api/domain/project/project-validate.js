@@ -12,7 +12,7 @@ class ProjectValidate extends AbstractValidate {
 
   onCreate(project) {
     return this.resolveValidationPromises(
-      this.colorMustHaveMaximum20Characters(project),
+      this.colorMustHaveMaximum30Characters(project),
       this.descriptionMustHaveMaximum500Characters(project),
       this.keyIsRequired(project),
       this.keyMustBeUnique(project),
@@ -24,7 +24,7 @@ class ProjectValidate extends AbstractValidate {
 
   onUpdate(project) {
     return this.resolveValidationPromises(
-      this.colorMustHaveMaximum20Characters(project),
+      this.colorMustHaveMaximum30Characters(project),
       this.descriptionMustHaveMaximum500Characters(project),
       this.keyIsRequired(project),
       this.keyMustBeUnique(project),
@@ -34,9 +34,9 @@ class ProjectValidate extends AbstractValidate {
     );
   }
 
-  colorMustHaveMaximum20Characters({color}) {
+  colorMustHaveMaximum30Characters({color}) {
     if (color && color.length > COLOR_MAXLENGTH) {
-      const businessCase = new BusinessCase('project.color.maxlength', 'Color must have a maximum of 20 characters');
+      const businessCase = new BusinessCase('project.color.maxlength', 'Color must have a maximum of 30 characters');
 
       return Promise.resolve(businessCase);
     }

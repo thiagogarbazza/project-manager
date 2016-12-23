@@ -1,0 +1,25 @@
+node_js:
+  - "6"
+language: node_js
+
+build:
+  pre_ci:
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+
+  ci:
+    - npm install
+    - npm test
+
+  cache: true
+  cache_dir_list:
+    - $SHIPPABLE_BUILD_DIR/node_modules
+    - $SHIPPABLE_BUILD_DIR/src/web/libs
+    - $SHIPPABLE_BUILD_DIR/.git
+
+notifications:
+  email:
+   recipients:
+    - thiagogarbazza@gmail.com
+   on_success: change
+   on_failure: always

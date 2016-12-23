@@ -21,3 +21,5 @@ src/web/libs
 src/web/styles/*.css
 
 *.idea
+coverage/
+shippable/

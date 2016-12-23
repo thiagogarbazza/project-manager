@@ -20,6 +20,6 @@ const tasks = require('require-dir')('./build-tasks');
 //
 // gulp.task('qa', ['eslint', 'htmlhint']);
 
-gulp.task('verify', cb => runSequence('api-test-unit', cb));
+gulp.task('verify', cb => runSequence('coverage-before', 'api-test-unit', 'coverage-after', cb));
 
 gulp.task('make', cb => runSequence('clean', 'build-css', cb));

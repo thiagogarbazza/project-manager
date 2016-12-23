@@ -20,6 +20,3 @@ gulp.task('coverage-after', () => gulp
   .src(['src/api-test/**/*spec.js'], {read: false})
   .pipe(istanbul.writeReports(OPTIONS_ISTANBUL))
 );
-
-const runSequence = require('run-sequence');
-gulp.task('MT', cb => runSequence('coverage-before', 'api-test-unit', 'coverage-after', cb));

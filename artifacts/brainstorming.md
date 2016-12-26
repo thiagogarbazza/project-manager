@@ -76,5 +76,21 @@ Work item Milestone
     - Nome
     - Cor
 
-https://issues.sonatype.org/secure/ShowConstantsHelp.jspa?decorator=popup#PriorityLevels
-https://confluence.atlassian.com/adminjiraserver071/defining-priority-field-values-802592398.html
+Text example:
+  https://confluence.sakaiproject.org/display/MGT/Sakai+Jira+Guidelines
+
+severity:
+  http://wiki.openbravo.com/wiki/QA_Processes/Defects_Severity_Priority
+  https://jira.atlassian.com/secure/ShowConstantsHelp.jspa?decorator=popup
+  https://issues.sonatype.org/secure/ShowConstantsHelp.jspa?decorator=popup#PriorityLevels
+  https://confluence.atlassian.com/adminjiraserver071/defining-priority-field-values-802592398.html
+
+priority
+  http://www.openoffice.org/qa/ooQAReloaded/Docs/QA-Reloaded-ITguide.html
+  http://ceph.com/resources/ceph-issue-tracker-issue-priorities/
+  http://darcs.net/BugTracker/PriorityStatus
+  https://wiki.eclipse.org/Eclipse/Bug_Tracking
+  https://docs.joomla.org/Bug_and_Issue_Tracker_Priority
+  http://stackoverflow.com/questions/306914/bug-tracker-priorities-and-policies
+  https://www.mindtools.com/pages/article/newHTE_91.htm
+  https://blogs.msdn.microsoft.com/willy-peter_schaub/2009/10/22/getting-your-priorities-right-p0-p1-p2/

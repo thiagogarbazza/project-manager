@@ -4,7 +4,7 @@
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Blocker
     order: 1
-    color: rgb(223, 81, 56)
+    color: rgb(255, 0, 0)
     icon: fa fa-ban
     default: false
     description: Blocks development and/or testing work, production could not run.

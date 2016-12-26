@@ -27,6 +27,18 @@ describe('api domain work-item severity validate', () => {
     expect(workItemSeverityValidate).to.not.be.undefined;
   });
 
+  it('color shold be valid', done => {
+    WORK_ITEM_SEVERITY.color = properties.INVALID_COLOR;
+
+    workItemSeverityValidate.colorMustBeValid(WORK_ITEM_SEVERITY)
+      .then(result => {
+        expect(result.code).to.equal('workItemSeverity.color.iscolor');
+        expect(result.message).to.equal('Color must be valid');
+        return done();
+      })
+      .catch(done);
+  });
+
   it('color should be maximum 30 characters', done => {
     WORK_ITEM_SEVERITY.color = properties.BIG_TEXT;
 

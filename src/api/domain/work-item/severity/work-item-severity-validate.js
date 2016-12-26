@@ -3,6 +3,7 @@
 const {AbstractValidate, BusinessCase} = require('business-error');
 const {DESCRIPTION_MAXLENGTH, COLOR_MAXLENGTH, ICON_MAXLENGTH, NAME_MAXLENGTH} = require('./work-item-severity-model');
 const {trim} = require('lodash');
+const isColor = require('is-color');
 
 class WorkItemSeverityValidate extends AbstractValidate {
   constructor(app) {
@@ -10,26 +11,38 @@ class WorkItemSeverityValidate extends AbstractValidate {
     this.workItemSeverityModel = app.domain.workItem.severity.WorkItemSeverityModel;
   }
 
-  onCreate(project) {
+  onCreate(workItemSeverity) {
     return this.resolveValidationPromises(
-      this.colorMustHaveMaximum30Characters(project),
-      this.descriptionMustHaveMaximum500Characters(project),
-      this.iconMustHaveMaximum20Characters(project),
-      this.nameIsRequired(project),
-      this.nameMustBeUnique(project),
-      this.nameMustHaveMaximum50Characters(project)
+      this.colorMustBeValid(workItemSeverity),
+      this.colorMustHaveMaximum30Characters(workItemSeverity),
+      this.descriptionMustHaveMaximum500Characters(workItemSeverity),
+      this.iconMustHaveMaximum20Characters(workItemSeverity),
+      this.nameIsRequired(workItemSeverity),
+      this.nameMustBeUnique(workItemSeverity),
+      this.nameMustHaveMaximum50Characters(workItemSeverity)
     );
   }
 
-  onUpdate(project) {
+  onUpdate(workItemSeverity) {
     return this.resolveValidationPromises(
-      this.colorMustHaveMaximum30Characters(project),
-      this.descriptionMustHaveMaximum500Characters(project),
-      this.iconMustHaveMaximum20Characters(project),
-      this.nameIsRequired(project),
-      this.nameMustBeUnique(project),
-      this.nameMustHaveMaximum50Characters(project)
+      this.colorMustBeValid(workItemSeverity),
+      this.colorMustHaveMaximum30Characters(workItemSeverity),
+      this.descriptionMustHaveMaximum500Characters(workItemSeverity),
+      this.iconMustHaveMaximum20Characters(workItemSeverity),
+      this.nameIsRequired(workItemSeverity),
+      this.nameMustBeUnique(workItemSeverity),
+      this.nameMustHaveMaximum50Characters(workItemSeverity)
     );
+  }
+
+  colorMustBeValid({color}) {
+    if (color && !isColor(color)) {
+      const businessCase = new BusinessCase('workItemSeverity.color.iscolor', 'Color must be valid');
+
+      return Promise.resolve(businessCase);
+    }
+
+    return Promise.resolve();
   }
 
   colorMustHaveMaximum30Characters({color}) {

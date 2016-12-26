@@ -4,7 +4,7 @@
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Blocker
     order: 1
-    color: red
+    color: rgb(223, 81, 56)
     icon: fa fa-ban
     default: false
     description: Blocks development and/or testing work, production could not run.
@@ -16,8 +16,8 @@
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Critical
     order: 2
-    color:
-    icon:
+    color: rgb(237, 78, 42)
+    icon: fa fa-angle-double-up
     default: false
     description: Crashes, loss of data, severe memory leak.
     createdBy: a3381700-d485-4648-8549-829c4b036005
@@ -28,8 +28,8 @@
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Major
     order: 3
-    color:
-    icon:
+    color: rgb(255, 206, 85)
+    icon: fa fa-angle-up
     default: false
     description: Major loss of function.
     createdBy: a3381700-d485-4648-8549-829c4b036005
@@ -40,8 +40,8 @@
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Minor
     order: 4
-    color: green
-    icon:
+    color: rgb(160, 212, 104)
+    icon: fa fa-angle-down
     default: true
     description: Minor loss of function, or other problem where easy workaround is present.
     createdBy: a3381700-d485-4648-8549-829c4b036005
@@ -52,8 +52,8 @@
     projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Trivial
     order: 5
-    color:
-    icon:
+    color: rgb(93, 178, 255)
+    icon: fa fa-angle-double-down
     default: false
     description: Cosmetic problem like misspelt words or misaligned text.
     createdBy: a3381700-d485-4648-8549-829c4b036005

@@ -1,0 +1,12 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": "restrict",
+  "globals": {
+
+  },
+  "rules": {
+
+  }
+}

@@ -2,7 +2,10 @@
 
 const NAME_MAXLENGTH = 100;
 
-module.exports = (sequelize, DataType) => {
+module.exports = IterationModel;
+module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;
+
+function IterationModel(sequelize, DataType) {
   const definition = {
     createdAt: {
       allowNull: false,
@@ -46,7 +49,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   return sequelize.define('IterationModel', definition, options);
-};
+}
 
 function associate(domain) {
   const iterationModel = domain.iteration.IterationModel;
@@ -85,5 +88,3 @@ function associate(domain) {
     }
   });
 }
-
-module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;

@@ -5,7 +5,13 @@ const COLOR_MAXLENGTH = 30;
 const KEY_MAXLENGTH = 20;
 const NAME_MAXLENGTH = 100;
 
-module.exports = (sequelize, DataType) => {
+module.exports = ProjectModel;
+module.exports.DESCRIPTION_MAXLENGTH = DESCRIPTION_MAXLENGTH;
+module.exports.COLOR_MAXLENGTH = COLOR_MAXLENGTH;
+module.exports.KEY_MAXLENGTH = KEY_MAXLENGTH;
+module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;
+
+function ProjectModel(sequelize, DataType) {
   const definition = {
     active: {
       allowNull: false,
@@ -54,7 +60,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   return sequelize.define('ProjectModel', definition, options);
-};
+}
 
 function associate(domain) {
   const clientModel = domain.client.ClientModel;
@@ -85,8 +91,3 @@ function associate(domain) {
     }
   });
 }
-
-module.exports.DESCRIPTION_MAXLENGTH = DESCRIPTION_MAXLENGTH;
-module.exports.COLOR_MAXLENGTH = COLOR_MAXLENGTH;
-module.exports.KEY_MAXLENGTH = KEY_MAXLENGTH;
-module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;

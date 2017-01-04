@@ -17,6 +17,7 @@ module.exports = {
     options: {
       define: {
         freezeTableName: true,
+        schemaDelimiter: '__',
         timestamps: false,
         underscored: false
       },

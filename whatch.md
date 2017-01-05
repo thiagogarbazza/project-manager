@@ -3,13 +3,14 @@
 
 https://www.mindmup.com/#m:g10BzrrP6CLqHXZRldnUWRZb0dyaTg
 
-
 https://github.com/bryanrsmith/eslint-plugin-sort-class-members
+
 ## examples
 https://waffle.io/
 https://toggl.com/
 http://runrun.it/
 https://www.yoms.org/
+http://www.creativebloq.com/software/best-project-management-71515632
 
 
 ## Continuous Integration

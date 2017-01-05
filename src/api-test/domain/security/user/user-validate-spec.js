@@ -31,6 +31,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.email.required');
         expect(result.message).to.equal('E-mail is required');
+
         return done();
       })
       .catch(done);
@@ -43,6 +44,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.email.valid');
         expect(result.message).to.equal('E-mail must be valid');
+
         return done();
       })
       .catch(done);
@@ -55,6 +57,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.email.maxlength');
         expect(result.message).to.equal('E-mail must have a maximum of 250 characters');
+
         return done();
       })
       .catch(done);
@@ -62,12 +65,14 @@ describe('api domain security user validate', () => {
 
   it('e-mail should be unique, a new and unique case', done => {
     const anotherUser = clone(USER);
+
     anotherUser.email = 'fake@gmail.com';
     APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith();
 
     userValidate.emailMustBeUnique(anotherUser)
-      .then(result => {
+      .then(() => {
         expect(APP.domain.security.user.UserModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -75,6 +80,7 @@ describe('api domain security user validate', () => {
 
   it('e-mail should be unique, a new and non unique case', done => {
     const anotherUser = clone(USER);
+
     delete anotherUser.id;
     APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith(USER);
 
@@ -82,6 +88,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.email.unique');
         expect(result.message).to.equal('E-mail must be unique');
+
         return done();
       })
       .catch(done);
@@ -89,11 +96,13 @@ describe('api domain security user validate', () => {
 
   it('e-mail should be unique, a update and unique case', done => {
     const anotherUser = clone(USER);
+
     APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith(USER);
 
     userValidate.emailMustBeUnique(anotherUser)
-      .then(result => {
+      .then(() => {
         expect(APP.domain.security.user.UserModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -101,6 +110,7 @@ describe('api domain security user validate', () => {
 
   it('e-mail should be unique, a update and non unique case', done => {
     const anotherUser = clone(USER);
+
     anotherUser.id = 'e218343f-8f9e-4b2b-bbf6-e862506b34da';
     APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith(USER);
 
@@ -108,6 +118,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.email.unique');
         expect(result.message).to.equal('E-mail must be unique');
+
         return done();
       })
       .catch(done);
@@ -120,6 +131,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.name.required');
         expect(result.message).to.equal('Name is required');
+
         return done();
       })
       .catch(done);
@@ -132,6 +144,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 100 characters');
+
         return done();
       })
       .catch(done);
@@ -144,6 +157,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.password.required');
         expect(result.message).to.equal('Password is required');
+
         return done();
       })
       .catch(done);
@@ -156,6 +170,7 @@ describe('api domain security user validate', () => {
       .then(result => {
         expect(result.code).to.equal('user.password.minlength');
         expect(result.message).to.equal('Password must have a minimum  of 5 characters');
+
         return done();
       })
       .catch(done);
@@ -174,16 +189,19 @@ describe('api domain security user validate', () => {
     });
 
     it('create a new invalid user', done => {
+      const expected2Erros = 2;
+
       delete USER.email;
       delete USER.name;
 
-       userValidate.onCreate(USER)
+      userValidate.onCreate(USER)
         .then(() => done('should be error'))
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(2);
+          expect(error.errors.length).to.equal(expected2Erros);
           expect(error.errors[0].code).to.equal('user.email.required');
           expect(error.errors[1].code).to.equal('user.name.required');
+
           return done();
         });
     });
@@ -191,7 +209,7 @@ describe('api domain security user validate', () => {
 
   describe('# onUpdate', () => {
     beforeEach(() => {
-       APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith();
+      APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith();
     });
 
     it('update a valid user', done => {
@@ -201,6 +219,8 @@ describe('api domain security user validate', () => {
     });
 
     it('update a invalid user', done => {
+      const expected2Erros = 2;
+
       delete USER.email;
       delete USER.name;
 
@@ -208,9 +228,10 @@ describe('api domain security user validate', () => {
         .then(() => done())
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(2);
+          expect(error.errors.length).to.equal(expected2Erros);
           expect(error.errors[0].code).to.equal('user.email.required');
           expect(error.errors[1].code).to.equal('user.name.required');
+
           return done();
         });
     });

@@ -31,6 +31,7 @@ describe('api domain document validate', () => {
       .then(result => {
         expect(result.code).to.equal('document.name.required');
         expect(result.message).to.equal('Name is required');
+
         return done();
       })
       .catch(done);
@@ -38,12 +39,14 @@ describe('api domain document validate', () => {
 
   it('name should be unique, Sending a new name', done => {
     const anotherDocument = clone(DOCUMENT);
+
     anotherDocument.name = 'Internal';
     APP.domain.document.DocumentModel.findOne = simpleMock.stub().resolveWith();
 
     documentValidate.nameMustBeUnique(anotherDocument)
       .then(() => {
         expect(APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -51,11 +54,13 @@ describe('api domain document validate', () => {
 
   it('name should be unique, Sending same name with equal ID', done => {
     const anotherDocument = clone(DOCUMENT);
+
     APP.domain.document.DocumentModel.findOne = simpleMock.stub().resolveWith(DOCUMENT);
 
     documentValidate.nameMustBeUnique(anotherDocument)
-      .then(result => {
+      .then(() => {
         expect(APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -63,14 +68,16 @@ describe('api domain document validate', () => {
 
   it('name should be unique, Sending same name with different ID´s', done => {
     const anotherDocument = clone(DOCUMENT);
+
     anotherDocument.id = '2103c936-6613-4479-975c-cd1a87fe1e41';
     APP.domain.document.DocumentModel.findOne = simpleMock.stub().resolveWith(DOCUMENT);
 
     documentValidate.nameMustBeUnique(anotherDocument)
       .then(result => {
-        expect( APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
+        expect(APP.domain.document.DocumentModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('document.name.unique');
         expect(result.message).to.equal('Name must be unique');
+
         return done();
       })
       .catch(done);
@@ -83,6 +90,7 @@ describe('api domain document validate', () => {
       .then(result => {
         expect(result.code).to.equal('document.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 100 characters');
+
         return done();
       })
       .catch(done);
@@ -95,6 +103,7 @@ describe('api domain document validate', () => {
       .then(result => {
         expect(result.code).to.equal('document.project.required');
         expect(result.message).to.equal('Project is required');
+
         return done();
       })
       .catch(done);
@@ -113,16 +122,19 @@ describe('api domain document validate', () => {
     });
 
     it('create a new invalid document', done => {
+      const expected2Erros = 2;
+
       delete DOCUMENT.name;
       delete DOCUMENT.projectId;
 
-       documentValidate.onCreate(DOCUMENT)
+      documentValidate.onCreate(DOCUMENT)
         .then(() => done('should be error'))
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(2);
+          expect(error.errors.length).to.equal(expected2Erros);
           expect(error.errors[0].code).to.equal('document.name.required');
           expect(error.errors[1].code).to.equal('document.project.required');
+
           return done();
         });
     });
@@ -130,7 +142,7 @@ describe('api domain document validate', () => {
 
   describe('# onUpdate', () => {
     beforeEach(() => {
-       APP.domain.document.DocumentModel.findOne = simpleMock.stub().resolveWith();
+      APP.domain.document.DocumentModel.findOne = simpleMock.stub().resolveWith();
     });
 
     it('update a valid document', done => {
@@ -140,6 +152,8 @@ describe('api domain document validate', () => {
     });
 
     it('update a invalid document', done => {
+      const expected2Erros = 2;
+
       delete DOCUMENT.name;
       delete DOCUMENT.projectId;
 
@@ -147,9 +161,10 @@ describe('api domain document validate', () => {
         .then(() => done())
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(2);
+          expect(error.errors.length).to.equal(expected2Erros);
           expect(error.errors[0].code).to.equal('document.name.required');
           expect(error.errors[1].code).to.equal('document.project.required');
+
           return done();
         });
     });

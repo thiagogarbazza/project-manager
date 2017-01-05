@@ -34,6 +34,7 @@ describe('api domain work-item severity validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.color.iscolor');
         expect(result.message).to.equal('Color must be valid');
+
         return done();
       })
       .catch(done);
@@ -46,6 +47,7 @@ describe('api domain work-item severity validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.color.maxlength');
         expect(result.message).to.equal('Color must have a maximum of 30 characters');
+
         return done();
       })
       .catch(done);
@@ -58,6 +60,7 @@ describe('api domain work-item severity validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.description.maxlength');
         expect(result.message).to.equal('Description must have a maximum of 500 characters');
+
         return done();
       })
       .catch(done);
@@ -70,6 +73,7 @@ describe('api domain work-item severity validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.icon.maxlength');
         expect(result.message).to.equal('Icon must have a maximum of 20 characters');
+
         return done();
       })
       .catch(done);
@@ -82,6 +86,7 @@ describe('api domain work-item severity validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.name.required');
         expect(result.message).to.equal('Name is required');
+
         return done();
       })
       .catch(done);
@@ -89,12 +94,14 @@ describe('api domain work-item severity validate', () => {
 
   it('name should be unique, Sending a new name', done => {
     const anotherWorkItemSeverity = clone(WORK_ITEM_SEVERITY);
+
     anotherWorkItemSeverity.name = 'Cosmetic';
     APP.domain.workItem.severity.WorkItemSeverityModel.findOne = simpleMock.stub().resolveWith();
 
     workItemSeverityValidate.nameMustBeUnique(anotherWorkItemSeverity)
       .then(() => {
         expect(APP.domain.workItem.severity.WorkItemSeverityModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -102,11 +109,13 @@ describe('api domain work-item severity validate', () => {
 
   it('name should be unique, Sending same name with equal ID', done => {
     const anotherWorkItemSeverity = clone(WORK_ITEM_SEVERITY);
+
     APP.domain.workItem.severity.WorkItemSeverityModel.findOne = simpleMock.stub().resolveWith(WORK_ITEM_SEVERITY);
 
     workItemSeverityValidate.nameMustBeUnique(anotherWorkItemSeverity)
-      .then(result => {
+      .then(() => {
         expect(APP.domain.workItem.severity.WorkItemSeverityModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -114,14 +123,16 @@ describe('api domain work-item severity validate', () => {
 
   it('name should be unique, Sending same name with different ID´s', done => {
     const anotherWorkItemSeverity = clone(WORK_ITEM_SEVERITY);
+
     anotherWorkItemSeverity.id = '74434ff8-b210-4e71-9728-159180beef8e';
     APP.domain.workItem.severity.WorkItemSeverityModel.findOne = simpleMock.stub().resolveWith(WORK_ITEM_SEVERITY);
 
     workItemSeverityValidate.nameMustBeUnique(anotherWorkItemSeverity)
       .then(result => {
-        expect( APP.domain.workItem.severity.WorkItemSeverityModel.findOne.callCount).to.equal(1);
+        expect(APP.domain.workItem.severity.WorkItemSeverityModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('workItemSeverity.name.unique');
         expect(result.message).to.equal('Name must be unique');
+
         return done();
       })
       .catch(done);
@@ -134,6 +145,7 @@ describe('api domain work-item severity validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 50 characters');
+
         return done();
       })
       .catch(done);
@@ -146,6 +158,7 @@ describe('api domain work-item severity validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.project.required');
         expect(result.message).to.equal('Project is required');
+
         return done();
       })
       .catch(done);

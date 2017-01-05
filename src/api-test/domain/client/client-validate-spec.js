@@ -30,6 +30,7 @@ describe('api domain client validate', () => {
       .then(result => {
         expect(result.code).to.equal('client.color.iscolor');
         expect(result.message).to.equal('Color must be valid');
+
         return done();
       })
       .catch(done);
@@ -42,6 +43,7 @@ describe('api domain client validate', () => {
       .then(result => {
         expect(result.code).to.equal('client.color.maxlength');
         expect(result.message).to.equal('Color must have a maximum of 30 characters');
+
         return done();
       })
       .catch(done);
@@ -54,6 +56,7 @@ describe('api domain client validate', () => {
       .then(result => {
         expect(result.code).to.equal('client.name.required');
         expect(result.message).to.equal('Name is required');
+
         return done();
       })
       .catch(done);
@@ -61,12 +64,14 @@ describe('api domain client validate', () => {
 
   it('name should be unique, Sending a new name', done => {
     const anotherClient = clone(CLIENT);
+
     anotherClient.name = 'Internal';
     APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith();
 
     clientValidate.nameMustBeUnique(anotherClient)
       .then(() => {
         expect(APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -74,11 +79,13 @@ describe('api domain client validate', () => {
 
   it('name should be unique, Sending same name with equal ID', done => {
     const anotherClient = clone(CLIENT);
+
     APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith(CLIENT);
 
     clientValidate.nameMustBeUnique(anotherClient)
-      .then(result => {
+      .then(() => {
         expect(APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -86,14 +93,16 @@ describe('api domain client validate', () => {
 
   it('name should be unique, Sending same name with different ID´s', done => {
     const anotherClient = clone(CLIENT);
+
     anotherClient.id = '744b22b8-c318-4d7b-8f71-7ec6cddae803';
     APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith(CLIENT);
 
     clientValidate.nameMustBeUnique(anotherClient)
       .then(result => {
-        expect( APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
+        expect(APP.domain.client.ClientModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('client.name.unique');
         expect(result.message).to.equal('Name must be unique');
+
         return done();
       })
       .catch(done);
@@ -106,6 +115,7 @@ describe('api domain client validate', () => {
       .then(result => {
         expect(result.code).to.equal('client.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 100 characters');
+
         return done();
       })
       .catch(done);
@@ -124,14 +134,17 @@ describe('api domain client validate', () => {
     });
 
     it('create a new invalid client', done => {
+      const expected1Erros = 1;
+
       delete CLIENT.name;
 
-       clientValidate.onCreate(CLIENT)
+      clientValidate.onCreate(CLIENT)
         .then(() => done('should be error'))
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(1);
+          expect(error.errors.length).to.equal(expected1Erros);
           expect(error.errors[0].code).to.equal('client.name.required');
+
           return done();
         });
     });
@@ -139,7 +152,7 @@ describe('api domain client validate', () => {
 
   describe('# onUpdate', () => {
     beforeEach(() => {
-       APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith();
+      APP.domain.client.ClientModel.findOne = simpleMock.stub().resolveWith();
     });
 
     it('update a valid client', done => {
@@ -149,14 +162,17 @@ describe('api domain client validate', () => {
     });
 
     it('update a invalid client', done => {
+      const expected1Erros = 1;
+
       delete CLIENT.name;
 
       clientValidate.onUpdate(CLIENT)
         .then(() => done())
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(1);
+          expect(error.errors.length).to.equal(expected1Erros);
           expect(error.errors[0].code).to.equal('client.name.required');
+
           return done();
         });
     });

@@ -8,16 +8,11 @@ const CLIENT = {
 };
 
 const CLIENT_VALIDATE = class {
-  constructor(app) {}
   onCreate(client) {
-    return client.name ? Promise.resolve() : Promise.reject({
-      name: 'BusinessError'
-    });
+    return client.name ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
   }
   onUpdate(client) {
-    return client.name ? Promise.resolve() : Promise.reject({
-      name: 'BusinessError'
-    });
+    return client.name ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
   }
 };
 
@@ -64,25 +59,27 @@ describe('api domain client service', () => {
       APP.domain.client.ClientModel.create = simpleMock.stub().resolveWith(CLIENT);
 
       clientService.create(CLIENT, USER)
-        .then(result => {
+        .then(() => {
           expect(APP.domain.client.ClientModel.create.callCount).to.equal(1);
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('create a new invalid client', done => {
-      APP.domain.client.ClientModel.create = simpleMock.stub().resolveWith();
-
       const anotherClient = clone(CLIENT);
+
       delete anotherClient.name;
+      APP.domain.client.ClientModel.create = simpleMock.stub().resolveWith();
 
       clientService.create(anotherClient, USER)
         .then(() => done('user should be invalid!'))
         .catch(error => {
           expect(APP.domain.client.ClientModel.create.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');
-          done();
+
+          return done();
         });
     });
   });
@@ -93,10 +90,12 @@ describe('api domain client service', () => {
 
       clientService.destroy(CLIENT.id)
         .then(() => {
-          expect(APP.domain.client.ClientModel.destroy.callCount).to.equal(1);
           const quering = APP.domain.client.ClientModel.destroy.lastCall.arg;
+
+          expect(APP.domain.client.ClientModel.destroy.callCount).to.equal(1);
           expect(quering.where.id).to.equal(CLIENT.id);
-          done();
+
+          return done();
         })
         .catch(done);
     });
@@ -104,19 +103,18 @@ describe('api domain client service', () => {
 
   describe('# find', () => {
     it('search a client by name', done => {
+      const filter = {name: 'another client'};
+
       APP.domain.client.ClientModel.findAll = simpleMock.stub().resolveWith();
-      const filter = {
-        name: 'another client'
-      };
 
       clientService.find(filter)
         .then(() => {
-          expect(APP.domain.client.ClientModel.findAll.callCount).to.equal(1);
           const quering = APP.domain.client.ClientModel.findAll.lastCall.arg;
-          expect(quering.where.name).to.deep.equal({
-            like: '%another client%'
-          });
-          done();
+
+          expect(APP.domain.client.ClientModel.findAll.callCount).to.equal(1);
+          expect(quering.where.name).to.deep.equal({like: '%another client%'});
+
+          return done();
         })
         .catch(done);
     });
@@ -130,7 +128,8 @@ describe('api domain client service', () => {
         .then(() => {
           expect(APP.domain.client.ClientModel.findById.callCount).to.equal(1);
           expect(APP.domain.client.ClientModel.findById.lastCall.arg).to.equal(CLIENT.id);
-          done();
+
+          return done();
         })
         .catch(done);
     });
@@ -141,25 +140,27 @@ describe('api domain client service', () => {
       APP.domain.client.ClientModel.update = simpleMock.stub().resolveWith(CLIENT);
 
       clientService.update(CLIENT.id, CLIENT, USER)
-        .then(result => {
+        .then(() => {
           expect(APP.domain.client.ClientModel.update.callCount).to.equal(1);
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('update a invalid client', done => {
-      APP.domain.client.ClientModel.update = simpleMock.stub().resolveWith(CLIENT);
-
       const anotherClient = clone(CLIENT);
+
       delete anotherClient.name;
+      APP.domain.client.ClientModel.update = simpleMock.stub().resolveWith(CLIENT);
 
       clientService.update(anotherClient.id, anotherClient, USER)
         .then(() => done('client should be invalid!'))
         .catch(error => {
           expect(APP.domain.client.ClientModel.update.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');
-          done();
+
+          return done();
         });
     });
   });

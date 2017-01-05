@@ -7,5 +7,6 @@ global.resultFile = resultFile;
 
 function resultFile(dirName, file) {
   const realPathFile = path.join(dirName, file);
+
   return yaml.load(realPathFile);
 }

@@ -20,8 +20,8 @@ gulp.task('api-test-unit-lint', () => gulp
 );
 
 gulp.task('api-test-e2e-lint', () => gulp
-  .src(['src/api-e2e/**/*.js'])
-  .pipe(eslint({configFile: 'src/api-e2e/.eslintrc.json'}))
+  .src(['src/api-test-e2e/**/*.js'])
+  .pipe(eslint({configFile: 'src/api-test-e2e/.eslintrc.json'}))
   .pipe(eslint.format(FORMAT))
 );
 

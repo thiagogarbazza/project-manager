@@ -22,6 +22,7 @@ describe(`route: ${ROUTE_URL} POST`, () => {
         expect(response.body.name).to.equal('Thiago Garbazza');
         expect(response.body.tokenCreatedAt).to.not.undefined;
         expect(response.body.token).to.not.undefined;
+
         return done();
       });
   });
@@ -37,7 +38,9 @@ describe(`route: ${ROUTE_URL} POST`, () => {
       .expect(HttpStatus.UNAUTHORIZED)
       .end((error, response) => {
         if (error) return done(error);
+
         expect(response.body.message).to.equal('Email and password were not recognized');
+
         return done();
       });
   });

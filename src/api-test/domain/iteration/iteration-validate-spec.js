@@ -2,9 +2,9 @@
 
 const IterationValidate = require('../../../api/domain/iteration/iteration-validate');
 
-const DATA_2010_01_01 = new Date(2010, 0, 1);
-const DATA_2013_06_03 = new Date(2013, 5, 3);
-const DATA_2013_06_07 = new Date(2013, 5, 7);
+const DATA_2010_01_01 = new Date('2010/01/01');
+const DATA_2013_06_03 = new Date('2013/06/03');
+const DATA_2013_06_07 = new Date('2013/06/07');
 
 describe('api domain iteration validate', () => {
   const APP = {};
@@ -37,6 +37,7 @@ describe('api domain iteration validate', () => {
       .then(result => {
         expect(result.code).to.equal('iteration.end.required');
         expect(result.message).to.equal('End date is required');
+
         return done();
       })
       .catch(done);
@@ -50,6 +51,7 @@ describe('api domain iteration validate', () => {
       .then(result => {
         expect(result.code).to.equal('iteration.end.must-be-greater-than-a-start');
         expect(result.message).to.equal('End date must be greater than a start date');
+
         return done();
       })
       .catch(done);
@@ -62,6 +64,7 @@ describe('api domain iteration validate', () => {
       .then(result => {
         expect(result.code).to.equal('iteration.name.required');
         expect(result.message).to.equal('Name is required');
+
         return done();
       })
       .catch(done);
@@ -69,12 +72,14 @@ describe('api domain iteration validate', () => {
 
   it('name should be unique, Sending a new name', done => {
     const anotherDocument = clone(ITERATION);
+
     anotherDocument.name = 'Internal';
     APP.domain.iteration.IterationModel.findOne = simpleMock.stub().resolveWith();
 
     iterationValidate.nameMustBeUnique(anotherDocument)
       .then(() => {
         expect(APP.domain.iteration.IterationModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -82,11 +87,13 @@ describe('api domain iteration validate', () => {
 
   it('name should be unique, Sending same name with equal ID', done => {
     const anotherDocument = clone(ITERATION);
+
     APP.domain.iteration.IterationModel.findOne = simpleMock.stub().resolveWith(ITERATION);
 
     iterationValidate.nameMustBeUnique(anotherDocument)
-      .then(result => {
+      .then(() => {
         expect(APP.domain.iteration.IterationModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -94,14 +101,16 @@ describe('api domain iteration validate', () => {
 
   it('name should be unique, Sending same name with different ID´s', done => {
     const anotherDocument = clone(ITERATION);
+
     anotherDocument.id = '2103c936-6613-4479-975c-cd1a87fe1e41';
     APP.domain.iteration.IterationModel.findOne = simpleMock.stub().resolveWith(ITERATION);
 
     iterationValidate.nameMustBeUnique(anotherDocument)
       .then(result => {
-        expect( APP.domain.iteration.IterationModel.findOne.callCount).to.equal(1);
+        expect(APP.domain.iteration.IterationModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('iteration.name.unique');
         expect(result.message).to.equal('Name must be unique');
+
         return done();
       })
       .catch(done);
@@ -114,6 +123,7 @@ describe('api domain iteration validate', () => {
       .then(result => {
         expect(result.code).to.equal('iteration.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 100 characters');
+
         return done();
       })
       .catch(done);
@@ -126,6 +136,7 @@ describe('api domain iteration validate', () => {
       .then(result => {
         expect(result.code).to.equal('iteration.project.required');
         expect(result.message).to.equal('Project is required');
+
         return done();
       })
       .catch(done);
@@ -138,6 +149,7 @@ describe('api domain iteration validate', () => {
       .then(result => {
         expect(result.code).to.equal('iteration.start.required');
         expect(result.message).to.equal('Start date is required');
+
         return done();
       })
       .catch(done);
@@ -146,6 +158,7 @@ describe('api domain iteration validate', () => {
   describe('# onCreate', () => {
     beforeEach(() => {
       delete ITERATION.id;
+
       APP.domain.iteration.IterationModel.findOne = simpleMock.stub().resolveWith();
     });
 
@@ -156,16 +169,19 @@ describe('api domain iteration validate', () => {
     });
 
     it('create a new invalid iteration', done => {
+      const expected2Erros = 2;
+
       delete ITERATION.name;
       delete ITERATION.projectId;
 
-       iterationValidate.onCreate(ITERATION)
+      iterationValidate.onCreate(ITERATION)
         .then(() => done('should be error'))
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(2);
+          expect(error.errors.length).to.equal(expected2Erros);
           expect(error.errors[0].code).to.equal('iteration.name.required');
           expect(error.errors[1].code).to.equal('iteration.project.required');
+
           return done();
         });
     });
@@ -173,7 +189,7 @@ describe('api domain iteration validate', () => {
 
   describe('# onUpdate', () => {
     beforeEach(() => {
-       APP.domain.iteration.IterationModel.findOne = simpleMock.stub().resolveWith();
+      APP.domain.iteration.IterationModel.findOne = simpleMock.stub().resolveWith();
     });
 
     it('update a valid iteration', done => {
@@ -183,6 +199,8 @@ describe('api domain iteration validate', () => {
     });
 
     it('update a invalid iteration', done => {
+      const expected2Erros = 2;
+
       delete ITERATION.name;
       delete ITERATION.projectId;
 
@@ -190,9 +208,10 @@ describe('api domain iteration validate', () => {
         .then(() => done())
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(2);
+          expect(error.errors.length).to.equal(expected2Erros);
           expect(error.errors[0].code).to.equal('iteration.name.required');
           expect(error.errors[1].code).to.equal('iteration.project.required');
+
           return done();
         });
     });

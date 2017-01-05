@@ -2,9 +2,17 @@
   "env": {
     "node": true
   },
-  "extends": "restrict",
+  "extends": [
+    "restrict",
+    "restrict/chai",
+    "restrict/mocha"
+  ],
   "globals": {
-
+    "clone": true,
+    "dottie": true,
+    "mockery": true,
+    "properties": true,
+    "simpleMock": true
   },
   "rules": {
 

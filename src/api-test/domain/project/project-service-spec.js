@@ -9,16 +9,11 @@ const PROJECT = {
 };
 
 const PROJECT_VALIDATE = class {
-  constructor(app) {}
   onCreate(project) {
-    return project.name ? Promise.resolve() : Promise.reject({
-      name: 'BusinessError'
-    });
+    return project.name ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
   }
   onUpdate(project) {
-    return project.name ? Promise.resolve() : Promise.reject({
-      name: 'BusinessError'
-    });
+    return project.name ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
   }
 };
 
@@ -66,25 +61,27 @@ describe('api domain project service', () => {
       APP.domain.project.ProjectModel.create = simpleMock.stub().resolveWith(PROJECT);
 
       projectService.create(PROJECT, USER)
-        .then(result => {
+        .then(() => {
           expect(APP.domain.project.ProjectModel.create.callCount).to.equal(1);
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('create a new invalid project', done => {
-      APP.domain.project.ProjectModel.create = simpleMock.stub().resolveWith();
-
       const anotherProject = clone(PROJECT);
+
       delete anotherProject.name;
+      APP.domain.project.ProjectModel.create = simpleMock.stub().resolveWith();
 
       projectService.create(anotherProject, USER)
         .then(() => done('user should be invalid!'))
         .catch(error => {
           expect(APP.domain.project.ProjectModel.create.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');
-          done();
+
+          return done();
         });
     });
   });
@@ -95,10 +92,12 @@ describe('api domain project service', () => {
 
       projectService.destroy(PROJECT.id)
         .then(() => {
-          expect(APP.domain.project.ProjectModel.destroy.callCount).to.equal(1);
           const quering = APP.domain.project.ProjectModel.destroy.lastCall.arg;
+
+          expect(APP.domain.project.ProjectModel.destroy.callCount).to.equal(1);
           expect(quering.where.id).to.equal(PROJECT.id);
-          done();
+
+          return done();
         })
         .catch(done);
     });
@@ -106,19 +105,18 @@ describe('api domain project service', () => {
 
   describe('# find', () => {
     it('search a project by name', done => {
+      const filter = {name: 'another project'};
+
       APP.domain.project.ProjectModel.findAll = simpleMock.stub().resolveWith();
-      const filter = {
-        name: 'another project'
-      };
 
       projectService.find(filter)
         .then(() => {
-          expect(APP.domain.project.ProjectModel.findAll.callCount).to.equal(1);
           const quering = APP.domain.project.ProjectModel.findAll.lastCall.arg;
-          expect(quering.where.name).to.deep.equal({
-            like: '%another project%'
-          });
-          done();
+
+          expect(APP.domain.project.ProjectModel.findAll.callCount).to.equal(1);
+          expect(quering.where.name).to.deep.equal({like: '%another project%'});
+
+          return done();
         })
         .catch(done);
     });
@@ -132,7 +130,8 @@ describe('api domain project service', () => {
         .then(() => {
           expect(APP.domain.project.ProjectModel.findById.callCount).to.equal(1);
           expect(APP.domain.project.ProjectModel.findById.lastCall.arg).to.equal(PROJECT.id);
-          done();
+
+          return done();
         })
         .catch(done);
     });
@@ -143,25 +142,27 @@ describe('api domain project service', () => {
       APP.domain.project.ProjectModel.update = simpleMock.stub().resolveWith(PROJECT);
 
       projectService.update(PROJECT.id, PROJECT, USER)
-        .then(result => {
+        .then(() => {
           expect(APP.domain.project.ProjectModel.update.callCount).to.equal(1);
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('update a invalid project', done => {
-      APP.domain.project.ProjectModel.update = simpleMock.stub().resolveWith(PROJECT);
-
       const anotherProject = clone(PROJECT);
+
       delete anotherProject.name;
+      APP.domain.project.ProjectModel.update = simpleMock.stub().resolveWith(PROJECT);
 
       projectService.update(anotherProject.id, anotherProject, USER)
         .then(() => done('project should be invalid!'))
         .catch(error => {
           expect(APP.domain.project.ProjectModel.update.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');
-          done();
+
+          return done();
         });
     });
   });

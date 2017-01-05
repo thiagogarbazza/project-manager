@@ -34,6 +34,7 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.color.maxlength');
         expect(result.message).to.equal('Color must have a maximum of 30 characters');
+
         return done();
       })
       .catch(done);
@@ -46,6 +47,7 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.description.maxlength');
         expect(result.message).to.equal('Description must have a maximum of 500 characters');
+
         return done();
       })
       .catch(done);
@@ -58,6 +60,7 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.key.required');
         expect(result.message).to.equal('Key is required');
+
         return done();
       })
       .catch(done);
@@ -65,12 +68,14 @@ describe('api domain project validate', () => {
 
   it('key should be unique, Sending a new key', done => {
     const anotherProject = clone(PROJECT);
+
     anotherProject.key = 'SOC2';
     APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith();
 
     projectValidate.keyMustBeUnique(anotherProject)
       .then(() => {
         expect(APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -78,11 +83,13 @@ describe('api domain project validate', () => {
 
   it('key should be unique, Sending same key with equal ID', done => {
     const anotherProject = clone(PROJECT);
+
     APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith(PROJECT);
 
     projectValidate.keyMustBeUnique(anotherProject)
-      .then(result => {
+      .then(() => {
         expect(APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
+
         return done();
       })
       .catch(done);
@@ -90,14 +97,16 @@ describe('api domain project validate', () => {
 
   it('key should be unique, Sending same key with different ID´s', done => {
     const anotherProject = clone(PROJECT);
+
     anotherProject.id = '087d16bc-dfe0-45a4-b897-a2878570377b';
     APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith(PROJECT);
 
     projectValidate.keyMustBeUnique(anotherProject)
       .then(result => {
-        expect( APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
+        expect(APP.domain.project.ProjectModel.findOne.callCount).to.equal(1);
         expect(result.code).to.equal('project.key.unique');
         expect(result.message).to.equal('Key must be unique');
+
         return done();
       })
       .catch(done);
@@ -110,6 +119,7 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.key.maxlength');
         expect(result.message).to.equal('Key must have a maximum of 20 characters');
+
         return done();
       })
       .catch(done);
@@ -122,6 +132,7 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.name.required');
         expect(result.message).to.equal('Name is required');
+
         return done();
       })
       .catch(done);
@@ -134,6 +145,7 @@ describe('api domain project validate', () => {
       .then(result => {
         expect(result.code).to.equal('project.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 100 characters');
+
         return done();
       })
       .catch(done);
@@ -152,14 +164,17 @@ describe('api domain project validate', () => {
     });
 
     it('create a new invalid project', done => {
+      const expected1Erros = 1;
+
       delete PROJECT.name;
 
-       projectValidate.onCreate(PROJECT)
+      projectValidate.onCreate(PROJECT)
         .then(() => done('should be error'))
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(1);
+          expect(error.errors.length).to.equal(expected1Erros);
           expect(error.errors[0].code).to.equal('project.name.required');
+
           return done();
         });
     });
@@ -167,7 +182,7 @@ describe('api domain project validate', () => {
 
   describe('# onUpdate', () => {
     beforeEach(() => {
-       APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith();
+      APP.domain.project.ProjectModel.findOne = simpleMock.stub().resolveWith();
     });
 
     it('update a valid project', done => {
@@ -177,14 +192,17 @@ describe('api domain project validate', () => {
     });
 
     it('update a invalid project', done => {
+      const expected1Erros = 1;
+
       delete PROJECT.name;
 
       projectValidate.onUpdate(PROJECT)
         .then(() => done())
         .catch(error => {
           expect(error.name).to.equal('BusinessError');
-          expect(error.errors.length).to.equal(1);
+          expect(error.errors.length).to.equal(expected1Erros);
           expect(error.errors[0].code).to.equal('project.name.required');
+
           return done();
         });
     });

@@ -1,6 +1,6 @@
 'use strict';
 
-const {Extract, Strategy} = require('passport-jwt');
+const {ExtractJwt, Strategy} = require('passport-jwt');
 const environment = require('../environment');
 const passport = require('passport');
 const UserService = require('../domain/security/user/user-service');
@@ -10,7 +10,7 @@ module.exports = app => {
   const configuration = environment.authentication;
 
   const params = {
-    jwtFromRequest: Extract.fromAuthHeader(),
+    jwtFromRequest: ExtractJwt.fromAuthHeader(),
     secretOrKey: configuration.passphrase
   };
 

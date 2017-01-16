@@ -8,6 +8,11 @@ const configuration = environment.server;
 
 module.exports = app => {
   app.set('json spaces', configuration.jsonSpaces);
-  app.use(express.static(configuration.webDir));
   app.use(compression());
+
+  if (Array.isArray(environment.server.webDir)) {
+    environment.server.webDir.forEach(staticPage => app.use(express.static(staticPage)));
+  } else {
+    app.use(express.static(environment.server.webDir));
+  }
 };

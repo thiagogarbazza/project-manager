@@ -11,6 +11,7 @@ https://waffle.io/
 https://toggl.com/
 http://runrun.it/
 https://www.yoms.org/
+https://hibernate.atlassian.net/browse/HHH-5074
 
 
 ## Continuous Integration

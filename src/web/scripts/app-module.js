@@ -2,10 +2,5 @@
   'use strict';
 
   angular
-    .module('app', [
-      'ngAnimate',
-      'pm',
-      'toaster',
-      'ui'
-    ]);
+    .module('app', ['pm', 'pmui']);
 })(angular);

@@ -16,6 +16,7 @@
 
     function request(config) {
       config.headers.Authorization = 'JWT ' + userService.get().token;
+
       return config;
     }
   }

@@ -21,11 +21,13 @@
 
     function onRequest(config) {
       $log.debug(config.method, SEPARADOR, config.url);
+
       return config;
     }
 
     function onRequestError(rejection) {
       $log.error('Erro no request', SEPARADOR, rejection);
+
       return $q.reject(rejection);
     }
 
@@ -36,6 +38,7 @@
 
     function onResponseError(rejection) {
       $log.error('Recurso não encontrado', SEPARADOR, rejection);
+
       return $q.reject(rejection);
     }
   }

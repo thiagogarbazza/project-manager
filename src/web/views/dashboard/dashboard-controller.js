@@ -2,26 +2,14 @@
   'use strict';
 
   angular
-    .module('pm')
+    .module('app')
     .controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['toaster'];
+  DashboardController.$inject = [];
 
-  function DashboardController(toaster) {
+  function DashboardController() {
     var vm = this;
 
     vm.test = 'Dashboard ...';
-
-    vm.showNotification = showNotification;
-
-    function showNotification() {
-      toaster.pop({
-        'body': 'Body text',
-        'position-class': 'toast-top-full-width',
-        'icon-classes': 'toast-orange',
-        'timeout': 3000,
-        'title': 'Title text'
-      });
-    }
   }
 })(angular);

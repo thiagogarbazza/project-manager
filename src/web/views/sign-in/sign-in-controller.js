@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('pm')
+    .module('app')
     .controller('SignInController', SignInController);
 
   SignInController.$inject = ['$state', 'tokenApiService', 'userService'];
@@ -20,11 +20,11 @@
 
       function successOnGenerateToken(response) {
         userService.register(response.data);
-        $state.go('admin.dashboard');
+        $state.go('dashboard');
       }
 
       function errorOnGenerateToken(response) {
-        if (response === HttpStatus.UNAUTHORIZED) {
+        if (response.status === HttpStatus.UNAUTHORIZED) {
           vm.showMessageError = true;
         }
       }

@@ -2,14 +2,16 @@
   'use strict';
 
   angular
-    .module('ui')
+    .module('pmui')
     .directive('auditDetail', auditDetailDirective);
+
+  auditDetailDirective.$inject = [];
 
   function auditDetailDirective() {
     var directive = {
       link: postLink,
       restrict: 'E',
-      templateUrl: 'scripts/ui/directives/audit-detail/audit-detail-tpl.html'
+      templateUrl: 'scripts/pmui/directives/audit-detail/audit-detail-tpl.html'
     };
 
     return directive;

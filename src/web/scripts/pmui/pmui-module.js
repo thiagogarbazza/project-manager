@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('ui', []);
+    .module('pmui', ['ui.router']);
 })(angular);

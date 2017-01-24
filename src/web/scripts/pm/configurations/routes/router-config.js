@@ -18,6 +18,7 @@
     if (userService.isAuthenticated()) {
       return '/dashboard';
     }
+
     return '/sign-in';
   }
 })(angular);

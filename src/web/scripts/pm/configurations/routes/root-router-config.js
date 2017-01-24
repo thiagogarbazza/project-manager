@@ -3,14 +3,14 @@
 
   angular
     .module('pm')
-    .config(rootConfiguration);
+    .config(rootRouterConfiguration);
 
-  rootConfiguration.$inject = ['$stateProvider'];
+  rootRouterConfiguration.$inject = ['$stateProvider'];
 
-  function rootConfiguration($stateProvider) {
+  function rootRouterConfiguration($stateProvider) {
     $stateProvider.state('root', {
       abstract: true,
-      template: '<div ui-view></div>'
+      template: '<ui-view></ui-view>'
     });
   }
 })(angular);

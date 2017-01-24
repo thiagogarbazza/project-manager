@@ -3,14 +3,14 @@
 
   angular
     .module('pm')
-    .config(signInConfiguration);
+    .config(signInRouterConfiguration);
 
-  signInConfiguration.$inject = ['$stateProvider'];
+  signInRouterConfiguration.$inject = ['$stateProvider'];
 
-  function signInConfiguration($stateProvider) {
+  function signInRouterConfiguration($stateProvider) {
     $stateProvider.state('sign-in', {
       parent: 'root',
-      templateUrl: 'views/login/sign-in-tpl.html',
+      templateUrl: 'views/sign-in/sign-in-tpl.html',
       url: '/sign-in'
     });
   }

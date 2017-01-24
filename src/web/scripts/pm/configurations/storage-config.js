@@ -5,11 +5,11 @@
 
   angular
     .module('pm')
-    .config(StorageConfiguration);
+    .config(storageConfiguration);
 
-  StorageConfiguration.$inject = ['$localStorageProvider', '$sessionStorageProvider'];
+  storageConfiguration.$inject = ['$localStorageProvider', '$sessionStorageProvider'];
 
-  function StorageConfiguration($localStorageProvider, $sessionStorageProvider) {
+  function storageConfiguration($localStorageProvider, $sessionStorageProvider) {
     $localStorageProvider.setKeyPrefix(PREFIX);
     $sessionStorageProvider.setKeyPrefix(PREFIX);
   }

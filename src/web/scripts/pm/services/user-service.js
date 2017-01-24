@@ -5,12 +5,10 @@
     .module('pm')
     .factory('userService', userService);
 
-  userService.$inject = ['$sessionStorage'];
+  userService.$inject = ['$localStorage'];
 
-  function userService($sessionStorage) {
-    $sessionStorage.$default({
-      user: {}
-    });
+  function userService($localStorage) {
+    $localStorage.$default({user: {}});
 
     var service = {
       get: get,
@@ -23,11 +21,11 @@
     return service;
 
     function get() {
-      return $sessionStorage.user;
+      return $localStorage.user;
     }
 
     function isAuthenticated() {
-      return angular.isDefined($sessionStorage.user.token);
+      return angular.isDefined($localStorage.user.token);
     }
 
     function isAuthorize(rule) {
@@ -36,11 +34,11 @@
     }
 
     function register(newUser) {
-      angular.merge($sessionStorage.user, newUser);
+      angular.merge($localStorage.user, newUser);
     }
 
     function signOut() {
-      delete $sessionStorage.user.token;
+      delete $localStorage.user.token;
     }
   }
 })(angular);

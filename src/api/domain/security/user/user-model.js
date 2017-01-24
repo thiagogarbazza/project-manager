@@ -12,6 +12,7 @@ module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;
 function UserModel(sequelize, DataType) {
   const definition = {
     avatar: {
+      allowNull: true,
       type: DataType.BLOB
     },
     email: {
@@ -37,25 +38,11 @@ function UserModel(sequelize, DataType) {
   };
 
   const options = {
-    classMethods: {
-      isPassword: (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword)
-    },
     hooks: {
-      beforeBulkCreate: function(users) {
-        users.forEach(user => {
-          const salt = bcrypt.genSaltSync();
-          user.dataValues.password = bcrypt.hashSync(user.dataValues.password, salt);
-        });
-      },
-      beforeCreate: user => {
-        const salt = bcrypt.genSaltSync();
-        user.password = bcrypt.hashSync(user.password, salt);
-      }
+      beforeBulkCreate,
+      beforeCreate
     },
-    instanceMethods: {
-      isPassword: (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword)
-
-    },
+    instanceMethods: {isPassword},
     schema: 'security',
     tableName: 'tbl_user'
   };
@@ -63,3 +50,26 @@ function UserModel(sequelize, DataType) {
   return sequelize.define('UserModel', definition, options);
 }
 
+function beforeBulkCreate(users) {
+  users.forEach(user => {
+    beforeCreate(user.dataValues);
+  });
+}
+
+function beforeCreate(user) {
+  user.password = cryptPassword(user.password);
+}
+
+function isPassword(password) {
+  return comparePassword(password, this.password);
+}
+
+function cryptPassword(password) {
+  const salt = bcrypt.genSaltSync();
+
+  return bcrypt.hashSync(password, salt);
+}
+
+function comparePassword(password, encodedPassword) {
+  return bcrypt.compareSync(password, encodedPassword);
+}

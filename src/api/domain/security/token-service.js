@@ -17,11 +17,11 @@ class TokenService {
 
     return this.userService.findByEmail(email)
       .then(user => {
-        if (user && user.isPassword(user.password, password)) {
+        if (user && user.isPassword(password)) {
           return this.createToken(user);
         }
 
-        return Promise.reject(new Error('Email and password were not recognized'));
+        return Promise.reject('Email or password were not recognized');
       });
   }
 
@@ -40,7 +40,7 @@ class TokenService {
       tokenCreatedAt
     };
 
-    return Promise.resolve(response);
+    return response;
   }
 }
 

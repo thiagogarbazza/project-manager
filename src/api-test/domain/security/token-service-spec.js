@@ -82,16 +82,16 @@ describe('api domain security token service', () => {
 
     it('try to generate token informing invalid email and password', done => {
       const LOGIN = {
-        email: 'thiagogarbazza@gmail.com',
-        password: 'swordffish'
+        email: 'test@gmail.com',
+        password: 'test'
       };
 
-      USER.isPassword = simpleMock.stub().returnWith(false);
+      USER.isPassword = simpleMock.stub().returnWith(true);
 
       tokenService.generate(LOGIN)
         .then(() => done('should not generate TOKEN, because the data is invalid'))
         .catch(error => {
-          expect(USER.isPassword.callCount).to.equal(1);
+          expect(USER.isPassword.callCount).to.equal(0);
           expect(error.name).to.equal('Error');
 
           return done();

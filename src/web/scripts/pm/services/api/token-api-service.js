@@ -8,7 +8,7 @@
   tokenApiService.$inject = ['$http', 'settings'];
 
   function tokenApiService($http, settings) {
-    var PATH_TO_SERVICE = settings.API.URL + 'token';
+    var PATH_TO_SERVICE = settings.API.URL + 'security/token';
 
     var service = {
       generate: generate

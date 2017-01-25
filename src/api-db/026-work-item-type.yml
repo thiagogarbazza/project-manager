@@ -1,0 +1,62 @@
+- model: workItem.type.WorkItemTypeModel
+  data:
+  - id: fb97b936-2dc6-4f98-859d-43a8a75917a4
+    name: Story
+    color: rgb(0, 156, 204)
+    icon: fa fa-file-text-o
+    default: false
+    description:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-04 07:05:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-04 07:05:25
+  - id: f0e41dc5-121f-455b-928e-bb011ef1fa76
+    name: Bug
+    color: rgb(204, 41, 61)
+    icon: fa fa-bug
+    default: false
+    description: A problem which impairs or prevents the functions of the product.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-04 07:15:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-04 07:15:25
+  - id: 19bf0c9f-d09b-4448-9f49-32b3567be554
+    name: Feature
+    color: rgb(119, 59, 147)
+    icon: fa fa-plus-square
+    default: false
+    description: A new feature of the product, which has yet to be developed.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-04 07:25:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-04 07:25:25
+  - id: ca1a6062-b801-404d-b078-be2e73f7360a
+    name: Documentation
+    color: rgb(0, 156, 204)
+    icon: fa fa-book
+    default: false
+    description:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-04 07:29:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-04 07:29:25
+  - id: 81b1b637-e30e-4bd1-b851-d5530e0fb28a
+    name: Suggestion
+    color: rgb(31,166,122)
+    icon: fa fa-lightbulb-o
+    default: false
+    description:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-04 07:35:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-04 07:35:25
+  - id: 88262268-fca9-4b17-ba6d-ce8eedf849a8
+    name: Task
+    color: rgb(242, 203, 29)
+    icon: fa fa-tasks
+    default: true
+    description:
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-04 07:39:25
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-04 07:39:25

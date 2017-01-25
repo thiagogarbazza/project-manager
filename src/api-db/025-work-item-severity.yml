@@ -1,7 +1,6 @@
 - model: workItem.severity.WorkItemSeverityModel
   data:
   - id: 1e94ec5e-bc30-42db-9116-e11429dac792
-    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Blocker
     order: 1
     color: rgb(223, 81, 56)
@@ -13,7 +12,6 @@
     updatedBy: a3381700-d485-4648-8549-829c4b036005
     updatedAt: 2013-06-03 07:05:25
   - id: 74434ff8-b210-4e71-9728-159180beef8e
-    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Critical
     order: 2
     color: rgb(237, 78, 42)
@@ -25,7 +23,6 @@
     updatedBy: a3381700-d485-4648-8549-829c4b036005
     updatedAt: 2013-06-03 07:05:25
   - id: f246758f-88bd-4d8e-8e71-996c3c0ef155
-    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Major
     order: 3
     color: rgb(255, 206, 85)
@@ -37,7 +34,6 @@
     updatedBy: a3381700-d485-4648-8549-829c4b036005
     updatedAt: 2013-06-03 07:05:25
   - id: 6f13b9da-3de4-447f-bb2e-aafd55a8bcfd
-    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Minor
     order: 4
     color: rgb(160, 212, 104)
@@ -49,7 +45,6 @@
     updatedBy: a3381700-d485-4648-8549-829c4b036005
     updatedAt: 2013-06-03 07:05:25
   - id: ea2d838f-d329-4ddb-a249-c76cff00582c
-    projectId: 43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a
     name: Trivial
     order: 5
     color: rgb(93, 178, 255)

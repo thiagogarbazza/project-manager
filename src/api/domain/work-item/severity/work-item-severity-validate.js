@@ -85,13 +85,10 @@ class WorkItemSeverityValidate extends AbstractValidate {
     return Promise.resolve();
   }
 
-  nameMustBeUnique({id, name, projectId}) {
+  nameMustBeUnique({id, name}) {
     const quering = {
       attributes: ['id'],
-      where: {
-        name,
-        projectId
-      }
+      where: {name}
     };
 
     return this.workItemSeverityModel.findOne(quering)
@@ -107,16 +104,6 @@ class WorkItemSeverityValidate extends AbstractValidate {
   nameMustHaveMaximum50Characters({name}) {
     if (name && name.length > NAME_MAXLENGTH) {
       const businessCase = new BusinessCase('workItemSeverity.name.maxlength', 'Name must have a maximum of 50 characters');
-
-      return Promise.resolve(businessCase);
-    }
-
-    return Promise.resolve();
-  }
-
-  projectIsRequired({projectId}) {
-    if (!trim(projectId)) {
-      const businessCase = new BusinessCase('workItemSeverity.project.required', 'Project is required');
 
       return Promise.resolve(businessCase);
     }

@@ -16,8 +16,7 @@ describe('api domain work-item severity validate', () => {
       icon: 'fa fa-ban',
       id: '1e94ec5e-bc30-42db-9116-e11429dac792',
       name: 'Blocker',
-      order: 1,
-      projectId: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a'
+      order: 1
     };
 
     workItemSeverityValidate = new WorkItemSeverityValidate(APP);
@@ -145,19 +144,6 @@ describe('api domain work-item severity validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemSeverity.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 50 characters');
-
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('project should be required', done => {
-    delete WORK_ITEM_SEVERITY.projectId;
-
-    workItemSeverityValidate.projectIsRequired(WORK_ITEM_SEVERITY)
-      .then(result => {
-        expect(result.code).to.equal('workItemSeverity.project.required');
-        expect(result.message).to.equal('Project is required');
 
         return done();
       })

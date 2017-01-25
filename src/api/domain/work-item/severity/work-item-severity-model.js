@@ -68,16 +68,7 @@ function WorkItemSeverityModel(sequelize, DataType) {
 
 function associate(domain) {
   const workItemSeverityModel = domain.workItem.severity.WorkItemSeverityModel;
-  const projectModel = domain.project.ProjectModel;
   const userModel = domain.security.user.UserModel;
-
-  workItemSeverityModel.belongsTo(projectModel, {
-    as: 'project',
-    foreignKey: {
-      field: 'project_id',
-      name: 'projectId'
-    }
-  });
 
   workItemSeverityModel.belongsTo(userModel, {
     as: 'creationByUser',

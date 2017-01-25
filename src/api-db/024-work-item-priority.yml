@@ -1,0 +1,47 @@
+- model: workItem.priority.WorkItemPriorityModel
+  data:
+  - id: 89e7c375-0118-4686-8d0e-6078387b4923
+    name: 1
+    order: 1
+    default: false
+    description: Must fix for the indicated target milestone. Literally. We will slip dates for P1's, so use sparingly.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 06:50:52
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 06:50:52
+  - id: ebba4f73-4f06-49a7-bf57-7d904286104b
+    name: 2
+    order: 2
+    default: false
+    description: Very important for the indicated target milestone. Nearly all P2's should be resolved, so do not over use.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 06:51:52
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 06:51:52
+  - id: 020d532d-f97c-41b6-a880-fe96e640d08a
+    name: 3
+    order: 3
+    default: true
+    description: Of normal importance. Default starting point. While triaging a bug it is good to consider its priority and adjust higher or lower if appropriate.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 06:52:52
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 06:52:52
+  - id: 8d1d9ab5-900a-43b7-b3b7-d164c5b10a29
+    name: 4
+    order: 4
+    default: false
+    description: Less important. Would like to fix the bug, time permitting.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 06:53:52
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 06:53:52
+  - id: b0deb09c-9710-4c8f-9dbb-561ec0ce3b16
+    name: 5
+    order: 5
+    default: false
+    description: A valid bug, but no plans to investigate further or fix. All P5 bugs also imply 'helpwanted', but 'helpwanted' can also be used on any other priority.
+    createdBy: a3381700-d485-4648-8549-829c4b036005
+    createdAt: 2013-06-03 06:54:52
+    updatedBy: a3381700-d485-4648-8549-829c4b036005
+    updatedAt: 2013-06-03 06:54:52

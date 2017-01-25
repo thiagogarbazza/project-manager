@@ -11,13 +11,10 @@ describe('api domain work-item priority validate', () => {
     dottie.set(APP, 'domain.workItem.priority.WorkItemPriorityModel', {});
 
     WORK_ITEM_PRIORITY = {
-      color: 'red',
-      description: 'Blocks development and/or testing work, production could not run.',
-      icon: 'fa fa-ban',
+      description: 'Must fix for the indicated target milestone. Literally. We will slip dates for P1\'s, so use sparingly.',
       id: '1e94ec5e-bc30-42db-9116-e11429dac792',
-      name: 'Blocker',
-      order: 1,
-      projectId: '43cf39a6-f1a8-48fe-a76b-ee042cb2ea9a'
+      name: '1',
+      order: 1
     };
 
     workItemPriorityValidate = new WorkItemPriorityValidate(APP);
@@ -27,32 +24,6 @@ describe('api domain work-item priority validate', () => {
     expect(workItemPriorityValidate).to.not.be.undefined;
   });
 
-  it('color shold be valid', done => {
-    WORK_ITEM_PRIORITY.color = properties.INVALID_COLOR;
-
-    workItemPriorityValidate.colorMustBeValid(WORK_ITEM_PRIORITY)
-      .then(result => {
-        expect(result.code).to.equal('workItemPriority.color.iscolor');
-        expect(result.message).to.equal('Color must be valid');
-
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('color should be maximum 30 characters', done => {
-    WORK_ITEM_PRIORITY.color = properties.BIG_TEXT;
-
-    workItemPriorityValidate.colorMustHaveMaximum30Characters(WORK_ITEM_PRIORITY)
-      .then(result => {
-        expect(result.code).to.equal('workItemPriority.color.maxlength');
-        expect(result.message).to.equal('Color must have a maximum of 30 characters');
-
-        return done();
-      })
-      .catch(done);
-  });
-
   it('description should be maximum 500 characters', done => {
     WORK_ITEM_PRIORITY.description = properties.BIG_TEXT;
 
@@ -60,19 +31,6 @@ describe('api domain work-item priority validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemPriority.description.maxlength');
         expect(result.message).to.equal('Description must have a maximum of 500 characters');
-
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('icon should be maximum 20 characters', done => {
-    WORK_ITEM_PRIORITY.icon = properties.BIG_TEXT;
-
-    workItemPriorityValidate.iconMustHaveMaximum20Characters(WORK_ITEM_PRIORITY)
-      .then(result => {
-        expect(result.code).to.equal('workItemPriority.icon.maxlength');
-        expect(result.message).to.equal('Icon must have a maximum of 20 characters');
 
         return done();
       })
@@ -145,19 +103,6 @@ describe('api domain work-item priority validate', () => {
       .then(result => {
         expect(result.code).to.equal('workItemPriority.name.maxlength');
         expect(result.message).to.equal('Name must have a maximum of 50 characters');
-
-        return done();
-      })
-      .catch(done);
-  });
-
-  it('project should be required', done => {
-    delete WORK_ITEM_PRIORITY.projectId;
-
-    workItemPriorityValidate.projectIsRequired(WORK_ITEM_PRIORITY)
-      .then(result => {
-        expect(result.code).to.equal('workItemPriority.project.required');
-        expect(result.message).to.equal('Project is required');
 
         return done();
       })

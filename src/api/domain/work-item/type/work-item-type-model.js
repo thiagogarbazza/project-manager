@@ -63,7 +63,7 @@ function WorkItemTypeModel(sequelize, DataType) {
 }
 
 function associate(domain) {
-  const workItemTypeModel = domain.workItem.severity.WorkItemTypeModel;
+  const workItemTypeModel = domain.workItem.type.WorkItemTypeModel;
   const userModel = domain.security.user.UserModel;
 
   workItemTypeModel.belongsTo(userModel, {

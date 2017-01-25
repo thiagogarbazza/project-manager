@@ -1,22 +1,14 @@
 'use strict';
 
 const DESCRIPTION_MAXLENGTH = 500;
-const COLOR_MAXLENGTH = 30;
-const ICON_MAXLENGTH = 20;
 const NAME_MAXLENGTH = 100;
 
 module.exports = WorkItemPriorityModel;
 module.exports.DESCRIPTION_MAXLENGTH = DESCRIPTION_MAXLENGTH;
-module.exports.COLOR_MAXLENGTH = COLOR_MAXLENGTH;
-module.exports.ICON_MAXLENGTH = ICON_MAXLENGTH;
 module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;
 
 function WorkItemPriorityModel(sequelize, DataType) {
   const definition = {
-    color: {
-      allowNull: true,
-      type: DataType.STRING(COLOR_MAXLENGTH)
-    },
     createdAt: {
       allowNull: false,
       field: 'created_at',
@@ -30,10 +22,6 @@ function WorkItemPriorityModel(sequelize, DataType) {
     description: {
       allowNull: true,
       type: DataType.STRING(DESCRIPTION_MAXLENGTH)
-    },
-    icon: {
-      allowNull: true,
-      type: DataType.STRING(ICON_MAXLENGTH)
     },
     id: {
       allowNull: false,
@@ -68,16 +56,7 @@ function WorkItemPriorityModel(sequelize, DataType) {
 
 function associate(domain) {
   const workItemPriorityModel = domain.workItem.priority.WorkItemPriorityModel;
-  const projectModel = domain.project.ProjectModel;
   const userModel = domain.security.user.UserModel;
-
-  workItemPriorityModel.belongsTo(projectModel, {
-    as: 'project',
-    foreignKey: {
-      field: 'project_id',
-      name: 'projectId'
-    }
-  });
 
   workItemPriorityModel.belongsTo(userModel, {
     as: 'creationByUser',

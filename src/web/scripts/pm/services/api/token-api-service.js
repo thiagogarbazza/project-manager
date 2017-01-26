@@ -17,8 +17,7 @@
     return service;
 
     function generate(user) {
-      var payload = user;
-      return $http.post(PATH_TO_SERVICE, payload);
+      return $http.post(PATH_TO_SERVICE, user);
     }
   }
 })(angular);

@@ -14,7 +14,6 @@
       create: create,
       delete: delet,
       detail: detail,
-      loadTemplate: loadTemplate,
       search: search,
       update: update
     };
@@ -22,31 +21,23 @@
     return service;
 
     function create(document) {
-      var payload = document;
-      return $http.post(PATH_TO_SERVICE, payload);
+      return $http.post(PATH_TO_SERVICE, document);
     }
 
     function delet(id) {
-      return $http.delete(PATH_TO_SERVICE + id);
+      return $http.delete(PATH_TO_SERVICE + '/' + id);
     }
 
     function detail(id) {
-      return $http.get(PATH_TO_SERVICE + id);
-    }
-
-    function loadTemplate(file) {
-      return $http.get(settings.serviceAPI.url + 'views/document/templates/' + file);
+      return $http.get(PATH_TO_SERVICE + '/' + id);
     }
 
     function search(parameters) {
-      return $http.get(PATH_TO_SERVICE + 'search', {
-        params: parameters
-      });
+      return $http.get(PATH_TO_SERVICE, {params: parameters});
     }
 
     function update(id, document) {
-      var payload = document;
-      return $http.put(PATH_TO_SERVICE + id, payload);
+      return $http.put(PATH_TO_SERVICE + '/' + id, document);
     }
   }
 })(angular);

@@ -22,36 +22,30 @@
     return service;
 
     function create(project) {
-      var payload = project;
-      return $http.post(PATH_TO_SERVICE, payload);
+      return $http.post(PATH_TO_SERVICE, project);
     }
 
     function delet(id) {
-      return $http.delete(PATH_TO_SERVICE + id);
+      return $http.delete(PATH_TO_SERVICE + '/' + id);
     }
 
     function detail(id) {
-      return $http.get(PATH_TO_SERVICE + id);
+      return $http.get(PATH_TO_SERVICE + '/' + id);
     }
 
     function findByCode(code) {
       var parameters = {
         code_eq: code
       };
-      return $http.get(PATH_TO_SERVICE + 'search', {
-        params: parameters
-      });
+      return $http.get(PATH_TO_SERVICE, {params: parameters});
     }
 
     function search(parameters) {
-      return $http.get(PATH_TO_SERVICE + 'search', {
-        params: parameters
-      });
+      return $http.get(PATH_TO_SERVICE, {params: parameters});
     }
 
     function update(id, project) {
-      var payload = project;
-      return $http.put(PATH_TO_SERVICE + id, payload);
+      return $http.put(PATH_TO_SERVICE + '/' + id, project);
     }
   }
 })(angular);

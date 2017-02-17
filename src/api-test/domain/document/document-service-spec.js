@@ -8,16 +8,11 @@ const DOCUMENT = {
 };
 
 const DOCUMENT_VALIDATE = class {
-  constructor(app) {}
   onCreate(document) {
-    return document.name ? Promise.resolve() : Promise.reject({
-      name: 'BusinessError'
-    });
+    return document.name ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
   }
   onUpdate(document) {
-    return document.name ? Promise.resolve() : Promise.reject({
-      name: 'BusinessError'
-    });
+    return document.name ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
   }
 };
 
@@ -64,25 +59,27 @@ describe('api domain document service', () => {
       APP.domain.document.DocumentModel.create = simpleMock.stub().resolveWith(DOCUMENT);
 
       documentService.create(DOCUMENT, USER)
-        .then(result => {
+        .then(() => {
           expect(APP.domain.document.DocumentModel.create.callCount).to.equal(1);
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('create a new invalid document', done => {
-      APP.domain.document.DocumentModel.create = simpleMock.stub().resolveWith();
-
       const anotherDocument = clone(DOCUMENT);
+
       delete anotherDocument.name;
+      APP.domain.document.DocumentModel.create = simpleMock.stub().resolveWith();
 
       documentService.create(anotherDocument, USER)
         .then(() => done('user should be invalid!'))
         .catch(error => {
           expect(APP.domain.document.DocumentModel.create.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');
-          done();
+
+          return done();
         });
     });
   });
@@ -93,10 +90,12 @@ describe('api domain document service', () => {
 
       documentService.destroy(DOCUMENT.id)
         .then(() => {
-          expect(APP.domain.document.DocumentModel.destroy.callCount).to.equal(1);
           const quering = APP.domain.document.DocumentModel.destroy.lastCall.arg;
+
+          expect(APP.domain.document.DocumentModel.destroy.callCount).to.equal(1);
           expect(quering.where.id).to.equal(DOCUMENT.id);
-          done();
+
+          return done();
         })
         .catch(done);
     });
@@ -104,19 +103,18 @@ describe('api domain document service', () => {
 
   describe('# find', () => {
     it('search a document by name', done => {
+      const filter = {name: 'another document'};
+
       APP.domain.document.DocumentModel.findAll = simpleMock.stub().resolveWith();
-      const filter = {
-        name: 'another document'
-      };
 
       documentService.find(filter)
         .then(() => {
-          expect(APP.domain.document.DocumentModel.findAll.callCount).to.equal(1);
           const quering = APP.domain.document.DocumentModel.findAll.lastCall.arg;
-          expect(quering.where.name).to.deep.equal({
-            like: '%another document%'
-          });
-          done();
+
+          expect(APP.domain.document.DocumentModel.findAll.callCount).to.equal(1);
+          expect(quering.where.name).to.deep.equal({like: '%another document%'});
+
+          return done();
         })
         .catch(done);
     });
@@ -130,7 +128,8 @@ describe('api domain document service', () => {
         .then(() => {
           expect(APP.domain.document.DocumentModel.findById.callCount).to.equal(1);
           expect(APP.domain.document.DocumentModel.findById.lastCall.arg).to.equal(DOCUMENT.id);
-          done();
+
+          return done();
         })
         .catch(done);
     });
@@ -141,25 +140,27 @@ describe('api domain document service', () => {
       APP.domain.document.DocumentModel.update = simpleMock.stub().resolveWith(DOCUMENT);
 
       documentService.update(DOCUMENT.id, DOCUMENT, USER)
-        .then(result => {
+        .then(() => {
           expect(APP.domain.document.DocumentModel.update.callCount).to.equal(1);
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('update a invalid document', done => {
-      APP.domain.document.DocumentModel.update = simpleMock.stub().resolveWith(DOCUMENT);
-
       const anotherDocument = clone(DOCUMENT);
+
       delete anotherDocument.name;
+      APP.domain.document.DocumentModel.update = simpleMock.stub().resolveWith(DOCUMENT);
 
       documentService.update(anotherDocument.id, anotherDocument, USER)
         .then(() => done('document should be invalid!'))
         .catch(error => {
           expect(APP.domain.document.DocumentModel.update.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');
-          done();
+
+          return done();
         });
     });
   });

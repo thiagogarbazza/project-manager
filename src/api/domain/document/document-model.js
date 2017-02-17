@@ -2,7 +2,10 @@
 
 const NAME_MAXLENGTH = 100;
 
-module.exports = (sequelize, DataType) => {
+module.exports = DocumentModel;
+module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;
+
+function DocumentModel(sequelize, DataType) {
   const definition = {
     content: {
       allowNull: true,
@@ -38,7 +41,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   return sequelize.define('DocumentModel', definition, options);
-};
+}
 
 function associate(domain) {
   const documentModel = domain.document.DocumentModel;
@@ -69,5 +72,3 @@ function associate(domain) {
     }
   });
 }
-
-module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;

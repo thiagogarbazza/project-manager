@@ -5,7 +5,11 @@ const bcrypt = require('bcryptjs');
 const EMAIL_MAXLENGTH = 250;
 const NAME_MAXLENGTH = 100;
 
-module.exports = (sequelize, DataType) => {
+module.exports = UserModel;
+module.exports.EMAIL_MAXLENGTH = EMAIL_MAXLENGTH;
+module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;
+
+function UserModel(sequelize, DataType) {
   const definition = {
     avatar: {
       type: DataType.BLOB
@@ -57,7 +61,5 @@ module.exports = (sequelize, DataType) => {
   };
 
   return sequelize.define('UserModel', definition, options);
-};
+}
 
-module.exports.EMAIL_MAXLENGTH = EMAIL_MAXLENGTH;
-module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;

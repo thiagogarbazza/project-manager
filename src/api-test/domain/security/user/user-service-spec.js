@@ -1,16 +1,11 @@
 'use strict';
 
 const USER_VALIDATE = class {
-  constructor(app) {}
   onCreate(user) {
-    return user.email ? Promise.resolve() : Promise.reject({
-      name: 'BusinessError'
-    });
+    return user.email ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
   }
   onUpdate(user) {
-    return user.email ? Promise.resolve() : Promise.reject({
-      name: 'BusinessError'
-    });
+    return user.email ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
   }
 };
 
@@ -56,44 +51,45 @@ describe('api domain security user service', () => {
       APP.domain.security.user.UserModel.create = simpleMock.stub().resolveWith(USER);
 
       userService.create(USER)
-        .then(result => {
+        .then(() => {
           expect(APP.domain.security.user.UserModel.create.callCount).to.equal(1);
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('create a new invalid user', done => {
-      APP.domain.security.user.UserModel.create = simpleMock.stub().resolveWith();
-
       const anotherUser = clone(USER);
+
       delete anotherUser.email;
+      APP.domain.security.user.UserModel.create = simpleMock.stub().resolveWith();
 
       userService.create(anotherUser)
         .then(() => done('user should be invalid!'))
         .catch(error => {
           expect(APP.domain.security.user.UserModel.create.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');
-          done();
+
+          return done();
         });
     });
   });
 
   describe('# find', () => {
     it('search a user by name', done => {
+      const filter = {name: 'another user'};
+
       APP.domain.security.user.UserModel.findAll = simpleMock.stub().resolveWith();
-      const filter = {
-        name: 'another user'
-      };
 
       userService.find(filter)
         .then(() => {
-          expect(APP.domain.security.user.UserModel.findAll.callCount).to.equal(1);
           const quering = APP.domain.security.user.UserModel.findAll.lastCall.arg;
-          expect(quering.where.name).to.deep.equal({
-            like: '%another user%'
-          });
-          done();
+
+          expect(APP.domain.security.user.UserModel.findAll.callCount).to.equal(1);
+          expect(quering.where.name).to.deep.equal({like: '%another user%'});
+
+          return done();
         })
         .catch(done);
     });
@@ -102,12 +98,15 @@ describe('api domain security user service', () => {
   describe('# findByEmail', () => {
     it('find user by e-mail', done => {
       APP.domain.security.user.UserModel.findOne = simpleMock.stub().resolveWith();
+
       userService.findByEmail(USER.email)
         .then(() => {
-          expect(APP.domain.security.user.UserModel.findOne.callCount).to.equal(1);
           const quering = APP.domain.security.user.UserModel.findOne.lastCall.arg;
+
+          expect(APP.domain.security.user.UserModel.findOne.callCount).to.equal(1);
           expect(quering.where.email).to.equal(USER.email);
-          done();
+
+          return done();
         })
         .catch(done);
     });
@@ -116,11 +115,13 @@ describe('api domain security user service', () => {
   describe('# findById', () => {
     it('find user by ID', done => {
       APP.domain.security.user.UserModel.findById = simpleMock.stub().resolveWith();
+
       userService.findById(USER.id)
         .then(() => {
           expect(APP.domain.security.user.UserModel.findById.callCount).to.equal(1);
           expect(APP.domain.security.user.UserModel.findById.lastCall.arg).to.equal(USER.id);
-          done();
+
+          return done();
         })
         .catch(done);
     });
@@ -131,25 +132,27 @@ describe('api domain security user service', () => {
       APP.domain.security.user.UserModel.update = simpleMock.stub().resolveWith(USER);
 
       userService.update(USER.id, USER)
-        .then(result => {
+        .then(() => {
           expect(APP.domain.security.user.UserModel.update.callCount).to.equal(1);
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('update a invalid user', done => {
-      APP.domain.security.user.UserModel.update = simpleMock.stub().resolveWith(USER);
-
       const anotherUser = clone(USER);
+
       delete anotherUser.email;
+      APP.domain.security.user.UserModel.update = simpleMock.stub().resolveWith(USER);
 
       userService.update(anotherUser.id, anotherUser)
         .then(() => done('user should be invalid!'))
         .catch(error => {
           expect(APP.domain.security.user.UserModel.update.callCount).to.equal(0);
           expect(error.name).to.equal('BusinessError');
-          done();
+
+          return done();
         });
     });
   });

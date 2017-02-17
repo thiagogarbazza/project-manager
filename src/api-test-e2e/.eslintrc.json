@@ -1,0 +1,20 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "restrict",
+    "restrict/chai",
+    "restrict/mocha"
+  ],
+  "globals": {
+    "app": true,
+    "dataBase": true,
+    "HttpStatus": true,
+    "request": true,
+    "USER": true
+  },
+  "rules": {
+
+  }
+}

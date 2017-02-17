@@ -8,13 +8,11 @@ describe('api domain security token service', () => {
 
   before(() => {
     const USER_SERVICE = class {
-      constructor(app) {}
       findByEmail(email) {
-        return email === 'thiagogarbazza@gmail.com' ? Promise.resolve(USER) : Promise.reject({
-          name: 'Error'
-        });
+        return email === 'thiagogarbazza@gmail.com' ? Promise.resolve(USER) : Promise.reject({name: 'Error'});
       }
-    }
+    };
+
     mockery.registerMock('./user/user-service', USER_SERVICE);
     mockery.registerAllowable('../../../api/domain/security/token-service');
     TokenService = require('../../../api/domain/security/token-service');
@@ -48,7 +46,8 @@ describe('api domain security token service', () => {
         .then(() => done('should not generate TOKEN, since they were not sent e-mail and password'))
         .catch(error => {
           expect(error.name).to.equal('Error');
-          done();
+
+          return done();
         });
     });
 
@@ -57,41 +56,45 @@ describe('api domain security token service', () => {
         .then(() => done('should not generate TOKEN, since they were not sent password'))
         .catch(error => {
           expect(error.name).to.equal('Error');
-          done();
-        });
-    });
 
-    it('try to generate token informing the password and not informing the email', done => {
-      tokenService.generate({email: 'thiagogarbazza@gmail.com'})
-        .then(() => done('should not generate TOKEN, because the data is invalid'))
-        .catch(error => {
-          expect(error.name).to.equal('Error');
-          done();
+          return done();
         });
     });
 
     it('try to generate token informing valid email and password', done => {
+      const LOGIN = {
+        email: 'thiagogarbazza@gmail.com',
+        password: 'swordffish'
+      };
+
       USER.isPassword = simpleMock.stub().returnWith(true);
 
-      tokenService.generate({email: 'thiagogarbazza@gmail.com',password: 'swordfish'})
+      tokenService.generate(LOGIN)
         .then(result => {
           expect(USER.isPassword.callCount).to.equal(1);
           expect(result.name).to.equal('Thiago Garbazza');
           expect(result.token).to.not.be.undefined;
-          done();
+
+          return done();
         })
         .catch(done);
     });
 
     it('try to generate token informing invalid email and password', done => {
+      const LOGIN = {
+        email: 'thiagogarbazza@gmail.com',
+        password: 'swordffish'
+      };
+
       USER.isPassword = simpleMock.stub().returnWith(false);
 
-      tokenService.generate({email: 'thiagogarbazza@gmail.com',password: 'swordffish'})
+      tokenService.generate(LOGIN)
         .then(() => done('should not generate TOKEN, because the data is invalid'))
         .catch(error => {
           expect(USER.isPassword.callCount).to.equal(1);
           expect(error.name).to.equal('Error');
-          done();
+
+          return done();
         });
     });
   });

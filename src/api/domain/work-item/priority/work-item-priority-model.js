@@ -5,7 +5,13 @@ const COLOR_MAXLENGTH = 30;
 const ICON_MAXLENGTH = 20;
 const NAME_MAXLENGTH = 100;
 
-module.exports = (sequelize, DataType) => {
+module.exports = WorkItemPriorityModel;
+module.exports.DESCRIPTION_MAXLENGTH = DESCRIPTION_MAXLENGTH;
+module.exports.COLOR_MAXLENGTH = COLOR_MAXLENGTH;
+module.exports.ICON_MAXLENGTH = ICON_MAXLENGTH;
+module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;
+
+function WorkItemPriorityModel(sequelize, DataType) {
   const definition = {
     color: {
       allowNull: true,
@@ -58,7 +64,7 @@ module.exports = (sequelize, DataType) => {
   };
 
   return sequelize.define('WorkItemPriorityModel', definition, options);
-};
+}
 
 function associate(domain) {
   const workItemPriorityModel = domain.workItem.priority.WorkItemPriorityModel;
@@ -89,8 +95,3 @@ function associate(domain) {
     }
   });
 }
-
-module.exports.DESCRIPTION_MAXLENGTH = DESCRIPTION_MAXLENGTH;
-module.exports.COLOR_MAXLENGTH = COLOR_MAXLENGTH;
-module.exports.ICON_MAXLENGTH = ICON_MAXLENGTH;
-module.exports.NAME_MAXLENGTH = NAME_MAXLENGTH;

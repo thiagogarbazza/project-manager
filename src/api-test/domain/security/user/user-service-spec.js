@@ -1,5 +1,8 @@
 'use strict';
 
+const mockery = require('mockery');
+const PATH_TO_USER_SERVICE = '../../../../api/domain/security/user/user-service';
+
 const USER_VALIDATE = class {
   onCreate(user) {
     return user.email ? Promise.resolve() : Promise.reject({name: 'BusinessError'});
@@ -16,13 +19,17 @@ describe('api domain security user service', () => {
   let userService;
 
   before(() => {
+    mockery.registerAllowable(PATH_TO_USER_SERVICE, true);
     mockery.registerMock('./user-validate', USER_VALIDATE);
-    mockery.registerAllowable('../../../../api/domain/security/user/user-service');
+    mockery.enable({useCleanCache: true});
+
     UserService = require('../../../../api/domain/security/user/user-service');
   });
 
   after(() => {
     mockery.deregisterMock('./user-validate');
+    mockery.deregisterAllowable(PATH_TO_USER_SERVICE);
+    mockery.disable();
   });
 
   beforeEach(() => {

@@ -1,25 +1,33 @@
 'use strict';
 
+const mockery = require('mockery');
+const PATH_TO_TOKEN_SERVICE = '../../../api/domain/security/token-service';
+
+const USER_SERVICE = class {
+  findByEmail(email) {
+    return email === 'thiagogarbazza@gmail.com' ? Promise.resolve(USER) : Promise.reject({name: 'Error'});
+  }
+};
+
+const APP = {};
+let USER;
+
 describe('api domain security token service', () => {
-  const APP = {};
   let TokenService;
   let tokenService;
-  let USER;
 
   before(() => {
-    const USER_SERVICE = class {
-      findByEmail(email) {
-        return email === 'thiagogarbazza@gmail.com' ? Promise.resolve(USER) : Promise.reject({name: 'Error'});
-      }
-    };
-
+    mockery.registerAllowable(PATH_TO_TOKEN_SERVICE, true);
     mockery.registerMock('./user/user-service', USER_SERVICE);
-    mockery.registerAllowable('../../../api/domain/security/token-service');
-    TokenService = require('../../../api/domain/security/token-service');
+    mockery.enable({useCleanCache: true});
+
+    TokenService = require(PATH_TO_TOKEN_SERVICE);
   });
 
   after(() => {
-    mockery.deregisterMock('./user-service');
+    mockery.deregisterMock('./user/user-service');
+    mockery.deregisterAllowable(PATH_TO_TOKEN_SERVICE);
+    mockery.disable();
   });
 
 

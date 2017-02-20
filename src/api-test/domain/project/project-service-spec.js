@@ -1,5 +1,8 @@
 'use strict';
 
+const mockery = require('mockery');
+const PATH_TO_PROJECT_SERVICE = '../../../api/domain/project/project-service';
+
 const PROJECT = {
   active: true,
   clientId: '2103c936-6613-4479-975c-cd1a87fe1e41',
@@ -24,13 +27,17 @@ describe('api domain project service', () => {
   let projectService;
 
   before(() => {
+    mockery.registerAllowable(PATH_TO_PROJECT_SERVICE, true);
     mockery.registerMock('./project-validate', PROJECT_VALIDATE);
-    mockery.registerAllowable('../../../api/domain/project/project-service');
-    ProjectService = require('../../../api/domain/project/project-service');
+    mockery.enable({useCleanCache: true});
+
+    ProjectService = require(PATH_TO_PROJECT_SERVICE);
   });
 
   after(() => {
     mockery.deregisterMock('./project-validate');
+    mockery.deregisterAllowable(PATH_TO_PROJECT_SERVICE);
+    mockery.disable();
   });
 
   beforeEach(() => {

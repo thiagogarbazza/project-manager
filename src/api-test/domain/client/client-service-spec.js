@@ -1,5 +1,8 @@
 'use strict';
 
+const mockery = require('mockery');
+const PATH_TO_CLIENT_SERVICE = '../../../api/domain/client/client-service';
+
 const CLIENT = {
   active: true,
   color: '',
@@ -23,13 +26,17 @@ describe('api domain client service', () => {
   let clientService;
 
   before(() => {
+    mockery.registerAllowable(PATH_TO_CLIENT_SERVICE, true);
     mockery.registerMock('./client-validate', CLIENT_VALIDATE);
-    mockery.registerAllowable('../../../api/domain/client/client-service');
-    ClientService = require('../../../api/domain/client/client-service');
+    mockery.enable({useCleanCache: true});
+
+    ClientService = require(PATH_TO_CLIENT_SERVICE);
   });
 
   after(() => {
     mockery.deregisterMock('./client-validate');
+    mockery.deregisterAllowable(PATH_TO_CLIENT_SERVICE);
+    mockery.disable();
   });
 
   beforeEach(() => {

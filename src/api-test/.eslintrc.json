@@ -10,7 +10,6 @@
   "globals": {
     "clone": true,
     "dottie": true,
-    "mockery": true,
     "properties": true,
     "simpleMock": true
   },

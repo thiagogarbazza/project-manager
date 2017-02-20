@@ -1,5 +1,8 @@
 'use strict';
 
+const mockery = require('mockery');
+const PATH_TO_DOCUMENT_SERVICE = '../../../api/domain/document/document-service';
+
 const DOCUMENT = {
   content: '#  template user story',
   id: '7196d519-3eeb-48d0-b5dd-73f9240ec483',
@@ -23,13 +26,17 @@ describe('api domain document service', () => {
   let documentService;
 
   before(() => {
+    mockery.registerAllowable(PATH_TO_DOCUMENT_SERVICE, true);
     mockery.registerMock('./document-validate', DOCUMENT_VALIDATE);
-    mockery.registerAllowable('../../../api/domain/document/document-service');
-    DocumentService = require('../../../api/domain/document/document-service');
+    mockery.enable({useCleanCache: true});
+
+    DocumentService = require(PATH_TO_DOCUMENT_SERVICE);
   });
 
   after(() => {
     mockery.deregisterMock('./document-validate');
+    mockery.deregisterAllowable(PATH_TO_DOCUMENT_SERVICE);
+    mockery.disable();
   });
 
   beforeEach(() => {

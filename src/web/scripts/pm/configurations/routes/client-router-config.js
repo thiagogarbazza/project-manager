@@ -9,7 +9,7 @@
 
   function clientRouterConfiguration($stateProvider) {
     $stateProvider.state('client', {
-      parent: 'template',
+      parent: 'settings',
       templateUrl: 'views/client/client-list-tpl.html',
       url: '/client'
     });

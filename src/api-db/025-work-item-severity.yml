@@ -3,7 +3,7 @@
   - id: 1e94ec5e-bc30-42db-9116-e11429dac792
     name: Blocker
     order: 1
-    color: rgb(223, 81, 56)
+    color: rgb(255, 0, 0)
     icon: fa fa-ban
     default: false
     description: Blocks development and/or testing work, production could not run.

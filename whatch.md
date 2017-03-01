@@ -3,15 +3,19 @@
 
 https://www.mindmup.com/#m:g10BzrrP6CLqHXZRldnUWRZb0dyaTg
 
-
 https://github.com/bryanrsmith/eslint-plugin-sort-class-members
+
 ## examples
 https://aiveo.ca/faq
 https://waffle.io/
 https://toggl.com/
 http://runrun.it/
 https://www.yoms.org/
+<<<<<<< HEAD
 https://hibernate.atlassian.net/browse/HHH-5074
+=======
+http://www.creativebloq.com/software/best-project-management-71515632
+>>>>>>> b747abdd5895d00e986dc6704fb021757e0adad7
 
 
 ## Continuous Integration

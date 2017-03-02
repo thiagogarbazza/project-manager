@@ -5,6 +5,8 @@
     "angular": "^1.6.1",
     "angular-ui-router": "^0.4.2",
     "http-status-codes": "^0.1.x",
-    "ngstorage": "^0.3.10"
+    "ngstorage": "^0.3.10",
+    "normalize-css": "^5.0.0",
+    "font-awesome": "fontawesome#^4.6.3"
   }
 }

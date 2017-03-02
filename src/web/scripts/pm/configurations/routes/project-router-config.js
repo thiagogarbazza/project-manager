@@ -11,18 +11,18 @@
     $stateProvider
       .state('project', {
         parent: 'template',
-        template: 'My project page.....',
-        url: '/{code}'
+        templateUrl: 'views/project/project-home-tpl.html',
+        url: '/{projectKey}'
       })
       .state('project.documentation', {
         parent: 'template',
         template: 'My project documentation page.....',
-        url: '/{code}/docs'
+        url: '/{projectKey}/docs'
       })
       .state('project.iteration', {
         parent: 'template',
         template: 'My project iteration page.....',
-        url: '/{code}/iteration'
+        url: '/{projectKey}/iteration'
       });
   }
 })(angular);

@@ -26,7 +26,7 @@ class ProjectService extends AbstractDomainService {
 
   find(filter) {
     const quering = {
-      attributes: ['id', 'name', 'color', 'active'],
+      attributes: ['id', 'key', 'name', 'color', 'active'],
       order: 'name ASC',
       where: {}
     };
@@ -36,6 +36,15 @@ class ProjectService extends AbstractDomainService {
     }
 
     return this.projectModel.findAll(quering);
+  }
+
+  findByKey(key) {
+    const quering = {
+      attributes: ['id', 'key', 'name', 'color', 'active'],
+      where: {key}
+    };
+
+    return this.projectModel.findOne(quering);
   }
 
   findById(id) {

@@ -8,13 +8,13 @@
   projectApiService.$inject = ['$http', 'settings'];
 
   function projectApiService($http, settings) {
-    var PATH_TO_SERVICE = settings.API.URL + 'project/';
+    var PATH_TO_SERVICE = settings.API.URL + 'project';
 
     var service = {
       create: create,
       delete: delet,
       detail: detail,
-      findByCode: findByCode,
+      findByKey: findByKey,
       search: search,
       update: update
     };
@@ -33,11 +33,8 @@
       return $http.get(PATH_TO_SERVICE + '/' + id);
     }
 
-    function findByCode(code) {
-      var parameters = {
-        code_eq: code
-      };
-      return $http.get(PATH_TO_SERVICE, {params: parameters});
+    function findByKey(key) {
+      return $http.get(PATH_TO_SERVICE + '/' + key);
     }
 
     function search(parameters) {

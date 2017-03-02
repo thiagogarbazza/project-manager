@@ -2,6 +2,7 @@
 
 const ProjectService = require('./project-service');
 const routeResolver = require('express-route-resolver');
+const {KEY_MAXLENGTH} = require('./project-model');
 
 module.exports = app => {
   const projectService = new ProjectService(app);
@@ -16,6 +17,13 @@ module.exports = app => {
       const promise = projectService.create(request.body, request.user);
 
       routeResolver.onCreate(response, promise);
+    });
+
+  app.route('/service/project/:key')
+    .get((request, response) => {
+      const promise = projectService.findByKey(request.params.key);
+
+      routeResolver.onFindOne(response, promise);
     });
 
   app.route('/service/project/:uuid')

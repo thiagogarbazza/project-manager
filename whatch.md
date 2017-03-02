@@ -11,11 +11,9 @@ https://waffle.io/
 https://toggl.com/
 http://runrun.it/
 https://www.yoms.org/
-<<<<<<< HEAD
 https://hibernate.atlassian.net/browse/HHH-5074
-=======
 http://www.creativebloq.com/software/best-project-management-71515632
->>>>>>> b747abdd5895d00e986dc6704fb021757e0adad7
+
 
 
 ## Continuous Integration

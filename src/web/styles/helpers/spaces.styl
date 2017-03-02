@@ -1,0 +1,144 @@
+$spaces = {
+  '0': 0
+  '1': 4
+  '2': 8
+  '3': 16
+  '4': 24
+  '5': 32
+  '6': 40  
+}
+
+$medias = {
+  'sm': {
+    width: 544
+    spaces: {
+      '0': 0
+      '1': 4
+      '2': 8
+      '3': 16
+      '4': 24
+      '5': 32
+      '6': 40  
+    }
+  }
+
+  'md': {
+    width: 768
+    spaces: {
+      '0': 0
+      '1': 4
+      '2': 8
+      '3': 16
+      '4': 24
+      '5': 32
+      '6': 40  
+    }
+  }
+
+  'lg': {
+    width: 1012
+    spaces: {
+      '0': 0
+      '1': 4
+      '2': 8
+      '3': 16
+      '4': 24
+      '5': 32
+      '6': 40  
+    }
+  }
+
+  'xl': {
+    width: 1280
+    spaces: {
+      '0': 0
+      '1': 4
+      '2': 8
+      '3': 16
+      '4': 24
+      '5': 32
+      '6': 40  
+    }
+  }
+}
+
+for space-name, space in $spaces
+  .m-{space-name}
+    margin: unit(space, 'px') !important
+  .mt-{space-name}
+    margin-top: unit(space, 'px') !important
+  .mr-{space-name} 
+    margin-right: unit(space, 'px') !important
+  .mb-{space-name} 
+    margin-bottom: unit(space, 'px') !important
+  .ml-{space-name}
+    margin-left: unit(space, 'px') !important
+  .mx-{space-name}
+    margin-right: unit(space, 'px') !important
+    margin-left: unit(space, 'px') !important
+  .my-{space-name}
+    margin-top: unit(space, 'px') !important
+    margin-bottom: unit(space, 'px') !important
+
+.mx-auto 
+  margin-right: auto !important
+  margin-left: auto !important
+
+for media-name, media in $medias
+  @media (min-width: unit(media.width, 'px'))
+    for space-name, space in media['spaces']
+      .m-{media-name}-{space-name}
+        margin: unit(space, 'px') !important
+      .mt-{media-name}-{space-name}
+        margin-top: unit(space, 'px') !important
+      .mr-{media-name}-{space-name} 
+        margin-right: unit(space, 'px') !important
+      .mb-{media-name}-{space-name} 
+        margin-bottom: unit(space, 'px') !important
+      .ml-{media-name}-{space-name}
+        margin-left: unit(space, 'px') !important
+      .mx-{media-name}-{space-name}
+        margin-right: unit(space, 'px') !important
+        margin-left: unit(space, 'px') !important
+      .my-{media-name}-{space-name}
+        margin-top: unit(space, 'px') !important
+        margin-bottom: unit(space, 'px') !important
+
+
+for space-name, space in $spaces
+  .p-{space-name}
+    padding: unit(space, 'px') !important
+  .pt-{space-name}
+    padding-top: unit(space, 'px') !important
+  .pr-{space-name} 
+    padding-right: unit(space, 'px') !important
+  .pb-{space-name} 
+    padding-bottom: unit(space, 'px') !important
+  .pl-{space-name}
+    padding-left: unit(space, 'px') !important
+  .px-{space-name}
+    padding-right: unit(space, 'px') !important
+    padding-left: unit(space, 'px') !important
+  .py-{space-name}
+    padding-top: unit(space, 'px') !important
+    padding-bottom: unit(space, 'px') !important
+
+for media-name, media in $medias
+  @media (min-width: unit(media.width, 'px'))
+    for space-name, space in media['spaces']
+      .p-{media-name}-{space-name}
+        padding: unit(space, 'px') !important
+      .pt-{media-name}-{space-name}
+        padding-top: unit(space, 'px') !important
+      .pr-{media-name}-{space-name} 
+        padding-right: unit(space, 'px') !important
+      .pb-{media-name}-{space-name} 
+        padding-bottom: unit(space, 'px') !important
+      .pl-{media-name}-{space-name}
+        padding-left: unit(space, 'px') !important
+      .px-{media-name}-{space-name}
+        padding-right: unit(space, 'px') !important
+        padding-left: unit(space, 'px') !important
+      .py-{media-name}-{space-name}
+        padding-top: unit(space, 'px') !important
+        padding-bottom: unit(space, 'px') !important

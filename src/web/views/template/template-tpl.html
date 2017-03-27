@@ -1,37 +1,7 @@
 <div>
-
-  <div class="navbar">
-    <div class="navbar-item product-info pull-left">
-      <a ui-sref="home" class="navbar-icon">
-        <i class="fa fa-line-chart" aria-hidden="true"></i>
-      </a>
-    </div>
-
-    <div class="navbar-item pull-right">
-
-    </div>
-
-
-  </div>
+  <ng-include src=" 'views/template/navbar-tpl.html' "></ng-include>
 
   <div class="page-content">
-    <div class="col-3 float-left pr-4">
-      <nav class="menu">
-        <h3 class="menu-heading">Settings</h3>
-
-        <a ui-sref="project" class="menu-item" ui-sref-active="selected">Projects</a>
-        <a ui-sref="client" class="menu-item" ui-sref-active="selected">Clients</a>
-      </nav>
-    </div>
-
-    <div class="col-9  float-left">
-      <h2 class="page-title">Clients</h2>
-      
-      <ui-view></ui-view>
-    </div>
+    <ui-view></ui-view>
   </div>
-
-
-  <ng-include src=" 'views/template/left-nav-tpl.html' "></ng-include>
-
 </div>

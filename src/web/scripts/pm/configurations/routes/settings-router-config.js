@@ -9,8 +9,9 @@
 
   function settingsRouterConfiguration($stateProvider) {
     $stateProvider.state('settings', {
-      parent: 'template',
-      template: '<ui-view></ui-view>',
+      abstract: true,
+      parent: 'root',
+      templateUrl: 'views/template/settings/settings-template-tpl.html',
       url: '/settings'
     });
   }

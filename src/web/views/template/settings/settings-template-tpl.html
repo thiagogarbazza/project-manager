@@ -1,0 +1,13 @@
+<div>
+  <ng-include src=" 'views/template/navbar-tpl.html' "></ng-include>
+
+  <div class="page-content">
+    <div class="col-3 float-left pr-4">
+      <ng-include src=" 'views/template/settings/settings-left-nav-tpl.html' "></ng-include>
+    </div>
+
+    <div class="col-9  float-left">
+      <ui-view></ui-view>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+$table-spacer = 1rem
+$table-border-width = 1px
+$table-border-color = #eceeef
+$table-cell-padding = 0.75rem
+$table-sm-cell-padding = 0.3rem
+
+table
+  border-collapse: collapse
+  background-color: transparent
+
+thead 
+  display: table-header-group
+
+tr
+  page-break-inside: avoid
+
+.table
+  width: 100%
+  max-width: 100%
+  margin-bottom: $table-spacer
+  background-color: transparent
+
+  th, td
+    padding: $table-cell-padding
+    vertical-align: middle
+    text-align: left
+    border-top: $table-border-width solid $table-border-color
+
+  thead 
+    tr
+      th 
+        vertical-align: middle
+        border-bottom: (3 * $table-border-width) solid $table-border-color
+        font-size 13px
+        font-weight 600
+    &[class*='colored-'] > th
+      font-weight 400
+    &[class*='bordered-'] > th
+      border-bottom-style solid
+      border-bottom-width 3px
+    &.bordered-theme tr > th
+      border-bottom-color: $theme.primary.color
+    for cor-name, cor in $colors
+      &.colored-{cor-name} > th
+        background-color: cor.background
+        color: cor.color
+      &.bordered-{cor-name} > th
+        border-bottom-color: cor.value
+
+  tbody 
+    & + tbody
+      border-top: (2 * $table-border-width) solid $table-border-color
+    tr 
+      .alert
+        margin 0
+      &.selected
+        > td
+          background: $colors.info.background
+          &:last-child:after
+            position: absolute
+            right: 20px
+            width: 10px
+            height: 10px
+            font-family: $icons.font
+            vertical-align: middle
+            color: $colors.info.color
+            opacity: 0.5
+            content: $icons.check  
+      &[class*='bordered-'] > td:first-child,
+      & td[class*='bordered-']
+        border-left-style solid
+        border-left-width 3px
+
+      for cor-name, cor in $colors
+        &.colored-{cor-name} > td,      
+        td.colored-{cor-name}
+          background-color: cor.background
+          color: cor.color
+        &.bordered-{cor-name} > td:first-child,
+        td.bordered-{cor-name}
+          border-left-color: cor.value
+
+  tfoot > tr > th
+    font-weight 300
+
+  .table
+    background-color #ffffff
+    margin-bottom 0
+
+  &.table-bordered 
+    border: $table-border-width solid $table-border-color
+
+    th, td
+      border: $table-border-width solid $table-border-color
+
+    thead th, thead td 
+      border-bottom-width: 2px
+
+  &.table-striped tbody tr:nth-of-type(even)
+    background-color: rgba(0, 0, 0, 0.05)
+    
+  &.table-hover tbody tr:hover 
+    background-color: rgba(0, 0, 0, 0.075)
+    
+  &.table-condensed
+    th, td
+      padding: $table-sm-cell-padding
+  
+.table-responsive
+  display: block
+  width: 100%
+  overflow-x: auto
+  -ms-overflow-style: -ms-autohiding-scrollbar
+
+  &.table-bordered 
+    border: 0

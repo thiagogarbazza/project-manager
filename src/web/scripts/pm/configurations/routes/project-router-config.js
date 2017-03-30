@@ -21,7 +21,7 @@
       })
       .state('project-home.documentation', {
         parent: 'template',
-        template: 'My project documentation page.....',
+        templateUrl: 'views/document/document-list-tpl.html',
         url: '/{projectKey}/docs'
       })
       .state('project-home.iteration', {

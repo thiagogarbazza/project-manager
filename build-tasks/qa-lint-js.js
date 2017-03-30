@@ -26,7 +26,7 @@ gulp.task('api-test-e2e-lint', () => gulp
 );
 
 gulp.task('web-lint', () => gulp
-  .src(['src/web/**/*.js'])
+  .src(['src/web/**/*.js', '!src/web/{libs,libs/**}'])
   .pipe(eslint({configFile: 'src/web/.eslintrc.json'}))
   .pipe(eslint.format(FORMAT))
 );
